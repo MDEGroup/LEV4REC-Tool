@@ -58,7 +58,7 @@
 				<and mandatory="true" name="DatasetComponent">
 					<graphics key="collapsed" value="false"/>
 					<alt mandatory="true" name="DataStructure">
-						<graphics key="collapsed" value="true"/>
+						<graphics key="collapsed" value="false"/>
 						<feature name="TextualData"/>
 						<feature name="GraphData"/>
 						<feature name="Matrix"/>
@@ -72,7 +72,7 @@
 					</alt>
 				</and>
 				<or mandatory="true" name="PreprocessingComponent">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<feature name="NLP"/>
 					<feature name="FeatureScaling"/>
 					<feature name="Vectorization"/>
@@ -81,7 +81,7 @@
 					<feature name="Normalization"/>
 				</or>
 				<or mandatory="true" name="EvaluationComponent">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<alt name="CrossFold">
 						<graphics key="collapsed" value="false"/>
 						<feature name="SplittingKfold"/>
@@ -90,7 +90,7 @@
 					<feature name="UserStudy"/>
 				</or>
 				<alt mandatory="true" name="PresentationComponent">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<feature name="WebInterface"/>
 					<feature name="IDEPlugin"/>
 					<feature name="RawOutcomes"/>
@@ -106,12 +106,12 @@
 					<feature name="TensorFlow"/>
 				</alt>
 				<or mandatory="true" name="DatasetLibrary">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<feature name="Pandas"/>
 					<feature name="Numpy"/>
 				</or>
 				<alt mandatory="true" name="PresentationLibrary">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<alt name="WebLibrary">
 						<graphics key="collapsed" value="false"/>
 						<feature name="Flask"/>
@@ -129,7 +129,7 @@
 					</alt>
 				</alt>
 				<alt mandatory="true" name="EvaluationLibrary">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<alt name="SklearnSplit">
 						<graphics key="collapsed" value="false"/>
 						<feature name="SKCrossFold"/>
@@ -142,7 +142,7 @@
 					</alt>
 				</alt>
 				<or mandatory="true" name="PreprocessingLibrary">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<feature name="PandasPreprocessing"/>
 					<feature name="SklearnPreprocessing"/>
 					<feature name="SurprisePreprocessing"/>

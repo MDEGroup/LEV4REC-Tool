@@ -8,23 +8,11 @@ Generated recommneder system from model."""
 
 code = """\
 import pandas as pd
-import warnings
-warnings.filterwarnings("ignore")
-##TODO Generating dataset
 
 dataset=pd.read_csv('Social_Network_Ads.csv')
-#X = dataset.iloc[:,:-1].values
-#y = dataset.iloc[:, -1].values
+X = dataset.iloc[:,:-1].values
+y = dataset.iloc[:, -1].values
 
-	#if len(dataset.columns) < 2:
-	#    print('The dataset must have at least two columns')
-	#	return None, None
-	#else:
-if 'Label' in dataset.columns:
-	y = dataset["Label"]
-else:
-	print("Cannot find column for labels. Using the last one as default")
-	y = dataset.iloc[:, -1].values
 X = dataset.iloc[:, :-1].values
 
 
