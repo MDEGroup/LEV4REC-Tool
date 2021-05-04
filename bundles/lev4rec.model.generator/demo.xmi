@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<lowcoders:RSModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lowcoders="https://it.disim.univaq/lowcode" name="Generated Model">
+  <dataset xsi:type="lowcoders:SupervisedDataset" name="DATASET NAME">
+    <dataStructure xsi:type="lowcoders:Matrix"/>
+    <preprocessing>FEATURE_SCALING</preprocessing>
+    <datasetManipulationLibrary>PANDAS</datasetManipulationLibrary>
+    <datasetManipulationLibrary>NUMPY</datasetManipulationLibrary>
+  </dataset>
+  <presentationLayer xsi:type="lowcoders:WebInterface"/>
+  <evaluation>
+    <validationtechnique xsi:type="lowcoders:CrossValidation"/>
+  </evaluation>
+  <recommendationSystem xsi:type="lowcoders:MachineLearningBasedRS" name="GENERATED RECOMMENDER SYSTEM" machineLearningRSAlgoithm="FEED_FORWARD_NN"/>
+</lowcoders:RSModel>

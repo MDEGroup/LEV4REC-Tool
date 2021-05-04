@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lowcoders:RSModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:lowcoders="https://it.disim.univaq/lowcode"
+    xsi:schemaLocation="https://it.disim.univaq/lowcode lowcoders.ecore"
+    name="Aurora">
+  <dataset xsi:type="lowcoders:SupervisedDataset"
+      name="Social_Network_Ads.csv">
+    <indipendentVariables
+        name="Metamodel">
+      <dataSource
+          xsi:type="lowcoders:File"
+          name="WebModel"
+          sourcePath="path://to_file"
+          encoding="ecore"/>
+      <Preprocessing>
+        <preprocessigTechnique>NORMALIZATION</preprocessigTechnique>
+      </Preprocessing>
+    </indipendentVariables>
+    <dataStructure
+        xsi:type="lowcoders:Matrix"
+        name="TDM"/>
+    <dependatVariable
+        name="Label"/>
+  </dataset>
+  <evaluation>
+    <validationtechnique
+        xsi:type="lowcoders:CrossValidation"
+        name="">
+      <groundTruthExtractor/>
+    </validationtechnique>
+  </evaluation>
+  <recommendationSystem
+      xsi:type="lowcoders:FeedForwardNN"
+      name="Net">
+    <recommendationScope
+        name="y_pred"
+        outcame="//@dataset/@dependatVariable"/>
+  </recommendationSystem>
+</lowcoders:RSModel>
