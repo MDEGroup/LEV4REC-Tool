@@ -1,4 +1,4 @@
-package it.disim.univaq.lowcode.feature2lowcode.injector;
+package it.lev4rec.mode.generator;
 
 import java.io.IOException;
 import java.nio.file.Path;

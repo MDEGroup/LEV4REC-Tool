@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Injector
 Bundle-SymbolicName: lev4rec.model.generator
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: it.disim.univaq.lowcode.feature2lowcode.injector.Activator
+Bundle-Activator: it.lev4rec.mode.generator.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  lev4rec.model;bundle-version="0.1.0",
