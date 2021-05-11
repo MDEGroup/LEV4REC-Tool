@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <featureModel>
 	<properties>
-		<graphics key="legendposition" value="3,216"/>
+		<graphics key="legendposition" value="1272,437"/>
 		<graphics key="legendautolayout" value="false"/>
 		<graphics key="showshortnames" value="false"/>
 		<graphics key="layout" value="vertical"/>
@@ -21,8 +21,8 @@
 						<graphics key="collapsed" value="false"/>
 						<feature name="ItemBased"/>
 						<feature name="UserBased"/>
-						<feature name="ContentBased"/>
 					</alt>
+					<feature name="ContentBased"/>
 					<alt name="Classification">
 						<graphics key="collapsed" value="false"/>
 						<alt name="SupervisedAlgorithm">
@@ -153,15 +153,6 @@
 	</struct>
 	<constraints>
 		<rule>
-			<description>If Supervised is selected then we cannot select unsupervised algorithms i.e., KNN</description>
-			<imp>
-				<var>SupervisedDataset</var>
-				<not>
-					<var>UnsupervisedAlgorithm</var>
-				</not>
-			</imp>
-		</rule>
-		<rule>
 			<description>If Unsupervised Dataset is selected then we cannot select supervised algorithms i.e., machine learning</description>
 			<imp>
 				<var>UnsupervisedDataset</var>
@@ -171,54 +162,12 @@
 			</imp>
 		</rule>
 		<rule>
-			<description>Sklearn and PyTorch don't support Collaborative filtering techniques</description>
+			<description>If Supervised is selected then we cannot select unsupervised algorithms i.e., KNN</description>
 			<imp>
-				<var>CollaborativeFiltering</var>
-				<conj>
-					<not>
-						<var>Sklearn</var>
-					</not>
-					<conj>
-						<not>
-							<var>PyTorch</var>
-						</not>
-						<not>
-							<var>TensorFlow</var>
-						</not>
-					</conj>
-				</conj>
-			</imp>
-		</rule>
-		<rule>
-			<description>If the input data are not textual then NLP cannot be applied as a preprocessing</description>
-			<imp>
+				<var>SupervisedDataset</var>
 				<not>
-					<var>TextualData</var>
+					<var>UnsupervisedAlgorithm</var>
 				</not>
-				<not>
-					<var>NLP</var>
-				</not>
-			</imp>
-		</rule>
-		<rule>
-			<description>If we selected WebInterface as a presentation layer then the PresentationLibrary must be a Web one</description>
-			<imp>
-				<var>WebInterface</var>
-				<var>WebLibrary</var>
-			</imp>
-		</rule>
-		<rule>
-			<description>If IDEPlugin is selected then the IDELibrary must be set as the presentation layer generator</description>
-			<imp>
-				<var>IDEPlugin</var>
-				<var>IDELibrary</var>
-			</imp>
-		</rule>
-		<rule>
-			<description>If the collaborative filtering is selected then the data structure must be a matrix</description>
-			<imp>
-				<var>CollaborativeFiltering</var>
-				<var>Matrix</var>
 			</imp>
 		</rule>
 		<rule>
@@ -229,17 +178,6 @@
 					<var>SKRandomSplit</var>
 					<var>SurpriseRandomSplit</var>
 				</disj>
-			</imp>
-		</rule>
-		<rule>
-			<description>Seaborn visualization library supports only Sklearn; thus it cannot be set if Sklearn is not selected</description>
-			<imp>
-				<not>
-					<var>Sklearn</var>
-				</not>
-				<not>
-					<var>Seaborn</var>
-				</not>
 			</imp>
 		</rule>
 		<rule>
@@ -262,13 +200,54 @@
 			</imp>
 		</rule>
 		<rule>
-			<description>If Sklearn is selected as Algorithm then the preprocessing and the split policies must belong to the same library</description>
+			<description>Seaborn visualization library supports only Sklearn; thus it cannot be set if Sklearn is not selected</description>
 			<imp>
-				<var>Sklearn</var>
+				<not>
+					<var>Sklearn</var>
+				</not>
+				<not>
+					<var>Seaborn</var>
+				</not>
+			</imp>
+		</rule>
+		<rule>
+			<description>If IDEPlugin is selected then the IDELibrary must be set as the presentation layer generator</description>
+			<imp>
+				<var>IDEPlugin</var>
+				<var>IDELibrary</var>
+			</imp>
+		</rule>
+		<rule>
+			<description>If the collaborative filtering is selected then the data structure must be a matrix</description>
+			<imp>
+				<var>CollaborativeFiltering</var>
+				<var>Matrix</var>
+			</imp>
+		</rule>
+		<rule>
+			<description>Sklearn and PyTorch don't support Collaborative filtering techniques</description>
+			<imp>
+				<var>CollaborativeFiltering</var>
 				<conj>
-					<var>SklearnPreprocessing</var>
-					<var>SklearnSplit</var>
+					<not>
+						<var>Sklearn</var>
+					</not>
+					<conj>
+						<not>
+							<var>PyTorch</var>
+						</not>
+						<not>
+							<var>TensorFlow</var>
+						</not>
+					</conj>
 				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<description>If we selected WebInterface as a presentation layer then the PresentationLibrary must be a Web one</description>
+			<imp>
+				<var>WebInterface</var>
+				<var>WebLibrary</var>
 			</imp>
 		</rule>
 		<rule>
@@ -279,6 +258,27 @@
 					<var>SurpriseSplit</var>
 					<var>SurprisePreprocessing</var>
 				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<description>If Sklearn is selected as Algorithm then the preprocessing and the split policies must belong to the same library</description>
+			<imp>
+				<var>Sklearn</var>
+				<conj>
+					<var>SklearnPreprocessing</var>
+					<var>SklearnSplit</var>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<description>If the input data are not textual then NLP cannot be applied as a preprocessing</description>
+			<imp>
+				<not>
+					<var>TextualData</var>
+				</not>
+				<not>
+					<var>NLP</var>
+				</not>
 			</imp>
 		</rule>
 	</constraints>
