@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="lev4rec.ui.handlers.ModelGenHandler"
+            commandId="ModelGenHandler">
+      </handler>
+            <handler
+            class="lev4rec.ui.handlers.RSGenHandler"
+            commandId="RSGenHandler">
+      </handler>
+   </extension>
+   
+   <extension
+         id="add.item"
+         point="org.eclipse.ui.menus">
+        
+     <menuContribution
+     		allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any">
+           <menu
+                 label="LEV4Rec">
+           
+	        <command
+	                  commandId="RSGenHandler"
+	                  label="Generate recommender system"
+	                  style="push"
+	                  tooltip="Inject">
+	        </command>
+	        <visibleWhen
+               checkEnabled="false">
+                  <with variable="activeMenuSelection">
+				      <iterate
+				           ifEmpty="false">
+				         <adapt type="org.eclipse.core.resources.IResource">
+				              <test property="org.eclipse.core.resources.extension" value="xmi" />
+				         </adapt>
+				      </iterate>
+				   </with>
+	        </visibleWhen>
+        </menu>
+      </menuContribution>
+      <menuContribution
+     		allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any">
+           <menu
+                 label="LEV4Rec">
+           <command
+	                  commandId="ModelGenHandler"
+	                  label="Generate the lev4recmodel"
+	                  style="push"
+	                  tooltip="Inject">
+	        </command>
+
+	        <visibleWhen
+               checkEnabled="false">
+                  <with variable="activeMenuSelection">
+				      <iterate
+				           ifEmpty="false">
+				         <adapt type="org.eclipse.core.resources.IResource">
+				              <test property="org.eclipse.core.resources.extension" value="xml" />
+				         </adapt>
+				      </iterate>
+				   </with>
+	        </visibleWhen>
+        </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>

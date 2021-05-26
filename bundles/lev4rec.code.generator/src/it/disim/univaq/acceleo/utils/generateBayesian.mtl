@@ -1,9 +1,0 @@
-[comment encoding = UTF-8 /]
-[module generateBayesian('https://lev4rec/lowcode')]
-
-
-[template public generateBayesian(aBayesian : Bayesian)]
-from sklearn.naive_bayes import MultinomialNB
-clf = MultinomialNB().fit(train_tfidf, y)
-
-[/template]

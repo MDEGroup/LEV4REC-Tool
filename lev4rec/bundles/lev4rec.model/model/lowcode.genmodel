@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/lev4rec.model/src" modelPluginID="lev4rec.model"
+    modelName="Lowcode" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>lowcoders.ecore</foreignModel>
+  <genPackages prefix="Lowcoders" disposableProviderFactory="true" ecorePackage="lowcoders.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//CollaborativeFilteringAlgorithm">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//CollaborativeFilteringAlgorithm/itemBased"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//CollaborativeFilteringAlgorithm/userBased"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//CollaborativeFilteringAlgorithm/contentBased"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//WebContainer">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//WebContainer/tomcat"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//WebContainer/jetty"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//Metric">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//Metric/PRECISION"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//Metric/RECALL"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//Metric/F1_MEASURE"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//Metric/CATALOG_COVERAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//Metric/NOVELTY"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//Metric/SALE_DIVERSITY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//PreprocessingTechnique">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PreprocessingTechnique/DUPLICATES_REMOVAL"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PreprocessingTechnique/NLP"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PreprocessingTechnique/NORMALIZATION"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PreprocessingTechnique/MISSING_DATA_MANIPULATION"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PreprocessingTechnique/VECTORIZATION"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PreprocessingTechnique/FEATURE_SCALING"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PreprocessingTechnique/TFIDF"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//VariableType">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//VariableType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//VariableType/Boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//VariableType/CategoricalData"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//VariableType/Integer"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//VariableType/Float"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//DataMiningRSAlgorithm">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//DataMiningRSAlgorithm/CLUSTERING"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//DataMiningRSAlgorithm/FREQUENT_ITEM_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//DataMiningRSAlgorithm/ASSOCIATION_RULE"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//DataMiningRSAlgorithm/EVENT_STREAM"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//DataMiningRSAlgorithm/TEXT_MINING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//FilteringRSAlgorithm">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//FilteringRSAlgorithm/CONTENT_BASED"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//FilteringRSAlgorithm/DEMOGRAPHIC"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//FilteringRSAlgorithm/USER_BASED"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//FilteringRSAlgorithm/ITEM_BASED"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//FilteringRSAlgorithm/CONTEXT_AWARE"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//FilteringRSAlgorithm/HYBRID"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//SearchStrategy">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SearchStrategy/SIMULATED_ANNELING"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SearchStrategy/HILL_CLIMBING"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SearchStrategy/GRADIENT_DESCENT"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SearchStrategy/EGGHOLDER_FUNCTION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//MutationOperation">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//MutationOperation/FIT_BIT"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//MutationOperation/CROSSOVER"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//MutationOperation/SHRINK_MUTATION"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//MutationOperation/REPACE_MUTATION"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//MutationOperation/PARTIAL_HYPER_MUTATION"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//MutationOperation/DUPLICATION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//UserStudyType">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//UserStudyType/FIELD_STUDIES"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//UserStudyType/CONTROLLED_EXPERIMENT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//UserStudyAnalysis">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//UserStudyAnalysis/QUALITATIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//UserStudyAnalysis/QUANTITATIVE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//SimilarityFunction">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SimilarityFunction/COSINE_SIMILARITY"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SimilarityFunction/JACCARD_DISTANCE"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SimilarityFunction/WORD_EMBEDDINGS"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SimilarityFunction/LEVENSHTEIN_DISTANCE"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SimilarityFunction/SVD"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SimilarityFunction/GRAPH_BASED"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SimilarityFunction/MSD"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//PyLibType">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PyLibType/SKLEARN"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PyLibType/SURPRISE"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PyLibType/TENSOR_FLOW"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//PyLibType/PYTORCH"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//SolverType">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SolverType/ADAM"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SolverType/LBFGS"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//SolverType/SGD"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//KernelType">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//KernelType/PRECOMPUTED"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//KernelType/LINEAR"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//KernelType/POLY"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//KernelType/RBF"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//KernelType/SIGMOID"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//ActivationType">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//ActivationType/RELU"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//ActivationType/SIGMOID"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//ActivationType/TANH"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//DatasetManipulationLibrary">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//DatasetManipulationLibrary/PANDAS"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//DatasetManipulationLibrary/NUMPY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//WebInterfaceLibrary">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//WebInterfaceLibrary/FLASK"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//WebInterfaceLibrary/SPRING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//RawFormat">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//RawFormat/CSV"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lowcoders.ecore#//ValidationLibrary">
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//ValidationLibrary/SKLEARN"/>
+      <genEnumLiterals ecoreEnumLiteral="lowcoders.ecore#//ValidationLibrary/SURPRISE"/>
+    </genEnums>
+    <genClasses ecoreClass="lowcoders.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="lowcoders.ecore#//Dataset">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//Dataset/indipendentVariables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//Dataset/dataStructure"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//Dataset/preprocessing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//Dataset/datasetManipulationLibrary"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//RSModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//RSModel/dataset"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//RSModel/presentationLayer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//RSModel/evaluation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//RSModel/recommendationSystem"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="lowcoders.ecore#//DataSource"/>
+    <genClasses image="false" ecoreClass="lowcoders.ecore#//PresentationLayer">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//PresentationLayer/recommendations"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//WebInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//WebInterface/library"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//WebApplication"/>
+    <genClasses ecoreClass="lowcoders.ecore#//IDEIntegration"/>
+    <genClasses ecoreClass="lowcoders.ecore#//TraversableGraph"/>
+    <genClasses ecoreClass="lowcoders.ecore#//Evaluation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//Evaluation/baselines"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//Evaluation/metrics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//Evaluation/validationtechnique"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="lowcoders.ecore#//ValidationTechnique">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//ValidationTechnique/nOfRecommendations"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//UnsupervisedDataset"/>
+    <genClasses ecoreClass="lowcoders.ecore#//SupervisedDataset">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//SupervisedDataset/dependatVariable"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//Variable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//Variable/dataSource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//Variable/Preprocessing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//Variable/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//Variable/isMissingValueAllowed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//Variable/isMultiple"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//Preprocessing">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//Preprocessing/preprocessigTechnique"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//CodeRepository">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//CodeRepository/metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//CommunicationChannel"/>
+    <genClasses ecoreClass="lowcoders.ecore#//BugTrackingSystem"/>
+    <genClasses ecoreClass="lowcoders.ecore#//DataStructure"/>
+    <genClasses ecoreClass="lowcoders.ecore#//Graph">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//Graph/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//Graph/relations"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//Matrix">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//Matrix/columns"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//Tree"/>
+    <genClasses ecoreClass="lowcoders.ecore#//TextualContent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//TextualContent/contents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//TextualContent/rootPath"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//ARFF">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//ARFF/variables"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="lowcoders.ecore#//RecommendationSystem">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//RecommendationSystem/RecommenderSettings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//RecommendationSystem/recommendationScope"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//RecommendationSystem/recommendationContext"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//RecommendationSystem/generator"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//MachineLearningBasedRS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//MachineLearningBasedRS/numEpochs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//MachineLearningBasedRS/learningRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//MachineLearningBasedRS/miniBatchSize"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//MemoryBasedRS_NOTSURE"/>
+    <genClasses ecoreClass="lowcoders.ecore#//FilteringRS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//FilteringRS/filteringRSAlgorithm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//FilteringRS/similarityCalculator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//FilteringRS/cutoff"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//FilteringRS/neighborhood"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//DataMiningRS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//DataMiningRS/dataMiningRSAlgorithm"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//CustomRecommender_SOREC">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//CustomRecommender_SOREC/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//CustomRecommender_SOREC/requiredTools"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//RecommendationSetting">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//RecommendationSetting/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//RecommendationSetting/value"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//GeneticAlgorithm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//GeneticAlgorithm/fitnessFunction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//GeneticAlgorithm/searchStrategy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//GeneticAlgorithm/mutationOperator"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//UserStudy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//UserStudy/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//UserStudy/analysis"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//CrossValidation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//CrossValidation/numberOfFold"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//CrossValidation/groundTruthExtractor"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//RecommendationContext">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//RecommendationContext/Usercontext"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//RecommendationContext/isProactiveSystem"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//DependencyManager"/>
+    <genClasses ecoreClass="lowcoders.ecore#//VariableRelation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//VariableRelation/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//VariableRelation/target"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//GroundTruthExtraction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//GroundTruthExtraction/sizeGT"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//GroundTruthExtraction/splittingRules"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//GroundTruthExtraction/targetVariable"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//File">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//File/sourcePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//File/encoding"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//RecommendedItem">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//RecommendedItem/outcame"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//RecommendedItem/ordered"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//ContextValidation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//ContextValidation/testContext"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//RawOutcomes">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//RawOutcomes/format"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//RandomSplitting"/>
+    <genClasses ecoreClass="lowcoders.ecore#//AutomatedValidation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//AutomatedValidation/library"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//DeepNN">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//DeepNN/numHiddenLayer"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//ConvolutionalNN"/>
+    <genClasses ecoreClass="lowcoders.ecore#//Bayesian"/>
+    <genClasses ecoreClass="lowcoders.ecore#//RecurrentNN"/>
+    <genClasses ecoreClass="lowcoders.ecore#//SVM">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//SVM/kernel"/>
+    </genClasses>
+    <genClasses ecoreClass="lowcoders.ecore#//DecisionTree"/>
+    <genClasses ecoreClass="lowcoders.ecore#//FeedForwardNN">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//FeedForwardNN/solver"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//FeedForwardNN/alpha"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//FeedForwardNN/activationFunction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lowcoders.ecore#//FeedForwardNN/randomState"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

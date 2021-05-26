@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated lowcoders -->
+      <package
+            uri="https://it.disim.univaq/lowcode"
+            class="lowcoders.LowcodePackage"
+            genModel="model/lowcoders.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated lowcode -->
+      <package
+            uri="http://lev4rec/lowcode"
+            class="lowcoders.LowcodersPackage"
+            genModel="model/lowcode.genmodel"/>
+   </extension>
+
+</plugin>
