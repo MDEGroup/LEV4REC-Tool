@@ -26,15 +26,20 @@ In order to install FocusRascal, please follow these steps:
 3. In Eclipse, import all the projects by navigating to `File -> Import -> Existing Projects into Workspace` and pointing the root directory to this. All projects should compile without any issue.
 
 ## Tool Usage
-Once you import all the projects, in the **configs** folder of **lev4rec.feature.model** you can create the configuration file to specify the system's features (Right click > New > Configuration file).
+1. Once you import all the projects, in the **configs** folder of **lev4rec.feature.model** you can create the configuration file to specify the system's features (Right click > New > Configuration file).
+
 ![config 1](./images/aurora_feature.png)
-Then next step is the generation of the LEV4REC model using the  **lev4rec.model.generator** module. The pictures below show the process:
+
+2. Then next step is the generation of the LEV4REC model using the  **lev4rec.model.generator** module. The pictures below show the process:
+
 ![phase 1](./images/1a.png)
 
 ![phase 2](./images/1b.png)
 
 ![config 1](./images/aurora_configuration.png)
 
-Once the modeler has refined the LEV4REC model, she will generate the recommender system by the following steps:
+3. Once the modeler has refined the LEV4REC model, she will generate the recommender system by the following steps:
+
 ![phase 3](./images/2a.png)
+
 ![phase 4](./images/2b.png)
