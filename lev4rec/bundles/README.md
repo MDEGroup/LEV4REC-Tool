@@ -46,3 +46,4 @@ By relying on the EMF editor, you can access and modify the attributes of the ge
 
 ![phase 3](./images/2a.png)
 
+![output](./images/output.png)
