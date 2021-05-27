@@ -46,4 +46,6 @@ By relying on the EMF editor, you can access and modify the attributes of the ge
 
 ![phase 3](./images/2a.png)
 
+At the end of the process, you can obtain the actual Python code that implements the specified system:
+
 ![output](./images/output.png)
