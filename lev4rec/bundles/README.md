@@ -42,3 +42,4 @@ In order to install FocusRascal, please follow these steps:
 
 ![phase 3](./images/2a.png)
 
+![output](./images/output.png)
