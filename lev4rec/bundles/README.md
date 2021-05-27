@@ -16,3 +16,8 @@ To extend/customize the environment, you can act on the following components
  - **lev4.rec.model** : it contains the metamodel and the conform models 
  - **lev4rec.model.generator**: this component produce the coars-grain model from the feature configuration
 
+## Bundles installation
+Once you have downloaded and installed Eclipse IDE, you have to import **lev4rec.feature.model** project into the workspace (File>Import Projects from File System). 
+Then, in the **configs** folder you can create the configuration file to specify the system's features (Right click > New > Configuration file).
+The next step is the generation of the LEV4REC model using the  **lev4rec.model.generator** module. The picture below shows the process:
+
