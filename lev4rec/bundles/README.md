@@ -16,13 +16,25 @@ To extend/customize the environment, you can act on the following components
  - **lev4.rec.model** : it contains the metamodel and the conform models 
  - **lev4rec.model.generator**: this component produce the coars-grain model from the feature configuration
 
-## Bundles installation
-Once you have downloaded and installed Eclipse IDE, you have to import **lev4rec.feature.model** project into the workspace (File>Import Projects from File System). 
-Then, in the **configs** folder you can create the configuration file to specify the system's features (Right click > New > Configuration file).
-The next step is the generation of the LEV4REC model using the  **lev4rec.model.generator** module. The picture below shows the process:
+ 
+ 
+## Installation
+In order to install FocusRascal, please follow these steps:
 
+1. Install an appropriate version of **Eclipse Modeling Frameworl** according to your platform/distribution from this link: [Eclipse](https://www.eclipse.org/downloads/).
+2. Install [FeatureIDE](https://featureide.github.io/) plugin.
+3. In Eclipse, import all the projects by navigating to `File -> Import -> Existing Projects into Workspace` and pointing the root directory to this. All projects should compile without any issue.
 
-![phase 1](./images/model_generator.png)
+## Tool Usage
+Once you import all the projects, in the **configs** folder of **lev4rec.feature.model** you can create the configuration file to specify the system's features (Right click > New > Configuration file).
+![config 1](./images/aurora_feature.png)
+Then next step is the generation of the LEV4REC model using the  **lev4rec.model.generator** module. The pictures below show the process:
+![phase 1](./images/1a.png)
 
-![phase 2](./images/model_generator_2.png)
+![phase 2](./images/1b.png)
 
+![config 1](./images/aurora_configuration.png)
+
+Once the modeler has refined the LEV4REC model, she will generate the recommender system by the following steps:
+![phase 3](./images/2a.png)
+![phase 4](./images/2b.png)
