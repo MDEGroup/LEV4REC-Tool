@@ -38,8 +38,7 @@ In order to install FocusRascal, please follow these steps:
 
 ![config 1](./images/aurora_configuration.png)
 
-3. Once the modeler has refined the LEV4REC model, she will generate the recommender system by the following steps:
+3. Once the modeler has refined the LEV4REC model, she will generate the recommender system.
 
 ![phase 3](./images/2a.png)
 
-![phase 4](./images/2b.png)
