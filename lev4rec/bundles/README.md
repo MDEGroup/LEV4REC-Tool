@@ -21,3 +21,8 @@ Once you have downloaded and installed Eclipse IDE, you have to import **lev4rec
 Then, in the **configs** folder you can create the configuration file to specify the system's features (Right click > New > Configuration file).
 The next step is the generation of the LEV4REC model using the  **lev4rec.model.generator** module. The picture below shows the process:
 
+
+![phase 1](./images/model_generator.png)
+
+![phase 2](./images/model_generator_2.png)
+
