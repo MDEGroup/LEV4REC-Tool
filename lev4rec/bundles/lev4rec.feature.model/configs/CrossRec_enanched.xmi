@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lowcoders:RSModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:lowcoders="http://lev4rec/lowcode"
+    name="CrossRec">
+  <dataset xsi:type="lowcoders:UnsupervisedDataset"
+      name="crossRecData.csv">
+    <indipendentVariables
+        name="GithubProject"/>
+    <indipendentVariables
+        name="LibraryDependence"/>
+    <dataStructure
+        xsi:type="lowcoders:Graph"
+        name="Graph"
+        nodes="//@dataset/@indipendentVariables.0 //@dataset/@indipendentVariables.1">
+      <relations
+          source="//@dataset/@indipendentVariables.0"
+          target="//@dataset/@indipendentVariables.1"/>
+    </dataStructure>
+    <datasetManipulationLibrary>PANDAS</datasetManipulationLibrary>
+  </dataset>
+  <presentationLayer
+      xsi:type="lowcoders:WebApplication"
+      recommendations="//@recommendationSystem/@recommendationScope"/>
+  <evaluation
+      name="">
+    <baselines>LibRec</baselines>
+    <metrics>PRECISION</metrics>
+    <metrics>RECALL</metrics>
+    <metrics>F1_MEASURE</metrics>
+    <metrics>CATALOG_COVERAGE</metrics>
+    <metrics>NOVELTY</metrics>
+    <metrics>SALE_DIVERSITY</metrics>
+    <validationtechnique
+        xsi:type="lowcoders:CrossValidation"
+        name="Ten Fold "
+        nOfRecommendations="10"
+        library="SURPRISE"
+        numberOfFold="10">
+      <groundTruthExtractor
+          sizeGT="half">
+        <splittingRules>random</splittingRules>
+      </groundTruthExtractor>
+    </validationtechnique>
+  </evaluation>
+  <recommendationSystem
+      xsi:type="lowcoders:FilteringRS"
+      name="CollaborativeFiltering"
+      generator="SURPRISE"
+      filteringRSAlgorithm="USER_BASED">
+    <recommendationScope
+        name="Outcame"
+        ordered="true"/>
+  </recommendationSystem>
+</lowcoders:RSModel>

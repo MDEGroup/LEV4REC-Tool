@@ -1,0 +1,9 @@
+[comment encoding = UTF-8 /]
+[module generateVariable('http://lev4rec/lowcode')]
+[import lev4rec::code::template::utils::generateVariablePreprocessing/]
+
+[template public generateVariable(var : Variable)]
+[if (var.dataSource.oclIsTypeOf(lowcoders::File))]
+['['/]27,57000], ['['/]32,150000[']'/]
+[/if]
+[/template]

@@ -1,0 +1,9 @@
+[comment encoding = UTF-8 /]
+[module generateContext('http://lev4rec/lowcode')]
+[import lev4rec::code::template::utils::generateMatrix /]
+
+[template public generateContext(c : DataStructure)]
+[if (c.oclIsTypeOf(lowcoders::Matrix))]
+[generateMatrix(c.oclAsType(lowcoders::Matrix))/]
+[/if]
+[/template]

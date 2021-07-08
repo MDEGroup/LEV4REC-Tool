@@ -1,0 +1,24 @@
+[comment encoding = UTF-8 /]
+[module generateRecommenderSystem('http://lev4rec/lowcode')]
+[import  lev4rec::code::template::utils::generateFeedForwardNN/]
+[import lev4rec::code::template::utils::generateBayesian /]
+[import lev4rec::code::template::utils::generateFilteringRS/]
+
+[template public generateRecommenderSystem(recSys : RSModel)]
+
+	[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FeedForwardNN))]
+[generateMLModel(recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN))/]
+	[/if]
+
+[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::Bayesian))]
+[generateBayesian(recSys.recommendationSystem.oclAsType(lowcoders::Bayesian)) /]
+[/if]
+
+[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FilteringRS))]
+[generateFilteringRS(recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS)) /]
+[/if]
+[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::DataMiningRS))]
+[comment template for datamining algos goes here /]
+[/if]
+
+[/template]
