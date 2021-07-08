@@ -20,7 +20,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import it.disim.univaq.lowcode.acceleo.runner.Runner;
+import lev4rec.code.template.runner.Runner;
 
 public class RSGenHandler extends AbstractHandler {
 
