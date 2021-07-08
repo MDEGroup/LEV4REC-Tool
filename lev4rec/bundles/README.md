@@ -23,7 +23,9 @@ In order to install LEV4REC, please follow these steps:
 
 1. Install an appropriate version of **Eclipse Modeling Framework** according to your platform/distribution from this link: [Eclipse](https://www.eclipse.org/downloads/).
 2. Install [FeatureIDE](https://featureide.github.io/) plugin.
-3. In Eclipse, import all the projects by navigating to `File -> Import -> Existing Projects into Workspace` and pointing the root directory to this. All projects should compile without any issue.
+3. In Eclipse, import **lev4rec.code.generator**, **lev4.rec.model,** and  **lev4rec.model.generator** projects by navigating to `File -> Import -> Existing Projects into Workspace` and pointing the root directory to this. All projects should compile without any issue.
+4. Run a new instance of Eclipse.
+5. In the new Eclipse instance, import the **lev4rec.feature.model** project.
 
 ## Tool Usage
 1. Once you import all the projects, in the **configs** folder of **lev4rec.feature.model** you can create the configuration file to specify the system's features (Right-click > New > Configuration file). The figure below shows the expected configuration model:
