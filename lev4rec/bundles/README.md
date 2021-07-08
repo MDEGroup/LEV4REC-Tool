@@ -11,22 +11,24 @@ This folder contains the Eclipse projects to run the tool. You need to download 
 
 To extend/customize the environment, you can act on the following components
 
- - **lev4rec.code.generator**: this component produce the source code by using Acceleo templates
+ - **lev4rec.code.generator**: this component produces the source code by using Acceleo templates
  - **lev4rec.feature.model**: it represents the feature model and the derived configuration for the two examined RSs in the study
  - **lev4.rec.model** : it contains the metamodel and the conform models 
- - **lev4rec.model.generator**: this component produce the coars-grain model from the feature configuration
+ - **lev4rec.model.generator**: this component produces the coarse-grain model from the feature configuration
 
  
  
 ## Installation
-In order to install FocusRascal, please follow these steps:
+In order to install LEV4REC, please follow these steps:
 
-1. Install an appropriate version of **Eclipse Modeling Frameworl** according to your platform/distribution from this link: [Eclipse](https://www.eclipse.org/downloads/).
+1. Install an appropriate version of **Eclipse Modeling Framework** according to your platform/distribution from this link: [Eclipse](https://www.eclipse.org/downloads/).
 2. Install [FeatureIDE](https://featureide.github.io/) plugin.
-3. In Eclipse, import all the projects by navigating to `File -> Import -> Existing Projects into Workspace` and pointing the root directory to this. All projects should compile without any issue.
+3. In Eclipse, import **lev4rec.code.generator**, **lev4.rec.model,** and  **lev4rec.model.generator** projects by navigating to `File -> Import -> Existing Projects into Workspace` and pointing the root directory to this. All projects should compile without any issue.
+4. Run a new instance of Eclipse.
+5. In the new Eclipse instance, import the **lev4rec.feature.model** project.
 
 ## Tool Usage
-1. Once you import all the projects, in the **configs** folder of **lev4rec.feature.model** you can create the configuration file to specify the system's features (Right click > New > Configuration file).
+1. Once you import all the projects, in the **configs** folder of **lev4rec.feature.model** you can create the configuration file to specify the system's features (Right-click > New > Configuration file). The figure below shows the expected configuration model:
 
 ![config 1](./images/aurora_feature.png)
 
@@ -34,12 +36,18 @@ In order to install FocusRascal, please follow these steps:
 
 ![phase 1](./images/1a.png)
 
+Starting from the Configuration file expressed in the xml format, the system automatically generates the xmi model e.g. the Aurora model depicted in the image
+
 ![phase 2](./images/1b.png)
+
+By relying on the EMF editor, you can access and modify the attributes of the generated coarse-grain model:
 
 ![config 1](./images/aurora_configuration.png)
 
-3. Once the modeler has refined the LEV4REC model, she will generate the recommender system.
+3. Starting from the refined LEV4REC model, you can generate the recommender system.
 
 ![phase 3](./images/2a.png)
+
+At the end of the process, you can obtain the actual Python code that implements the specified system:
 
 ![output](./images/output.png)
