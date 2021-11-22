@@ -1,0 +1,36 @@
+[comment encoding = UTF-8 /]
+[module generatePreprocessingTechnique('http://lev4rec/lowcode')]
+
+
+[template public generatePreprocessingTechnique(pr : PreprocessingTechnique)]
+[if (pr = PreprocessingTechnique::DUPLICATES_REMOVAL) ]
+dataset.drop_duplicates(inPlace=True)
+X = dataset.iloc['[:,:-1]'/].values
+y = dataset.iloc['[:, -1]'/].values		
+	[/if]
+	[if (pr = PreprocessingTechnique::FEATURE_SCALING) ]
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train = sc.fit_transform(X_split)
+X_test = sc.transform(X_test)
+
+	[/if]
+	[if (pr = PreprocessingTechnique::NLP) ]
+		[pr /]
+	[/if]
+	[if (pr = PreprocessingTechnique::MISSING_DATA_MANIPULATION) ]
+		[pr /]
+	[/if]	
+	[if (pr = PreprocessingTechnique::TFIDF) ]
+from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
+count_vect = TfidfVectorizer(input='train', stop_words={'english'}, lowercase=True, analyzer='word')
+train_vectors = count_vect.fit_transform(X)
+train_vectors.shape
+tfidf_transformer = TfidfTransformer()
+train_tfidf = tfidf_transformer.fit_transform(train_vectors)
+train_tfidf.shape
+	[/if]
+	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
+		[pr /]
+	[/if]
+[/template]

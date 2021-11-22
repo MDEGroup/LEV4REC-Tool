@@ -1,0 +1,17 @@
+[comment encoding = UTF-8 /]
+[module generateFeedForwardNN('http://lev4rec/lowcode')]
+[import lev4rec::code::template::utils::generateContext/]
+
+[template public generateMLModel(model : FeedForwardNN)]
+
+from sklearn.neural_network import MLPClassifier	
+solver='[model.solver/]'
+alpha=[model.alpha/]
+random_state=[model.randomState/]		
+
+
+clf = MLPClassifier(solver=solver, alpha=alpha,hidden_layer_sizes=hidden_layers, random_state=random_state)
+
+clf.fit(X_train, y_split)
+y_pred = clf.predict(X_test)
+[/template]

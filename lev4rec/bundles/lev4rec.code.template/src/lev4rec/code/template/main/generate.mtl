@@ -1,0 +1,40 @@
+[comment encoding = UTF-8 /]
+[module generate('http://lev4rec/lowcode')]
+[import lev4rec::code::template::utils::generateSURDataset/]
+[import lev4rec::code::template::utils::generateSKDataset /]
+[import lev4rec::code::template::utils::generateValidationTechnique/]
+[import lev4rec::code::template::utils::generateRecommenderSystem/]
+[template public generateRecSys(recSys : RSModel)]
+[comment @main/]
+[file (recSys.name+ '.py', false, 'UTF-8')]
+import nbformat as nbf
+
+nb = nbf.v4.new_notebook()
+
+text = """\
+# Lowcode model generator
+Generated recommneder system from model."""
+
+code = """\
+import pandas as pd
+import warnings
+warnings.filterwarnings("ignore")
+##TODO Generating dataset
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN]
+[generateSKDataset(recSys.dataset)/]
+[/if]
+
+[if recSys.recommendationSystem.generator = PyLibType::SURPRISE]
+[generateSURDataset(recSys.dataset)/]
+[/if]
+[generateRecommenderSystem(recSys)/]
+
+[generateValidationTechnique(recSys)/]
+
+"""
+nb['["cells"]'/] = ['['/]nbf.v4.new_markdown_cell(text),
+               nbf.v4.new_code_cell(code) [']'/]
+
+nbf.write(nb, '[recSys.name/].ipynb')
+[/file]
+[/template]

@@ -1,0 +1,27 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generateTextualContent.
+ */]
+[module generateTextualContent('http://lev4rec/lowcode')]
+
+
+
+[template public generateTextualContent(content : TextualContent)]
+import glob,os
+X=['['/][']'/]
+y=['['/][']'/]
+code_loc='[content.rootPath/]'
+name_file= ['['/]'c', 'c#', 'c++','java', 'css', 'haskell', 'html', 'java', 'javascript', 'lua', 'objective-c', 'perl', 'php', 'python','ruby', 'r', 'scala', 'sql', 'swift', 'vb.net','markdown','bash'[']'/]
+for item in name_file:
+    code_loc_current=code_loc+item+'/'
+    file_list = glob.glob(os.path.join(code_loc_current, "*.txt"))
+    i = 0
+    for file_path in file_list:
+        f=open(file_path,'r', encoding='utf8', errors='ignore')
+        data=f.read()
+        #print(f)
+        label=item
+        num_lines = sum(1 for line in open(file_path))
+        X.append(data)
+        y.append(label)
+[/template]

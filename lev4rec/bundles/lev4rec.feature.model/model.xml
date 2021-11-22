@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendposition" value="1272,437"/>
+		<graphics key="legendautolayout" value="false"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="vertical"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<calculations key="runcalculationsautomatically" value="true"/>
+		<graphics key="layoutalgorithm" value="6"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="RecommenderSpecification">
+			<graphics key="collapsed" value="false"/>
+			<and mandatory="true" name="RecommenderComponent">
+				<graphics key="collapsed" value="false"/>
+				<alt mandatory="true" name="AlgorithmComponent">
+					<graphics key="collapsed" value="false"/>
+					<alt name="CollaborativeFiltering">
+						<graphics key="collapsed" value="false"/>
+						<feature name="ItemBased"/>
+						<feature name="UserBased"/>
+					</alt>
+					<feature name="ContentBased"/>
+					<alt name="Classification">
+						<graphics key="collapsed" value="false"/>
+						<alt name="SupervisedAlgorithm">
+							<graphics key="collapsed" value="false"/>
+							<feature name="SVM"/>
+							<feature name="MNB"/>
+							<alt name="SupervisedNeuralNetwork">
+								<graphics key="collapsed" value="false"/>
+								<feature name="SupervisedRNN"/>
+								<feature name="SupervisedDNN"/>
+								<feature name="SupervisedFeedForwardNN"/>
+								<feature name="SupervisedGNN"/>
+								<feature name="BayesianNN"/>
+								<feature name="SupervisedCNN"/>
+							</alt>
+							<feature name="DecisionTree"/>
+						</alt>
+						<alt name="UnsupervisedAlgorithm">
+							<graphics key="collapsed" value="false"/>
+							<feature name="KNeighborhood"/>
+							<feature name="HierarchicalClustering"/>
+							<alt name="UnsupervisedNeuralNetwork">
+								<graphics key="collapsed" value="false"/>
+								<feature name="UnsupervisedRNN"/>
+								<feature name="UnsupervisedDNN"/>
+								<feature name="UnsupervisedFeedForwardNN"/>
+								<feature name="UnsupervisedGNN"/>
+								<feature name="UnsupervisedCNN"/>
+							</alt>
+						</alt>
+					</alt>
+				</alt>
+				<and mandatory="true" name="DatasetComponent">
+					<graphics key="collapsed" value="false"/>
+					<alt mandatory="true" name="DataStructure">
+						<graphics key="collapsed" value="false"/>
+						<feature name="TextualData"/>
+						<feature name="GraphData"/>
+						<feature name="Matrix"/>
+						<feature name="ARFF"/>
+						<feature name="Tree"/>
+					</alt>
+					<alt mandatory="true" name="DatasetType">
+						<graphics key="collapsed" value="false"/>
+						<feature name="UnsupervisedDataset"/>
+						<feature name="SupervisedDataset"/>
+					</alt>
+				</and>
+				<or mandatory="true" name="PreprocessingComponent">
+					<graphics key="collapsed" value="false"/>
+					<feature name="NLP"/>
+					<feature name="FeatureScaling"/>
+					<feature name="Vectorization"/>
+					<feature name="DuplicatesRemoval"/>
+					<feature name="MissingDataManipulation"/>
+					<feature name="Normalization"/>
+				</or>
+				<or mandatory="true" name="EvaluationComponent">
+					<graphics key="collapsed" value="false"/>
+					<alt name="CrossFold">
+						<graphics key="collapsed" value="false"/>
+						<feature name="SplittingKfold"/>
+						<feature name="RandomSpltting"/>
+					</alt>
+					<feature name="UserStudy"/>
+				</or>
+				<alt mandatory="true" name="PresentationComponent">
+					<graphics key="collapsed" value="false"/>
+					<feature name="WebInterface"/>
+					<feature name="IDEPlugin"/>
+					<feature name="RawOutcomes"/>
+				</alt>
+			</and>
+			<and mandatory="true" name="SupportingLibrary">
+				<graphics key="collapsed" value="false"/>
+				<alt mandatory="true" name="AlgorithmLibrary">
+					<graphics key="collapsed" value="false"/>
+					<feature name="Sklearn"/>
+					<feature name="Surprise"/>
+					<feature name="PyTorch"/>
+					<feature name="TensorFlow"/>
+				</alt>
+				<or mandatory="true" name="DatasetLibrary">
+					<graphics key="collapsed" value="false"/>
+					<feature name="Pandas"/>
+					<feature name="Numpy"/>
+				</or>
+				<alt mandatory="true" name="PresentationLibrary">
+					<graphics key="collapsed" value="false"/>
+					<alt name="WebLibrary">
+						<graphics key="collapsed" value="false"/>
+						<feature name="Flask"/>
+						<feature name="Spring"/>
+					</alt>
+					<alt name="IDELibrary">
+						<graphics key="collapsed" value="false"/>
+						<feature name="EclipsePlugin"/>
+						<feature name="IntellijPlugin"/>
+					</alt>
+					<alt name="VisualizationLibrary">
+						<graphics key="collapsed" value="false"/>
+						<feature name="MathplotLib"/>
+						<feature name="Seaborn"/>
+					</alt>
+				</alt>
+				<alt mandatory="true" name="EvaluationLibrary">
+					<graphics key="collapsed" value="false"/>
+					<alt name="SklearnSplit">
+						<graphics key="collapsed" value="false"/>
+						<feature name="SKCrossFold"/>
+						<feature name="SKRandomSplit"/>
+					</alt>
+					<alt name="SurpriseSplit">
+						<graphics key="collapsed" value="false"/>
+						<feature name="SurpriseCrossFold"/>
+						<feature name="SurpriseRandomSplit"/>
+					</alt>
+				</alt>
+				<or mandatory="true" name="PreprocessingLibrary">
+					<graphics key="collapsed" value="false"/>
+					<feature name="PandasPreprocessing"/>
+					<feature name="SklearnPreprocessing"/>
+					<feature name="SurprisePreprocessing"/>
+					<feature name="NLTK"/>
+				</or>
+			</and>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<description>If Unsupervised Dataset is selected then we cannot select supervised algorithms i.e., machine learning</description>
+			<imp>
+				<var>UnsupervisedDataset</var>
+				<not>
+					<var>SupervisedAlgorithm</var>
+				</not>
+			</imp>
+		</rule>
+		<rule>
+			<description>If Supervised is selected then we cannot select unsupervised algorithms i.e., KNN</description>
+			<imp>
+				<var>SupervisedDataset</var>
+				<not>
+					<var>UnsupervisedAlgorithm</var>
+				</not>
+			</imp>
+		</rule>
+		<rule>
+			<description>If the CrossFold validation uses a random splitting rule then a random split must be selected in the library used to generate the code</description>
+			<imp>
+				<var>RandomSpltting</var>
+				<disj>
+					<var>SKRandomSplit</var>
+					<var>SurpriseRandomSplit</var>
+				</disj>
+			</imp>
+		</rule>
+		<rule>
+			<description>We cannot apply both Sklearn and Surprise preprocessing</description>
+			<imp>
+				<var>SklearnPreprocessing</var>
+				<not>
+					<var>SurprisePreprocessing</var>
+				</not>
+			</imp>
+		</rule>
+		<rule>
+			<description>If Kfold evaluation is selected then a cross fold library utility must be selected</description>
+			<imp>
+				<var>SplittingKfold</var>
+				<disj>
+					<var>SurpriseCrossFold</var>
+					<var>SKCrossFold</var>
+				</disj>
+			</imp>
+		</rule>
+		<rule>
+			<description>Seaborn visualization library supports only Sklearn; thus it cannot be set if Sklearn is not selected</description>
+			<imp>
+				<not>
+					<var>Sklearn</var>
+				</not>
+				<not>
+					<var>Seaborn</var>
+				</not>
+			</imp>
+		</rule>
+		<rule>
+			<description>If IDEPlugin is selected then the IDELibrary must be set as the presentation layer generator</description>
+			<imp>
+				<var>IDEPlugin</var>
+				<var>IDELibrary</var>
+			</imp>
+		</rule>
+		<rule>
+			<description>If the collaborative filtering is selected then the data structure must be a matrix</description>
+			<imp>
+				<var>CollaborativeFiltering</var>
+				<var>Matrix</var>
+			</imp>
+		</rule>
+		<rule>
+			<description>Sklearn and PyTorch don't support Collaborative filtering techniques</description>
+			<imp>
+				<var>CollaborativeFiltering</var>
+				<conj>
+					<not>
+						<var>Sklearn</var>
+					</not>
+					<conj>
+						<not>
+							<var>PyTorch</var>
+						</not>
+						<not>
+							<var>TensorFlow</var>
+						</not>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<description>If we selected WebInterface as a presentation layer then the PresentationLibrary must be a Web one</description>
+			<imp>
+				<var>WebInterface</var>
+				<var>WebLibrary</var>
+			</imp>
+		</rule>
+		<rule>
+			<description>If Surprise is selected as Algorithm then the preprocessing and the split policies must belong to the same library</description>
+			<imp>
+				<var>Surprise</var>
+				<conj>
+					<var>SurpriseSplit</var>
+					<var>SurprisePreprocessing</var>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<description>If Sklearn is selected as Algorithm then the preprocessing and the split policies must belong to the same library</description>
+			<imp>
+				<var>Sklearn</var>
+				<conj>
+					<var>SklearnPreprocessing</var>
+					<var>SklearnSplit</var>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<description>If the input data are not textual then NLP cannot be applied as a preprocessing</description>
+			<imp>
+				<not>
+					<var>TextualData</var>
+				</not>
+				<not>
+					<var>NLP</var>
+				</not>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>

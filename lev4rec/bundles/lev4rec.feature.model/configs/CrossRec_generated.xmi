@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<lowcoders:RSModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lowcoders="http://lev4rec/lowcode" name="Generated Model">
+  <dataset xsi:type="lowcoders:UnsupervisedDataset" name="DATASET NAME">
+    <dataStructure xsi:type="lowcoders:Matrix"/>
+    <preprocessing>NORMALIZATION</preprocessing>
+    <datasetManipulationLibrary>PANDAS</datasetManipulationLibrary>
+    <datasetManipulationLibrary>NUMPY</datasetManipulationLibrary>
+  </dataset>
+  <presentationLayer xsi:type="lowcoders:WebInterface"/>
+  <evaluation>
+    <validationtechnique xsi:type="lowcoders:CrossValidation" library="SURPRISE"/>
+  </evaluation>
+  <recommendationSystem xsi:type="lowcoders:FilteringRS" name="GENERATED RECOMMENDER SYSTEM" generator="SURPRISE" filteringRSAlgorithm="USER_BASED"/>
+</lowcoders:RSModel>

@@ -1,0 +1,131 @@
+[comment encoding = UTF-8 /]
+[module generateValidationTechnique('http://lev4rec/lowcode')]
+[import lev4rec::code::template::utils::generatePreprocessingTechnique/]
+[import lev4rec::code::template::utils::generateRecommenderSystem/]
+[import lev4rec::code::template::utils::generateSurprisePrRec/]
+[import lev4rec::code::template::utils::generateVariable /]
+[import lev4rec::code::template::utils::generateContext/]
+
+[template public generateValidationTechnique(recSys : RSModel)]
+[for (val : ValidationTechnique | recSys.evaluation.validationtechnique)]
+[if (val.oclIsTypeOf(lowcoders::ContextValidation))]
+
+var = input("Please enter a code snippet: ")
+docs_new = ['['/]var[']'/]
+X_new_counts = count_vect.transform(docs_new)
+X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+
+predicted = clf.predict(X_new_tfidf)
+print('predicted as',predicted)
+[/if]
+
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]
+n_splits=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
+[if (recSys.recommendationSystem.generator = PyLibType::SKLEARN)]
+prec_all = 0
+acc_all = 0
+rec_all = 0
+f1_all = 0
+from sklearn.model_selection import  KFold
+kf = KFold(n_splits = n_splits)
+for  train, test in kf.split(X):
+	X_split, X_test, y_split, y_test = X['['/]train[']'/],X['['/]test[']'/], y['['/]train[']'/], y['['/]test[']'/]
+	[if (recSys.dataset.preprocessing -> size()>0)]
+		[for (pr : PreprocessingTechnique | recSys.dataset.preprocessing)]
+	[generatePreprocessingTechnique(pr)/]
+		[/for]
+	[/if]
+	
+		
+	[generateRecommenderSystem(recSys)/]
+	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::PRECISION) ]
+	from sklearn.metrics import precision_score
+	precision = precision_score(y_pred, y_test, average=None)
+	prec_all = prec_all + sum(precision)/len(precision)	
+	[/if]	
+	[if (metric = Metric::RECALL) ]
+	from sklearn.metrics import recall_score
+	recall = recall_score(y_pred, y_test, average=None)
+	rec_all = rec_all + sum(recall)/len(recall)
+	[/if]
+	[if (metric = Metric::F1_MEASURE) ]
+	from sklearn.metrics import f1_score
+	f1 = f1_score(y_pred, y_test, average=None)
+	f1_all = f1_all + sum(f1)/len(f1)
+	[/if]	
+	[/for]
+print(prec_all)
+print(rec_all)
+print(f1_all)
+[/if]
+[/if]
+
+[if (recSys.recommendationSystem.generator = PyLibType::SURPRISE)]
+
+from surprise.model_selection import KFold
+from collections import defaultdict
+kf = KFold(n_splits=n_splits)
+#algo = SVD()
+[if (recSys.dataset.preprocessing -> size()>0)]
+		[for (pr : PreprocessingTechnique | recSys.dataset.preprocessing)]
+	[generatePreprocessingTechnique(pr)/]
+		[/for]
+	[/if]
+
+
+[generateRecommenderSystem(recSys)/]
+
+threshold = 3.5
+k=10
+for trainset, testset in kf.split(data):
+    algo.fit(trainset)
+    predictions = algo.test(testset)
+    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
+
+[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::PRECISION) ]
+	user_est_true = defaultdict(list)
+    for uid, _, true_r, est, _ in predictions:
+        user_est_true['['/]uid[']'/].append((est, true_r))
+
+    precisions = dict()
+	recalls = dict()
+    for uid, user_ratings in user_est_true.items():
+        n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
+
+        # Number of recommended items in top k
+        n_rec_k = sum((est >= threshold) for (est, _) in user_ratings['['/]:k[']'/])
+        n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
+                              for (est, true_r) in user_ratings['['/]:k[']'/])
+        precisions['['/]uid[']'/] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
+
+	[/if]	
+	[if (metric = Metric::RECALL) ]
+		recalls['['/]uid[']'/] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
+	[/if]
+
+	[/for]
+	precision= sum(prec for prec in precisions.values()) / len(precisions)
+	recall =sum(rec for rec in recalls.values()) / len(recalls)
+    # Precision and recall can then be averaged over all users
+    print(precision)
+    print(recall)
+	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::F1_MEASURE) ]
+	f1_measure=(2*precision* recall) / (recall + precision)
+	print(f1_measure)
+	[/if]	
+
+	[/for]
+	#top_n = get_top_n(predictions,n=cutoff)
+
+#for uid, user_ratings in top_n.items():
+#	print(uid, ['['/] iid for (iid, _) in user_ratings[']'/])
+
+[/if]
+
+
+[/for]
+
+[/template]

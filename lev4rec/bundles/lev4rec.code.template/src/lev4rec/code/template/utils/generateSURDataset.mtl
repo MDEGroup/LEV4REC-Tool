@@ -1,0 +1,16 @@
+[comment encoding = UTF-8 /]
+[module generateSURDataset('http://lev4rec/lowcode')]
+
+
+[template public generateSURDataset(dataset : Dataset)]
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+from surprise import Dataset
+data = Dataset.load_builtin('ml-100k')
+
+[/if]
+
+[if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]
+
+
+[/if]
+[/template]

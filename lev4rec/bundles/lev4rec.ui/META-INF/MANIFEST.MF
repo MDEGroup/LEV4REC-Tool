@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ui
+Bundle-SymbolicName: lev4rec.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: lev4rec.ui.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ lev4rec.code.template;bundle-version="1.0.0",
+ lev4rec.model;bundle-version="0.1.0",
+ lev4rec.model.generator;bundle-version="1.0.0",
+ org.eclipse.core.runtime;bundle-version="3.13.0",
+ org.eclipse.emf.ecore;bundle-version="2.13.0",
+ org.eclipse.core.resources 
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: lev4rec.ui
+Bundle-ActivationPolicy: lazy

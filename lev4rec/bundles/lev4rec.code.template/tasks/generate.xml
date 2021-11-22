@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="generate" name="lev4rec.code.template">
+    <property name="ECLIPSE_HOME" value="../../../../../../../eclipse/modeling-2020-06/Eclipse.app/Contents/Eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../../../../workspaces/low_code"/>
+
+    <!-- The classpath with only the dependencies used by the project -->
+    <path id="lev4rec.code.template.libraryclasspath">
+        <pathelement location="${ECLIPSE_WORKSPACE}/lev4rec.code.template/bin"/>
+    </path>
+
+    <path id="lev4rec.code.template.classpath">
+        <path refid="lev4rec.code.template.libraryclasspath"/>
+    </path>
+
+    <!-- The classpath with only the jars available in the plugin folder of Eclipse -->
+    <path id="lev4rec.code.template.libraryclasspath.alljars">
+        <pathelement location="../lev4rec.code.template/bin"/>
+        <fileset dir="${ECLIPSE_HOME}/plugins/" includes="*.jar"/>
+    </path>
+
+    <path id="lev4rec.code.template.classpath.alljars">
+        <path refid="lev4rec.code.template.libraryclasspath.alljars"/>
+    </path>
+
+    <!-- The default task with the jars used by this project -->
+    <target name="generate">
+        <java classname="lev4rec.code.template.main.Generate" classpathref="lev4rec.code.template.classpath">
+            <arg value="${model}"/>
+            <arg value="${target}"/>
+        </java>
+    </target>
+
+    <!--
+        In case of problem you can also try with all the jar available in your Eclipse
+        Keep in mind that having two versions of the same jar can create problems
+    -->
+    <target name="generate.alljars">
+        <java classname="lev4rec.code.template.main.Generate" classpathref="lev4rec.code.template.classpath">
+            <arg value="${model}"/>
+            <arg value="${target}"/>
+        </java>
+    </target>
+</project>
