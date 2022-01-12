@@ -32,9 +32,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link lowcoders.impl.RecommendationSystemImpl#getRecommenderSettings <em>Recommender Settings</em>}</li>
- *   <li>{@link lowcoders.impl.RecommendationSystemImpl#getRecommendationScope <em>Recommendation Scope</em>}</li>
- *   <li>{@link lowcoders.impl.RecommendationSystemImpl#getRecommendationContext <em>Recommendation Context</em>}</li>
+ *   <li>{@link lowcoders.impl.RecommendationSystemImpl#getSettings <em>Settings</em>}</li>
+ *   <li>{@link lowcoders.impl.RecommendationSystemImpl#getScope <em>Scope</em>}</li>
+ *   <li>{@link lowcoders.impl.RecommendationSystemImpl#getContext <em>Context</em>}</li>
  *   <li>{@link lowcoders.impl.RecommendationSystemImpl#getGenerator <em>Generator</em>}</li>
  * </ul>
  *
@@ -42,34 +42,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public abstract class RecommendationSystemImpl extends NamedElementImpl implements RecommendationSystem {
 	/**
-	 * The cached value of the '{@link #getRecommenderSettings() <em>Recommender Settings</em>}' containment reference list.
+	 * The cached value of the '{@link #getSettings() <em>Settings</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRecommenderSettings()
+	 * @see #getSettings()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RecommendationSetting> recommenderSettings;
+	protected EList<RecommendationSetting> settings;
 
 	/**
-	 * The cached value of the '{@link #getRecommendationScope() <em>Recommendation Scope</em>}' containment reference.
+	 * The cached value of the '{@link #getScope() <em>Scope</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRecommendationScope()
+	 * @see #getScope()
 	 * @generated
 	 * @ordered
 	 */
-	protected RecommendedItem recommendationScope;
+	protected RecommendedItem scope;
 
 	/**
-	 * The cached value of the '{@link #getRecommendationContext() <em>Recommendation Context</em>}' containment reference.
+	 * The cached value of the '{@link #getContext() <em>Context</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRecommendationContext()
+	 * @see #getContext()
 	 * @generated
 	 * @ordered
 	 */
-	protected RecommendationContext recommendationContext;
+	protected RecommendationContext context;
 
 	/**
 	 * The default value of the '{@link #getGenerator() <em>Generator</em>}' attribute.
@@ -116,11 +116,11 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	 * @generated
 	 */
 	@Override
-	public EList<RecommendationSetting> getRecommenderSettings() {
-		if (recommenderSettings == null) {
-			recommenderSettings = new EObjectContainmentEList<RecommendationSetting>(RecommendationSetting.class, this, LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS);
+	public EList<RecommendationSetting> getSettings() {
+		if (settings == null) {
+			settings = new EObjectContainmentEList<RecommendationSetting>(RecommendationSetting.class, this, LowcodersPackage.RECOMMENDATION_SYSTEM__SETTINGS);
 		}
-		return recommenderSettings;
+		return settings;
 	}
 
 	/**
@@ -129,8 +129,8 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	 * @generated
 	 */
 	@Override
-	public RecommendedItem getRecommendationScope() {
-		return recommendationScope;
+	public RecommendedItem getScope() {
+		return scope;
 	}
 
 	/**
@@ -138,11 +138,11 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRecommendationScope(RecommendedItem newRecommendationScope, NotificationChain msgs) {
-		RecommendedItem oldRecommendationScope = recommendationScope;
-		recommendationScope = newRecommendationScope;
+	public NotificationChain basicSetScope(RecommendedItem newScope, NotificationChain msgs) {
+		RecommendedItem oldScope = scope;
+		scope = newScope;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE, oldRecommendationScope, newRecommendationScope);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LowcodersPackage.RECOMMENDATION_SYSTEM__SCOPE, oldScope, newScope);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -154,18 +154,18 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	 * @generated
 	 */
 	@Override
-	public void setRecommendationScope(RecommendedItem newRecommendationScope) {
-		if (newRecommendationScope != recommendationScope) {
+	public void setScope(RecommendedItem newScope) {
+		if (newScope != scope) {
 			NotificationChain msgs = null;
-			if (recommendationScope != null)
-				msgs = ((InternalEObject)recommendationScope).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE, null, msgs);
-			if (newRecommendationScope != null)
-				msgs = ((InternalEObject)newRecommendationScope).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE, null, msgs);
-			msgs = basicSetRecommendationScope(newRecommendationScope, msgs);
+			if (scope != null)
+				msgs = ((InternalEObject)scope).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.RECOMMENDATION_SYSTEM__SCOPE, null, msgs);
+			if (newScope != null)
+				msgs = ((InternalEObject)newScope).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.RECOMMENDATION_SYSTEM__SCOPE, null, msgs);
+			msgs = basicSetScope(newScope, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE, newRecommendationScope, newRecommendationScope));
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.RECOMMENDATION_SYSTEM__SCOPE, newScope, newScope));
 	}
 
 	/**
@@ -174,8 +174,8 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	 * @generated
 	 */
 	@Override
-	public RecommendationContext getRecommendationContext() {
-		return recommendationContext;
+	public RecommendationContext getContext() {
+		return context;
 	}
 
 	/**
@@ -183,11 +183,11 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRecommendationContext(RecommendationContext newRecommendationContext, NotificationChain msgs) {
-		RecommendationContext oldRecommendationContext = recommendationContext;
-		recommendationContext = newRecommendationContext;
+	public NotificationChain basicSetContext(RecommendationContext newContext, NotificationChain msgs) {
+		RecommendationContext oldContext = context;
+		context = newContext;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT, oldRecommendationContext, newRecommendationContext);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LowcodersPackage.RECOMMENDATION_SYSTEM__CONTEXT, oldContext, newContext);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -199,18 +199,18 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	 * @generated
 	 */
 	@Override
-	public void setRecommendationContext(RecommendationContext newRecommendationContext) {
-		if (newRecommendationContext != recommendationContext) {
+	public void setContext(RecommendationContext newContext) {
+		if (newContext != context) {
 			NotificationChain msgs = null;
-			if (recommendationContext != null)
-				msgs = ((InternalEObject)recommendationContext).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT, null, msgs);
-			if (newRecommendationContext != null)
-				msgs = ((InternalEObject)newRecommendationContext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT, null, msgs);
-			msgs = basicSetRecommendationContext(newRecommendationContext, msgs);
+			if (context != null)
+				msgs = ((InternalEObject)context).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.RECOMMENDATION_SYSTEM__CONTEXT, null, msgs);
+			if (newContext != null)
+				msgs = ((InternalEObject)newContext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.RECOMMENDATION_SYSTEM__CONTEXT, null, msgs);
+			msgs = basicSetContext(newContext, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT, newRecommendationContext, newRecommendationContext));
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.RECOMMENDATION_SYSTEM__CONTEXT, newContext, newContext));
 	}
 
 	/**
@@ -244,12 +244,12 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS:
-				return ((InternalEList<?>)getRecommenderSettings()).basicRemove(otherEnd, msgs);
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE:
-				return basicSetRecommendationScope(null, msgs);
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT:
-				return basicSetRecommendationContext(null, msgs);
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__SETTINGS:
+				return ((InternalEList<?>)getSettings()).basicRemove(otherEnd, msgs);
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__SCOPE:
+				return basicSetScope(null, msgs);
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__CONTEXT:
+				return basicSetContext(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -262,12 +262,12 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS:
-				return getRecommenderSettings();
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE:
-				return getRecommendationScope();
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT:
-				return getRecommendationContext();
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__SETTINGS:
+				return getSettings();
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__SCOPE:
+				return getScope();
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__CONTEXT:
+				return getContext();
 			case LowcodersPackage.RECOMMENDATION_SYSTEM__GENERATOR:
 				return getGenerator();
 		}
@@ -283,15 +283,15 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS:
-				getRecommenderSettings().clear();
-				getRecommenderSettings().addAll((Collection<? extends RecommendationSetting>)newValue);
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__SETTINGS:
+				getSettings().clear();
+				getSettings().addAll((Collection<? extends RecommendationSetting>)newValue);
 				return;
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE:
-				setRecommendationScope((RecommendedItem)newValue);
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__SCOPE:
+				setScope((RecommendedItem)newValue);
 				return;
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT:
-				setRecommendationContext((RecommendationContext)newValue);
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__CONTEXT:
+				setContext((RecommendationContext)newValue);
 				return;
 			case LowcodersPackage.RECOMMENDATION_SYSTEM__GENERATOR:
 				setGenerator((PyLibType)newValue);
@@ -308,14 +308,14 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS:
-				getRecommenderSettings().clear();
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__SETTINGS:
+				getSettings().clear();
 				return;
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE:
-				setRecommendationScope((RecommendedItem)null);
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__SCOPE:
+				setScope((RecommendedItem)null);
 				return;
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT:
-				setRecommendationContext((RecommendationContext)null);
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__CONTEXT:
+				setContext((RecommendationContext)null);
 				return;
 			case LowcodersPackage.RECOMMENDATION_SYSTEM__GENERATOR:
 				setGenerator(GENERATOR_EDEFAULT);
@@ -332,12 +332,12 @@ public abstract class RecommendationSystemImpl extends NamedElementImpl implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS:
-				return recommenderSettings != null && !recommenderSettings.isEmpty();
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE:
-				return recommendationScope != null;
-			case LowcodersPackage.RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT:
-				return recommendationContext != null;
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__SETTINGS:
+				return settings != null && !settings.isEmpty();
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__SCOPE:
+				return scope != null;
+			case LowcodersPackage.RECOMMENDATION_SYSTEM__CONTEXT:
+				return context != null;
 			case LowcodersPackage.RECOMMENDATION_SYSTEM__GENERATOR:
 				return generator != GENERATOR_EDEFAULT;
 		}

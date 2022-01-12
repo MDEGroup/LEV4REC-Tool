@@ -12,7 +12,7 @@ import lowcoders.CommunicationChannel;
 import lowcoders.ContextValidation;
 import lowcoders.ConvolutionalNN;
 import lowcoders.CrossValidation;
-import lowcoders.CustomRecommender_SOREC;
+import lowcoders.CustomRecommender;
 import lowcoders.DataMiningRS;
 import lowcoders.DataMiningRSAlgorithm;
 import lowcoders.DataSource;
@@ -27,6 +27,7 @@ import lowcoders.FeedForwardNN;
 import lowcoders.File;
 import lowcoders.FilteringRS;
 import lowcoders.FilteringRSAlgorithm;
+import lowcoders.GUIElement;
 import lowcoders.GeneticAlgorithm;
 import lowcoders.Graph;
 import lowcoders.GroundTruthExtraction;
@@ -36,21 +37,25 @@ import lowcoders.LowcodersFactory;
 import lowcoders.LowcodersPackage;
 import lowcoders.MachineLearningBasedRS;
 import lowcoders.Matrix;
-import lowcoders.MemoryBasedRS_NOTSURE;
 import lowcoders.Metric;
 import lowcoders.MutationOperation;
 import lowcoders.NamedElement;
 import lowcoders.Preprocessing;
 import lowcoders.PreprocessingTechnique;
 import lowcoders.PresentationLayer;
+import lowcoders.ProactiveHandler;
 import lowcoders.PyLibType;
 import lowcoders.RSModel;
 import lowcoders.RandomSplitting;
 import lowcoders.RawFormat;
 import lowcoders.RawOutcomes;
+import lowcoders.ReactiveHandler;
 import lowcoders.RecommendationContext;
+import lowcoders.RecommendationHandler;
 import lowcoders.RecommendationSetting;
 import lowcoders.RecommendationSystem;
+import lowcoders.RecommendationUsage;
+import lowcoders.RecommendationUsageType;
 import lowcoders.RecommendedItem;
 import lowcoders.RecurrentNN;
 import lowcoders.SearchStrategy;
@@ -61,9 +66,12 @@ import lowcoders.TextualContent;
 import lowcoders.TraversableGraph;
 import lowcoders.Tree;
 import lowcoders.UnsupervisedDataset;
+import lowcoders.UserEvent;
+import lowcoders.UserEventType;
 import lowcoders.UserStudy;
 import lowcoders.UserStudyAnalysis;
 import lowcoders.UserStudyType;
+import lowcoders.VSCodePlugin;
 import lowcoders.ValidationLibrary;
 import lowcoders.ValidationTechnique;
 import lowcoders.Variable;
@@ -71,7 +79,7 @@ import lowcoders.VariableRelation;
 import lowcoders.VariableType;
 import lowcoders.WebApplication;
 import lowcoders.WebContainer;
-import lowcoders.WebInterface;
+import lowcoders.WebIService;
 import lowcoders.WebInterfaceLibrary;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -101,6 +109,13 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass userEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass datasetEClass = null;
 
 	/**
@@ -109,6 +124,34 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	private EClass rsModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass recommendationHandlerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass proactiveHandlerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass reactiveHandlerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass recommendationUsageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,7 +172,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass webInterfaceEClass = null;
+	private EClass webIServiceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -144,6 +187,13 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	private EClass ideIntegrationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass vsCodePluginEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -276,13 +326,6 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass memoryBasedRS_NOTSUREEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass filteringRSEClass = null;
 
 	/**
@@ -297,7 +340,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass customRecommender_SORECEClass = null;
+	private EClass customRecommenderEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -451,6 +494,20 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass guiElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum userEventTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum collaborativeFilteringAlgorithmEEnum = null;
 
 	/**
@@ -473,6 +530,13 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	private EEnum preprocessingTechniqueEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum recommendationUsageTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -673,6 +737,26 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
+	public EClass getUserEvent() {
+		return userEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getUserEvent_EventType() {
+		return (EAttribute)userEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getDataset() {
 		return datasetEClass;
 	}
@@ -715,6 +799,16 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	@Override
 	public EAttribute getDataset_DatasetManipulationLibrary() {
 		return (EAttribute)datasetEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDataset_Path() {
+		return (EAttribute)datasetEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -773,6 +867,126 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
+	public EClass getRecommendationHandler() {
+		return recommendationHandlerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRecommendationHandler_Usage() {
+		return (EReference)recommendationHandlerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRecommendationHandler_WebService() {
+		return (EReference)recommendationHandlerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRecommendationHandler_Context() {
+		return (EReference)recommendationHandlerEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getProactiveHandler() {
+		return proactiveHandlerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getProactiveHandler_Condition() {
+		return (EAttribute)proactiveHandlerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getReactiveHandler() {
+		return reactiveHandlerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getReactiveHandler_Event() {
+		return (EReference)reactiveHandlerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getRecommendationUsage() {
+		return recommendationUsageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRecommendationUsage_UsageType() {
+		return (EAttribute)recommendationUsageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRecommendationUsage_RecommendedItems() {
+		return (EReference)recommendationUsageEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRecommendationUsage_Guielements() {
+		return (EReference)recommendationUsageEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getDataSource() {
 		return dataSourceEClass;
 	}
@@ -803,8 +1017,8 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getWebInterface() {
-		return webInterfaceEClass;
+	public EClass getWebIService() {
+		return webIServiceEClass;
 	}
 
 	/**
@@ -813,8 +1027,8 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getWebInterface_Library() {
-		return (EAttribute)webInterfaceEClass.getEStructuralFeatures().get(0);
+	public EAttribute getWebIService_Library() {
+		return (EAttribute)webIServiceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -835,6 +1049,26 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	@Override
 	public EClass getIDEIntegration() {
 		return ideIntegrationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVSCodePlugin() {
+		return vsCodePluginEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getVSCodePlugin_Handler() {
+		return (EReference)vsCodePluginEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -883,7 +1117,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getEvaluation_Validationtechnique() {
+	public EReference getEvaluation_ValidationTechnique() {
 		return (EReference)evaluationEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1193,7 +1427,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getRecommendationSystem_RecommenderSettings() {
+	public EReference getRecommendationSystem_Settings() {
 		return (EReference)recommendationSystemEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1203,7 +1437,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getRecommendationSystem_RecommendationScope() {
+	public EReference getRecommendationSystem_Scope() {
 		return (EReference)recommendationSystemEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1213,7 +1447,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getRecommendationSystem_RecommendationContext() {
+	public EReference getRecommendationSystem_Context() {
 		return (EReference)recommendationSystemEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1265,16 +1499,6 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	@Override
 	public EAttribute getMachineLearningBasedRS_MiniBatchSize() {
 		return (EAttribute)machineLearningBasedRSEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getMemoryBasedRS_NOTSURE() {
-		return memoryBasedRS_NOTSUREEClass;
 	}
 
 	/**
@@ -1353,8 +1577,8 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getCustomRecommender_SOREC() {
-		return customRecommender_SORECEClass;
+	public EClass getCustomRecommender() {
+		return customRecommenderEClass;
 	}
 
 	/**
@@ -1363,8 +1587,8 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCustomRecommender_SOREC_Description() {
-		return (EAttribute)customRecommender_SORECEClass.getEStructuralFeatures().get(0);
+	public EAttribute getCustomRecommender_Description() {
+		return (EAttribute)customRecommenderEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1373,8 +1597,8 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCustomRecommender_SOREC_RequiredTools() {
-		return (EAttribute)customRecommender_SORECEClass.getEStructuralFeatures().get(1);
+	public EAttribute getCustomRecommender_RequiredTools() {
+		return (EAttribute)customRecommenderEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1523,7 +1747,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getRecommendationContext_Usercontext() {
+	public EReference getRecommendationContext_UserContext() {
 		return (EReference)recommendationContextEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1883,6 +2107,26 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
+	public EClass getGUIElement() {
+		return guiElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getUserEventType() {
+		return userEventTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getCollaborativeFilteringAlgorithm() {
 		return collaborativeFilteringAlgorithmEEnum;
 	}
@@ -1915,6 +2159,16 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	@Override
 	public EEnum getPreprocessingTechnique() {
 		return preprocessingTechniqueEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getRecommendationUsageType() {
+		return recommendationUsageTypeEEnum;
 	}
 
 	/**
@@ -2109,11 +2363,15 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
+		userEventEClass = createEClass(USER_EVENT);
+		createEAttribute(userEventEClass, USER_EVENT__EVENT_TYPE);
+
 		datasetEClass = createEClass(DATASET);
 		createEReference(datasetEClass, DATASET__INDIPENDENT_VARIABLES);
 		createEReference(datasetEClass, DATASET__DATA_STRUCTURE);
 		createEAttribute(datasetEClass, DATASET__PREPROCESSING);
 		createEAttribute(datasetEClass, DATASET__DATASET_MANIPULATION_LIBRARY);
+		createEAttribute(datasetEClass, DATASET__PATH);
 
 		rsModelEClass = createEClass(RS_MODEL);
 		createEReference(rsModelEClass, RS_MODEL__DATASET);
@@ -2121,24 +2379,43 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		createEReference(rsModelEClass, RS_MODEL__EVALUATION);
 		createEReference(rsModelEClass, RS_MODEL__RECOMMENDATION_SYSTEM);
 
+		recommendationHandlerEClass = createEClass(RECOMMENDATION_HANDLER);
+		createEReference(recommendationHandlerEClass, RECOMMENDATION_HANDLER__USAGE);
+		createEReference(recommendationHandlerEClass, RECOMMENDATION_HANDLER__WEB_SERVICE);
+		createEReference(recommendationHandlerEClass, RECOMMENDATION_HANDLER__CONTEXT);
+
+		proactiveHandlerEClass = createEClass(PROACTIVE_HANDLER);
+		createEAttribute(proactiveHandlerEClass, PROACTIVE_HANDLER__CONDITION);
+
+		reactiveHandlerEClass = createEClass(REACTIVE_HANDLER);
+		createEReference(reactiveHandlerEClass, REACTIVE_HANDLER__EVENT);
+
+		recommendationUsageEClass = createEClass(RECOMMENDATION_USAGE);
+		createEAttribute(recommendationUsageEClass, RECOMMENDATION_USAGE__USAGE_TYPE);
+		createEReference(recommendationUsageEClass, RECOMMENDATION_USAGE__RECOMMENDED_ITEMS);
+		createEReference(recommendationUsageEClass, RECOMMENDATION_USAGE__GUIELEMENTS);
+
 		dataSourceEClass = createEClass(DATA_SOURCE);
 
 		presentationLayerEClass = createEClass(PRESENTATION_LAYER);
 		createEReference(presentationLayerEClass, PRESENTATION_LAYER__RECOMMENDATIONS);
 
-		webInterfaceEClass = createEClass(WEB_INTERFACE);
-		createEAttribute(webInterfaceEClass, WEB_INTERFACE__LIBRARY);
+		webIServiceEClass = createEClass(WEB_ISERVICE);
+		createEAttribute(webIServiceEClass, WEB_ISERVICE__LIBRARY);
 
 		webApplicationEClass = createEClass(WEB_APPLICATION);
 
 		ideIntegrationEClass = createEClass(IDE_INTEGRATION);
+
+		vsCodePluginEClass = createEClass(VS_CODE_PLUGIN);
+		createEReference(vsCodePluginEClass, VS_CODE_PLUGIN__HANDLER);
 
 		traversableGraphEClass = createEClass(TRAVERSABLE_GRAPH);
 
 		evaluationEClass = createEClass(EVALUATION);
 		createEAttribute(evaluationEClass, EVALUATION__BASELINES);
 		createEAttribute(evaluationEClass, EVALUATION__METRICS);
-		createEReference(evaluationEClass, EVALUATION__VALIDATIONTECHNIQUE);
+		createEReference(evaluationEClass, EVALUATION__VALIDATION_TECHNIQUE);
 
 		validationTechniqueEClass = createEClass(VALIDATION_TECHNIQUE);
 		createEAttribute(validationTechniqueEClass, VALIDATION_TECHNIQUE__NOF_RECOMMENDATIONS);
@@ -2184,17 +2461,15 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		createEReference(arffEClass, ARFF__VARIABLES);
 
 		recommendationSystemEClass = createEClass(RECOMMENDATION_SYSTEM);
-		createEReference(recommendationSystemEClass, RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS);
-		createEReference(recommendationSystemEClass, RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE);
-		createEReference(recommendationSystemEClass, RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT);
+		createEReference(recommendationSystemEClass, RECOMMENDATION_SYSTEM__SETTINGS);
+		createEReference(recommendationSystemEClass, RECOMMENDATION_SYSTEM__SCOPE);
+		createEReference(recommendationSystemEClass, RECOMMENDATION_SYSTEM__CONTEXT);
 		createEAttribute(recommendationSystemEClass, RECOMMENDATION_SYSTEM__GENERATOR);
 
 		machineLearningBasedRSEClass = createEClass(MACHINE_LEARNING_BASED_RS);
 		createEAttribute(machineLearningBasedRSEClass, MACHINE_LEARNING_BASED_RS__NUM_EPOCHS);
 		createEAttribute(machineLearningBasedRSEClass, MACHINE_LEARNING_BASED_RS__LEARNING_RATE);
 		createEAttribute(machineLearningBasedRSEClass, MACHINE_LEARNING_BASED_RS__MINI_BATCH_SIZE);
-
-		memoryBasedRS_NOTSUREEClass = createEClass(MEMORY_BASED_RS_NOTSURE);
 
 		filteringRSEClass = createEClass(FILTERING_RS);
 		createEAttribute(filteringRSEClass, FILTERING_RS__FILTERING_RS_ALGORITHM);
@@ -2205,9 +2480,9 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		dataMiningRSEClass = createEClass(DATA_MINING_RS);
 		createEAttribute(dataMiningRSEClass, DATA_MINING_RS__DATA_MINING_RS_ALGORITHM);
 
-		customRecommender_SORECEClass = createEClass(CUSTOM_RECOMMENDER_SOREC);
-		createEAttribute(customRecommender_SORECEClass, CUSTOM_RECOMMENDER_SOREC__DESCRIPTION);
-		createEAttribute(customRecommender_SORECEClass, CUSTOM_RECOMMENDER_SOREC__REQUIRED_TOOLS);
+		customRecommenderEClass = createEClass(CUSTOM_RECOMMENDER);
+		createEAttribute(customRecommenderEClass, CUSTOM_RECOMMENDER__DESCRIPTION);
+		createEAttribute(customRecommenderEClass, CUSTOM_RECOMMENDER__REQUIRED_TOOLS);
 
 		recommendationSettingEClass = createEClass(RECOMMENDATION_SETTING);
 		createEAttribute(recommendationSettingEClass, RECOMMENDATION_SETTING__KEY);
@@ -2227,7 +2502,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		createEReference(crossValidationEClass, CROSS_VALIDATION__GROUND_TRUTH_EXTRACTOR);
 
 		recommendationContextEClass = createEClass(RECOMMENDATION_CONTEXT);
-		createEReference(recommendationContextEClass, RECOMMENDATION_CONTEXT__USERCONTEXT);
+		createEReference(recommendationContextEClass, RECOMMENDATION_CONTEXT__USER_CONTEXT);
 		createEAttribute(recommendationContextEClass, RECOMMENDATION_CONTEXT__IS_PROACTIVE_SYSTEM);
 
 		dependencyManagerEClass = createEClass(DEPENDENCY_MANAGER);
@@ -2280,11 +2555,15 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		createEAttribute(feedForwardNNEClass, FEED_FORWARD_NN__ACTIVATION_FUNCTION);
 		createEAttribute(feedForwardNNEClass, FEED_FORWARD_NN__RANDOM_STATE);
 
+		guiElementEClass = createEClass(GUI_ELEMENT);
+
 		// Create enums
+		userEventTypeEEnum = createEEnum(USER_EVENT_TYPE);
 		collaborativeFilteringAlgorithmEEnum = createEEnum(COLLABORATIVE_FILTERING_ALGORITHM);
 		webContainerEEnum = createEEnum(WEB_CONTAINER);
 		metricEEnum = createEEnum(METRIC);
 		preprocessingTechniqueEEnum = createEEnum(PREPROCESSING_TECHNIQUE);
+		recommendationUsageTypeEEnum = createEEnum(RECOMMENDATION_USAGE_TYPE);
 		variableTypeEEnum = createEEnum(VARIABLE_TYPE);
 		dataMiningRSAlgorithmEEnum = createEEnum(DATA_MINING_RS_ALGORITHM);
 		filteringRSAlgorithmEEnum = createEEnum(FILTERING_RS_ALGORITHM);
@@ -2333,12 +2612,16 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		// Add supertypes to classes
 		datasetEClass.getESuperTypes().add(this.getNamedElement());
 		rsModelEClass.getESuperTypes().add(this.getNamedElement());
+		recommendationHandlerEClass.getESuperTypes().add(this.getNamedElement());
+		proactiveHandlerEClass.getESuperTypes().add(this.getRecommendationHandler());
+		reactiveHandlerEClass.getESuperTypes().add(this.getRecommendationHandler());
 		dataSourceEClass.getESuperTypes().add(this.getNamedElement());
 		presentationLayerEClass.getESuperTypes().add(this.getNamedElement());
-		webInterfaceEClass.getESuperTypes().add(this.getPresentationLayer());
+		webIServiceEClass.getESuperTypes().add(this.getPresentationLayer());
 		webApplicationEClass.getESuperTypes().add(this.getNamedElement());
 		webApplicationEClass.getESuperTypes().add(this.getPresentationLayer());
 		ideIntegrationEClass.getESuperTypes().add(this.getPresentationLayer());
+		vsCodePluginEClass.getESuperTypes().add(this.getIDEIntegration());
 		traversableGraphEClass.getESuperTypes().add(this.getPresentationLayer());
 		evaluationEClass.getESuperTypes().add(this.getNamedElement());
 		validationTechniqueEClass.getESuperTypes().add(this.getNamedElement());
@@ -2356,10 +2639,9 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		arffEClass.getESuperTypes().add(this.getDataStructure());
 		recommendationSystemEClass.getESuperTypes().add(this.getNamedElement());
 		machineLearningBasedRSEClass.getESuperTypes().add(this.getRecommendationSystem());
-		memoryBasedRS_NOTSUREEClass.getESuperTypes().add(this.getRecommendationSystem());
 		filteringRSEClass.getESuperTypes().add(this.getRecommendationSystem());
 		dataMiningRSEClass.getESuperTypes().add(this.getRecommendationSystem());
-		customRecommender_SORECEClass.getESuperTypes().add(this.getRecommendationSystem());
+		customRecommenderEClass.getESuperTypes().add(this.getRecommendationSystem());
 		geneticAlgorithmEClass.getESuperTypes().add(this.getRecommendationSystem());
 		userStudyEClass.getESuperTypes().add(this.getValidationTechnique());
 		crossValidationEClass.getESuperTypes().add(this.getAutomatedValidation());
@@ -2383,11 +2665,15 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(userEventEClass, UserEvent.class, "UserEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUserEvent_EventType(), this.getUserEventType(), "eventType", null, 0, 1, UserEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(datasetEClass, Dataset.class, "Dataset", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataset_IndipendentVariables(), this.getVariable(), null, "indipendentVariables", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataset_DataStructure(), this.getDataStructure(), null, "dataStructure", null, 0, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataset_Preprocessing(), this.getPreprocessingTechnique(), "preprocessing", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataset_DatasetManipulationLibrary(), this.getDatasetManipulationLibrary(), "datasetManipulationLibrary", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataset_Path(), ecorePackage.getEString(), "path", null, 1, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rsModelEClass, RSModel.class, "RSModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRSModel_Dataset(), this.getDataset(), null, "dataset", null, 0, 1, RSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2395,24 +2681,43 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEReference(getRSModel_Evaluation(), this.getEvaluation(), null, "evaluation", null, 0, 1, RSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRSModel_RecommendationSystem(), this.getRecommendationSystem(), null, "recommendationSystem", null, 1, 1, RSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(recommendationHandlerEClass, RecommendationHandler.class, "RecommendationHandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRecommendationHandler_Usage(), this.getRecommendationUsage(), null, "usage", null, 0, -1, RecommendationHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecommendationHandler_WebService(), this.getWebIService(), null, "webService", null, 0, 1, RecommendationHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecommendationHandler_Context(), this.getRecommendationContext(), null, "context", null, 0, 1, RecommendationHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(proactiveHandlerEClass, ProactiveHandler.class, "ProactiveHandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProactiveHandler_Condition(), ecorePackage.getEBoolean(), "condition", null, 0, 1, ProactiveHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(reactiveHandlerEClass, ReactiveHandler.class, "ReactiveHandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getReactiveHandler_Event(), this.getUserEvent(), null, "event", null, 0, 1, ReactiveHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(recommendationUsageEClass, RecommendationUsage.class, "RecommendationUsage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRecommendationUsage_UsageType(), this.getRecommendationUsageType(), "usageType", null, 0, 1, RecommendationUsage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecommendationUsage_RecommendedItems(), this.getRecommendedItem(), null, "recommendedItems", null, 0, -1, RecommendationUsage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecommendationUsage_Guielements(), this.getGUIElement(), null, "guielements", null, 0, -1, RecommendationUsage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(dataSourceEClass, DataSource.class, "DataSource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(presentationLayerEClass, PresentationLayer.class, "PresentationLayer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPresentationLayer_Recommendations(), this.getRecommendedItem(), null, "recommendations", null, 0, 1, PresentationLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(webInterfaceEClass, WebInterface.class, "WebInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWebInterface_Library(), this.getWebInterfaceLibrary(), "library", null, 0, 1, WebInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(webIServiceEClass, WebIService.class, "WebIService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWebIService_Library(), this.getWebInterfaceLibrary(), "library", null, 0, 1, WebIService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(webApplicationEClass, WebApplication.class, "WebApplication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(ideIntegrationEClass, IDEIntegration.class, "IDEIntegration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(vsCodePluginEClass, VSCodePlugin.class, "VSCodePlugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVSCodePlugin_Handler(), this.getRecommendationHandler(), null, "handler", null, 1, -1, VSCodePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(traversableGraphEClass, TraversableGraph.class, "TraversableGraph", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(evaluationEClass, Evaluation.class, "Evaluation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEvaluation_Baselines(), ecorePackage.getEString(), "baselines", null, 0, -1, Evaluation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEvaluation_Metrics(), this.getMetric(), "metrics", null, 0, -1, Evaluation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEvaluation_Validationtechnique(), this.getValidationTechnique(), null, "validationtechnique", null, 0, -1, Evaluation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEvaluation_ValidationTechnique(), this.getValidationTechnique(), null, "validationTechnique", null, 0, -1, Evaluation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(validationTechniqueEClass, ValidationTechnique.class, "ValidationTechnique", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getValidationTechnique_NOfRecommendations(), ecorePackage.getEInt(), "nOfRecommendations", null, 1, 1, ValidationTechnique.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2424,7 +2729,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVariable_DataSource(), this.getDataSource(), null, "dataSource", null, 1, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariable_Preprocessing(), this.getPreprocessing(), null, "Preprocessing", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariable_Preprocessing(), this.getPreprocessing(), null, "preprocessing", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_Type(), this.getVariableType(), "type", null, 1, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_IsMissingValueAllowed(), ecorePackage.getEBoolean(), "isMissingValueAllowed", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_IsMultiple(), ecorePackage.getEBoolean(), "isMultiple", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2439,7 +2744,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 
 		initEClass(bugTrackingSystemEClass, BugTrackingSystem.class, "BugTrackingSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(dataStructureEClass, DataStructure.class, "DataStructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(dataStructureEClass, DataStructure.class, "DataStructure", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(graphEClass, Graph.class, "Graph", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGraph_Nodes(), this.getVariable(), null, "nodes", null, 0, -1, Graph.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2458,17 +2763,15 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEReference(getARFF_Variables(), this.getVariable(), null, "variables", null, 0, -1, lowcoders.ARFF.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(recommendationSystemEClass, RecommendationSystem.class, "RecommendationSystem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRecommendationSystem_RecommenderSettings(), this.getRecommendationSetting(), null, "RecommenderSettings", null, 0, -1, RecommendationSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRecommendationSystem_RecommendationScope(), this.getRecommendedItem(), null, "recommendationScope", null, 0, 1, RecommendationSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRecommendationSystem_RecommendationContext(), this.getRecommendationContext(), null, "recommendationContext", null, 0, 1, RecommendationSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecommendationSystem_Settings(), this.getRecommendationSetting(), null, "settings", null, 0, -1, RecommendationSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecommendationSystem_Scope(), this.getRecommendedItem(), null, "scope", null, 0, 1, RecommendationSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecommendationSystem_Context(), this.getRecommendationContext(), null, "context", null, 0, 1, RecommendationSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRecommendationSystem_Generator(), this.getPyLibType(), "generator", null, 0, 1, RecommendationSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machineLearningBasedRSEClass, MachineLearningBasedRS.class, "MachineLearningBasedRS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachineLearningBasedRS_NumEpochs(), ecorePackage.getEInt(), "numEpochs", null, 0, 1, MachineLearningBasedRS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachineLearningBasedRS_LearningRate(), ecorePackage.getEInt(), "learningRate", null, 0, 1, MachineLearningBasedRS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachineLearningBasedRS_MiniBatchSize(), ecorePackage.getEInt(), "miniBatchSize", null, 0, 1, MachineLearningBasedRS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(memoryBasedRS_NOTSUREEClass, MemoryBasedRS_NOTSURE.class, "MemoryBasedRS_NOTSURE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(filteringRSEClass, FilteringRS.class, "FilteringRS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFilteringRS_FilteringRSAlgorithm(), this.getFilteringRSAlgorithm(), "filteringRSAlgorithm", null, 0, 1, FilteringRS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2479,9 +2782,9 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEClass(dataMiningRSEClass, DataMiningRS.class, "DataMiningRS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataMiningRS_DataMiningRSAlgorithm(), this.getDataMiningRSAlgorithm(), "dataMiningRSAlgorithm", null, 0, 1, DataMiningRS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(customRecommender_SORECEClass, CustomRecommender_SOREC.class, "CustomRecommender_SOREC", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCustomRecommender_SOREC_Description(), ecorePackage.getEString(), "description", null, 0, 1, CustomRecommender_SOREC.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCustomRecommender_SOREC_RequiredTools(), ecorePackage.getEString(), "requiredTools", null, 0, -1, CustomRecommender_SOREC.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(customRecommenderEClass, CustomRecommender.class, "CustomRecommender", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCustomRecommender_Description(), ecorePackage.getEString(), "description", null, 0, 1, CustomRecommender.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCustomRecommender_RequiredTools(), ecorePackage.getEString(), "requiredTools", null, 0, -1, CustomRecommender.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(recommendationSettingEClass, RecommendationSetting.class, "RecommendationSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRecommendationSetting_Key(), ecorePackage.getEString(), "key", null, 1, 1, RecommendationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2501,7 +2804,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEReference(getCrossValidation_GroundTruthExtractor(), this.getGroundTruthExtraction(), null, "groundTruthExtractor", null, 0, 1, CrossValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(recommendationContextEClass, RecommendationContext.class, "RecommendationContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRecommendationContext_Usercontext(), this.getDataStructure(), null, "Usercontext", null, 0, 1, RecommendationContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecommendationContext_UserContext(), this.getDataStructure(), null, "userContext", null, 0, 1, RecommendationContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRecommendationContext_IsProactiveSystem(), ecorePackage.getEBoolean(), "isProactiveSystem", null, 0, 1, RecommendationContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dependencyManagerEClass, DependencyManager.class, "DependencyManager", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2554,7 +2857,13 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEAttribute(getFeedForwardNN_ActivationFunction(), this.getActivationType(), "activationFunction", null, 0, 1, FeedForwardNN.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFeedForwardNN_RandomState(), ecorePackage.getEInt(), "randomState", null, 0, 1, FeedForwardNN.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(guiElementEClass, GUIElement.class, "GUIElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Initialize enums and add enum literals
+		initEEnum(userEventTypeEEnum, UserEventType.class, "UserEventType");
+		addEEnumLiteral(userEventTypeEEnum, UserEventType.CLICK);
+		addEEnumLiteral(userEventTypeEEnum, UserEventType.SELECTION);
+
 		initEEnum(collaborativeFilteringAlgorithmEEnum, CollaborativeFilteringAlgorithm.class, "CollaborativeFilteringAlgorithm");
 		addEEnumLiteral(collaborativeFilteringAlgorithmEEnum, CollaborativeFilteringAlgorithm.ITEM_BASED);
 		addEEnumLiteral(collaborativeFilteringAlgorithmEEnum, CollaborativeFilteringAlgorithm.USER_BASED);
@@ -2571,6 +2880,10 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		addEEnumLiteral(metricEEnum, Metric.CATALOG_COVERAGE);
 		addEEnumLiteral(metricEEnum, Metric.NOVELTY);
 		addEEnumLiteral(metricEEnum, Metric.SALE_DIVERSITY);
+		addEEnumLiteral(metricEEnum, Metric.NDCG);
+		addEEnumLiteral(metricEEnum, Metric.ITEM_COVERAGE);
+		addEEnumLiteral(metricEEnum, Metric.EPC);
+		addEEnumLiteral(metricEEnum, Metric.GINI);
 
 		initEEnum(preprocessingTechniqueEEnum, PreprocessingTechnique.class, "PreprocessingTechnique");
 		addEEnumLiteral(preprocessingTechniqueEEnum, PreprocessingTechnique.DUPLICATES_REMOVAL);
@@ -2580,6 +2893,10 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		addEEnumLiteral(preprocessingTechniqueEEnum, PreprocessingTechnique.VECTORIZATION);
 		addEEnumLiteral(preprocessingTechniqueEEnum, PreprocessingTechnique.FEATURE_SCALING);
 		addEEnumLiteral(preprocessingTechniqueEEnum, PreprocessingTechnique.TFIDF);
+
+		initEEnum(recommendationUsageTypeEEnum, RecommendationUsageType.class, "RecommendationUsageType");
+		addEEnumLiteral(recommendationUsageTypeEEnum, RecommendationUsageType.TRANSFORMATIVE);
+		addEEnumLiteral(recommendationUsageTypeEEnum, RecommendationUsageType.VISUALIZATION);
 
 		initEEnum(variableTypeEEnum, VariableType.class, "VariableType");
 		addEEnumLiteral(variableTypeEEnum, VariableType.STRING);
@@ -2633,12 +2950,14 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		addEEnumLiteral(similarityFunctionEEnum, SimilarityFunction.SVD);
 		addEEnumLiteral(similarityFunctionEEnum, SimilarityFunction.GRAPH_BASED);
 		addEEnumLiteral(similarityFunctionEEnum, SimilarityFunction.MSD);
+		addEEnumLiteral(similarityFunctionEEnum, SimilarityFunction.EUCLIDEAN_DISTANCE);
 
 		initEEnum(pyLibTypeEEnum, PyLibType.class, "PyLibType");
 		addEEnumLiteral(pyLibTypeEEnum, PyLibType.SKLEARN);
 		addEEnumLiteral(pyLibTypeEEnum, PyLibType.SURPRISE);
 		addEEnumLiteral(pyLibTypeEEnum, PyLibType.TENSOR_FLOW);
 		addEEnumLiteral(pyLibTypeEEnum, PyLibType.PYTORCH);
+		addEEnumLiteral(pyLibTypeEEnum, PyLibType.ELLIOT);
 
 		initEEnum(solverTypeEEnum, SolverType.class, "SolverType");
 		addEEnumLiteral(solverTypeEEnum, SolverType.ADAM);

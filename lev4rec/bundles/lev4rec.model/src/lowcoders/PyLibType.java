@@ -56,7 +56,17 @@ public enum PyLibType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PYTORCH(3, "PYTORCH", "PYTORCH");
+	PYTORCH(3, "PYTORCH", "PYTORCH"),
+
+	/**
+	 * The '<em><b>ELLIOT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ELLIOT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ELLIOT(4, "ELLIOT", "ELLIOT");
 
 	/**
 	 * The '<em><b>SKLEARN</b></em>' literal value.
@@ -103,6 +113,17 @@ public enum PyLibType implements Enumerator {
 	public static final int PYTORCH_VALUE = 3;
 
 	/**
+	 * The '<em><b>ELLIOT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ELLIOT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ELLIOT_VALUE = 4;
+
+	/**
 	 * An array of all the '<em><b>Py Lib Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -114,6 +135,7 @@ public enum PyLibType implements Enumerator {
 			SURPRISE,
 			TENSOR_FLOW,
 			PYTORCH,
+			ELLIOT,
 		};
 
 	/**
@@ -174,6 +196,7 @@ public enum PyLibType implements Enumerator {
 			case SURPRISE_VALUE: return SURPRISE;
 			case TENSOR_FLOW_VALUE: return TENSOR_FLOW;
 			case PYTORCH_VALUE: return PYTORCH;
+			case ELLIOT_VALUE: return ELLIOT;
 		}
 		return null;
 	}

@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generateVariable('http://lev4rec/lowcode')]
+[module generateVariable('https://it.disim.univaq/lowcode')]
 [import lev4rec::code::template::utils::generateVariablePreprocessing/]
 
 [template public generateVariable(var : Variable)]

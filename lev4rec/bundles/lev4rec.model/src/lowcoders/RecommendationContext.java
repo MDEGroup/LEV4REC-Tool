@@ -12,7 +12,7 @@ package lowcoders;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link lowcoders.RecommendationContext#getUsercontext <em>Usercontext</em>}</li>
+ *   <li>{@link lowcoders.RecommendationContext#getUserContext <em>User Context</em>}</li>
  *   <li>{@link lowcoders.RecommendationContext#isIsProactiveSystem <em>Is Proactive System</em>}</li>
  * </ul>
  *
@@ -22,26 +22,26 @@ package lowcoders;
  */
 public interface RecommendationContext extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Usercontext</b></em>' reference.
+	 * Returns the value of the '<em><b>User Context</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Usercontext</em>' reference.
-	 * @see #setUsercontext(DataStructure)
-	 * @see lowcoders.LowcodersPackage#getRecommendationContext_Usercontext()
+	 * @return the value of the '<em>User Context</em>' reference.
+	 * @see #setUserContext(DataStructure)
+	 * @see lowcoders.LowcodersPackage#getRecommendationContext_UserContext()
 	 * @model
 	 * @generated
 	 */
-	DataStructure getUsercontext();
+	DataStructure getUserContext();
 
 	/**
-	 * Sets the value of the '{@link lowcoders.RecommendationContext#getUsercontext <em>Usercontext</em>}' reference.
+	 * Sets the value of the '{@link lowcoders.RecommendationContext#getUserContext <em>User Context</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Usercontext</em>' reference.
-	 * @see #getUsercontext()
+	 * @param value the new value of the '<em>User Context</em>' reference.
+	 * @see #getUserContext()
 	 * @generated
 	 */
-	void setUsercontext(DataStructure value);
+	void setUserContext(DataStructure value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Proactive System</b></em>' attribute.

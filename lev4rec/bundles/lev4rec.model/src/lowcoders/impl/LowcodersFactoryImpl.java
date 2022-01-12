@@ -58,10 +58,16 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case LowcodersPackage.NAMED_ELEMENT: return createNamedElement();
+			case LowcodersPackage.USER_EVENT: return createUserEvent();
 			case LowcodersPackage.RS_MODEL: return createRSModel();
-			case LowcodersPackage.WEB_INTERFACE: return createWebInterface();
+			case LowcodersPackage.RECOMMENDATION_HANDLER: return createRecommendationHandler();
+			case LowcodersPackage.PROACTIVE_HANDLER: return createProactiveHandler();
+			case LowcodersPackage.REACTIVE_HANDLER: return createReactiveHandler();
+			case LowcodersPackage.RECOMMENDATION_USAGE: return createRecommendationUsage();
+			case LowcodersPackage.WEB_ISERVICE: return createWebIService();
 			case LowcodersPackage.WEB_APPLICATION: return createWebApplication();
 			case LowcodersPackage.IDE_INTEGRATION: return createIDEIntegration();
+			case LowcodersPackage.VS_CODE_PLUGIN: return createVSCodePlugin();
 			case LowcodersPackage.TRAVERSABLE_GRAPH: return createTraversableGraph();
 			case LowcodersPackage.EVALUATION: return createEvaluation();
 			case LowcodersPackage.UNSUPERVISED_DATASET: return createUnsupervisedDataset();
@@ -71,17 +77,15 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 			case LowcodersPackage.CODE_REPOSITORY: return createCodeRepository();
 			case LowcodersPackage.COMMUNICATION_CHANNEL: return createCommunicationChannel();
 			case LowcodersPackage.BUG_TRACKING_SYSTEM: return createBugTrackingSystem();
-			case LowcodersPackage.DATA_STRUCTURE: return createDataStructure();
 			case LowcodersPackage.GRAPH: return createGraph();
 			case LowcodersPackage.MATRIX: return createMatrix();
 			case LowcodersPackage.TREE: return createTree();
 			case LowcodersPackage.TEXTUAL_CONTENT: return createTextualContent();
 			case LowcodersPackage.ARFF: return createARFF();
 			case LowcodersPackage.MACHINE_LEARNING_BASED_RS: return createMachineLearningBasedRS();
-			case LowcodersPackage.MEMORY_BASED_RS_NOTSURE: return createMemoryBasedRS_NOTSURE();
 			case LowcodersPackage.FILTERING_RS: return createFilteringRS();
 			case LowcodersPackage.DATA_MINING_RS: return createDataMiningRS();
-			case LowcodersPackage.CUSTOM_RECOMMENDER_SOREC: return createCustomRecommender_SOREC();
+			case LowcodersPackage.CUSTOM_RECOMMENDER: return createCustomRecommender();
 			case LowcodersPackage.RECOMMENDATION_SETTING: return createRecommendationSetting();
 			case LowcodersPackage.GENETIC_ALGORITHM: return createGeneticAlgorithm();
 			case LowcodersPackage.USER_STUDY: return createUserStudy();
@@ -103,6 +107,7 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 			case LowcodersPackage.SVM: return createSVM();
 			case LowcodersPackage.DECISION_TREE: return createDecisionTree();
 			case LowcodersPackage.FEED_FORWARD_NN: return createFeedForwardNN();
+			case LowcodersPackage.GUI_ELEMENT: return createGUIElement();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -116,6 +121,8 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case LowcodersPackage.USER_EVENT_TYPE:
+				return createUserEventTypeFromString(eDataType, initialValue);
 			case LowcodersPackage.COLLABORATIVE_FILTERING_ALGORITHM:
 				return createCollaborativeFilteringAlgorithmFromString(eDataType, initialValue);
 			case LowcodersPackage.WEB_CONTAINER:
@@ -124,6 +131,8 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 				return createMetricFromString(eDataType, initialValue);
 			case LowcodersPackage.PREPROCESSING_TECHNIQUE:
 				return createPreprocessingTechniqueFromString(eDataType, initialValue);
+			case LowcodersPackage.RECOMMENDATION_USAGE_TYPE:
+				return createRecommendationUsageTypeFromString(eDataType, initialValue);
 			case LowcodersPackage.VARIABLE_TYPE:
 				return createVariableTypeFromString(eDataType, initialValue);
 			case LowcodersPackage.DATA_MINING_RS_ALGORITHM:
@@ -169,6 +178,8 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case LowcodersPackage.USER_EVENT_TYPE:
+				return convertUserEventTypeToString(eDataType, instanceValue);
 			case LowcodersPackage.COLLABORATIVE_FILTERING_ALGORITHM:
 				return convertCollaborativeFilteringAlgorithmToString(eDataType, instanceValue);
 			case LowcodersPackage.WEB_CONTAINER:
@@ -177,6 +188,8 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 				return convertMetricToString(eDataType, instanceValue);
 			case LowcodersPackage.PREPROCESSING_TECHNIQUE:
 				return convertPreprocessingTechniqueToString(eDataType, instanceValue);
+			case LowcodersPackage.RECOMMENDATION_USAGE_TYPE:
+				return convertRecommendationUsageTypeToString(eDataType, instanceValue);
 			case LowcodersPackage.VARIABLE_TYPE:
 				return convertVariableTypeToString(eDataType, instanceValue);
 			case LowcodersPackage.DATA_MINING_RS_ALGORITHM:
@@ -231,6 +244,17 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * @generated
 	 */
 	@Override
+	public UserEvent createUserEvent() {
+		UserEventImpl userEvent = new UserEventImpl();
+		return userEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public RSModel createRSModel() {
 		RSModelImpl rsModel = new RSModelImpl();
 		return rsModel;
@@ -242,9 +266,53 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * @generated
 	 */
 	@Override
-	public WebInterface createWebInterface() {
-		WebInterfaceImpl webInterface = new WebInterfaceImpl();
-		return webInterface;
+	public RecommendationHandler createRecommendationHandler() {
+		RecommendationHandlerImpl recommendationHandler = new RecommendationHandlerImpl();
+		return recommendationHandler;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ProactiveHandler createProactiveHandler() {
+		ProactiveHandlerImpl proactiveHandler = new ProactiveHandlerImpl();
+		return proactiveHandler;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ReactiveHandler createReactiveHandler() {
+		ReactiveHandlerImpl reactiveHandler = new ReactiveHandlerImpl();
+		return reactiveHandler;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public RecommendationUsage createRecommendationUsage() {
+		RecommendationUsageImpl recommendationUsage = new RecommendationUsageImpl();
+		return recommendationUsage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WebIService createWebIService() {
+		WebIServiceImpl webIService = new WebIServiceImpl();
+		return webIService;
 	}
 
 	/**
@@ -267,6 +335,17 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	public IDEIntegration createIDEIntegration() {
 		IDEIntegrationImpl ideIntegration = new IDEIntegrationImpl();
 		return ideIntegration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public VSCodePlugin createVSCodePlugin() {
+		VSCodePluginImpl vsCodePlugin = new VSCodePluginImpl();
+		return vsCodePlugin;
 	}
 
 	/**
@@ -374,17 +453,6 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * @generated
 	 */
 	@Override
-	public DataStructure createDataStructure() {
-		DataStructureImpl dataStructure = new DataStructureImpl();
-		return dataStructure;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Graph createGraph() {
 		GraphImpl graph = new GraphImpl();
 		return graph;
@@ -451,17 +519,6 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * @generated
 	 */
 	@Override
-	public MemoryBasedRS_NOTSURE createMemoryBasedRS_NOTSURE() {
-		MemoryBasedRS_NOTSUREImpl memoryBasedRS_NOTSURE = new MemoryBasedRS_NOTSUREImpl();
-		return memoryBasedRS_NOTSURE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public FilteringRS createFilteringRS() {
 		FilteringRSImpl filteringRS = new FilteringRSImpl();
 		return filteringRS;
@@ -484,9 +541,9 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * @generated
 	 */
 	@Override
-	public CustomRecommender_SOREC createCustomRecommender_SOREC() {
-		CustomRecommender_SORECImpl customRecommender_SOREC = new CustomRecommender_SORECImpl();
-		return customRecommender_SOREC;
+	public CustomRecommender createCustomRecommender() {
+		CustomRecommenderImpl customRecommender = new CustomRecommenderImpl();
+		return customRecommender;
 	}
 
 	/**
@@ -725,6 +782,37 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public GUIElement createGUIElement() {
+		GUIElementImpl guiElement = new GUIElementImpl();
+		return guiElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UserEventType createUserEventTypeFromString(EDataType eDataType, String initialValue) {
+		UserEventType result = UserEventType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertUserEventTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CollaborativeFilteringAlgorithm createCollaborativeFilteringAlgorithmFromString(EDataType eDataType, String initialValue) {
 		CollaborativeFilteringAlgorithm result = CollaborativeFilteringAlgorithm.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -797,6 +885,26 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * @generated
 	 */
 	public String convertPreprocessingTechniqueToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RecommendationUsageType createRecommendationUsageTypeFromString(EDataType eDataType, String initialValue) {
+		RecommendationUsageType result = RecommendationUsageType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRecommendationUsageTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

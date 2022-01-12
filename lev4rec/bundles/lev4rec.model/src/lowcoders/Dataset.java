@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link lowcoders.Dataset#getDataStructure <em>Data Structure</em>}</li>
  *   <li>{@link lowcoders.Dataset#getPreprocessing <em>Preprocessing</em>}</li>
  *   <li>{@link lowcoders.Dataset#getDatasetManipulationLibrary <em>Dataset Manipulation Library</em>}</li>
+ *   <li>{@link lowcoders.Dataset#getPath <em>Path</em>}</li>
  * </ul>
  *
  * @see lowcoders.LowcodersPackage#getDataset()
@@ -85,5 +86,27 @@ public interface Dataset extends NamedElement {
 	 * @generated
 	 */
 	EList<DatasetManipulationLibrary> getDatasetManipulationLibrary();
+
+	/**
+	 * Returns the value of the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Path</em>' attribute.
+	 * @see #setPath(String)
+	 * @see lowcoders.LowcodersPackage#getDataset_Path()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getPath();
+
+	/**
+	 * Sets the value of the '{@link lowcoders.Dataset#getPath <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Path</em>' attribute.
+	 * @see #getPath()
+	 * @generated
+	 */
+	void setPath(String value);
 
 } // Dataset

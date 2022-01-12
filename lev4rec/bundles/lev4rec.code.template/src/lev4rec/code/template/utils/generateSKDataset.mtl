@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generateSKDataset('http://lev4rec/lowcode')]
+[module generateSKDataset('https://it.disim.univaq/lowcode')]
 [import lev4rec::code::template::utils::checkDatasetConsistency/]
 [import lev4rec::code::template::utils::generateTextualContent/]
 [import lev4rec::code::template::utils::generatePreprocessingTechnique/]

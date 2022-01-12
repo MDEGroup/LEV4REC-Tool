@@ -76,7 +76,47 @@ public enum Metric implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SALE_DIVERSITY(0, "SALE_DIVERSITY", "SALE_DIVERSITY");
+	SALE_DIVERSITY(5, "SALE_DIVERSITY", "SALE_DIVERSITY"),
+
+	/**
+	 * The '<em><b>NDCG</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NDCG_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NDCG(6, "NDCG", "NDCG"),
+
+	/**
+	 * The '<em><b>ITEM COVERAGE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ITEM_COVERAGE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ITEM_COVERAGE(7, "ITEM_COVERAGE", "ITEM_COVERAGE"),
+
+	/**
+	 * The '<em><b>EPC</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EPC_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	EPC(8, "EPC", "EPC"),
+
+	/**
+	 * The '<em><b>GINI</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #GINI_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	GINI(9, "GINI", "GINI");
 
 	/**
 	 * The '<em><b>PRECISION</b></em>' literal value.
@@ -142,7 +182,51 @@ public enum Metric implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SALE_DIVERSITY_VALUE = 0;
+	public static final int SALE_DIVERSITY_VALUE = 5;
+
+	/**
+	 * The '<em><b>NDCG</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NDCG
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NDCG_VALUE = 6;
+
+	/**
+	 * The '<em><b>ITEM COVERAGE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ITEM_COVERAGE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ITEM_COVERAGE_VALUE = 7;
+
+	/**
+	 * The '<em><b>EPC</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EPC
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EPC_VALUE = 8;
+
+	/**
+	 * The '<em><b>GINI</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #GINI
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GINI_VALUE = 9;
 
 	/**
 	 * An array of all the '<em><b>Metric</b></em>' enumerators.
@@ -158,6 +242,10 @@ public enum Metric implements Enumerator {
 			CATALOG_COVERAGE,
 			NOVELTY,
 			SALE_DIVERSITY,
+			NDCG,
+			ITEM_COVERAGE,
+			EPC,
+			GINI,
 		};
 
 	/**
@@ -219,6 +307,11 @@ public enum Metric implements Enumerator {
 			case F1_MEASURE_VALUE: return F1_MEASURE;
 			case CATALOG_COVERAGE_VALUE: return CATALOG_COVERAGE;
 			case NOVELTY_VALUE: return NOVELTY;
+			case SALE_DIVERSITY_VALUE: return SALE_DIVERSITY;
+			case NDCG_VALUE: return NDCG;
+			case ITEM_COVERAGE_VALUE: return ITEM_COVERAGE;
+			case EPC_VALUE: return EPC;
+			case GINI_VALUE: return GINI;
 		}
 		return null;
 	}

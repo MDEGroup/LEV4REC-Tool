@@ -4,7 +4,7 @@ package lowcoders.impl;
 
 import java.util.Collection;
 
-import lowcoders.CustomRecommender_SOREC;
+import lowcoders.CustomRecommender;
 import lowcoders.LowcodersPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -19,19 +19,19 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Custom Recommender SOREC</b></em>'.
+ * An implementation of the model object '<em><b>Custom Recommender</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link lowcoders.impl.CustomRecommender_SORECImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link lowcoders.impl.CustomRecommender_SORECImpl#getRequiredTools <em>Required Tools</em>}</li>
+ *   <li>{@link lowcoders.impl.CustomRecommenderImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link lowcoders.impl.CustomRecommenderImpl#getRequiredTools <em>Required Tools</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CustomRecommender_SORECImpl extends RecommendationSystemImpl implements CustomRecommender_SOREC {
+public class CustomRecommenderImpl extends RecommendationSystemImpl implements CustomRecommender {
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -67,7 +67,7 @@ public class CustomRecommender_SORECImpl extends RecommendationSystemImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CustomRecommender_SORECImpl() {
+	protected CustomRecommenderImpl() {
 		super();
 	}
 
@@ -78,7 +78,7 @@ public class CustomRecommender_SORECImpl extends RecommendationSystemImpl implem
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return LowcodersPackage.Literals.CUSTOM_RECOMMENDER_SOREC;
+		return LowcodersPackage.Literals.CUSTOM_RECOMMENDER;
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class CustomRecommender_SORECImpl extends RecommendationSystemImpl implem
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.CUSTOM_RECOMMENDER_SOREC__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.CUSTOM_RECOMMENDER__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class CustomRecommender_SORECImpl extends RecommendationSystemImpl implem
 	@Override
 	public EList<String> getRequiredTools() {
 		if (requiredTools == null) {
-			requiredTools = new EDataTypeUniqueEList<String>(String.class, this, LowcodersPackage.CUSTOM_RECOMMENDER_SOREC__REQUIRED_TOOLS);
+			requiredTools = new EDataTypeUniqueEList<String>(String.class, this, LowcodersPackage.CUSTOM_RECOMMENDER__REQUIRED_TOOLS);
 		}
 		return requiredTools;
 	}
@@ -125,9 +125,9 @@ public class CustomRecommender_SORECImpl extends RecommendationSystemImpl implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LowcodersPackage.CUSTOM_RECOMMENDER_SOREC__DESCRIPTION:
+			case LowcodersPackage.CUSTOM_RECOMMENDER__DESCRIPTION:
 				return getDescription();
-			case LowcodersPackage.CUSTOM_RECOMMENDER_SOREC__REQUIRED_TOOLS:
+			case LowcodersPackage.CUSTOM_RECOMMENDER__REQUIRED_TOOLS:
 				return getRequiredTools();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -142,10 +142,10 @@ public class CustomRecommender_SORECImpl extends RecommendationSystemImpl implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LowcodersPackage.CUSTOM_RECOMMENDER_SOREC__DESCRIPTION:
+			case LowcodersPackage.CUSTOM_RECOMMENDER__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case LowcodersPackage.CUSTOM_RECOMMENDER_SOREC__REQUIRED_TOOLS:
+			case LowcodersPackage.CUSTOM_RECOMMENDER__REQUIRED_TOOLS:
 				getRequiredTools().clear();
 				getRequiredTools().addAll((Collection<? extends String>)newValue);
 				return;
@@ -161,10 +161,10 @@ public class CustomRecommender_SORECImpl extends RecommendationSystemImpl implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LowcodersPackage.CUSTOM_RECOMMENDER_SOREC__DESCRIPTION:
+			case LowcodersPackage.CUSTOM_RECOMMENDER__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case LowcodersPackage.CUSTOM_RECOMMENDER_SOREC__REQUIRED_TOOLS:
+			case LowcodersPackage.CUSTOM_RECOMMENDER__REQUIRED_TOOLS:
 				getRequiredTools().clear();
 				return;
 		}
@@ -179,9 +179,9 @@ public class CustomRecommender_SORECImpl extends RecommendationSystemImpl implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LowcodersPackage.CUSTOM_RECOMMENDER_SOREC__DESCRIPTION:
+			case LowcodersPackage.CUSTOM_RECOMMENDER__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case LowcodersPackage.CUSTOM_RECOMMENDER_SOREC__REQUIRED_TOOLS:
+			case LowcodersPackage.CUSTOM_RECOMMENDER__REQUIRED_TOOLS:
 				return requiredTools != null && !requiredTools.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -205,4 +205,4 @@ public class CustomRecommender_SORECImpl extends RecommendationSystemImpl implem
 		return result.toString();
 	}
 
-} //CustomRecommender_SORECImpl
+} //CustomRecommenderImpl

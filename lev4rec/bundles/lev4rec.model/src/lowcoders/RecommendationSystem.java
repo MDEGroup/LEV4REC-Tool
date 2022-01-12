@@ -13,9 +13,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link lowcoders.RecommendationSystem#getRecommenderSettings <em>Recommender Settings</em>}</li>
- *   <li>{@link lowcoders.RecommendationSystem#getRecommendationScope <em>Recommendation Scope</em>}</li>
- *   <li>{@link lowcoders.RecommendationSystem#getRecommendationContext <em>Recommendation Context</em>}</li>
+ *   <li>{@link lowcoders.RecommendationSystem#getSettings <em>Settings</em>}</li>
+ *   <li>{@link lowcoders.RecommendationSystem#getScope <em>Scope</em>}</li>
+ *   <li>{@link lowcoders.RecommendationSystem#getContext <em>Context</em>}</li>
  *   <li>{@link lowcoders.RecommendationSystem#getGenerator <em>Generator</em>}</li>
  * </ul>
  *
@@ -25,60 +25,60 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface RecommendationSystem extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Settings</b></em>' containment reference list.
 	 * The list contents are of type {@link lowcoders.RecommendationSetting}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Recommender Settings</em>' containment reference list.
-	 * @see lowcoders.LowcodersPackage#getRecommendationSystem_RecommenderSettings()
+	 * @return the value of the '<em>Settings</em>' containment reference list.
+	 * @see lowcoders.LowcodersPackage#getRecommendationSystem_Settings()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<RecommendationSetting> getRecommenderSettings();
+	EList<RecommendationSetting> getSettings();
 
 	/**
-	 * Returns the value of the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Recommendation Scope</em>' containment reference.
-	 * @see #setRecommendationScope(RecommendedItem)
-	 * @see lowcoders.LowcodersPackage#getRecommendationSystem_RecommendationScope()
+	 * @return the value of the '<em>Scope</em>' containment reference.
+	 * @see #setScope(RecommendedItem)
+	 * @see lowcoders.LowcodersPackage#getRecommendationSystem_Scope()
 	 * @model containment="true"
 	 * @generated
 	 */
-	RecommendedItem getRecommendationScope();
+	RecommendedItem getScope();
 
 	/**
-	 * Sets the value of the '{@link lowcoders.RecommendationSystem#getRecommendationScope <em>Recommendation Scope</em>}' containment reference.
+	 * Sets the value of the '{@link lowcoders.RecommendationSystem#getScope <em>Scope</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Recommendation Scope</em>' containment reference.
-	 * @see #getRecommendationScope()
+	 * @param value the new value of the '<em>Scope</em>' containment reference.
+	 * @see #getScope()
 	 * @generated
 	 */
-	void setRecommendationScope(RecommendedItem value);
+	void setScope(RecommendedItem value);
 
 	/**
-	 * Returns the value of the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Recommendation Context</em>' containment reference.
-	 * @see #setRecommendationContext(RecommendationContext)
-	 * @see lowcoders.LowcodersPackage#getRecommendationSystem_RecommendationContext()
+	 * @return the value of the '<em>Context</em>' containment reference.
+	 * @see #setContext(RecommendationContext)
+	 * @see lowcoders.LowcodersPackage#getRecommendationSystem_Context()
 	 * @model containment="true"
 	 * @generated
 	 */
-	RecommendationContext getRecommendationContext();
+	RecommendationContext getContext();
 
 	/**
-	 * Sets the value of the '{@link lowcoders.RecommendationSystem#getRecommendationContext <em>Recommendation Context</em>}' containment reference.
+	 * Sets the value of the '{@link lowcoders.RecommendationSystem#getContext <em>Context</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Recommendation Context</em>' containment reference.
-	 * @see #getRecommendationContext()
+	 * @param value the new value of the '<em>Context</em>' containment reference.
+	 * @see #getContext()
 	 * @generated
 	 */
-	void setRecommendationContext(RecommendationContext value);
+	void setContext(RecommendationContext value);
 
 	/**
 	 * Returns the value of the '<em><b>Generator</b></em>' attribute.

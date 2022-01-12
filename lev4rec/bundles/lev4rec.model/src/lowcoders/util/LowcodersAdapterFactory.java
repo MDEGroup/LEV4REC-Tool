@@ -72,12 +72,32 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 				return createNamedElementAdapter();
 			}
 			@Override
+			public Adapter caseUserEvent(UserEvent object) {
+				return createUserEventAdapter();
+			}
+			@Override
 			public Adapter caseDataset(Dataset object) {
 				return createDatasetAdapter();
 			}
 			@Override
 			public Adapter caseRSModel(RSModel object) {
 				return createRSModelAdapter();
+			}
+			@Override
+			public Adapter caseRecommendationHandler(RecommendationHandler object) {
+				return createRecommendationHandlerAdapter();
+			}
+			@Override
+			public Adapter caseProactiveHandler(ProactiveHandler object) {
+				return createProactiveHandlerAdapter();
+			}
+			@Override
+			public Adapter caseReactiveHandler(ReactiveHandler object) {
+				return createReactiveHandlerAdapter();
+			}
+			@Override
+			public Adapter caseRecommendationUsage(RecommendationUsage object) {
+				return createRecommendationUsageAdapter();
 			}
 			@Override
 			public Adapter caseDataSource(DataSource object) {
@@ -88,8 +108,8 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 				return createPresentationLayerAdapter();
 			}
 			@Override
-			public Adapter caseWebInterface(WebInterface object) {
-				return createWebInterfaceAdapter();
+			public Adapter caseWebIService(WebIService object) {
+				return createWebIServiceAdapter();
 			}
 			@Override
 			public Adapter caseWebApplication(WebApplication object) {
@@ -98,6 +118,10 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIDEIntegration(IDEIntegration object) {
 				return createIDEIntegrationAdapter();
+			}
+			@Override
+			public Adapter caseVSCodePlugin(VSCodePlugin object) {
+				return createVSCodePluginAdapter();
 			}
 			@Override
 			public Adapter caseTraversableGraph(TraversableGraph object) {
@@ -172,10 +196,6 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 				return createMachineLearningBasedRSAdapter();
 			}
 			@Override
-			public Adapter caseMemoryBasedRS_NOTSURE(MemoryBasedRS_NOTSURE object) {
-				return createMemoryBasedRS_NOTSUREAdapter();
-			}
-			@Override
 			public Adapter caseFilteringRS(FilteringRS object) {
 				return createFilteringRSAdapter();
 			}
@@ -184,8 +204,8 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 				return createDataMiningRSAdapter();
 			}
 			@Override
-			public Adapter caseCustomRecommender_SOREC(CustomRecommender_SOREC object) {
-				return createCustomRecommender_SORECAdapter();
+			public Adapter caseCustomRecommender(CustomRecommender object) {
+				return createCustomRecommenderAdapter();
 			}
 			@Override
 			public Adapter caseRecommendationSetting(RecommendationSetting object) {
@@ -272,6 +292,10 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 				return createFeedForwardNNAdapter();
 			}
 			@Override
+			public Adapter caseGUIElement(GUIElement object) {
+				return createGUIElementAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -306,6 +330,20 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.UserEvent <em>User Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.UserEvent
+	 * @generated
+	 */
+	public Adapter createUserEventAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link lowcoders.Dataset <em>Dataset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -330,6 +368,62 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRSModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.RecommendationHandler <em>Recommendation Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.RecommendationHandler
+	 * @generated
+	 */
+	public Adapter createRecommendationHandlerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.ProactiveHandler <em>Proactive Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.ProactiveHandler
+	 * @generated
+	 */
+	public Adapter createProactiveHandlerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.ReactiveHandler <em>Reactive Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.ReactiveHandler
+	 * @generated
+	 */
+	public Adapter createReactiveHandlerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.RecommendationUsage <em>Recommendation Usage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.RecommendationUsage
+	 * @generated
+	 */
+	public Adapter createRecommendationUsageAdapter() {
 		return null;
 	}
 
@@ -362,16 +456,16 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link lowcoders.WebInterface <em>Web Interface</em>}'.
+	 * Creates a new adapter for an object of class '{@link lowcoders.WebIService <em>Web IService</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see lowcoders.WebInterface
+	 * @see lowcoders.WebIService
 	 * @generated
 	 */
-	public Adapter createWebInterfaceAdapter() {
+	public Adapter createWebIServiceAdapter() {
 		return null;
 	}
 
@@ -400,6 +494,20 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIDEIntegrationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.VSCodePlugin <em>VS Code Plugin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.VSCodePlugin
+	 * @generated
+	 */
+	public Adapter createVSCodePluginAdapter() {
 		return null;
 	}
 
@@ -656,20 +764,6 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link lowcoders.MemoryBasedRS_NOTSURE <em>Memory Based RS NOTSURE</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see lowcoders.MemoryBasedRS_NOTSURE
-	 * @generated
-	 */
-	public Adapter createMemoryBasedRS_NOTSUREAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link lowcoders.FilteringRS <em>Filtering RS</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -698,16 +792,16 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link lowcoders.CustomRecommender_SOREC <em>Custom Recommender SOREC</em>}'.
+	 * Creates a new adapter for an object of class '{@link lowcoders.CustomRecommender <em>Custom Recommender</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see lowcoders.CustomRecommender_SOREC
+	 * @see lowcoders.CustomRecommender
 	 * @generated
 	 */
-	public Adapter createCustomRecommender_SORECAdapter() {
+	public Adapter createCustomRecommenderAdapter() {
 		return null;
 	}
 
@@ -1002,6 +1096,20 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFeedForwardNNAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.GUIElement <em>GUI Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.GUIElement
+	 * @generated
+	 */
+	public Adapter createGUIElementAdapter() {
 		return null;
 	}
 

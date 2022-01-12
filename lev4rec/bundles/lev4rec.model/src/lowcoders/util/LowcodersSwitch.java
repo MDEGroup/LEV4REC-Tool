@@ -72,6 +72,12 @@ public class LowcodersSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case LowcodersPackage.USER_EVENT: {
+				UserEvent userEvent = (UserEvent)theEObject;
+				T result = caseUserEvent(userEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case LowcodersPackage.DATASET: {
 				Dataset dataset = (Dataset)theEObject;
 				T result = caseDataset(dataset);
@@ -83,6 +89,35 @@ public class LowcodersSwitch<T> extends Switch<T> {
 				RSModel rsModel = (RSModel)theEObject;
 				T result = caseRSModel(rsModel);
 				if (result == null) result = caseNamedElement(rsModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.RECOMMENDATION_HANDLER: {
+				RecommendationHandler recommendationHandler = (RecommendationHandler)theEObject;
+				T result = caseRecommendationHandler(recommendationHandler);
+				if (result == null) result = caseNamedElement(recommendationHandler);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.PROACTIVE_HANDLER: {
+				ProactiveHandler proactiveHandler = (ProactiveHandler)theEObject;
+				T result = caseProactiveHandler(proactiveHandler);
+				if (result == null) result = caseRecommendationHandler(proactiveHandler);
+				if (result == null) result = caseNamedElement(proactiveHandler);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.REACTIVE_HANDLER: {
+				ReactiveHandler reactiveHandler = (ReactiveHandler)theEObject;
+				T result = caseReactiveHandler(reactiveHandler);
+				if (result == null) result = caseRecommendationHandler(reactiveHandler);
+				if (result == null) result = caseNamedElement(reactiveHandler);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.RECOMMENDATION_USAGE: {
+				RecommendationUsage recommendationUsage = (RecommendationUsage)theEObject;
+				T result = caseRecommendationUsage(recommendationUsage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -100,11 +135,11 @@ public class LowcodersSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case LowcodersPackage.WEB_INTERFACE: {
-				WebInterface webInterface = (WebInterface)theEObject;
-				T result = caseWebInterface(webInterface);
-				if (result == null) result = casePresentationLayer(webInterface);
-				if (result == null) result = caseNamedElement(webInterface);
+			case LowcodersPackage.WEB_ISERVICE: {
+				WebIService webIService = (WebIService)theEObject;
+				T result = caseWebIService(webIService);
+				if (result == null) result = casePresentationLayer(webIService);
+				if (result == null) result = caseNamedElement(webIService);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -121,6 +156,15 @@ public class LowcodersSwitch<T> extends Switch<T> {
 				T result = caseIDEIntegration(ideIntegration);
 				if (result == null) result = casePresentationLayer(ideIntegration);
 				if (result == null) result = caseNamedElement(ideIntegration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.VS_CODE_PLUGIN: {
+				VSCodePlugin vsCodePlugin = (VSCodePlugin)theEObject;
+				T result = caseVSCodePlugin(vsCodePlugin);
+				if (result == null) result = caseIDEIntegration(vsCodePlugin);
+				if (result == null) result = casePresentationLayer(vsCodePlugin);
+				if (result == null) result = caseNamedElement(vsCodePlugin);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -262,14 +306,6 @@ public class LowcodersSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case LowcodersPackage.MEMORY_BASED_RS_NOTSURE: {
-				MemoryBasedRS_NOTSURE memoryBasedRS_NOTSURE = (MemoryBasedRS_NOTSURE)theEObject;
-				T result = caseMemoryBasedRS_NOTSURE(memoryBasedRS_NOTSURE);
-				if (result == null) result = caseRecommendationSystem(memoryBasedRS_NOTSURE);
-				if (result == null) result = caseNamedElement(memoryBasedRS_NOTSURE);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case LowcodersPackage.FILTERING_RS: {
 				FilteringRS filteringRS = (FilteringRS)theEObject;
 				T result = caseFilteringRS(filteringRS);
@@ -286,11 +322,11 @@ public class LowcodersSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case LowcodersPackage.CUSTOM_RECOMMENDER_SOREC: {
-				CustomRecommender_SOREC customRecommender_SOREC = (CustomRecommender_SOREC)theEObject;
-				T result = caseCustomRecommender_SOREC(customRecommender_SOREC);
-				if (result == null) result = caseRecommendationSystem(customRecommender_SOREC);
-				if (result == null) result = caseNamedElement(customRecommender_SOREC);
+			case LowcodersPackage.CUSTOM_RECOMMENDER: {
+				CustomRecommender customRecommender = (CustomRecommender)theEObject;
+				T result = caseCustomRecommender(customRecommender);
+				if (result == null) result = caseRecommendationSystem(customRecommender);
+				if (result == null) result = caseNamedElement(customRecommender);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -463,6 +499,12 @@ public class LowcodersSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case LowcodersPackage.GUI_ELEMENT: {
+				GUIElement guiElement = (GUIElement)theEObject;
+				T result = caseGUIElement(guiElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -479,6 +521,21 @@ public class LowcodersSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNamedElement(NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>User Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>User Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUserEvent(UserEvent object) {
 		return null;
 	}
 
@@ -513,6 +570,66 @@ public class LowcodersSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Recommendation Handler</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Recommendation Handler</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRecommendationHandler(RecommendationHandler object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Proactive Handler</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Proactive Handler</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProactiveHandler(ProactiveHandler object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reactive Handler</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reactive Handler</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReactiveHandler(ReactiveHandler object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Recommendation Usage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Recommendation Usage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRecommendationUsage(RecommendationUsage object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Data Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -543,17 +660,17 @@ public class LowcodersSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Web Interface</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Web IService</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Web Interface</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Web IService</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWebInterface(WebInterface object) {
+	public T caseWebIService(WebIService object) {
 		return null;
 	}
 
@@ -584,6 +701,21 @@ public class LowcodersSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIDEIntegration(IDEIntegration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>VS Code Plugin</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>VS Code Plugin</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVSCodePlugin(VSCodePlugin object) {
 		return null;
 	}
 
@@ -858,21 +990,6 @@ public class LowcodersSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Memory Based RS NOTSURE</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Memory Based RS NOTSURE</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMemoryBasedRS_NOTSURE(MemoryBasedRS_NOTSURE object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Filtering RS</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -903,17 +1020,17 @@ public class LowcodersSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Custom Recommender SOREC</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Custom Recommender</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Custom Recommender SOREC</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Custom Recommender</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCustomRecommender_SOREC(CustomRecommender_SOREC object) {
+	public T caseCustomRecommender(CustomRecommender object) {
 		return null;
 	}
 
@@ -1229,6 +1346,21 @@ public class LowcodersSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseFeedForwardNN(FeedForwardNN object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>GUI Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>GUI Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGUIElement(GUIElement object) {
 		return null;
 	}
 

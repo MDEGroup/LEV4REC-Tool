@@ -41,8 +41,6 @@ import lowcoders.FeedForwardNN;
 import lowcoders.FilteringRS;
 import lowcoders.FilteringRSAlgorithm;
 import lowcoders.LowcodersFactory;
-import lowcoders.MachineLearningBasedRS;
-
 import lowcoders.PreprocessingTechnique;
 import lowcoders.PresentationLayer;
 import lowcoders.PyLibType;
@@ -50,7 +48,7 @@ import lowcoders.RSModel;
 import lowcoders.RecommendationSystem;
 import lowcoders.RecurrentNN;
 import lowcoders.ValidationLibrary;
-import lowcoders.WebInterface;
+import lowcoders.WebIService;
 import lowcoders.WebInterfaceLibrary;
 
 public class Injector {
@@ -108,7 +106,7 @@ public class Injector {
 				automatedValidation.setLibrary(ValidationLibrary.SKLEARN);
 			if (isSelected(configuration, "SurpriseCrossFold") || isSelected(configuration, "SurpriseRandomSplit"))
 				automatedValidation.setLibrary(ValidationLibrary.SURPRISE);
-			evaluation.getValidationtechnique().add(automatedValidation);
+			evaluation.getValidationTechnique().add(automatedValidation);
 		}
 		if (isSelected(configuration, "RandomSpltting")) {
 			automatedValidation = LowcodersFactory.eINSTANCE.createRandomSplitting();
@@ -116,17 +114,17 @@ public class Injector {
 				automatedValidation.setLibrary(ValidationLibrary.SKLEARN);
 			if (isSelected(configuration, "SurpriseCrossFold") || isSelected(configuration, "SurpriseRandomSplit"))
 				automatedValidation.setLibrary(ValidationLibrary.SURPRISE);
-			evaluation.getValidationtechnique().add(automatedValidation);
+			evaluation.getValidationTechnique().add(automatedValidation);
 		}
 		if (isSelected(configuration, "UserStudy"))
-			evaluation.getValidationtechnique().add(LowcodersFactory.eINSTANCE.createUserStudy());
+			evaluation.getValidationTechnique().add(LowcodersFactory.eINSTANCE.createUserStudy());
 		return evaluation;
 	}
 
 	private PresentationLayer getPresentationLayer(Configuration configuration) {
 		PresentationLayer presentationLayer = null;
 		if (isSelected(configuration, "WebInterface")) {
-			WebInterface webInterface = LowcodersFactory.eINSTANCE.createWebInterface();
+			WebIService webInterface = LowcodersFactory.eINSTANCE.createWebIService();
 			if (isSelected(configuration, "Flask"))
 				webInterface.setLibrary(WebInterfaceLibrary.FLASK);
 			if (isSelected(configuration, "Spring"))

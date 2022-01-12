@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link lowcoders.Evaluation#getBaselines <em>Baselines</em>}</li>
  *   <li>{@link lowcoders.Evaluation#getMetrics <em>Metrics</em>}</li>
- *   <li>{@link lowcoders.Evaluation#getValidationtechnique <em>Validationtechnique</em>}</li>
+ *   <li>{@link lowcoders.Evaluation#getValidationTechnique <em>Validation Technique</em>}</li>
  * </ul>
  *
  * @see lowcoders.LowcodersPackage#getEvaluation()
@@ -50,15 +50,15 @@ public interface Evaluation extends NamedElement {
 	EList<Metric> getMetrics();
 
 	/**
-	 * Returns the value of the '<em><b>Validationtechnique</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Validation Technique</b></em>' containment reference list.
 	 * The list contents are of type {@link lowcoders.ValidationTechnique}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Validationtechnique</em>' containment reference list.
-	 * @see lowcoders.LowcodersPackage#getEvaluation_Validationtechnique()
+	 * @return the value of the '<em>Validation Technique</em>' containment reference list.
+	 * @see lowcoders.LowcodersPackage#getEvaluation_ValidationTechnique()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ValidationTechnique> getValidationtechnique();
+	EList<ValidationTechnique> getValidationTechnique();
 
 } // Evaluation

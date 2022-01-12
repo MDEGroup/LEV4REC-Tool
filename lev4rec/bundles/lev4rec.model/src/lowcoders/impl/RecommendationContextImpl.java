@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link lowcoders.impl.RecommendationContextImpl#getUsercontext <em>Usercontext</em>}</li>
+ *   <li>{@link lowcoders.impl.RecommendationContextImpl#getUserContext <em>User Context</em>}</li>
  *   <li>{@link lowcoders.impl.RecommendationContextImpl#isIsProactiveSystem <em>Is Proactive System</em>}</li>
  * </ul>
  *
@@ -29,14 +29,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class RecommendationContextImpl extends NamedElementImpl implements RecommendationContext {
 	/**
-	 * The cached value of the '{@link #getUsercontext() <em>Usercontext</em>}' reference.
+	 * The cached value of the '{@link #getUserContext() <em>User Context</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUsercontext()
+	 * @see #getUserContext()
 	 * @generated
 	 * @ordered
 	 */
-	protected DataStructure usercontext;
+	protected DataStructure userContext;
 
 	/**
 	 * The default value of the '{@link #isIsProactiveSystem() <em>Is Proactive System</em>}' attribute.
@@ -83,16 +83,16 @@ public class RecommendationContextImpl extends NamedElementImpl implements Recom
 	 * @generated
 	 */
 	@Override
-	public DataStructure getUsercontext() {
-		if (usercontext != null && usercontext.eIsProxy()) {
-			InternalEObject oldUsercontext = (InternalEObject)usercontext;
-			usercontext = (DataStructure)eResolveProxy(oldUsercontext);
-			if (usercontext != oldUsercontext) {
+	public DataStructure getUserContext() {
+		if (userContext != null && userContext.eIsProxy()) {
+			InternalEObject oldUserContext = (InternalEObject)userContext;
+			userContext = (DataStructure)eResolveProxy(oldUserContext);
+			if (userContext != oldUserContext) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LowcodersPackage.RECOMMENDATION_CONTEXT__USERCONTEXT, oldUsercontext, usercontext));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LowcodersPackage.RECOMMENDATION_CONTEXT__USER_CONTEXT, oldUserContext, userContext));
 			}
 		}
-		return usercontext;
+		return userContext;
 	}
 
 	/**
@@ -100,8 +100,8 @@ public class RecommendationContextImpl extends NamedElementImpl implements Recom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataStructure basicGetUsercontext() {
-		return usercontext;
+	public DataStructure basicGetUserContext() {
+		return userContext;
 	}
 
 	/**
@@ -110,11 +110,11 @@ public class RecommendationContextImpl extends NamedElementImpl implements Recom
 	 * @generated
 	 */
 	@Override
-	public void setUsercontext(DataStructure newUsercontext) {
-		DataStructure oldUsercontext = usercontext;
-		usercontext = newUsercontext;
+	public void setUserContext(DataStructure newUserContext) {
+		DataStructure oldUserContext = userContext;
+		userContext = newUserContext;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.RECOMMENDATION_CONTEXT__USERCONTEXT, oldUsercontext, usercontext));
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.RECOMMENDATION_CONTEXT__USER_CONTEXT, oldUserContext, userContext));
 	}
 
 	/**
@@ -148,9 +148,9 @@ public class RecommendationContextImpl extends NamedElementImpl implements Recom
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LowcodersPackage.RECOMMENDATION_CONTEXT__USERCONTEXT:
-				if (resolve) return getUsercontext();
-				return basicGetUsercontext();
+			case LowcodersPackage.RECOMMENDATION_CONTEXT__USER_CONTEXT:
+				if (resolve) return getUserContext();
+				return basicGetUserContext();
 			case LowcodersPackage.RECOMMENDATION_CONTEXT__IS_PROACTIVE_SYSTEM:
 				return isIsProactiveSystem();
 		}
@@ -165,8 +165,8 @@ public class RecommendationContextImpl extends NamedElementImpl implements Recom
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LowcodersPackage.RECOMMENDATION_CONTEXT__USERCONTEXT:
-				setUsercontext((DataStructure)newValue);
+			case LowcodersPackage.RECOMMENDATION_CONTEXT__USER_CONTEXT:
+				setUserContext((DataStructure)newValue);
 				return;
 			case LowcodersPackage.RECOMMENDATION_CONTEXT__IS_PROACTIVE_SYSTEM:
 				setIsProactiveSystem((Boolean)newValue);
@@ -183,8 +183,8 @@ public class RecommendationContextImpl extends NamedElementImpl implements Recom
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LowcodersPackage.RECOMMENDATION_CONTEXT__USERCONTEXT:
-				setUsercontext((DataStructure)null);
+			case LowcodersPackage.RECOMMENDATION_CONTEXT__USER_CONTEXT:
+				setUserContext((DataStructure)null);
 				return;
 			case LowcodersPackage.RECOMMENDATION_CONTEXT__IS_PROACTIVE_SYSTEM:
 				setIsProactiveSystem(IS_PROACTIVE_SYSTEM_EDEFAULT);
@@ -201,8 +201,8 @@ public class RecommendationContextImpl extends NamedElementImpl implements Recom
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LowcodersPackage.RECOMMENDATION_CONTEXT__USERCONTEXT:
-				return usercontext != null;
+			case LowcodersPackage.RECOMMENDATION_CONTEXT__USER_CONTEXT:
+				return userContext != null;
 			case LowcodersPackage.RECOMMENDATION_CONTEXT__IS_PROACTIVE_SYSTEM:
 				return isProactiveSystem != IS_PROACTIVE_SYSTEM_EDEFAULT;
 		}

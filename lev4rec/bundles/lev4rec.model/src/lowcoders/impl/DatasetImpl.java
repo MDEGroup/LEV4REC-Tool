@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link lowcoders.impl.DatasetImpl#getDataStructure <em>Data Structure</em>}</li>
  *   <li>{@link lowcoders.impl.DatasetImpl#getPreprocessing <em>Preprocessing</em>}</li>
  *   <li>{@link lowcoders.impl.DatasetImpl#getDatasetManipulationLibrary <em>Dataset Manipulation Library</em>}</li>
+ *   <li>{@link lowcoders.impl.DatasetImpl#getPath <em>Path</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,6 +82,26 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 	 * @ordered
 	 */
 	protected EList<DatasetManipulationLibrary> datasetManipulationLibrary;
+
+	/**
+	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PATH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String path = PATH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,6 +212,29 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 	 * @generated
 	 */
 	@Override
+	public String getPath() {
+		return path;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setPath(String newPath) {
+		String oldPath = path;
+		path = newPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.DATASET__PATH, oldPath, path));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LowcodersPackage.DATASET__INDIPENDENT_VARIABLES:
@@ -217,6 +261,8 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 				return getPreprocessing();
 			case LowcodersPackage.DATASET__DATASET_MANIPULATION_LIBRARY:
 				return getDatasetManipulationLibrary();
+			case LowcodersPackage.DATASET__PATH:
+				return getPath();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -245,6 +291,9 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 				getDatasetManipulationLibrary().clear();
 				getDatasetManipulationLibrary().addAll((Collection<? extends DatasetManipulationLibrary>)newValue);
 				return;
+			case LowcodersPackage.DATASET__PATH:
+				setPath((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -269,6 +318,9 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 			case LowcodersPackage.DATASET__DATASET_MANIPULATION_LIBRARY:
 				getDatasetManipulationLibrary().clear();
 				return;
+			case LowcodersPackage.DATASET__PATH:
+				setPath(PATH_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -289,6 +341,8 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 				return preprocessing != null && !preprocessing.isEmpty();
 			case LowcodersPackage.DATASET__DATASET_MANIPULATION_LIBRARY:
 				return datasetManipulationLibrary != null && !datasetManipulationLibrary.isEmpty();
+			case LowcodersPackage.DATASET__PATH:
+				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -307,6 +361,8 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 		result.append(preprocessing);
 		result.append(", datasetManipulationLibrary: ");
 		result.append(datasetManipulationLibrary);
+		result.append(", path: ");
+		result.append(path);
 		result.append(')');
 		return result.toString();
 	}

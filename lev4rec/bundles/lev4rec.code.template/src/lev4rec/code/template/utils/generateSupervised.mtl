@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generateSupervised('http://lev4rec/lowcode')]
+[module generateSupervised('https://it.disim.univaq/lowcode')]
 
 
 [template public generateSupervised(aSupervisedDataset : SupervisedDataset)]

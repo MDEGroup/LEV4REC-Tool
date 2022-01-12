@@ -2,25 +2,27 @@
  */
 package lowcoders.impl;
 
+import lowcoders.GUIElement;
 import lowcoders.LowcodersPackage;
-import lowcoders.MemoryBasedRS_NOTSURE;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Memory Based RS NOTSURE</b></em>'.
+ * An implementation of the model object '<em><b>GUI Element</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class MemoryBasedRS_NOTSUREImpl extends RecommendationSystemImpl implements MemoryBasedRS_NOTSURE {
+public class GUIElementImpl extends MinimalEObjectImpl.Container implements GUIElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MemoryBasedRS_NOTSUREImpl() {
+	protected GUIElementImpl() {
 		super();
 	}
 
@@ -31,7 +33,7 @@ public class MemoryBasedRS_NOTSUREImpl extends RecommendationSystemImpl implemen
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return LowcodersPackage.Literals.MEMORY_BASED_RS_NOTSURE;
+		return LowcodersPackage.Literals.GUI_ELEMENT;
 	}
 
-} //MemoryBasedRS_NOTSUREImpl
+} //GUIElementImpl

@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link lowcoders.impl.EvaluationImpl#getBaselines <em>Baselines</em>}</li>
  *   <li>{@link lowcoders.impl.EvaluationImpl#getMetrics <em>Metrics</em>}</li>
- *   <li>{@link lowcoders.impl.EvaluationImpl#getValidationtechnique <em>Validationtechnique</em>}</li>
+ *   <li>{@link lowcoders.impl.EvaluationImpl#getValidationTechnique <em>Validation Technique</em>}</li>
  * </ul>
  *
  * @generated
@@ -57,14 +57,14 @@ public class EvaluationImpl extends NamedElementImpl implements Evaluation {
 	protected EList<Metric> metrics;
 
 	/**
-	 * The cached value of the '{@link #getValidationtechnique() <em>Validationtechnique</em>}' containment reference list.
+	 * The cached value of the '{@link #getValidationTechnique() <em>Validation Technique</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValidationtechnique()
+	 * @see #getValidationTechnique()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ValidationTechnique> validationtechnique;
+	protected EList<ValidationTechnique> validationTechnique;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,11 +117,11 @@ public class EvaluationImpl extends NamedElementImpl implements Evaluation {
 	 * @generated
 	 */
 	@Override
-	public EList<ValidationTechnique> getValidationtechnique() {
-		if (validationtechnique == null) {
-			validationtechnique = new EObjectContainmentEList<ValidationTechnique>(ValidationTechnique.class, this, LowcodersPackage.EVALUATION__VALIDATIONTECHNIQUE);
+	public EList<ValidationTechnique> getValidationTechnique() {
+		if (validationTechnique == null) {
+			validationTechnique = new EObjectContainmentEList<ValidationTechnique>(ValidationTechnique.class, this, LowcodersPackage.EVALUATION__VALIDATION_TECHNIQUE);
 		}
-		return validationtechnique;
+		return validationTechnique;
 	}
 
 	/**
@@ -132,8 +132,8 @@ public class EvaluationImpl extends NamedElementImpl implements Evaluation {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case LowcodersPackage.EVALUATION__VALIDATIONTECHNIQUE:
-				return ((InternalEList<?>)getValidationtechnique()).basicRemove(otherEnd, msgs);
+			case LowcodersPackage.EVALUATION__VALIDATION_TECHNIQUE:
+				return ((InternalEList<?>)getValidationTechnique()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -150,8 +150,8 @@ public class EvaluationImpl extends NamedElementImpl implements Evaluation {
 				return getBaselines();
 			case LowcodersPackage.EVALUATION__METRICS:
 				return getMetrics();
-			case LowcodersPackage.EVALUATION__VALIDATIONTECHNIQUE:
-				return getValidationtechnique();
+			case LowcodersPackage.EVALUATION__VALIDATION_TECHNIQUE:
+				return getValidationTechnique();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -173,9 +173,9 @@ public class EvaluationImpl extends NamedElementImpl implements Evaluation {
 				getMetrics().clear();
 				getMetrics().addAll((Collection<? extends Metric>)newValue);
 				return;
-			case LowcodersPackage.EVALUATION__VALIDATIONTECHNIQUE:
-				getValidationtechnique().clear();
-				getValidationtechnique().addAll((Collection<? extends ValidationTechnique>)newValue);
+			case LowcodersPackage.EVALUATION__VALIDATION_TECHNIQUE:
+				getValidationTechnique().clear();
+				getValidationTechnique().addAll((Collection<? extends ValidationTechnique>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -195,8 +195,8 @@ public class EvaluationImpl extends NamedElementImpl implements Evaluation {
 			case LowcodersPackage.EVALUATION__METRICS:
 				getMetrics().clear();
 				return;
-			case LowcodersPackage.EVALUATION__VALIDATIONTECHNIQUE:
-				getValidationtechnique().clear();
+			case LowcodersPackage.EVALUATION__VALIDATION_TECHNIQUE:
+				getValidationTechnique().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -214,8 +214,8 @@ public class EvaluationImpl extends NamedElementImpl implements Evaluation {
 				return baselines != null && !baselines.isEmpty();
 			case LowcodersPackage.EVALUATION__METRICS:
 				return metrics != null && !metrics.isEmpty();
-			case LowcodersPackage.EVALUATION__VALIDATIONTECHNIQUE:
-				return validationtechnique != null && !validationtechnique.isEmpty();
+			case LowcodersPackage.EVALUATION__VALIDATION_TECHNIQUE:
+				return validationTechnique != null && !validationTechnique.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

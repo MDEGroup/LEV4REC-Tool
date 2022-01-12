@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class DataStructureImpl extends NamedElementImpl implements DataStructure {
+public abstract class DataStructureImpl extends NamedElementImpl implements DataStructure {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -31,6 +31,15 @@ public interface LowcodersFactory extends EFactory {
 	NamedElement createNamedElement();
 
 	/**
+	 * Returns a new object of class '<em>User Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>User Event</em>'.
+	 * @generated
+	 */
+	UserEvent createUserEvent();
+
+	/**
 	 * Returns a new object of class '<em>RS Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40,13 +49,49 @@ public interface LowcodersFactory extends EFactory {
 	RSModel createRSModel();
 
 	/**
-	 * Returns a new object of class '<em>Web Interface</em>'.
+	 * Returns a new object of class '<em>Recommendation Handler</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Web Interface</em>'.
+	 * @return a new object of class '<em>Recommendation Handler</em>'.
 	 * @generated
 	 */
-	WebInterface createWebInterface();
+	RecommendationHandler createRecommendationHandler();
+
+	/**
+	 * Returns a new object of class '<em>Proactive Handler</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Proactive Handler</em>'.
+	 * @generated
+	 */
+	ProactiveHandler createProactiveHandler();
+
+	/**
+	 * Returns a new object of class '<em>Reactive Handler</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Reactive Handler</em>'.
+	 * @generated
+	 */
+	ReactiveHandler createReactiveHandler();
+
+	/**
+	 * Returns a new object of class '<em>Recommendation Usage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Recommendation Usage</em>'.
+	 * @generated
+	 */
+	RecommendationUsage createRecommendationUsage();
+
+	/**
+	 * Returns a new object of class '<em>Web IService</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Web IService</em>'.
+	 * @generated
+	 */
+	WebIService createWebIService();
 
 	/**
 	 * Returns a new object of class '<em>Web Application</em>'.
@@ -65,6 +110,15 @@ public interface LowcodersFactory extends EFactory {
 	 * @generated
 	 */
 	IDEIntegration createIDEIntegration();
+
+	/**
+	 * Returns a new object of class '<em>VS Code Plugin</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>VS Code Plugin</em>'.
+	 * @generated
+	 */
+	VSCodePlugin createVSCodePlugin();
 
 	/**
 	 * Returns a new object of class '<em>Traversable Graph</em>'.
@@ -148,15 +202,6 @@ public interface LowcodersFactory extends EFactory {
 	BugTrackingSystem createBugTrackingSystem();
 
 	/**
-	 * Returns a new object of class '<em>Data Structure</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Structure</em>'.
-	 * @generated
-	 */
-	DataStructure createDataStructure();
-
-	/**
 	 * Returns a new object of class '<em>Graph</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -211,15 +256,6 @@ public interface LowcodersFactory extends EFactory {
 	MachineLearningBasedRS createMachineLearningBasedRS();
 
 	/**
-	 * Returns a new object of class '<em>Memory Based RS NOTSURE</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Memory Based RS NOTSURE</em>'.
-	 * @generated
-	 */
-	MemoryBasedRS_NOTSURE createMemoryBasedRS_NOTSURE();
-
-	/**
 	 * Returns a new object of class '<em>Filtering RS</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -238,13 +274,13 @@ public interface LowcodersFactory extends EFactory {
 	DataMiningRS createDataMiningRS();
 
 	/**
-	 * Returns a new object of class '<em>Custom Recommender SOREC</em>'.
+	 * Returns a new object of class '<em>Custom Recommender</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Custom Recommender SOREC</em>'.
+	 * @return a new object of class '<em>Custom Recommender</em>'.
 	 * @generated
 	 */
-	CustomRecommender_SOREC createCustomRecommender_SOREC();
+	CustomRecommender createCustomRecommender();
 
 	/**
 	 * Returns a new object of class '<em>Recommendation Setting</em>'.
@@ -434,6 +470,15 @@ public interface LowcodersFactory extends EFactory {
 	 * @generated
 	 */
 	FeedForwardNN createFeedForwardNN();
+
+	/**
+	 * Returns a new object of class '<em>GUI Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>GUI Element</em>'.
+	 * @generated
+	 */
+	GUIElement createGUIElement();
 
 	/**
 	 * Returns the package supported by this factory.

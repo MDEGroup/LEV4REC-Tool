@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<lowcoders:RSModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lowcoders="http://lev4rec/lowcode" name="Generated Model">
+<lowcoders:RSModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lowcoders="https://it.disim.univaq/lowcode" name="Generated Model">
   <dataset xsi:type="lowcoders:UnsupervisedDataset" name="DATASET NAME">
     <dataStructure xsi:type="lowcoders:Matrix"/>
     <preprocessing>NORMALIZATION</preprocessing>

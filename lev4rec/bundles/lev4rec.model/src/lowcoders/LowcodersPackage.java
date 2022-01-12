@@ -40,7 +40,7 @@ public interface LowcodersPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://lev4rec/lowcode";
+	String eNS_URI = "https://it.disim.univaq/lowcode";
 
 	/**
 	 * The package namespace name.
@@ -96,6 +96,43 @@ public interface LowcodersPackage extends EPackage {
 	int NAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link lowcoders.impl.UserEventImpl <em>User Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.UserEventImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getUserEvent()
+	 * @generated
+	 */
+	int USER_EVENT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Event Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_EVENT__EVENT_TYPE = 0;
+
+	/**
+	 * The number of structural features of the '<em>User Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_EVENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>User Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_EVENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link lowcoders.impl.DatasetImpl <em>Dataset</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,7 +140,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDataset()
 	 * @generated
 	 */
-	int DATASET = 1;
+	int DATASET = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -151,13 +188,22 @@ public interface LowcodersPackage extends EPackage {
 	int DATASET__DATASET_MANIPULATION_LIBRARY = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATASET__PATH = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Dataset</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int DATASET_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Dataset</em>' class.
@@ -176,7 +222,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRSModel()
 	 * @generated
 	 */
-	int RS_MODEL = 2;
+	int RS_MODEL = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -242,6 +288,271 @@ public interface LowcodersPackage extends EPackage {
 	int RS_MODEL_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link lowcoders.impl.RecommendationHandlerImpl <em>Recommendation Handler</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.RecommendationHandlerImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendationHandler()
+	 * @generated
+	 */
+	int RECOMMENDATION_HANDLER = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_HANDLER__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Usage</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_HANDLER__USAGE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Web Service</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_HANDLER__WEB_SERVICE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_HANDLER__CONTEXT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Recommendation Handler</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_HANDLER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Recommendation Handler</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_HANDLER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.impl.ProactiveHandlerImpl <em>Proactive Handler</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.ProactiveHandlerImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getProactiveHandler()
+	 * @generated
+	 */
+	int PROACTIVE_HANDLER = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROACTIVE_HANDLER__NAME = RECOMMENDATION_HANDLER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Usage</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROACTIVE_HANDLER__USAGE = RECOMMENDATION_HANDLER__USAGE;
+
+	/**
+	 * The feature id for the '<em><b>Web Service</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROACTIVE_HANDLER__WEB_SERVICE = RECOMMENDATION_HANDLER__WEB_SERVICE;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROACTIVE_HANDLER__CONTEXT = RECOMMENDATION_HANDLER__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROACTIVE_HANDLER__CONDITION = RECOMMENDATION_HANDLER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Proactive Handler</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROACTIVE_HANDLER_FEATURE_COUNT = RECOMMENDATION_HANDLER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Proactive Handler</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROACTIVE_HANDLER_OPERATION_COUNT = RECOMMENDATION_HANDLER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.impl.ReactiveHandlerImpl <em>Reactive Handler</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.ReactiveHandlerImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getReactiveHandler()
+	 * @generated
+	 */
+	int REACTIVE_HANDLER = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REACTIVE_HANDLER__NAME = RECOMMENDATION_HANDLER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Usage</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REACTIVE_HANDLER__USAGE = RECOMMENDATION_HANDLER__USAGE;
+
+	/**
+	 * The feature id for the '<em><b>Web Service</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REACTIVE_HANDLER__WEB_SERVICE = RECOMMENDATION_HANDLER__WEB_SERVICE;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REACTIVE_HANDLER__CONTEXT = RECOMMENDATION_HANDLER__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Event</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REACTIVE_HANDLER__EVENT = RECOMMENDATION_HANDLER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Reactive Handler</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REACTIVE_HANDLER_FEATURE_COUNT = RECOMMENDATION_HANDLER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Reactive Handler</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REACTIVE_HANDLER_OPERATION_COUNT = RECOMMENDATION_HANDLER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.impl.RecommendationUsageImpl <em>Recommendation Usage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.RecommendationUsageImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendationUsage()
+	 * @generated
+	 */
+	int RECOMMENDATION_USAGE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Usage Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_USAGE__USAGE_TYPE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Recommended Items</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_USAGE__RECOMMENDED_ITEMS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Guielements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_USAGE__GUIELEMENTS = 2;
+
+	/**
+	 * The number of structural features of the '<em>Recommendation Usage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_USAGE_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Recommendation Usage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_USAGE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link lowcoders.impl.DataSourceImpl <em>Data Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,7 +560,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDataSource()
 	 * @generated
 	 */
-	int DATA_SOURCE = 3;
+	int DATA_SOURCE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -286,7 +597,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getPresentationLayer()
 	 * @generated
 	 */
-	int PRESENTATION_LAYER = 4;
+	int PRESENTATION_LAYER = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -325,14 +636,14 @@ public interface LowcodersPackage extends EPackage {
 	int PRESENTATION_LAYER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link lowcoders.impl.WebInterfaceImpl <em>Web Interface</em>}' class.
+	 * The meta object id for the '{@link lowcoders.impl.WebIServiceImpl <em>Web IService</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see lowcoders.impl.WebInterfaceImpl
-	 * @see lowcoders.impl.LowcodersPackageImpl#getWebInterface()
+	 * @see lowcoders.impl.WebIServiceImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getWebIService()
 	 * @generated
 	 */
-	int WEB_INTERFACE = 5;
+	int WEB_ISERVICE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -341,7 +652,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WEB_INTERFACE__NAME = PRESENTATION_LAYER__NAME;
+	int WEB_ISERVICE__NAME = PRESENTATION_LAYER__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Recommendations</b></em>' reference.
@@ -350,7 +661,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WEB_INTERFACE__RECOMMENDATIONS = PRESENTATION_LAYER__RECOMMENDATIONS;
+	int WEB_ISERVICE__RECOMMENDATIONS = PRESENTATION_LAYER__RECOMMENDATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute.
@@ -359,25 +670,25 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WEB_INTERFACE__LIBRARY = PRESENTATION_LAYER_FEATURE_COUNT + 0;
+	int WEB_ISERVICE__LIBRARY = PRESENTATION_LAYER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Web Interface</em>' class.
+	 * The number of structural features of the '<em>Web IService</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WEB_INTERFACE_FEATURE_COUNT = PRESENTATION_LAYER_FEATURE_COUNT + 1;
+	int WEB_ISERVICE_FEATURE_COUNT = PRESENTATION_LAYER_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Web Interface</em>' class.
+	 * The number of operations of the '<em>Web IService</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WEB_INTERFACE_OPERATION_COUNT = PRESENTATION_LAYER_OPERATION_COUNT + 0;
+	int WEB_ISERVICE_OPERATION_COUNT = PRESENTATION_LAYER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.impl.WebApplicationImpl <em>Web Application</em>}' class.
@@ -387,7 +698,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getWebApplication()
 	 * @generated
 	 */
-	int WEB_APPLICATION = 6;
+	int WEB_APPLICATION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -433,7 +744,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getIDEIntegration()
 	 * @generated
 	 */
-	int IDE_INTEGRATION = 7;
+	int IDE_INTEGRATION = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -472,6 +783,61 @@ public interface LowcodersPackage extends EPackage {
 	int IDE_INTEGRATION_OPERATION_COUNT = PRESENTATION_LAYER_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link lowcoders.impl.VSCodePluginImpl <em>VS Code Plugin</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.VSCodePluginImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getVSCodePlugin()
+	 * @generated
+	 */
+	int VS_CODE_PLUGIN = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VS_CODE_PLUGIN__NAME = IDE_INTEGRATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Recommendations</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VS_CODE_PLUGIN__RECOMMENDATIONS = IDE_INTEGRATION__RECOMMENDATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Handler</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VS_CODE_PLUGIN__HANDLER = IDE_INTEGRATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>VS Code Plugin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VS_CODE_PLUGIN_FEATURE_COUNT = IDE_INTEGRATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>VS Code Plugin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VS_CODE_PLUGIN_OPERATION_COUNT = IDE_INTEGRATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link lowcoders.impl.TraversableGraphImpl <em>Traversable Graph</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -479,7 +845,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getTraversableGraph()
 	 * @generated
 	 */
-	int TRAVERSABLE_GRAPH = 8;
+	int TRAVERSABLE_GRAPH = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -525,7 +891,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getEvaluation()
 	 * @generated
 	 */
-	int EVALUATION = 9;
+	int EVALUATION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -555,13 +921,13 @@ public interface LowcodersPackage extends EPackage {
 	int EVALUATION__METRICS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Validationtechnique</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Validation Technique</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVALUATION__VALIDATIONTECHNIQUE = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int EVALUATION__VALIDATION_TECHNIQUE = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Evaluation</em>' class.
@@ -589,7 +955,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getValidationTechnique()
 	 * @generated
 	 */
-	int VALIDATION_TECHNIQUE = 10;
+	int VALIDATION_TECHNIQUE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -635,7 +1001,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getUnsupervisedDataset()
 	 * @generated
 	 */
-	int UNSUPERVISED_DATASET = 11;
+	int UNSUPERVISED_DATASET = 17;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -683,6 +1049,15 @@ public interface LowcodersPackage extends EPackage {
 	int UNSUPERVISED_DATASET__DATASET_MANIPULATION_LIBRARY = DATASET__DATASET_MANIPULATION_LIBRARY;
 
 	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSUPERVISED_DATASET__PATH = DATASET__PATH;
+
+	/**
 	 * The number of structural features of the '<em>Unsupervised Dataset</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -708,7 +1083,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getSupervisedDataset()
 	 * @generated
 	 */
-	int SUPERVISED_DATASET = 12;
+	int SUPERVISED_DATASET = 18;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -756,6 +1131,15 @@ public interface LowcodersPackage extends EPackage {
 	int SUPERVISED_DATASET__DATASET_MANIPULATION_LIBRARY = DATASET__DATASET_MANIPULATION_LIBRARY;
 
 	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPERVISED_DATASET__PATH = DATASET__PATH;
+
+	/**
 	 * The feature id for the '<em><b>Dependat Variable</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -790,7 +1174,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 13;
+	int VARIABLE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -872,7 +1256,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getPreprocessing()
 	 * @generated
 	 */
-	int PREPROCESSING = 14;
+	int PREPROCESSING = 20;
 
 	/**
 	 * The feature id for the '<em><b>Preprocessig Technique</b></em>' attribute list.
@@ -909,7 +1293,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getCodeRepository()
 	 * @generated
 	 */
-	int CODE_REPOSITORY = 15;
+	int CODE_REPOSITORY = 21;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -955,7 +1339,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getCommunicationChannel()
 	 * @generated
 	 */
-	int COMMUNICATION_CHANNEL = 16;
+	int COMMUNICATION_CHANNEL = 22;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -992,7 +1376,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getBugTrackingSystem()
 	 * @generated
 	 */
-	int BUG_TRACKING_SYSTEM = 17;
+	int BUG_TRACKING_SYSTEM = 23;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1029,7 +1413,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDataStructure()
 	 * @generated
 	 */
-	int DATA_STRUCTURE = 18;
+	int DATA_STRUCTURE = 24;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1066,7 +1450,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getGraph()
 	 * @generated
 	 */
-	int GRAPH = 19;
+	int GRAPH = 25;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1121,7 +1505,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getMatrix()
 	 * @generated
 	 */
-	int MATRIX = 20;
+	int MATRIX = 26;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1167,7 +1551,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getTree()
 	 * @generated
 	 */
-	int TREE = 21;
+	int TREE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1222,7 +1606,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getTextualContent()
 	 * @generated
 	 */
-	int TEXTUAL_CONTENT = 22;
+	int TEXTUAL_CONTENT = 28;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1277,7 +1661,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getARFF()
 	 * @generated
 	 */
-	int ARFF = 23;
+	int ARFF = 29;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1323,7 +1707,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendationSystem()
 	 * @generated
 	 */
-	int RECOMMENDATION_SYSTEM = 24;
+	int RECOMMENDATION_SYSTEM = 30;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1335,31 +1719,31 @@ public interface LowcodersPackage extends EPackage {
 	int RECOMMENDATION_SYSTEM__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int RECOMMENDATION_SYSTEM__SETTINGS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int RECOMMENDATION_SYSTEM__SCOPE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int RECOMMENDATION_SYSTEM__CONTEXT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -1396,7 +1780,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getMachineLearningBasedRS()
 	 * @generated
 	 */
-	int MACHINE_LEARNING_BASED_RS = 25;
+	int MACHINE_LEARNING_BASED_RS = 31;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1408,31 +1792,31 @@ public interface LowcodersPackage extends EPackage {
 	int MACHINE_LEARNING_BASED_RS__NAME = RECOMMENDATION_SYSTEM__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_LEARNING_BASED_RS__RECOMMENDER_SETTINGS = RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS;
+	int MACHINE_LEARNING_BASED_RS__SETTINGS = RECOMMENDATION_SYSTEM__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_LEARNING_BASED_RS__RECOMMENDATION_SCOPE = RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE;
+	int MACHINE_LEARNING_BASED_RS__SCOPE = RECOMMENDATION_SYSTEM__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_LEARNING_BASED_RS__RECOMMENDATION_CONTEXT = RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT;
+	int MACHINE_LEARNING_BASED_RS__CONTEXT = RECOMMENDATION_SYSTEM__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -1489,79 +1873,6 @@ public interface LowcodersPackage extends EPackage {
 	int MACHINE_LEARNING_BASED_RS_OPERATION_COUNT = RECOMMENDATION_SYSTEM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link lowcoders.impl.MemoryBasedRS_NOTSUREImpl <em>Memory Based RS NOTSURE</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see lowcoders.impl.MemoryBasedRS_NOTSUREImpl
-	 * @see lowcoders.impl.LowcodersPackageImpl#getMemoryBasedRS_NOTSURE()
-	 * @generated
-	 */
-	int MEMORY_BASED_RS_NOTSURE = 26;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_BASED_RS_NOTSURE__NAME = RECOMMENDATION_SYSTEM__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_BASED_RS_NOTSURE__RECOMMENDER_SETTINGS = RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS;
-
-	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_BASED_RS_NOTSURE__RECOMMENDATION_SCOPE = RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE;
-
-	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_BASED_RS_NOTSURE__RECOMMENDATION_CONTEXT = RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Generator</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_BASED_RS_NOTSURE__GENERATOR = RECOMMENDATION_SYSTEM__GENERATOR;
-
-	/**
-	 * The number of structural features of the '<em>Memory Based RS NOTSURE</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_BASED_RS_NOTSURE_FEATURE_COUNT = RECOMMENDATION_SYSTEM_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Memory Based RS NOTSURE</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MEMORY_BASED_RS_NOTSURE_OPERATION_COUNT = RECOMMENDATION_SYSTEM_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link lowcoders.impl.FilteringRSImpl <em>Filtering RS</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1569,7 +1880,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getFilteringRS()
 	 * @generated
 	 */
-	int FILTERING_RS = 27;
+	int FILTERING_RS = 32;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1581,31 +1892,31 @@ public interface LowcodersPackage extends EPackage {
 	int FILTERING_RS__NAME = RECOMMENDATION_SYSTEM__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILTERING_RS__RECOMMENDER_SETTINGS = RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS;
+	int FILTERING_RS__SETTINGS = RECOMMENDATION_SYSTEM__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILTERING_RS__RECOMMENDATION_SCOPE = RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE;
+	int FILTERING_RS__SCOPE = RECOMMENDATION_SYSTEM__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILTERING_RS__RECOMMENDATION_CONTEXT = RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT;
+	int FILTERING_RS__CONTEXT = RECOMMENDATION_SYSTEM__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -1678,7 +1989,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDataMiningRS()
 	 * @generated
 	 */
-	int DATA_MINING_RS = 28;
+	int DATA_MINING_RS = 33;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1690,31 +2001,31 @@ public interface LowcodersPackage extends EPackage {
 	int DATA_MINING_RS__NAME = RECOMMENDATION_SYSTEM__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MINING_RS__RECOMMENDER_SETTINGS = RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS;
+	int DATA_MINING_RS__SETTINGS = RECOMMENDATION_SYSTEM__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MINING_RS__RECOMMENDATION_SCOPE = RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE;
+	int DATA_MINING_RS__SCOPE = RECOMMENDATION_SYSTEM__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MINING_RS__RECOMMENDATION_CONTEXT = RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT;
+	int DATA_MINING_RS__CONTEXT = RECOMMENDATION_SYSTEM__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -1753,14 +2064,14 @@ public interface LowcodersPackage extends EPackage {
 	int DATA_MINING_RS_OPERATION_COUNT = RECOMMENDATION_SYSTEM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link lowcoders.impl.CustomRecommender_SORECImpl <em>Custom Recommender SOREC</em>}' class.
+	 * The meta object id for the '{@link lowcoders.impl.CustomRecommenderImpl <em>Custom Recommender</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see lowcoders.impl.CustomRecommender_SORECImpl
-	 * @see lowcoders.impl.LowcodersPackageImpl#getCustomRecommender_SOREC()
+	 * @see lowcoders.impl.CustomRecommenderImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getCustomRecommender()
 	 * @generated
 	 */
-	int CUSTOM_RECOMMENDER_SOREC = 29;
+	int CUSTOM_RECOMMENDER = 34;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1769,34 +2080,34 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_RECOMMENDER_SOREC__NAME = RECOMMENDATION_SYSTEM__NAME;
+	int CUSTOM_RECOMMENDER__NAME = RECOMMENDATION_SYSTEM__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_RECOMMENDER_SOREC__RECOMMENDER_SETTINGS = RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS;
+	int CUSTOM_RECOMMENDER__SETTINGS = RECOMMENDATION_SYSTEM__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_RECOMMENDER_SOREC__RECOMMENDATION_SCOPE = RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE;
+	int CUSTOM_RECOMMENDER__SCOPE = RECOMMENDATION_SYSTEM__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_RECOMMENDER_SOREC__RECOMMENDATION_CONTEXT = RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT;
+	int CUSTOM_RECOMMENDER__CONTEXT = RECOMMENDATION_SYSTEM__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -1805,7 +2116,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_RECOMMENDER_SOREC__GENERATOR = RECOMMENDATION_SYSTEM__GENERATOR;
+	int CUSTOM_RECOMMENDER__GENERATOR = RECOMMENDATION_SYSTEM__GENERATOR;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1814,7 +2125,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_RECOMMENDER_SOREC__DESCRIPTION = RECOMMENDATION_SYSTEM_FEATURE_COUNT + 0;
+	int CUSTOM_RECOMMENDER__DESCRIPTION = RECOMMENDATION_SYSTEM_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Required Tools</b></em>' attribute list.
@@ -1823,25 +2134,25 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_RECOMMENDER_SOREC__REQUIRED_TOOLS = RECOMMENDATION_SYSTEM_FEATURE_COUNT + 1;
+	int CUSTOM_RECOMMENDER__REQUIRED_TOOLS = RECOMMENDATION_SYSTEM_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Custom Recommender SOREC</em>' class.
+	 * The number of structural features of the '<em>Custom Recommender</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_RECOMMENDER_SOREC_FEATURE_COUNT = RECOMMENDATION_SYSTEM_FEATURE_COUNT + 2;
+	int CUSTOM_RECOMMENDER_FEATURE_COUNT = RECOMMENDATION_SYSTEM_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Custom Recommender SOREC</em>' class.
+	 * The number of operations of the '<em>Custom Recommender</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_RECOMMENDER_SOREC_OPERATION_COUNT = RECOMMENDATION_SYSTEM_OPERATION_COUNT + 0;
+	int CUSTOM_RECOMMENDER_OPERATION_COUNT = RECOMMENDATION_SYSTEM_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.impl.RecommendationSettingImpl <em>Recommendation Setting</em>}' class.
@@ -1851,7 +2162,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendationSetting()
 	 * @generated
 	 */
-	int RECOMMENDATION_SETTING = 30;
+	int RECOMMENDATION_SETTING = 35;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1897,7 +2208,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getGeneticAlgorithm()
 	 * @generated
 	 */
-	int GENETIC_ALGORITHM = 31;
+	int GENETIC_ALGORITHM = 36;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1909,31 +2220,31 @@ public interface LowcodersPackage extends EPackage {
 	int GENETIC_ALGORITHM__NAME = RECOMMENDATION_SYSTEM__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GENETIC_ALGORITHM__RECOMMENDER_SETTINGS = RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS;
+	int GENETIC_ALGORITHM__SETTINGS = RECOMMENDATION_SYSTEM__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GENETIC_ALGORITHM__RECOMMENDATION_SCOPE = RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE;
+	int GENETIC_ALGORITHM__SCOPE = RECOMMENDATION_SYSTEM__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GENETIC_ALGORITHM__RECOMMENDATION_CONTEXT = RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT;
+	int GENETIC_ALGORITHM__CONTEXT = RECOMMENDATION_SYSTEM__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -1997,7 +2308,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getUserStudy()
 	 * @generated
 	 */
-	int USER_STUDY = 32;
+	int USER_STUDY = 37;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2061,7 +2372,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getAutomatedValidation()
 	 * @generated
 	 */
-	int AUTOMATED_VALIDATION = 43;
+	int AUTOMATED_VALIDATION = 48;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2116,7 +2427,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getCrossValidation()
 	 * @generated
 	 */
-	int CROSS_VALIDATION = 33;
+	int CROSS_VALIDATION = 38;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2189,7 +2500,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendationContext()
 	 * @generated
 	 */
-	int RECOMMENDATION_CONTEXT = 34;
+	int RECOMMENDATION_CONTEXT = 39;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2201,13 +2512,13 @@ public interface LowcodersPackage extends EPackage {
 	int RECOMMENDATION_CONTEXT__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Usercontext</b></em>' reference.
+	 * The feature id for the '<em><b>User Context</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_CONTEXT__USERCONTEXT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int RECOMMENDATION_CONTEXT__USER_CONTEXT = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Is Proactive System</b></em>' attribute.
@@ -2244,7 +2555,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDependencyManager()
 	 * @generated
 	 */
-	int DEPENDENCY_MANAGER = 35;
+	int DEPENDENCY_MANAGER = 40;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2281,7 +2592,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getVariableRelation()
 	 * @generated
 	 */
-	int VARIABLE_RELATION = 36;
+	int VARIABLE_RELATION = 41;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -2327,7 +2638,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getGroundTruthExtraction()
 	 * @generated
 	 */
-	int GROUND_TRUTH_EXTRACTION = 37;
+	int GROUND_TRUTH_EXTRACTION = 42;
 
 	/**
 	 * The feature id for the '<em><b>Size GT</b></em>' attribute.
@@ -2382,7 +2693,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getFile()
 	 * @generated
 	 */
-	int FILE = 38;
+	int FILE = 43;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2437,7 +2748,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendedItem()
 	 * @generated
 	 */
-	int RECOMMENDED_ITEM = 39;
+	int RECOMMENDED_ITEM = 44;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2492,7 +2803,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getContextValidation()
 	 * @generated
 	 */
-	int CONTEXT_VALIDATION = 40;
+	int CONTEXT_VALIDATION = 45;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2547,7 +2858,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRawOutcomes()
 	 * @generated
 	 */
-	int RAW_OUTCOMES = 41;
+	int RAW_OUTCOMES = 46;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2602,7 +2913,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRandomSplitting()
 	 * @generated
 	 */
-	int RANDOM_SPLITTING = 42;
+	int RANDOM_SPLITTING = 47;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2657,7 +2968,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDeepNN()
 	 * @generated
 	 */
-	int DEEP_NN = 44;
+	int DEEP_NN = 49;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2669,31 +2980,31 @@ public interface LowcodersPackage extends EPackage {
 	int DEEP_NN__NAME = MACHINE_LEARNING_BASED_RS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEEP_NN__RECOMMENDER_SETTINGS = MACHINE_LEARNING_BASED_RS__RECOMMENDER_SETTINGS;
+	int DEEP_NN__SETTINGS = MACHINE_LEARNING_BASED_RS__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEEP_NN__RECOMMENDATION_SCOPE = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_SCOPE;
+	int DEEP_NN__SCOPE = MACHINE_LEARNING_BASED_RS__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEEP_NN__RECOMMENDATION_CONTEXT = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_CONTEXT;
+	int DEEP_NN__CONTEXT = MACHINE_LEARNING_BASED_RS__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -2766,7 +3077,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getConvolutionalNN()
 	 * @generated
 	 */
-	int CONVOLUTIONAL_NN = 45;
+	int CONVOLUTIONAL_NN = 50;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2778,31 +3089,31 @@ public interface LowcodersPackage extends EPackage {
 	int CONVOLUTIONAL_NN__NAME = MACHINE_LEARNING_BASED_RS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONVOLUTIONAL_NN__RECOMMENDER_SETTINGS = MACHINE_LEARNING_BASED_RS__RECOMMENDER_SETTINGS;
+	int CONVOLUTIONAL_NN__SETTINGS = MACHINE_LEARNING_BASED_RS__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONVOLUTIONAL_NN__RECOMMENDATION_SCOPE = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_SCOPE;
+	int CONVOLUTIONAL_NN__SCOPE = MACHINE_LEARNING_BASED_RS__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONVOLUTIONAL_NN__RECOMMENDATION_CONTEXT = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_CONTEXT;
+	int CONVOLUTIONAL_NN__CONTEXT = MACHINE_LEARNING_BASED_RS__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -2866,7 +3177,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getBayesian()
 	 * @generated
 	 */
-	int BAYESIAN = 46;
+	int BAYESIAN = 51;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2878,31 +3189,31 @@ public interface LowcodersPackage extends EPackage {
 	int BAYESIAN__NAME = MACHINE_LEARNING_BASED_RS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BAYESIAN__RECOMMENDER_SETTINGS = MACHINE_LEARNING_BASED_RS__RECOMMENDER_SETTINGS;
+	int BAYESIAN__SETTINGS = MACHINE_LEARNING_BASED_RS__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BAYESIAN__RECOMMENDATION_SCOPE = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_SCOPE;
+	int BAYESIAN__SCOPE = MACHINE_LEARNING_BASED_RS__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BAYESIAN__RECOMMENDATION_CONTEXT = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_CONTEXT;
+	int BAYESIAN__CONTEXT = MACHINE_LEARNING_BASED_RS__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -2966,7 +3277,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRecurrentNN()
 	 * @generated
 	 */
-	int RECURRENT_NN = 47;
+	int RECURRENT_NN = 52;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2978,31 +3289,31 @@ public interface LowcodersPackage extends EPackage {
 	int RECURRENT_NN__NAME = MACHINE_LEARNING_BASED_RS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECURRENT_NN__RECOMMENDER_SETTINGS = MACHINE_LEARNING_BASED_RS__RECOMMENDER_SETTINGS;
+	int RECURRENT_NN__SETTINGS = MACHINE_LEARNING_BASED_RS__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECURRENT_NN__RECOMMENDATION_SCOPE = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_SCOPE;
+	int RECURRENT_NN__SCOPE = MACHINE_LEARNING_BASED_RS__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECURRENT_NN__RECOMMENDATION_CONTEXT = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_CONTEXT;
+	int RECURRENT_NN__CONTEXT = MACHINE_LEARNING_BASED_RS__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -3066,7 +3377,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getSVM()
 	 * @generated
 	 */
-	int SVM = 48;
+	int SVM = 53;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3078,31 +3389,31 @@ public interface LowcodersPackage extends EPackage {
 	int SVM__NAME = MACHINE_LEARNING_BASED_RS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SVM__RECOMMENDER_SETTINGS = MACHINE_LEARNING_BASED_RS__RECOMMENDER_SETTINGS;
+	int SVM__SETTINGS = MACHINE_LEARNING_BASED_RS__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SVM__RECOMMENDATION_SCOPE = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_SCOPE;
+	int SVM__SCOPE = MACHINE_LEARNING_BASED_RS__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SVM__RECOMMENDATION_CONTEXT = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_CONTEXT;
+	int SVM__CONTEXT = MACHINE_LEARNING_BASED_RS__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -3175,7 +3486,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDecisionTree()
 	 * @generated
 	 */
-	int DECISION_TREE = 49;
+	int DECISION_TREE = 54;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3187,31 +3498,31 @@ public interface LowcodersPackage extends EPackage {
 	int DECISION_TREE__NAME = MACHINE_LEARNING_BASED_RS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_TREE__RECOMMENDER_SETTINGS = MACHINE_LEARNING_BASED_RS__RECOMMENDER_SETTINGS;
+	int DECISION_TREE__SETTINGS = MACHINE_LEARNING_BASED_RS__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_TREE__RECOMMENDATION_SCOPE = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_SCOPE;
+	int DECISION_TREE__SCOPE = MACHINE_LEARNING_BASED_RS__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_TREE__RECOMMENDATION_CONTEXT = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_CONTEXT;
+	int DECISION_TREE__CONTEXT = MACHINE_LEARNING_BASED_RS__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -3275,7 +3586,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getFeedForwardNN()
 	 * @generated
 	 */
-	int FEED_FORWARD_NN = 50;
+	int FEED_FORWARD_NN = 55;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3287,31 +3598,31 @@ public interface LowcodersPackage extends EPackage {
 	int FEED_FORWARD_NN__NAME = MACHINE_LEARNING_BASED_RS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Recommender Settings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Settings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEED_FORWARD_NN__RECOMMENDER_SETTINGS = MACHINE_LEARNING_BASED_RS__RECOMMENDER_SETTINGS;
+	int FEED_FORWARD_NN__SETTINGS = MACHINE_LEARNING_BASED_RS__SETTINGS;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Scope</b></em>' containment reference.
+	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEED_FORWARD_NN__RECOMMENDATION_SCOPE = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_SCOPE;
+	int FEED_FORWARD_NN__SCOPE = MACHINE_LEARNING_BASED_RS__SCOPE;
 
 	/**
-	 * The feature id for the '<em><b>Recommendation Context</b></em>' containment reference.
+	 * The feature id for the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEED_FORWARD_NN__RECOMMENDATION_CONTEXT = MACHINE_LEARNING_BASED_RS__RECOMMENDATION_CONTEXT;
+	int FEED_FORWARD_NN__CONTEXT = MACHINE_LEARNING_BASED_RS__CONTEXT;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -3404,6 +3715,44 @@ public interface LowcodersPackage extends EPackage {
 	int FEED_FORWARD_NN_OPERATION_COUNT = MACHINE_LEARNING_BASED_RS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link lowcoders.impl.GUIElementImpl <em>GUI Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.GUIElementImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getGUIElement()
+	 * @generated
+	 */
+	int GUI_ELEMENT = 56;
+
+	/**
+	 * The number of structural features of the '<em>GUI Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GUI_ELEMENT_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>GUI Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GUI_ELEMENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.UserEventType <em>User Event Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.UserEventType
+	 * @see lowcoders.impl.LowcodersPackageImpl#getUserEventType()
+	 * @generated
+	 */
+	int USER_EVENT_TYPE = 57;
+
+	/**
 	 * The meta object id for the '{@link lowcoders.CollaborativeFilteringAlgorithm <em>Collaborative Filtering Algorithm</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3411,7 +3760,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getCollaborativeFilteringAlgorithm()
 	 * @generated
 	 */
-	int COLLABORATIVE_FILTERING_ALGORITHM = 51;
+	int COLLABORATIVE_FILTERING_ALGORITHM = 58;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.WebContainer <em>Web Container</em>}' enum.
@@ -3421,7 +3770,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getWebContainer()
 	 * @generated
 	 */
-	int WEB_CONTAINER = 52;
+	int WEB_CONTAINER = 59;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.Metric <em>Metric</em>}' enum.
@@ -3431,7 +3780,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getMetric()
 	 * @generated
 	 */
-	int METRIC = 53;
+	int METRIC = 60;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.PreprocessingTechnique <em>Preprocessing Technique</em>}' enum.
@@ -3441,7 +3790,17 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getPreprocessingTechnique()
 	 * @generated
 	 */
-	int PREPROCESSING_TECHNIQUE = 54;
+	int PREPROCESSING_TECHNIQUE = 61;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.RecommendationUsageType <em>Recommendation Usage Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.RecommendationUsageType
+	 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendationUsageType()
+	 * @generated
+	 */
+	int RECOMMENDATION_USAGE_TYPE = 62;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.VariableType <em>Variable Type</em>}' enum.
@@ -3451,7 +3810,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getVariableType()
 	 * @generated
 	 */
-	int VARIABLE_TYPE = 55;
+	int VARIABLE_TYPE = 63;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.DataMiningRSAlgorithm <em>Data Mining RS Algorithm</em>}' enum.
@@ -3461,7 +3820,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDataMiningRSAlgorithm()
 	 * @generated
 	 */
-	int DATA_MINING_RS_ALGORITHM = 56;
+	int DATA_MINING_RS_ALGORITHM = 64;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.FilteringRSAlgorithm <em>Filtering RS Algorithm</em>}' enum.
@@ -3471,7 +3830,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getFilteringRSAlgorithm()
 	 * @generated
 	 */
-	int FILTERING_RS_ALGORITHM = 57;
+	int FILTERING_RS_ALGORITHM = 65;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.SearchStrategy <em>Search Strategy</em>}' enum.
@@ -3481,7 +3840,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getSearchStrategy()
 	 * @generated
 	 */
-	int SEARCH_STRATEGY = 58;
+	int SEARCH_STRATEGY = 66;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.MutationOperation <em>Mutation Operation</em>}' enum.
@@ -3491,7 +3850,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getMutationOperation()
 	 * @generated
 	 */
-	int MUTATION_OPERATION = 59;
+	int MUTATION_OPERATION = 67;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.UserStudyType <em>User Study Type</em>}' enum.
@@ -3501,7 +3860,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getUserStudyType()
 	 * @generated
 	 */
-	int USER_STUDY_TYPE = 60;
+	int USER_STUDY_TYPE = 68;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.UserStudyAnalysis <em>User Study Analysis</em>}' enum.
@@ -3511,7 +3870,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getUserStudyAnalysis()
 	 * @generated
 	 */
-	int USER_STUDY_ANALYSIS = 61;
+	int USER_STUDY_ANALYSIS = 69;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.SimilarityFunction <em>Similarity Function</em>}' enum.
@@ -3521,7 +3880,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getSimilarityFunction()
 	 * @generated
 	 */
-	int SIMILARITY_FUNCTION = 62;
+	int SIMILARITY_FUNCTION = 70;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.PyLibType <em>Py Lib Type</em>}' enum.
@@ -3531,7 +3890,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getPyLibType()
 	 * @generated
 	 */
-	int PY_LIB_TYPE = 63;
+	int PY_LIB_TYPE = 71;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.SolverType <em>Solver Type</em>}' enum.
@@ -3541,7 +3900,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getSolverType()
 	 * @generated
 	 */
-	int SOLVER_TYPE = 64;
+	int SOLVER_TYPE = 72;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.KernelType <em>Kernel Type</em>}' enum.
@@ -3551,7 +3910,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getKernelType()
 	 * @generated
 	 */
-	int KERNEL_TYPE = 65;
+	int KERNEL_TYPE = 73;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.ActivationType <em>Activation Type</em>}' enum.
@@ -3561,7 +3920,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getActivationType()
 	 * @generated
 	 */
-	int ACTIVATION_TYPE = 66;
+	int ACTIVATION_TYPE = 74;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.DatasetManipulationLibrary <em>Dataset Manipulation Library</em>}' enum.
@@ -3571,7 +3930,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDatasetManipulationLibrary()
 	 * @generated
 	 */
-	int DATASET_MANIPULATION_LIBRARY = 67;
+	int DATASET_MANIPULATION_LIBRARY = 75;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.WebInterfaceLibrary <em>Web Interface Library</em>}' enum.
@@ -3581,7 +3940,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getWebInterfaceLibrary()
 	 * @generated
 	 */
-	int WEB_INTERFACE_LIBRARY = 68;
+	int WEB_INTERFACE_LIBRARY = 76;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.RawFormat <em>Raw Format</em>}' enum.
@@ -3591,7 +3950,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRawFormat()
 	 * @generated
 	 */
-	int RAW_FORMAT = 69;
+	int RAW_FORMAT = 77;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.ValidationLibrary <em>Validation Library</em>}' enum.
@@ -3601,7 +3960,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getValidationLibrary()
 	 * @generated
 	 */
-	int VALIDATION_LIBRARY = 70;
+	int VALIDATION_LIBRARY = 78;
 
 
 	/**
@@ -3624,6 +3983,27 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNamedElement_Name();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.UserEvent <em>User Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>User Event</em>'.
+	 * @see lowcoders.UserEvent
+	 * @generated
+	 */
+	EClass getUserEvent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.UserEvent#getEventType <em>Event Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Event Type</em>'.
+	 * @see lowcoders.UserEvent#getEventType()
+	 * @see #getUserEvent()
+	 * @generated
+	 */
+	EAttribute getUserEvent_EventType();
 
 	/**
 	 * Returns the meta object for class '{@link lowcoders.Dataset <em>Dataset</em>}'.
@@ -3680,6 +4060,17 @@ public interface LowcodersPackage extends EPackage {
 	EAttribute getDataset_DatasetManipulationLibrary();
 
 	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.Dataset#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see lowcoders.Dataset#getPath()
+	 * @see #getDataset()
+	 * @generated
+	 */
+	EAttribute getDataset_Path();
+
+	/**
 	 * Returns the meta object for class '{@link lowcoders.RSModel <em>RS Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3734,6 +4125,134 @@ public interface LowcodersPackage extends EPackage {
 	EReference getRSModel_RecommendationSystem();
 
 	/**
+	 * Returns the meta object for class '{@link lowcoders.RecommendationHandler <em>Recommendation Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Recommendation Handler</em>'.
+	 * @see lowcoders.RecommendationHandler
+	 * @generated
+	 */
+	EClass getRecommendationHandler();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link lowcoders.RecommendationHandler#getUsage <em>Usage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Usage</em>'.
+	 * @see lowcoders.RecommendationHandler#getUsage()
+	 * @see #getRecommendationHandler()
+	 * @generated
+	 */
+	EReference getRecommendationHandler_Usage();
+
+	/**
+	 * Returns the meta object for the reference '{@link lowcoders.RecommendationHandler#getWebService <em>Web Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Web Service</em>'.
+	 * @see lowcoders.RecommendationHandler#getWebService()
+	 * @see #getRecommendationHandler()
+	 * @generated
+	 */
+	EReference getRecommendationHandler_WebService();
+
+	/**
+	 * Returns the meta object for the reference '{@link lowcoders.RecommendationHandler#getContext <em>Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Context</em>'.
+	 * @see lowcoders.RecommendationHandler#getContext()
+	 * @see #getRecommendationHandler()
+	 * @generated
+	 */
+	EReference getRecommendationHandler_Context();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.ProactiveHandler <em>Proactive Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Proactive Handler</em>'.
+	 * @see lowcoders.ProactiveHandler
+	 * @generated
+	 */
+	EClass getProactiveHandler();
+
+	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.ProactiveHandler#isCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Condition</em>'.
+	 * @see lowcoders.ProactiveHandler#isCondition()
+	 * @see #getProactiveHandler()
+	 * @generated
+	 */
+	EAttribute getProactiveHandler_Condition();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.ReactiveHandler <em>Reactive Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reactive Handler</em>'.
+	 * @see lowcoders.ReactiveHandler
+	 * @generated
+	 */
+	EClass getReactiveHandler();
+
+	/**
+	 * Returns the meta object for the reference '{@link lowcoders.ReactiveHandler#getEvent <em>Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Event</em>'.
+	 * @see lowcoders.ReactiveHandler#getEvent()
+	 * @see #getReactiveHandler()
+	 * @generated
+	 */
+	EReference getReactiveHandler_Event();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.RecommendationUsage <em>Recommendation Usage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Recommendation Usage</em>'.
+	 * @see lowcoders.RecommendationUsage
+	 * @generated
+	 */
+	EClass getRecommendationUsage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.RecommendationUsage#getUsageType <em>Usage Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Usage Type</em>'.
+	 * @see lowcoders.RecommendationUsage#getUsageType()
+	 * @see #getRecommendationUsage()
+	 * @generated
+	 */
+	EAttribute getRecommendationUsage_UsageType();
+
+	/**
+	 * Returns the meta object for the reference list '{@link lowcoders.RecommendationUsage#getRecommendedItems <em>Recommended Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Recommended Items</em>'.
+	 * @see lowcoders.RecommendationUsage#getRecommendedItems()
+	 * @see #getRecommendationUsage()
+	 * @generated
+	 */
+	EReference getRecommendationUsage_RecommendedItems();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link lowcoders.RecommendationUsage#getGuielements <em>Guielements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Guielements</em>'.
+	 * @see lowcoders.RecommendationUsage#getGuielements()
+	 * @see #getRecommendationUsage()
+	 * @generated
+	 */
+	EReference getRecommendationUsage_Guielements();
+
+	/**
 	 * Returns the meta object for class '{@link lowcoders.DataSource <em>Data Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3765,25 +4284,25 @@ public interface LowcodersPackage extends EPackage {
 	EReference getPresentationLayer_Recommendations();
 
 	/**
-	 * Returns the meta object for class '{@link lowcoders.WebInterface <em>Web Interface</em>}'.
+	 * Returns the meta object for class '{@link lowcoders.WebIService <em>Web IService</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Web Interface</em>'.
-	 * @see lowcoders.WebInterface
+	 * @return the meta object for class '<em>Web IService</em>'.
+	 * @see lowcoders.WebIService
 	 * @generated
 	 */
-	EClass getWebInterface();
+	EClass getWebIService();
 
 	/**
-	 * Returns the meta object for the attribute '{@link lowcoders.WebInterface#getLibrary <em>Library</em>}'.
+	 * Returns the meta object for the attribute '{@link lowcoders.WebIService#getLibrary <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Library</em>'.
-	 * @see lowcoders.WebInterface#getLibrary()
-	 * @see #getWebInterface()
+	 * @see lowcoders.WebIService#getLibrary()
+	 * @see #getWebIService()
 	 * @generated
 	 */
-	EAttribute getWebInterface_Library();
+	EAttribute getWebIService_Library();
 
 	/**
 	 * Returns the meta object for class '{@link lowcoders.WebApplication <em>Web Application</em>}'.
@@ -3804,6 +4323,27 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getIDEIntegration();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.VSCodePlugin <em>VS Code Plugin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>VS Code Plugin</em>'.
+	 * @see lowcoders.VSCodePlugin
+	 * @generated
+	 */
+	EClass getVSCodePlugin();
+
+	/**
+	 * Returns the meta object for the reference list '{@link lowcoders.VSCodePlugin#getHandler <em>Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Handler</em>'.
+	 * @see lowcoders.VSCodePlugin#getHandler()
+	 * @see #getVSCodePlugin()
+	 * @generated
+	 */
+	EReference getVSCodePlugin_Handler();
 
 	/**
 	 * Returns the meta object for class '{@link lowcoders.TraversableGraph <em>Traversable Graph</em>}'.
@@ -3848,15 +4388,15 @@ public interface LowcodersPackage extends EPackage {
 	EAttribute getEvaluation_Metrics();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link lowcoders.Evaluation#getValidationtechnique <em>Validationtechnique</em>}'.
+	 * Returns the meta object for the containment reference list '{@link lowcoders.Evaluation#getValidationTechnique <em>Validation Technique</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Validationtechnique</em>'.
-	 * @see lowcoders.Evaluation#getValidationtechnique()
+	 * @return the meta object for the containment reference list '<em>Validation Technique</em>'.
+	 * @see lowcoders.Evaluation#getValidationTechnique()
 	 * @see #getEvaluation()
 	 * @generated
 	 */
-	EReference getEvaluation_Validationtechnique();
+	EReference getEvaluation_ValidationTechnique();
 
 	/**
 	 * Returns the meta object for class '{@link lowcoders.ValidationTechnique <em>Validation Technique</em>}'.
@@ -4174,37 +4714,37 @@ public interface LowcodersPackage extends EPackage {
 	EClass getRecommendationSystem();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link lowcoders.RecommendationSystem#getRecommenderSettings <em>Recommender Settings</em>}'.
+	 * Returns the meta object for the containment reference list '{@link lowcoders.RecommendationSystem#getSettings <em>Settings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Recommender Settings</em>'.
-	 * @see lowcoders.RecommendationSystem#getRecommenderSettings()
+	 * @return the meta object for the containment reference list '<em>Settings</em>'.
+	 * @see lowcoders.RecommendationSystem#getSettings()
 	 * @see #getRecommendationSystem()
 	 * @generated
 	 */
-	EReference getRecommendationSystem_RecommenderSettings();
+	EReference getRecommendationSystem_Settings();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link lowcoders.RecommendationSystem#getRecommendationScope <em>Recommendation Scope</em>}'.
+	 * Returns the meta object for the containment reference '{@link lowcoders.RecommendationSystem#getScope <em>Scope</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Recommendation Scope</em>'.
-	 * @see lowcoders.RecommendationSystem#getRecommendationScope()
+	 * @return the meta object for the containment reference '<em>Scope</em>'.
+	 * @see lowcoders.RecommendationSystem#getScope()
 	 * @see #getRecommendationSystem()
 	 * @generated
 	 */
-	EReference getRecommendationSystem_RecommendationScope();
+	EReference getRecommendationSystem_Scope();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link lowcoders.RecommendationSystem#getRecommendationContext <em>Recommendation Context</em>}'.
+	 * Returns the meta object for the containment reference '{@link lowcoders.RecommendationSystem#getContext <em>Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Recommendation Context</em>'.
-	 * @see lowcoders.RecommendationSystem#getRecommendationContext()
+	 * @return the meta object for the containment reference '<em>Context</em>'.
+	 * @see lowcoders.RecommendationSystem#getContext()
 	 * @see #getRecommendationSystem()
 	 * @generated
 	 */
-	EReference getRecommendationSystem_RecommendationContext();
+	EReference getRecommendationSystem_Context();
 
 	/**
 	 * Returns the meta object for the attribute '{@link lowcoders.RecommendationSystem#getGenerator <em>Generator</em>}'.
@@ -4259,16 +4799,6 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachineLearningBasedRS_MiniBatchSize();
-
-	/**
-	 * Returns the meta object for class '{@link lowcoders.MemoryBasedRS_NOTSURE <em>Memory Based RS NOTSURE</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Memory Based RS NOTSURE</em>'.
-	 * @see lowcoders.MemoryBasedRS_NOTSURE
-	 * @generated
-	 */
-	EClass getMemoryBasedRS_NOTSURE();
 
 	/**
 	 * Returns the meta object for class '{@link lowcoders.FilteringRS <em>Filtering RS</em>}'.
@@ -4346,36 +4876,36 @@ public interface LowcodersPackage extends EPackage {
 	EAttribute getDataMiningRS_DataMiningRSAlgorithm();
 
 	/**
-	 * Returns the meta object for class '{@link lowcoders.CustomRecommender_SOREC <em>Custom Recommender SOREC</em>}'.
+	 * Returns the meta object for class '{@link lowcoders.CustomRecommender <em>Custom Recommender</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Custom Recommender SOREC</em>'.
-	 * @see lowcoders.CustomRecommender_SOREC
+	 * @return the meta object for class '<em>Custom Recommender</em>'.
+	 * @see lowcoders.CustomRecommender
 	 * @generated
 	 */
-	EClass getCustomRecommender_SOREC();
+	EClass getCustomRecommender();
 
 	/**
-	 * Returns the meta object for the attribute '{@link lowcoders.CustomRecommender_SOREC#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link lowcoders.CustomRecommender#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see lowcoders.CustomRecommender_SOREC#getDescription()
-	 * @see #getCustomRecommender_SOREC()
+	 * @see lowcoders.CustomRecommender#getDescription()
+	 * @see #getCustomRecommender()
 	 * @generated
 	 */
-	EAttribute getCustomRecommender_SOREC_Description();
+	EAttribute getCustomRecommender_Description();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link lowcoders.CustomRecommender_SOREC#getRequiredTools <em>Required Tools</em>}'.
+	 * Returns the meta object for the attribute list '{@link lowcoders.CustomRecommender#getRequiredTools <em>Required Tools</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Required Tools</em>'.
-	 * @see lowcoders.CustomRecommender_SOREC#getRequiredTools()
-	 * @see #getCustomRecommender_SOREC()
+	 * @see lowcoders.CustomRecommender#getRequiredTools()
+	 * @see #getCustomRecommender()
 	 * @generated
 	 */
-	EAttribute getCustomRecommender_SOREC_RequiredTools();
+	EAttribute getCustomRecommender_RequiredTools();
 
 	/**
 	 * Returns the meta object for class '{@link lowcoders.RecommendationSetting <em>Recommendation Setting</em>}'.
@@ -4527,15 +5057,15 @@ public interface LowcodersPackage extends EPackage {
 	EClass getRecommendationContext();
 
 	/**
-	 * Returns the meta object for the reference '{@link lowcoders.RecommendationContext#getUsercontext <em>Usercontext</em>}'.
+	 * Returns the meta object for the reference '{@link lowcoders.RecommendationContext#getUserContext <em>User Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Usercontext</em>'.
-	 * @see lowcoders.RecommendationContext#getUsercontext()
+	 * @return the meta object for the reference '<em>User Context</em>'.
+	 * @see lowcoders.RecommendationContext#getUserContext()
 	 * @see #getRecommendationContext()
 	 * @generated
 	 */
-	EReference getRecommendationContext_Usercontext();
+	EReference getRecommendationContext_UserContext();
 
 	/**
 	 * Returns the meta object for the attribute '{@link lowcoders.RecommendationContext#isIsProactiveSystem <em>Is Proactive System</em>}'.
@@ -4907,6 +5437,26 @@ public interface LowcodersPackage extends EPackage {
 	EAttribute getFeedForwardNN_RandomState();
 
 	/**
+	 * Returns the meta object for class '{@link lowcoders.GUIElement <em>GUI Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>GUI Element</em>'.
+	 * @see lowcoders.GUIElement
+	 * @generated
+	 */
+	EClass getGUIElement();
+
+	/**
+	 * Returns the meta object for enum '{@link lowcoders.UserEventType <em>User Event Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>User Event Type</em>'.
+	 * @see lowcoders.UserEventType
+	 * @generated
+	 */
+	EEnum getUserEventType();
+
+	/**
 	 * Returns the meta object for enum '{@link lowcoders.CollaborativeFilteringAlgorithm <em>Collaborative Filtering Algorithm</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4945,6 +5495,16 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getPreprocessingTechnique();
+
+	/**
+	 * Returns the meta object for enum '{@link lowcoders.RecommendationUsageType <em>Recommendation Usage Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Recommendation Usage Type</em>'.
+	 * @see lowcoders.RecommendationUsageType
+	 * @generated
+	 */
+	EEnum getRecommendationUsageType();
 
 	/**
 	 * Returns the meta object for enum '{@link lowcoders.VariableType <em>Variable Type</em>}'.
@@ -5148,6 +5708,24 @@ public interface LowcodersPackage extends EPackage {
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
+		 * The meta object literal for the '{@link lowcoders.impl.UserEventImpl <em>User Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.UserEventImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getUserEvent()
+		 * @generated
+		 */
+		EClass USER_EVENT = eINSTANCE.getUserEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Event Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute USER_EVENT__EVENT_TYPE = eINSTANCE.getUserEvent_EventType();
+
+		/**
 		 * The meta object literal for the '{@link lowcoders.impl.DatasetImpl <em>Dataset</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5188,6 +5766,14 @@ public interface LowcodersPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATASET__DATASET_MANIPULATION_LIBRARY = eINSTANCE.getDataset_DatasetManipulationLibrary();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATASET__PATH = eINSTANCE.getDataset_Path();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.impl.RSModelImpl <em>RS Model</em>}' class.
@@ -5232,6 +5818,110 @@ public interface LowcodersPackage extends EPackage {
 		EReference RS_MODEL__RECOMMENDATION_SYSTEM = eINSTANCE.getRSModel_RecommendationSystem();
 
 		/**
+		 * The meta object literal for the '{@link lowcoders.impl.RecommendationHandlerImpl <em>Recommendation Handler</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.RecommendationHandlerImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendationHandler()
+		 * @generated
+		 */
+		EClass RECOMMENDATION_HANDLER = eINSTANCE.getRecommendationHandler();
+
+		/**
+		 * The meta object literal for the '<em><b>Usage</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECOMMENDATION_HANDLER__USAGE = eINSTANCE.getRecommendationHandler_Usage();
+
+		/**
+		 * The meta object literal for the '<em><b>Web Service</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECOMMENDATION_HANDLER__WEB_SERVICE = eINSTANCE.getRecommendationHandler_WebService();
+
+		/**
+		 * The meta object literal for the '<em><b>Context</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECOMMENDATION_HANDLER__CONTEXT = eINSTANCE.getRecommendationHandler_Context();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.ProactiveHandlerImpl <em>Proactive Handler</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.ProactiveHandlerImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getProactiveHandler()
+		 * @generated
+		 */
+		EClass PROACTIVE_HANDLER = eINSTANCE.getProactiveHandler();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROACTIVE_HANDLER__CONDITION = eINSTANCE.getProactiveHandler_Condition();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.ReactiveHandlerImpl <em>Reactive Handler</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.ReactiveHandlerImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getReactiveHandler()
+		 * @generated
+		 */
+		EClass REACTIVE_HANDLER = eINSTANCE.getReactiveHandler();
+
+		/**
+		 * The meta object literal for the '<em><b>Event</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REACTIVE_HANDLER__EVENT = eINSTANCE.getReactiveHandler_Event();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.RecommendationUsageImpl <em>Recommendation Usage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.RecommendationUsageImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendationUsage()
+		 * @generated
+		 */
+		EClass RECOMMENDATION_USAGE = eINSTANCE.getRecommendationUsage();
+
+		/**
+		 * The meta object literal for the '<em><b>Usage Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RECOMMENDATION_USAGE__USAGE_TYPE = eINSTANCE.getRecommendationUsage_UsageType();
+
+		/**
+		 * The meta object literal for the '<em><b>Recommended Items</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECOMMENDATION_USAGE__RECOMMENDED_ITEMS = eINSTANCE.getRecommendationUsage_RecommendedItems();
+
+		/**
+		 * The meta object literal for the '<em><b>Guielements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECOMMENDATION_USAGE__GUIELEMENTS = eINSTANCE.getRecommendationUsage_Guielements();
+
+		/**
 		 * The meta object literal for the '{@link lowcoders.impl.DataSourceImpl <em>Data Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5260,14 +5950,14 @@ public interface LowcodersPackage extends EPackage {
 		EReference PRESENTATION_LAYER__RECOMMENDATIONS = eINSTANCE.getPresentationLayer_Recommendations();
 
 		/**
-		 * The meta object literal for the '{@link lowcoders.impl.WebInterfaceImpl <em>Web Interface</em>}' class.
+		 * The meta object literal for the '{@link lowcoders.impl.WebIServiceImpl <em>Web IService</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see lowcoders.impl.WebInterfaceImpl
-		 * @see lowcoders.impl.LowcodersPackageImpl#getWebInterface()
+		 * @see lowcoders.impl.WebIServiceImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getWebIService()
 		 * @generated
 		 */
-		EClass WEB_INTERFACE = eINSTANCE.getWebInterface();
+		EClass WEB_ISERVICE = eINSTANCE.getWebIService();
 
 		/**
 		 * The meta object literal for the '<em><b>Library</b></em>' attribute feature.
@@ -5275,7 +5965,7 @@ public interface LowcodersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WEB_INTERFACE__LIBRARY = eINSTANCE.getWebInterface_Library();
+		EAttribute WEB_ISERVICE__LIBRARY = eINSTANCE.getWebIService_Library();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.impl.WebApplicationImpl <em>Web Application</em>}' class.
@@ -5296,6 +5986,24 @@ public interface LowcodersPackage extends EPackage {
 		 * @generated
 		 */
 		EClass IDE_INTEGRATION = eINSTANCE.getIDEIntegration();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.VSCodePluginImpl <em>VS Code Plugin</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.VSCodePluginImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getVSCodePlugin()
+		 * @generated
+		 */
+		EClass VS_CODE_PLUGIN = eINSTANCE.getVSCodePlugin();
+
+		/**
+		 * The meta object literal for the '<em><b>Handler</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VS_CODE_PLUGIN__HANDLER = eINSTANCE.getVSCodePlugin_Handler();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.impl.TraversableGraphImpl <em>Traversable Graph</em>}' class.
@@ -5334,12 +6042,12 @@ public interface LowcodersPackage extends EPackage {
 		EAttribute EVALUATION__METRICS = eINSTANCE.getEvaluation_Metrics();
 
 		/**
-		 * The meta object literal for the '<em><b>Validationtechnique</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Validation Technique</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EVALUATION__VALIDATIONTECHNIQUE = eINSTANCE.getEvaluation_Validationtechnique();
+		EReference EVALUATION__VALIDATION_TECHNIQUE = eINSTANCE.getEvaluation_ValidationTechnique();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.impl.ValidationTechniqueImpl <em>Validation Technique</em>}' class.
@@ -5612,28 +6320,28 @@ public interface LowcodersPackage extends EPackage {
 		EClass RECOMMENDATION_SYSTEM = eINSTANCE.getRecommendationSystem();
 
 		/**
-		 * The meta object literal for the '<em><b>Recommender Settings</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Settings</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RECOMMENDATION_SYSTEM__RECOMMENDER_SETTINGS = eINSTANCE.getRecommendationSystem_RecommenderSettings();
+		EReference RECOMMENDATION_SYSTEM__SETTINGS = eINSTANCE.getRecommendationSystem_Settings();
 
 		/**
-		 * The meta object literal for the '<em><b>Recommendation Scope</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Scope</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RECOMMENDATION_SYSTEM__RECOMMENDATION_SCOPE = eINSTANCE.getRecommendationSystem_RecommendationScope();
+		EReference RECOMMENDATION_SYSTEM__SCOPE = eINSTANCE.getRecommendationSystem_Scope();
 
 		/**
-		 * The meta object literal for the '<em><b>Recommendation Context</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Context</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RECOMMENDATION_SYSTEM__RECOMMENDATION_CONTEXT = eINSTANCE.getRecommendationSystem_RecommendationContext();
+		EReference RECOMMENDATION_SYSTEM__CONTEXT = eINSTANCE.getRecommendationSystem_Context();
 
 		/**
 		 * The meta object literal for the '<em><b>Generator</b></em>' attribute feature.
@@ -5676,16 +6384,6 @@ public interface LowcodersPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_LEARNING_BASED_RS__MINI_BATCH_SIZE = eINSTANCE.getMachineLearningBasedRS_MiniBatchSize();
-
-		/**
-		 * The meta object literal for the '{@link lowcoders.impl.MemoryBasedRS_NOTSUREImpl <em>Memory Based RS NOTSURE</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see lowcoders.impl.MemoryBasedRS_NOTSUREImpl
-		 * @see lowcoders.impl.LowcodersPackageImpl#getMemoryBasedRS_NOTSURE()
-		 * @generated
-		 */
-		EClass MEMORY_BASED_RS_NOTSURE = eINSTANCE.getMemoryBasedRS_NOTSURE();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.impl.FilteringRSImpl <em>Filtering RS</em>}' class.
@@ -5748,14 +6446,14 @@ public interface LowcodersPackage extends EPackage {
 		EAttribute DATA_MINING_RS__DATA_MINING_RS_ALGORITHM = eINSTANCE.getDataMiningRS_DataMiningRSAlgorithm();
 
 		/**
-		 * The meta object literal for the '{@link lowcoders.impl.CustomRecommender_SORECImpl <em>Custom Recommender SOREC</em>}' class.
+		 * The meta object literal for the '{@link lowcoders.impl.CustomRecommenderImpl <em>Custom Recommender</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see lowcoders.impl.CustomRecommender_SORECImpl
-		 * @see lowcoders.impl.LowcodersPackageImpl#getCustomRecommender_SOREC()
+		 * @see lowcoders.impl.CustomRecommenderImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getCustomRecommender()
 		 * @generated
 		 */
-		EClass CUSTOM_RECOMMENDER_SOREC = eINSTANCE.getCustomRecommender_SOREC();
+		EClass CUSTOM_RECOMMENDER = eINSTANCE.getCustomRecommender();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -5763,7 +6461,7 @@ public interface LowcodersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CUSTOM_RECOMMENDER_SOREC__DESCRIPTION = eINSTANCE.getCustomRecommender_SOREC_Description();
+		EAttribute CUSTOM_RECOMMENDER__DESCRIPTION = eINSTANCE.getCustomRecommender_Description();
 
 		/**
 		 * The meta object literal for the '<em><b>Required Tools</b></em>' attribute list feature.
@@ -5771,7 +6469,7 @@ public interface LowcodersPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CUSTOM_RECOMMENDER_SOREC__REQUIRED_TOOLS = eINSTANCE.getCustomRecommender_SOREC_RequiredTools();
+		EAttribute CUSTOM_RECOMMENDER__REQUIRED_TOOLS = eINSTANCE.getCustomRecommender_RequiredTools();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.impl.RecommendationSettingImpl <em>Recommendation Setting</em>}' class.
@@ -5896,12 +6594,12 @@ public interface LowcodersPackage extends EPackage {
 		EClass RECOMMENDATION_CONTEXT = eINSTANCE.getRecommendationContext();
 
 		/**
-		 * The meta object literal for the '<em><b>Usercontext</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>User Context</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RECOMMENDATION_CONTEXT__USERCONTEXT = eINSTANCE.getRecommendationContext_Usercontext();
+		EReference RECOMMENDATION_CONTEXT__USER_CONTEXT = eINSTANCE.getRecommendationContext_UserContext();
 
 		/**
 		 * The meta object literal for the '<em><b>Is Proactive System</b></em>' attribute feature.
@@ -6216,6 +6914,26 @@ public interface LowcodersPackage extends EPackage {
 		EAttribute FEED_FORWARD_NN__RANDOM_STATE = eINSTANCE.getFeedForwardNN_RandomState();
 
 		/**
+		 * The meta object literal for the '{@link lowcoders.impl.GUIElementImpl <em>GUI Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.GUIElementImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getGUIElement()
+		 * @generated
+		 */
+		EClass GUI_ELEMENT = eINSTANCE.getGUIElement();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.UserEventType <em>User Event Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.UserEventType
+		 * @see lowcoders.impl.LowcodersPackageImpl#getUserEventType()
+		 * @generated
+		 */
+		EEnum USER_EVENT_TYPE = eINSTANCE.getUserEventType();
+
+		/**
 		 * The meta object literal for the '{@link lowcoders.CollaborativeFilteringAlgorithm <em>Collaborative Filtering Algorithm</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6254,6 +6972,16 @@ public interface LowcodersPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum PREPROCESSING_TECHNIQUE = eINSTANCE.getPreprocessingTechnique();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.RecommendationUsageType <em>Recommendation Usage Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.RecommendationUsageType
+		 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendationUsageType()
+		 * @generated
+		 */
+		EEnum RECOMMENDATION_USAGE_TYPE = eINSTANCE.getRecommendationUsageType();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.VariableType <em>Variable Type</em>}' enum.

@@ -10,7 +10,7 @@ package lowcoders;
  *
  *
  * @see lowcoders.LowcodersPackage#getDataStructure()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface DataStructure extends NamedElement {

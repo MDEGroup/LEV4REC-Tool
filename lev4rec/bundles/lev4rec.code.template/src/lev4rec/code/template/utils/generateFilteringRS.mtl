@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generateFilteringRS('http://lev4rec/lowcode')]
+[module generateFilteringRS('https://it.disim.univaq/lowcode')]
 [template public generateFilteringRS(algo : FilteringRS)]
 [if (algo.filteringRSAlgorithm = FilteringRSAlgorithm::USER_BASED)]
 is_user_based=True

@@ -3,8 +3,7 @@
 package lowcoders.impl;
 
 import lowcoders.LowcodersPackage;
-import lowcoders.WebInterface;
-import lowcoders.WebInterfaceLibrary;
+import lowcoders.ProactiveHandler;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,44 +13,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Web Interface</b></em>'.
+ * An implementation of the model object '<em><b>Proactive Handler</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link lowcoders.impl.WebInterfaceImpl#getLibrary <em>Library</em>}</li>
+ *   <li>{@link lowcoders.impl.ProactiveHandlerImpl#isCondition <em>Condition</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class WebInterfaceImpl extends PresentationLayerImpl implements WebInterface {
+public class ProactiveHandlerImpl extends RecommendationHandlerImpl implements ProactiveHandler {
 	/**
-	 * The default value of the '{@link #getLibrary() <em>Library</em>}' attribute.
+	 * The default value of the '{@link #isCondition() <em>Condition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLibrary()
+	 * @see #isCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final WebInterfaceLibrary LIBRARY_EDEFAULT = WebInterfaceLibrary.FLASK;
+	protected static final boolean CONDITION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getLibrary() <em>Library</em>}' attribute.
+	 * The cached value of the '{@link #isCondition() <em>Condition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLibrary()
+	 * @see #isCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected WebInterfaceLibrary library = LIBRARY_EDEFAULT;
+	protected boolean condition = CONDITION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WebInterfaceImpl() {
+	protected ProactiveHandlerImpl() {
 		super();
 	}
 
@@ -62,7 +61,7 @@ public class WebInterfaceImpl extends PresentationLayerImpl implements WebInterf
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return LowcodersPackage.Literals.WEB_INTERFACE;
+		return LowcodersPackage.Literals.PROACTIVE_HANDLER;
 	}
 
 	/**
@@ -71,8 +70,8 @@ public class WebInterfaceImpl extends PresentationLayerImpl implements WebInterf
 	 * @generated
 	 */
 	@Override
-	public WebInterfaceLibrary getLibrary() {
-		return library;
+	public boolean isCondition() {
+		return condition;
 	}
 
 	/**
@@ -81,11 +80,11 @@ public class WebInterfaceImpl extends PresentationLayerImpl implements WebInterf
 	 * @generated
 	 */
 	@Override
-	public void setLibrary(WebInterfaceLibrary newLibrary) {
-		WebInterfaceLibrary oldLibrary = library;
-		library = newLibrary == null ? LIBRARY_EDEFAULT : newLibrary;
+	public void setCondition(boolean newCondition) {
+		boolean oldCondition = condition;
+		condition = newCondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.WEB_INTERFACE__LIBRARY, oldLibrary, library));
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.PROACTIVE_HANDLER__CONDITION, oldCondition, condition));
 	}
 
 	/**
@@ -96,8 +95,8 @@ public class WebInterfaceImpl extends PresentationLayerImpl implements WebInterf
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LowcodersPackage.WEB_INTERFACE__LIBRARY:
-				return getLibrary();
+			case LowcodersPackage.PROACTIVE_HANDLER__CONDITION:
+				return isCondition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,8 +109,8 @@ public class WebInterfaceImpl extends PresentationLayerImpl implements WebInterf
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LowcodersPackage.WEB_INTERFACE__LIBRARY:
-				setLibrary((WebInterfaceLibrary)newValue);
+			case LowcodersPackage.PROACTIVE_HANDLER__CONDITION:
+				setCondition((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -125,8 +124,8 @@ public class WebInterfaceImpl extends PresentationLayerImpl implements WebInterf
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LowcodersPackage.WEB_INTERFACE__LIBRARY:
-				setLibrary(LIBRARY_EDEFAULT);
+			case LowcodersPackage.PROACTIVE_HANDLER__CONDITION:
+				setCondition(CONDITION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -140,8 +139,8 @@ public class WebInterfaceImpl extends PresentationLayerImpl implements WebInterf
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LowcodersPackage.WEB_INTERFACE__LIBRARY:
-				return library != LIBRARY_EDEFAULT;
+			case LowcodersPackage.PROACTIVE_HANDLER__CONDITION:
+				return condition != CONDITION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -156,10 +155,10 @@ public class WebInterfaceImpl extends PresentationLayerImpl implements WebInterf
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (library: ");
-		result.append(library);
+		result.append(" (condition: ");
+		result.append(condition);
 		result.append(')');
 		return result.toString();
 	}
 
-} //WebInterfaceImpl
+} //ProactiveHandlerImpl

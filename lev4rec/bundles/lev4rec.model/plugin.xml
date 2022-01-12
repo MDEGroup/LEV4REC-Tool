@@ -17,7 +17,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated lowcode -->
       <package
-            uri="http://lev4rec/lowcode"
+            uri="https://it.disim.univaq/lowcode"
             class="lowcoders.LowcodersPackage"
             genModel="model/lowcode.genmodel"/>
    </extension>

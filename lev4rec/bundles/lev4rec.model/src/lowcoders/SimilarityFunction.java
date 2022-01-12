@@ -86,7 +86,17 @@ public enum SimilarityFunction implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MSD(6, "MSD", "MSD");
+	MSD(6, "MSD", "MSD"),
+
+	/**
+	 * The '<em><b>EUCLIDEAN DISTANCE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EUCLIDEAN_DISTANCE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	EUCLIDEAN_DISTANCE(7, "EUCLIDEAN_DISTANCE", "EUCLIDEAN_DISTANCE");
 
 	/**
 	 * The '<em><b>COSINE SIMILARITY</b></em>' literal value.
@@ -166,6 +176,17 @@ public enum SimilarityFunction implements Enumerator {
 	public static final int MSD_VALUE = 6;
 
 	/**
+	 * The '<em><b>EUCLIDEAN DISTANCE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EUCLIDEAN_DISTANCE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EUCLIDEAN_DISTANCE_VALUE = 7;
+
+	/**
 	 * An array of all the '<em><b>Similarity Function</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -180,6 +201,7 @@ public enum SimilarityFunction implements Enumerator {
 			SVD,
 			GRAPH_BASED,
 			MSD,
+			EUCLIDEAN_DISTANCE,
 		};
 
 	/**
@@ -243,6 +265,7 @@ public enum SimilarityFunction implements Enumerator {
 			case SVD_VALUE: return SVD;
 			case GRAPH_BASED_VALUE: return GRAPH_BASED;
 			case MSD_VALUE: return MSD;
+			case EUCLIDEAN_DISTANCE_VALUE: return EUCLIDEAN_DISTANCE;
 		}
 		return null;
 	}
