@@ -212,7 +212,7 @@
     </genClasses>
     <genClasses ecoreClass="lowcoders.ecore#//CommunicationChannel"/>
     <genClasses ecoreClass="lowcoders.ecore#//BugTrackingSystem"/>
-    <genClasses ecoreClass="lowcoders.ecore#//DataStructure"/>
+    <genClasses image="false" ecoreClass="lowcoders.ecore#//DataStructure"/>
     <genClasses ecoreClass="lowcoders.ecore#//Graph">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lowcoders.ecore#//Graph/nodes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lowcoders.ecore#//Graph/relations"/>

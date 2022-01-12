@@ -1,5 +1,6 @@
 [comment encoding = UTF-8 /]
 [module generateFeedForwardNN('https://it.disim.univaq/lowcode')]
+
 [import lev4rec::code::template::utils::generateContext/]
 
 [template public generateMLModel(model : FeedForwardNN)]
