@@ -3,53 +3,23 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:lowcoders="http://lev4rec/lowcode" xsi:schemaLocation="http://lev4rec/lowcode"  name="CrossRec">
-  <dataset xsi:type="lowcoders:UnsupervisedDataset"
-      name="crossRecData.csv">
+    xmlns:lowcoders="https://it.disim.univaq/lowcode"
+    xsi:schemaLocation="https://it.disim.univaq/lowcode lowcoders.ecore"
+    name="CrossRec">
+  <dataset xsi:type="lowcoders:UnsupervisedDataset">
     <indipendentVariables
-        name="GithubProject"/>
-    <indipendentVariables
-        name="LibraryDependence"/>
+        name="item"/>
     <dataStructure
-        xsi:type="lowcoders:Graph"
-        name="Graph"
-        nodes="//@dataset/@indipendentVariables.0 //@dataset/@indipendentVariables.1">
-      <relations
-          source="//@dataset/@indipendentVariables.0"
-          target="//@dataset/@indipendentVariables.1"/>
-    </dataStructure>
-    <datasetManipulationLibrary>PANDAS</datasetManipulationLibrary>
+        xsi:type="lowcoders:Graph"/>
   </dataset>
-  <presentationLayer
-      xsi:type="lowcoders:WebApplication"
-      recommendations="//@recommendationSystem/@recommendationScope"/>
-  <evaluation
-      name="">
-    <baselines>LibRec</baselines>
-    <metrics>PRECISION</metrics>
-    <metrics>RECALL</metrics>
-    <metrics>F1_MEASURE</metrics>
-    <metrics>CATALOG_COVERAGE</metrics>
-    <metrics>NOVELTY</metrics>
-    <metrics>SALE_DIVERSITY</metrics>
-    <validationtechnique
-        xsi:type="lowcoders:CrossValidation"
-        name="Ten Fold "
-        nOfRecommendations="10"
-        numberOfFold="10">
-      <groundTruthExtractor
-          sizeGT="half">
-        <splittingRules>random</splittingRules>
-      </groundTruthExtractor>
-    </validationtechnique>
-  </evaluation>
   <recommendationSystem
-      xsi:type="lowcoders:FilteringRS"
-      name="CollaborativeFiltering"
-      generator="SURPRISE"
-      filteringRSAlgorithm="USER_BASED">
-    <recommendationScope
-        name="Outcame"
-        ordered="true"/>
+      xsi:type="lowcoders:MachineLearningBasedRS">
+    <scope/>
   </recommendationSystem>
+  <feedback>
+    <query userContext="//@dataset/@dataStructure"/>
+    <expressedFeedback
+        xsi:type="lowcoders:ExplicitFeedback"
+        item="//@recommendationSystem/@scope"/>
+  </feedback>
 </lowcoders:RSModel>

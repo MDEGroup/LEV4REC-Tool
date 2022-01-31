@@ -481,6 +481,78 @@ public interface LowcodersFactory extends EFactory {
 	GUIElement createGUIElement();
 
 	/**
+	 * Returns a new object of class '<em>User</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>User</em>'.
+	 * @generated
+	 */
+	User createUser();
+
+	/**
+	 * Returns a new object of class '<em>Feedback Component</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Feedback Component</em>'.
+	 * @generated
+	 */
+	FeedbackComponent createFeedbackComponent();
+
+	/**
+	 * Returns a new object of class '<em>Feedback</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Feedback</em>'.
+	 * @generated
+	 */
+	Feedback createFeedback();
+
+	/**
+	 * Returns a new object of class '<em>Implicit Feedback</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Implicit Feedback</em>'.
+	 * @generated
+	 */
+	ImplicitFeedback createImplicitFeedback();
+
+	/**
+	 * Returns a new object of class '<em>Hybrid Feedback</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Hybrid Feedback</em>'.
+	 * @generated
+	 */
+	HybridFeedback createHybridFeedback();
+
+	/**
+	 * Returns a new object of class '<em>Additive Feedback</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Additive Feedback</em>'.
+	 * @generated
+	 */
+	AdditiveFeedback createAdditiveFeedback();
+
+	/**
+	 * Returns a new object of class '<em>Explicit Feedback</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Explicit Feedback</em>'.
+	 * @generated
+	 */
+	ExplicitFeedback createExplicitFeedback();
+
+	/**
+	 * Returns a new object of class '<em>Rating</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Rating</em>'.
+	 * @generated
+	 */
+	Rating createRating();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

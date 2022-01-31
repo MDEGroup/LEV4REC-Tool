@@ -505,6 +505,61 @@ public class LowcodersSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case LowcodersPackage.USER: {
+				User user = (User)theEObject;
+				T result = caseUser(user);
+				if (result == null) result = caseNamedElement(user);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.FEEDBACK_COMPONENT: {
+				FeedbackComponent feedbackComponent = (FeedbackComponent)theEObject;
+				T result = caseFeedbackComponent(feedbackComponent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.FEEDBACK: {
+				Feedback feedback = (Feedback)theEObject;
+				T result = caseFeedback(feedback);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.IMPLICIT_FEEDBACK: {
+				ImplicitFeedback implicitFeedback = (ImplicitFeedback)theEObject;
+				T result = caseImplicitFeedback(implicitFeedback);
+				if (result == null) result = caseFeedback(implicitFeedback);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.HYBRID_FEEDBACK: {
+				HybridFeedback hybridFeedback = (HybridFeedback)theEObject;
+				T result = caseHybridFeedback(hybridFeedback);
+				if (result == null) result = caseFeedback(hybridFeedback);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.ADDITIVE_FEEDBACK: {
+				AdditiveFeedback additiveFeedback = (AdditiveFeedback)theEObject;
+				T result = caseAdditiveFeedback(additiveFeedback);
+				if (result == null) result = caseFeedback(additiveFeedback);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.EXPLICIT_FEEDBACK: {
+				ExplicitFeedback explicitFeedback = (ExplicitFeedback)theEObject;
+				T result = caseExplicitFeedback(explicitFeedback);
+				if (result == null) result = caseFeedback(explicitFeedback);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LowcodersPackage.RATING: {
+				Rating rating = (Rating)theEObject;
+				T result = caseRating(rating);
+				if (result == null) result = caseExplicitFeedback(rating);
+				if (result == null) result = caseFeedback(rating);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -1361,6 +1416,126 @@ public class LowcodersSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGUIElement(GUIElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>User</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>User</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUser(User object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feedback Component</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feedback Component</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeedbackComponent(FeedbackComponent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feedback</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feedback</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeedback(Feedback object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Implicit Feedback</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Implicit Feedback</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseImplicitFeedback(ImplicitFeedback object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Hybrid Feedback</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hybrid Feedback</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHybridFeedback(HybridFeedback object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Additive Feedback</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Additive Feedback</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAdditiveFeedback(AdditiveFeedback object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Explicit Feedback</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Explicit Feedback</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExplicitFeedback(ExplicitFeedback object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rating</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rating</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRating(Rating object) {
 		return null;
 	}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <featureModel>
 	<properties>
-		<graphics key="legendposition" value="1272,437"/>
+		<graphics key="legendposition" value="1663,286"/>
 		<graphics key="legendautolayout" value="false"/>
 		<graphics key="showshortnames" value="false"/>
 		<graphics key="layout" value="vertical"/>
@@ -54,9 +54,16 @@
 							</alt>
 						</alt>
 					</alt>
+					<alt name="MiningAlgorithm">
+						<feature name="AssociationRuleMining"/>
+						<alt name="FrequentPattern">
+							<feature name="Apriori"/>
+							<feature name="FP-growth"/>
+						</alt>
+					</alt>
 				</alt>
 				<and mandatory="true" name="DatasetComponent">
-					<graphics key="collapsed" value="false"/>
+					<graphics key="collapsed" value="true"/>
 					<alt mandatory="true" name="DataStructure">
 						<graphics key="collapsed" value="false"/>
 						<feature name="TextualData"/>
@@ -72,7 +79,7 @@
 					</alt>
 				</and>
 				<or mandatory="true" name="PreprocessingComponent">
-					<graphics key="collapsed" value="false"/>
+					<graphics key="collapsed" value="true"/>
 					<feature name="NLP"/>
 					<feature name="FeatureScaling"/>
 					<feature name="Vectorization"/>
@@ -87,14 +94,106 @@
 						<feature name="SplittingKfold"/>
 						<feature name="RandomSpltting"/>
 					</alt>
-					<feature name="UserStudy"/>
+					<alt name="UserStudy">
+						<feature name="ControlledExperiment"/>
+						<feature name="CrossoverDesign"/>
+						<alt name="LikertScaleQuetionairre">
+							<feature name="Trust"/>
+							<feature name="SystemDesign"/>
+							<feature name="Competence"/>
+							<feature name="UserIntention"/>
+						</alt>
+					</alt>
 				</or>
 				<alt mandatory="true" name="PresentationComponent">
-					<graphics key="collapsed" value="false"/>
+					<graphics key="collapsed" value="true"/>
 					<feature name="WebInterface"/>
 					<feature name="IDEPlugin"/>
 					<feature name="RawOutcomes"/>
 				</alt>
+				<or name="FeedbackComponent">
+					<alt name="FeedBackType">
+						<alt name="Implicit">
+							<or name="Direct">
+								<feature name="Examine"/>
+								<feature name="Retain"/>
+								<feature name="Reference"/>
+								<feature name="Annotate"/>
+							</or>
+							<alt name="Indirect">
+								<feature name="FeatureRelated"/>
+								<feature name="UserRelated"/>
+							</alt>
+						</alt>
+						<feature name="Hybrid"/>
+						<feature name="Additive"/>
+						<alt name="Explicit">
+							<feature name="TransactionModel"/>
+							<alt name="Critique">
+								<feature name="Unit"/>
+								<feature name="Compund"/>
+							</alt>
+							<alt name="Ratings">
+								<feature name="Numerical"/>
+								<feature name="Ordinal"/>
+								<feature name="Binary"/>
+								<feature name="Unary"/>
+							</alt>
+						</alt>
+					</alt>
+					<or name="UserBehaviourHandler">
+						<or name="NavigationAndBrowsing">
+							<feature name="DwelingTime"/>
+							<feature name="MonitoringActions"/>
+							<feature name="Browsing"/>
+							<feature name="WebUsageMining"/>
+						</or>
+						<or name="ShoppingBehaviour">
+							<feature name="BasketAnalisys"/>
+							<feature name="ShopVisitor"/>
+							<feature name="NavigationLog"/>
+						</or>
+						<or name="Social">
+							<feature name="TagsAndBookmarks"/>
+							<feature name="PostsAndComments"/>
+							<feature name="FriendshipRelations"/>
+							<feature name="StructuringObjects"/>
+						</or>
+						<feature name="Media"/>
+						<feature name="Ubiquitous"/>
+					</or>
+					<alt name="LearningToRank">
+						<feature name="Pointwise"/>
+						<feature name="Pairwise"/>
+						<feature name="Listwise"/>
+					</alt>
+					<alt name="FeedbackBased">
+						<alt name="ImpicitBased">
+							<alt name="PositiveOnlyProblems">
+								<feature name="AMAN"/>
+								<feature name="AMAU"/>
+							</alt>
+							<alt name="OneClassCollaborative">
+								<feature name="WALS"/>
+								<feature name="SLASENS"/>
+								<feature name="BayesianPersonalizedRaniking"/>
+								<feature name="CLiMF"/>
+								<feature name="ONESVM"/>
+							</alt>
+							<alt name="SocialAlgorithm">
+								<feature name="NeighborhoodModel"/>
+								<feature name="AsymmetricSVD"/>
+								<feature name="SVDplusplus"/>
+								<feature name="IntegratedModel"/>
+							</alt>
+						</alt>
+						<alt name="ExplicitBased">
+							<feature name="PreferenceBased"/>
+							<feature name="AutomaticCalibration"/>
+						</alt>
+						<feature name="HybridBased"/>
+					</alt>
+				</or>
 			</and>
 			<and mandatory="true" name="SupportingLibrary">
 				<graphics key="collapsed" value="false"/>
@@ -105,6 +204,9 @@
 					<feature name="PyTorch"/>
 					<feature name="TensorFlow"/>
 				</alt>
+				<and name="FeedbackLibrary">
+					<feature name="LightFM"/>
+				</and>
 				<or mandatory="true" name="DatasetLibrary">
 					<graphics key="collapsed" value="false"/>
 					<feature name="Pandas"/>
@@ -279,6 +381,36 @@
 				<not>
 					<var>NLP</var>
 				</not>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>LightFM</var>
+				<var>LearningToRank</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>ExplicitBased</var>
+				<var>Explicit</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>ImpicitBased</var>
+				<var>Implicit</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>HybridBased</var>
+				<var>Hybrid</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>SocialAlgorithm</var>
+				<var>Social</var>
 			</imp>
 		</rule>
 	</constraints>

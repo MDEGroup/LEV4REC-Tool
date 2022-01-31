@@ -34,6 +34,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="recommendationSystem" lowerBound="1"
         eType="#//RecommendationSystem" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feedback" eType="#//FeedbackComponent"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RecommendationHandler" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="usage" upperBound="-1"
@@ -61,7 +63,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="WebIService" eSuperTypes="#//PresentationLayer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="library" eType="#//WebInterfaceLibrary"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WebApplication" eSuperTypes="#//NamedElement #//PresentationLayer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WebApplication" eSuperTypes="#//NamedElement #//PresentationLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="library" eType="#//WebInterfaceLibrary"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="host" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IDEIntegration" eSuperTypes="#//PresentationLayer"/>
   <eClassifiers xsi:type="ecore:EClass" name="VSCodePlugin" eSuperTypes="#//IDEIntegration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="handler" lowerBound="1"
@@ -351,4 +357,34 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="randomState" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GUIElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressedFeedback" eType="#//Feedback"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//RecommendationContext"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeedbackComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//RecommendationContext"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressedFeedback" eType="#//Feedback"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feedback">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" eType="#//RecommendedItem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplicitFeedback" eSuperTypes="#//Feedback"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HybridFeedback" eSuperTypes="#//Feedback"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AdditiveFeedback" eSuperTypes="#//Feedback">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numOfInsertion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="recommender" eType="#//RecommendationSystem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExplicitFeedback" eSuperTypes="#//Feedback"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Rating" eSuperTypes="#//ExplicitFeedback">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RatingType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RatingType">
+    <eLiterals name="POSITIVE"/>
+    <eLiterals name="NEGATIVE" value="1"/>
+    <eLiterals name="NUMERICAL" value="2"/>
+    <eLiterals name="ORDINAL" value="3"/>
+    <eLiterals name="UNARY" value="4"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -4,6 +4,7 @@ package lowcoders.impl;
 
 import lowcoders.Dataset;
 import lowcoders.Evaluation;
+import lowcoders.FeedbackComponent;
 import lowcoders.LowcodersPackage;
 import lowcoders.PresentationLayer;
 import lowcoders.RSModel;
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link lowcoders.impl.RSModelImpl#getPresentationLayer <em>Presentation Layer</em>}</li>
  *   <li>{@link lowcoders.impl.RSModelImpl#getEvaluation <em>Evaluation</em>}</li>
  *   <li>{@link lowcoders.impl.RSModelImpl#getRecommendationSystem <em>Recommendation System</em>}</li>
+ *   <li>{@link lowcoders.impl.RSModelImpl#getFeedback <em>Feedback</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,6 +75,16 @@ public class RSModelImpl extends NamedElementImpl implements RSModel {
 	 * @ordered
 	 */
 	protected RecommendationSystem recommendationSystem;
+
+	/**
+	 * The cached value of the '{@link #getFeedback() <em>Feedback</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeedback()
+	 * @generated
+	 * @ordered
+	 */
+	protected FeedbackComponent feedback;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -279,6 +291,51 @@ public class RSModelImpl extends NamedElementImpl implements RSModel {
 	 * @generated
 	 */
 	@Override
+	public FeedbackComponent getFeedback() {
+		return feedback;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFeedback(FeedbackComponent newFeedback, NotificationChain msgs) {
+		FeedbackComponent oldFeedback = feedback;
+		feedback = newFeedback;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LowcodersPackage.RS_MODEL__FEEDBACK, oldFeedback, newFeedback);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setFeedback(FeedbackComponent newFeedback) {
+		if (newFeedback != feedback) {
+			NotificationChain msgs = null;
+			if (feedback != null)
+				msgs = ((InternalEObject)feedback).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.RS_MODEL__FEEDBACK, null, msgs);
+			if (newFeedback != null)
+				msgs = ((InternalEObject)newFeedback).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.RS_MODEL__FEEDBACK, null, msgs);
+			msgs = basicSetFeedback(newFeedback, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.RS_MODEL__FEEDBACK, newFeedback, newFeedback));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LowcodersPackage.RS_MODEL__DATASET:
@@ -289,6 +346,8 @@ public class RSModelImpl extends NamedElementImpl implements RSModel {
 				return basicSetEvaluation(null, msgs);
 			case LowcodersPackage.RS_MODEL__RECOMMENDATION_SYSTEM:
 				return basicSetRecommendationSystem(null, msgs);
+			case LowcodersPackage.RS_MODEL__FEEDBACK:
+				return basicSetFeedback(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -309,6 +368,8 @@ public class RSModelImpl extends NamedElementImpl implements RSModel {
 				return getEvaluation();
 			case LowcodersPackage.RS_MODEL__RECOMMENDATION_SYSTEM:
 				return getRecommendationSystem();
+			case LowcodersPackage.RS_MODEL__FEEDBACK:
+				return getFeedback();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -332,6 +393,9 @@ public class RSModelImpl extends NamedElementImpl implements RSModel {
 				return;
 			case LowcodersPackage.RS_MODEL__RECOMMENDATION_SYSTEM:
 				setRecommendationSystem((RecommendationSystem)newValue);
+				return;
+			case LowcodersPackage.RS_MODEL__FEEDBACK:
+				setFeedback((FeedbackComponent)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -357,6 +421,9 @@ public class RSModelImpl extends NamedElementImpl implements RSModel {
 			case LowcodersPackage.RS_MODEL__RECOMMENDATION_SYSTEM:
 				setRecommendationSystem((RecommendationSystem)null);
 				return;
+			case LowcodersPackage.RS_MODEL__FEEDBACK:
+				setFeedback((FeedbackComponent)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -377,6 +444,8 @@ public class RSModelImpl extends NamedElementImpl implements RSModel {
 				return evaluation != null;
 			case LowcodersPackage.RS_MODEL__RECOMMENDATION_SYSTEM:
 				return recommendationSystem != null;
+			case LowcodersPackage.RS_MODEL__FEEDBACK:
+				return feedback != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -3,6 +3,7 @@
 package lowcoders.impl;
 
 import lowcoders.ActivationType;
+import lowcoders.AdditiveFeedback;
 import lowcoders.AutomatedValidation;
 import lowcoders.Bayesian;
 import lowcoders.BugTrackingSystem;
@@ -23,7 +24,10 @@ import lowcoders.DecisionTree;
 import lowcoders.DeepNN;
 import lowcoders.DependencyManager;
 import lowcoders.Evaluation;
+import lowcoders.ExplicitFeedback;
 import lowcoders.FeedForwardNN;
+import lowcoders.Feedback;
+import lowcoders.FeedbackComponent;
 import lowcoders.File;
 import lowcoders.FilteringRS;
 import lowcoders.FilteringRSAlgorithm;
@@ -31,7 +35,9 @@ import lowcoders.GUIElement;
 import lowcoders.GeneticAlgorithm;
 import lowcoders.Graph;
 import lowcoders.GroundTruthExtraction;
+import lowcoders.HybridFeedback;
 import lowcoders.IDEIntegration;
+import lowcoders.ImplicitFeedback;
 import lowcoders.KernelType;
 import lowcoders.LowcodersFactory;
 import lowcoders.LowcodersPackage;
@@ -47,6 +53,8 @@ import lowcoders.ProactiveHandler;
 import lowcoders.PyLibType;
 import lowcoders.RSModel;
 import lowcoders.RandomSplitting;
+import lowcoders.Rating;
+import lowcoders.RatingType;
 import lowcoders.RawFormat;
 import lowcoders.RawOutcomes;
 import lowcoders.ReactiveHandler;
@@ -66,6 +74,7 @@ import lowcoders.TextualContent;
 import lowcoders.TraversableGraph;
 import lowcoders.Tree;
 import lowcoders.UnsupervisedDataset;
+import lowcoders.User;
 import lowcoders.UserEvent;
 import lowcoders.UserEventType;
 import lowcoders.UserStudy;
@@ -501,6 +510,62 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass userEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass feedbackComponentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass feedbackEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass implicitFeedbackEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass hybridFeedbackEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass additiveFeedbackEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass explicitFeedbackEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ratingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum userEventTypeEEnum = null;
 
 	/**
@@ -649,6 +714,13 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	private EEnum validationLibraryEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum ratingTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -867,6 +939,16 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
+	public EReference getRSModel_Feedback() {
+		return (EReference)rsModelEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getRecommendationHandler() {
 		return recommendationHandlerEClass;
 	}
@@ -1039,6 +1121,36 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	@Override
 	public EClass getWebApplication() {
 		return webApplicationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWebApplication_Library() {
+		return (EAttribute)webApplicationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWebApplication_Port() {
+		return (EAttribute)webApplicationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWebApplication_Host() {
+		return (EAttribute)webApplicationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2117,6 +2229,166 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
+	public EClass getUser() {
+		return userEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getUser_ExpressedFeedback() {
+		return (EReference)userEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getUser_Query() {
+		return (EReference)userEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFeedbackComponent() {
+		return feedbackComponentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getFeedbackComponent_Query() {
+		return (EReference)feedbackComponentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getFeedbackComponent_ExpressedFeedback() {
+		return (EReference)feedbackComponentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFeedback() {
+		return feedbackEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getFeedback_Item() {
+		return (EReference)feedbackEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getImplicitFeedback() {
+		return implicitFeedbackEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getHybridFeedback() {
+		return hybridFeedbackEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAdditiveFeedback() {
+		return additiveFeedbackEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAdditiveFeedback_NumOfInsertion() {
+		return (EAttribute)additiveFeedbackEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAdditiveFeedback_Recommender() {
+		return (EReference)additiveFeedbackEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getExplicitFeedback() {
+		return explicitFeedbackEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getRating() {
+		return ratingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRating_Type() {
+		return (EAttribute)ratingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getUserEventType() {
 		return userEventTypeEEnum;
 	}
@@ -2337,6 +2609,16 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
+	public EEnum getRatingType() {
+		return ratingTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public LowcodersFactory getLowcodersFactory() {
 		return (LowcodersFactory)getEFactoryInstance();
 	}
@@ -2378,6 +2660,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		createEReference(rsModelEClass, RS_MODEL__PRESENTATION_LAYER);
 		createEReference(rsModelEClass, RS_MODEL__EVALUATION);
 		createEReference(rsModelEClass, RS_MODEL__RECOMMENDATION_SYSTEM);
+		createEReference(rsModelEClass, RS_MODEL__FEEDBACK);
 
 		recommendationHandlerEClass = createEClass(RECOMMENDATION_HANDLER);
 		createEReference(recommendationHandlerEClass, RECOMMENDATION_HANDLER__USAGE);
@@ -2404,6 +2687,9 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		createEAttribute(webIServiceEClass, WEB_ISERVICE__LIBRARY);
 
 		webApplicationEClass = createEClass(WEB_APPLICATION);
+		createEAttribute(webApplicationEClass, WEB_APPLICATION__LIBRARY);
+		createEAttribute(webApplicationEClass, WEB_APPLICATION__PORT);
+		createEAttribute(webApplicationEClass, WEB_APPLICATION__HOST);
 
 		ideIntegrationEClass = createEClass(IDE_INTEGRATION);
 
@@ -2557,6 +2843,30 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 
 		guiElementEClass = createEClass(GUI_ELEMENT);
 
+		userEClass = createEClass(USER);
+		createEReference(userEClass, USER__EXPRESSED_FEEDBACK);
+		createEReference(userEClass, USER__QUERY);
+
+		feedbackComponentEClass = createEClass(FEEDBACK_COMPONENT);
+		createEReference(feedbackComponentEClass, FEEDBACK_COMPONENT__QUERY);
+		createEReference(feedbackComponentEClass, FEEDBACK_COMPONENT__EXPRESSED_FEEDBACK);
+
+		feedbackEClass = createEClass(FEEDBACK);
+		createEReference(feedbackEClass, FEEDBACK__ITEM);
+
+		implicitFeedbackEClass = createEClass(IMPLICIT_FEEDBACK);
+
+		hybridFeedbackEClass = createEClass(HYBRID_FEEDBACK);
+
+		additiveFeedbackEClass = createEClass(ADDITIVE_FEEDBACK);
+		createEAttribute(additiveFeedbackEClass, ADDITIVE_FEEDBACK__NUM_OF_INSERTION);
+		createEReference(additiveFeedbackEClass, ADDITIVE_FEEDBACK__RECOMMENDER);
+
+		explicitFeedbackEClass = createEClass(EXPLICIT_FEEDBACK);
+
+		ratingEClass = createEClass(RATING);
+		createEAttribute(ratingEClass, RATING__TYPE);
+
 		// Create enums
 		userEventTypeEEnum = createEEnum(USER_EVENT_TYPE);
 		collaborativeFilteringAlgorithmEEnum = createEEnum(COLLABORATIVE_FILTERING_ALGORITHM);
@@ -2580,6 +2890,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		webInterfaceLibraryEEnum = createEEnum(WEB_INTERFACE_LIBRARY);
 		rawFormatEEnum = createEEnum(RAW_FORMAT);
 		validationLibraryEEnum = createEEnum(VALIDATION_LIBRARY);
+		ratingTypeEEnum = createEEnum(RATING_TYPE);
 	}
 
 	/**
@@ -2660,6 +2971,12 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		svmEClass.getESuperTypes().add(this.getMachineLearningBasedRS());
 		decisionTreeEClass.getESuperTypes().add(this.getMachineLearningBasedRS());
 		feedForwardNNEClass.getESuperTypes().add(this.getMachineLearningBasedRS());
+		userEClass.getESuperTypes().add(this.getNamedElement());
+		implicitFeedbackEClass.getESuperTypes().add(this.getFeedback());
+		hybridFeedbackEClass.getESuperTypes().add(this.getFeedback());
+		additiveFeedbackEClass.getESuperTypes().add(this.getFeedback());
+		explicitFeedbackEClass.getESuperTypes().add(this.getFeedback());
+		ratingEClass.getESuperTypes().add(this.getExplicitFeedback());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2680,6 +2997,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEReference(getRSModel_PresentationLayer(), this.getPresentationLayer(), null, "presentationLayer", null, 0, 1, RSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRSModel_Evaluation(), this.getEvaluation(), null, "evaluation", null, 0, 1, RSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRSModel_RecommendationSystem(), this.getRecommendationSystem(), null, "recommendationSystem", null, 1, 1, RSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRSModel_Feedback(), this.getFeedbackComponent(), null, "feedback", null, 0, 1, RSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(recommendationHandlerEClass, RecommendationHandler.class, "RecommendationHandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRecommendationHandler_Usage(), this.getRecommendationUsage(), null, "usage", null, 0, -1, RecommendationHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2706,6 +3024,9 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEAttribute(getWebIService_Library(), this.getWebInterfaceLibrary(), "library", null, 0, 1, WebIService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(webApplicationEClass, WebApplication.class, "WebApplication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWebApplication_Library(), this.getWebInterfaceLibrary(), "library", null, 0, 1, WebApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWebApplication_Port(), ecorePackage.getEString(), "port", null, 0, 1, WebApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWebApplication_Host(), ecorePackage.getEString(), "host", null, 0, 1, WebApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ideIntegrationEClass, IDEIntegration.class, "IDEIntegration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2859,6 +3180,30 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 
 		initEClass(guiElementEClass, GUIElement.class, "GUIElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUser_ExpressedFeedback(), this.getFeedback(), null, "expressedFeedback", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUser_Query(), this.getRecommendationContext(), null, "query", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(feedbackComponentEClass, FeedbackComponent.class, "FeedbackComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFeedbackComponent_Query(), this.getRecommendationContext(), null, "query", null, 0, 1, FeedbackComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeedbackComponent_ExpressedFeedback(), this.getFeedback(), null, "expressedFeedback", null, 0, 1, FeedbackComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(feedbackEClass, Feedback.class, "Feedback", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFeedback_Item(), this.getRecommendedItem(), null, "item", null, 0, 1, Feedback.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(implicitFeedbackEClass, ImplicitFeedback.class, "ImplicitFeedback", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(hybridFeedbackEClass, HybridFeedback.class, "HybridFeedback", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(additiveFeedbackEClass, AdditiveFeedback.class, "AdditiveFeedback", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAdditiveFeedback_NumOfInsertion(), ecorePackage.getEInt(), "numOfInsertion", null, 0, 1, AdditiveFeedback.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdditiveFeedback_Recommender(), this.getRecommendationSystem(), null, "recommender", null, 0, 1, AdditiveFeedback.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(explicitFeedbackEClass, ExplicitFeedback.class, "ExplicitFeedback", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(ratingEClass, Rating.class, "Rating", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRating_Type(), this.getRatingType(), "type", null, 0, 1, Rating.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(userEventTypeEEnum, UserEventType.class, "UserEventType");
 		addEEnumLiteral(userEventTypeEEnum, UserEventType.CLICK);
@@ -2990,6 +3335,13 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEEnum(validationLibraryEEnum, ValidationLibrary.class, "ValidationLibrary");
 		addEEnumLiteral(validationLibraryEEnum, ValidationLibrary.SKLEARN);
 		addEEnumLiteral(validationLibraryEEnum, ValidationLibrary.SURPRISE);
+
+		initEEnum(ratingTypeEEnum, RatingType.class, "RatingType");
+		addEEnumLiteral(ratingTypeEEnum, RatingType.POSITIVE);
+		addEEnumLiteral(ratingTypeEEnum, RatingType.NEGATIVE);
+		addEEnumLiteral(ratingTypeEEnum, RatingType.NUMERICAL);
+		addEEnumLiteral(ratingTypeEEnum, RatingType.ORDINAL);
+		addEEnumLiteral(ratingTypeEEnum, RatingType.UNARY);
 
 		// Create resource
 		createResource(eNS_URI);

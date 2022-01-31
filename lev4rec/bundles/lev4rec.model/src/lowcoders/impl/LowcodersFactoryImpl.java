@@ -108,6 +108,14 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 			case LowcodersPackage.DECISION_TREE: return createDecisionTree();
 			case LowcodersPackage.FEED_FORWARD_NN: return createFeedForwardNN();
 			case LowcodersPackage.GUI_ELEMENT: return createGUIElement();
+			case LowcodersPackage.USER: return createUser();
+			case LowcodersPackage.FEEDBACK_COMPONENT: return createFeedbackComponent();
+			case LowcodersPackage.FEEDBACK: return createFeedback();
+			case LowcodersPackage.IMPLICIT_FEEDBACK: return createImplicitFeedback();
+			case LowcodersPackage.HYBRID_FEEDBACK: return createHybridFeedback();
+			case LowcodersPackage.ADDITIVE_FEEDBACK: return createAdditiveFeedback();
+			case LowcodersPackage.EXPLICIT_FEEDBACK: return createExplicitFeedback();
+			case LowcodersPackage.RATING: return createRating();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -165,6 +173,8 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 				return createRawFormatFromString(eDataType, initialValue);
 			case LowcodersPackage.VALIDATION_LIBRARY:
 				return createValidationLibraryFromString(eDataType, initialValue);
+			case LowcodersPackage.RATING_TYPE:
+				return createRatingTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -222,6 +232,8 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 				return convertRawFormatToString(eDataType, instanceValue);
 			case LowcodersPackage.VALIDATION_LIBRARY:
 				return convertValidationLibraryToString(eDataType, instanceValue);
+			case LowcodersPackage.RATING_TYPE:
+				return convertRatingTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -793,6 +805,94 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public User createUser() {
+		UserImpl user = new UserImpl();
+		return user;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public FeedbackComponent createFeedbackComponent() {
+		FeedbackComponentImpl feedbackComponent = new FeedbackComponentImpl();
+		return feedbackComponent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Feedback createFeedback() {
+		FeedbackImpl feedback = new FeedbackImpl();
+		return feedback;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ImplicitFeedback createImplicitFeedback() {
+		ImplicitFeedbackImpl implicitFeedback = new ImplicitFeedbackImpl();
+		return implicitFeedback;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public HybridFeedback createHybridFeedback() {
+		HybridFeedbackImpl hybridFeedback = new HybridFeedbackImpl();
+		return hybridFeedback;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AdditiveFeedback createAdditiveFeedback() {
+		AdditiveFeedbackImpl additiveFeedback = new AdditiveFeedbackImpl();
+		return additiveFeedback;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ExplicitFeedback createExplicitFeedback() {
+		ExplicitFeedbackImpl explicitFeedback = new ExplicitFeedbackImpl();
+		return explicitFeedback;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Rating createRating() {
+		RatingImpl rating = new RatingImpl();
+		return rating;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public UserEventType createUserEventTypeFromString(EDataType eDataType, String initialValue) {
 		UserEventType result = UserEventType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -1225,6 +1325,26 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * @generated
 	 */
 	public String convertValidationLibraryToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RatingType createRatingTypeFromString(EDataType eDataType, String initialValue) {
+		RatingType result = RatingType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRatingTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

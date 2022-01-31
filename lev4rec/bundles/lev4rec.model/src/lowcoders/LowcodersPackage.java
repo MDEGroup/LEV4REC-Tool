@@ -270,13 +270,22 @@ public interface LowcodersPackage extends EPackage {
 	int RS_MODEL__RECOMMENDATION_SYSTEM = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Feedback</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RS_MODEL__FEEDBACK = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>RS Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RS_MODEL_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int RS_MODEL_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>RS Model</em>' class.
@@ -719,13 +728,40 @@ public interface LowcodersPackage extends EPackage {
 	int WEB_APPLICATION__RECOMMENDATIONS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Library</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_APPLICATION__LIBRARY = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_APPLICATION__PORT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WEB_APPLICATION__HOST = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Web Application</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WEB_APPLICATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int WEB_APPLICATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Web Application</em>' class.
@@ -3743,6 +3779,356 @@ public interface LowcodersPackage extends EPackage {
 	int GUI_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link lowcoders.impl.UserImpl <em>User</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.UserImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getUser()
+	 * @generated
+	 */
+	int USER = 57;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Expressed Feedback</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER__EXPRESSED_FEEDBACK = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Query</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER__QUERY = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>User</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>User</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.impl.FeedbackComponentImpl <em>Feedback Component</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.FeedbackComponentImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getFeedbackComponent()
+	 * @generated
+	 */
+	int FEEDBACK_COMPONENT = 58;
+
+	/**
+	 * The feature id for the '<em><b>Query</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEEDBACK_COMPONENT__QUERY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Expressed Feedback</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEEDBACK_COMPONENT__EXPRESSED_FEEDBACK = 1;
+
+	/**
+	 * The number of structural features of the '<em>Feedback Component</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEEDBACK_COMPONENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Feedback Component</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEEDBACK_COMPONENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.impl.FeedbackImpl <em>Feedback</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.FeedbackImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getFeedback()
+	 * @generated
+	 */
+	int FEEDBACK = 59;
+
+	/**
+	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEEDBACK__ITEM = 0;
+
+	/**
+	 * The number of structural features of the '<em>Feedback</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEEDBACK_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Feedback</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEEDBACK_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.impl.ImplicitFeedbackImpl <em>Implicit Feedback</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.ImplicitFeedbackImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getImplicitFeedback()
+	 * @generated
+	 */
+	int IMPLICIT_FEEDBACK = 60;
+
+	/**
+	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPLICIT_FEEDBACK__ITEM = FEEDBACK__ITEM;
+
+	/**
+	 * The number of structural features of the '<em>Implicit Feedback</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPLICIT_FEEDBACK_FEATURE_COUNT = FEEDBACK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Implicit Feedback</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPLICIT_FEEDBACK_OPERATION_COUNT = FEEDBACK_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.impl.HybridFeedbackImpl <em>Hybrid Feedback</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.HybridFeedbackImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getHybridFeedback()
+	 * @generated
+	 */
+	int HYBRID_FEEDBACK = 61;
+
+	/**
+	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HYBRID_FEEDBACK__ITEM = FEEDBACK__ITEM;
+
+	/**
+	 * The number of structural features of the '<em>Hybrid Feedback</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HYBRID_FEEDBACK_FEATURE_COUNT = FEEDBACK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Hybrid Feedback</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HYBRID_FEEDBACK_OPERATION_COUNT = FEEDBACK_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.impl.AdditiveFeedbackImpl <em>Additive Feedback</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.AdditiveFeedbackImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getAdditiveFeedback()
+	 * @generated
+	 */
+	int ADDITIVE_FEEDBACK = 62;
+
+	/**
+	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDITIVE_FEEDBACK__ITEM = FEEDBACK__ITEM;
+
+	/**
+	 * The feature id for the '<em><b>Num Of Insertion</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDITIVE_FEEDBACK__NUM_OF_INSERTION = FEEDBACK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Recommender</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDITIVE_FEEDBACK__RECOMMENDER = FEEDBACK_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Additive Feedback</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDITIVE_FEEDBACK_FEATURE_COUNT = FEEDBACK_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Additive Feedback</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDITIVE_FEEDBACK_OPERATION_COUNT = FEEDBACK_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.impl.ExplicitFeedbackImpl <em>Explicit Feedback</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.ExplicitFeedbackImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getExplicitFeedback()
+	 * @generated
+	 */
+	int EXPLICIT_FEEDBACK = 63;
+
+	/**
+	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPLICIT_FEEDBACK__ITEM = FEEDBACK__ITEM;
+
+	/**
+	 * The number of structural features of the '<em>Explicit Feedback</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPLICIT_FEEDBACK_FEATURE_COUNT = FEEDBACK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Explicit Feedback</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPLICIT_FEEDBACK_OPERATION_COUNT = FEEDBACK_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lowcoders.impl.RatingImpl <em>Rating</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.impl.RatingImpl
+	 * @see lowcoders.impl.LowcodersPackageImpl#getRating()
+	 * @generated
+	 */
+	int RATING = 64;
+
+	/**
+	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RATING__ITEM = EXPLICIT_FEEDBACK__ITEM;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RATING__TYPE = EXPLICIT_FEEDBACK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Rating</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RATING_FEATURE_COUNT = EXPLICIT_FEEDBACK_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Rating</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RATING_OPERATION_COUNT = EXPLICIT_FEEDBACK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link lowcoders.UserEventType <em>User Event Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3750,7 +4136,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getUserEventType()
 	 * @generated
 	 */
-	int USER_EVENT_TYPE = 57;
+	int USER_EVENT_TYPE = 65;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.CollaborativeFilteringAlgorithm <em>Collaborative Filtering Algorithm</em>}' enum.
@@ -3760,7 +4146,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getCollaborativeFilteringAlgorithm()
 	 * @generated
 	 */
-	int COLLABORATIVE_FILTERING_ALGORITHM = 58;
+	int COLLABORATIVE_FILTERING_ALGORITHM = 66;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.WebContainer <em>Web Container</em>}' enum.
@@ -3770,7 +4156,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getWebContainer()
 	 * @generated
 	 */
-	int WEB_CONTAINER = 59;
+	int WEB_CONTAINER = 67;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.Metric <em>Metric</em>}' enum.
@@ -3780,7 +4166,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getMetric()
 	 * @generated
 	 */
-	int METRIC = 60;
+	int METRIC = 68;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.PreprocessingTechnique <em>Preprocessing Technique</em>}' enum.
@@ -3790,7 +4176,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getPreprocessingTechnique()
 	 * @generated
 	 */
-	int PREPROCESSING_TECHNIQUE = 61;
+	int PREPROCESSING_TECHNIQUE = 69;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.RecommendationUsageType <em>Recommendation Usage Type</em>}' enum.
@@ -3800,7 +4186,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRecommendationUsageType()
 	 * @generated
 	 */
-	int RECOMMENDATION_USAGE_TYPE = 62;
+	int RECOMMENDATION_USAGE_TYPE = 70;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.VariableType <em>Variable Type</em>}' enum.
@@ -3810,7 +4196,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getVariableType()
 	 * @generated
 	 */
-	int VARIABLE_TYPE = 63;
+	int VARIABLE_TYPE = 71;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.DataMiningRSAlgorithm <em>Data Mining RS Algorithm</em>}' enum.
@@ -3820,7 +4206,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDataMiningRSAlgorithm()
 	 * @generated
 	 */
-	int DATA_MINING_RS_ALGORITHM = 64;
+	int DATA_MINING_RS_ALGORITHM = 72;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.FilteringRSAlgorithm <em>Filtering RS Algorithm</em>}' enum.
@@ -3830,7 +4216,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getFilteringRSAlgorithm()
 	 * @generated
 	 */
-	int FILTERING_RS_ALGORITHM = 65;
+	int FILTERING_RS_ALGORITHM = 73;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.SearchStrategy <em>Search Strategy</em>}' enum.
@@ -3840,7 +4226,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getSearchStrategy()
 	 * @generated
 	 */
-	int SEARCH_STRATEGY = 66;
+	int SEARCH_STRATEGY = 74;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.MutationOperation <em>Mutation Operation</em>}' enum.
@@ -3850,7 +4236,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getMutationOperation()
 	 * @generated
 	 */
-	int MUTATION_OPERATION = 67;
+	int MUTATION_OPERATION = 75;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.UserStudyType <em>User Study Type</em>}' enum.
@@ -3860,7 +4246,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getUserStudyType()
 	 * @generated
 	 */
-	int USER_STUDY_TYPE = 68;
+	int USER_STUDY_TYPE = 76;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.UserStudyAnalysis <em>User Study Analysis</em>}' enum.
@@ -3870,7 +4256,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getUserStudyAnalysis()
 	 * @generated
 	 */
-	int USER_STUDY_ANALYSIS = 69;
+	int USER_STUDY_ANALYSIS = 77;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.SimilarityFunction <em>Similarity Function</em>}' enum.
@@ -3880,7 +4266,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getSimilarityFunction()
 	 * @generated
 	 */
-	int SIMILARITY_FUNCTION = 70;
+	int SIMILARITY_FUNCTION = 78;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.PyLibType <em>Py Lib Type</em>}' enum.
@@ -3890,7 +4276,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getPyLibType()
 	 * @generated
 	 */
-	int PY_LIB_TYPE = 71;
+	int PY_LIB_TYPE = 79;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.SolverType <em>Solver Type</em>}' enum.
@@ -3900,7 +4286,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getSolverType()
 	 * @generated
 	 */
-	int SOLVER_TYPE = 72;
+	int SOLVER_TYPE = 80;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.KernelType <em>Kernel Type</em>}' enum.
@@ -3910,7 +4296,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getKernelType()
 	 * @generated
 	 */
-	int KERNEL_TYPE = 73;
+	int KERNEL_TYPE = 81;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.ActivationType <em>Activation Type</em>}' enum.
@@ -3920,7 +4306,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getActivationType()
 	 * @generated
 	 */
-	int ACTIVATION_TYPE = 74;
+	int ACTIVATION_TYPE = 82;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.DatasetManipulationLibrary <em>Dataset Manipulation Library</em>}' enum.
@@ -3930,7 +4316,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDatasetManipulationLibrary()
 	 * @generated
 	 */
-	int DATASET_MANIPULATION_LIBRARY = 75;
+	int DATASET_MANIPULATION_LIBRARY = 83;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.WebInterfaceLibrary <em>Web Interface Library</em>}' enum.
@@ -3940,7 +4326,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getWebInterfaceLibrary()
 	 * @generated
 	 */
-	int WEB_INTERFACE_LIBRARY = 76;
+	int WEB_INTERFACE_LIBRARY = 84;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.RawFormat <em>Raw Format</em>}' enum.
@@ -3950,7 +4336,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRawFormat()
 	 * @generated
 	 */
-	int RAW_FORMAT = 77;
+	int RAW_FORMAT = 85;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.ValidationLibrary <em>Validation Library</em>}' enum.
@@ -3960,7 +4346,18 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getValidationLibrary()
 	 * @generated
 	 */
-	int VALIDATION_LIBRARY = 78;
+	int VALIDATION_LIBRARY = 86;
+
+
+	/**
+	 * The meta object id for the '{@link lowcoders.RatingType <em>Rating Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.RatingType
+	 * @see lowcoders.impl.LowcodersPackageImpl#getRatingType()
+	 * @generated
+	 */
+	int RATING_TYPE = 87;
 
 
 	/**
@@ -4123,6 +4520,17 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRSModel_RecommendationSystem();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link lowcoders.RSModel#getFeedback <em>Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Feedback</em>'.
+	 * @see lowcoders.RSModel#getFeedback()
+	 * @see #getRSModel()
+	 * @generated
+	 */
+	EReference getRSModel_Feedback();
 
 	/**
 	 * Returns the meta object for class '{@link lowcoders.RecommendationHandler <em>Recommendation Handler</em>}'.
@@ -4313,6 +4721,39 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getWebApplication();
+
+	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.WebApplication#getLibrary <em>Library</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Library</em>'.
+	 * @see lowcoders.WebApplication#getLibrary()
+	 * @see #getWebApplication()
+	 * @generated
+	 */
+	EAttribute getWebApplication_Library();
+
+	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.WebApplication#getPort <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Port</em>'.
+	 * @see lowcoders.WebApplication#getPort()
+	 * @see #getWebApplication()
+	 * @generated
+	 */
+	EAttribute getWebApplication_Port();
+
+	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.WebApplication#getHost <em>Host</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Host</em>'.
+	 * @see lowcoders.WebApplication#getHost()
+	 * @see #getWebApplication()
+	 * @generated
+	 */
+	EAttribute getWebApplication_Host();
 
 	/**
 	 * Returns the meta object for class '{@link lowcoders.IDEIntegration <em>IDE Integration</em>}'.
@@ -5447,6 +5888,174 @@ public interface LowcodersPackage extends EPackage {
 	EClass getGUIElement();
 
 	/**
+	 * Returns the meta object for class '{@link lowcoders.User <em>User</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>User</em>'.
+	 * @see lowcoders.User
+	 * @generated
+	 */
+	EClass getUser();
+
+	/**
+	 * Returns the meta object for the reference '{@link lowcoders.User#getExpressedFeedback <em>Expressed Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Expressed Feedback</em>'.
+	 * @see lowcoders.User#getExpressedFeedback()
+	 * @see #getUser()
+	 * @generated
+	 */
+	EReference getUser_ExpressedFeedback();
+
+	/**
+	 * Returns the meta object for the reference '{@link lowcoders.User#getQuery <em>Query</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Query</em>'.
+	 * @see lowcoders.User#getQuery()
+	 * @see #getUser()
+	 * @generated
+	 */
+	EReference getUser_Query();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.FeedbackComponent <em>Feedback Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feedback Component</em>'.
+	 * @see lowcoders.FeedbackComponent
+	 * @generated
+	 */
+	EClass getFeedbackComponent();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link lowcoders.FeedbackComponent#getQuery <em>Query</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Query</em>'.
+	 * @see lowcoders.FeedbackComponent#getQuery()
+	 * @see #getFeedbackComponent()
+	 * @generated
+	 */
+	EReference getFeedbackComponent_Query();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link lowcoders.FeedbackComponent#getExpressedFeedback <em>Expressed Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expressed Feedback</em>'.
+	 * @see lowcoders.FeedbackComponent#getExpressedFeedback()
+	 * @see #getFeedbackComponent()
+	 * @generated
+	 */
+	EReference getFeedbackComponent_ExpressedFeedback();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.Feedback <em>Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feedback</em>'.
+	 * @see lowcoders.Feedback
+	 * @generated
+	 */
+	EClass getFeedback();
+
+	/**
+	 * Returns the meta object for the reference '{@link lowcoders.Feedback#getItem <em>Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Item</em>'.
+	 * @see lowcoders.Feedback#getItem()
+	 * @see #getFeedback()
+	 * @generated
+	 */
+	EReference getFeedback_Item();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.ImplicitFeedback <em>Implicit Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Implicit Feedback</em>'.
+	 * @see lowcoders.ImplicitFeedback
+	 * @generated
+	 */
+	EClass getImplicitFeedback();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.HybridFeedback <em>Hybrid Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Hybrid Feedback</em>'.
+	 * @see lowcoders.HybridFeedback
+	 * @generated
+	 */
+	EClass getHybridFeedback();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.AdditiveFeedback <em>Additive Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Additive Feedback</em>'.
+	 * @see lowcoders.AdditiveFeedback
+	 * @generated
+	 */
+	EClass getAdditiveFeedback();
+
+	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.AdditiveFeedback#getNumOfInsertion <em>Num Of Insertion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Num Of Insertion</em>'.
+	 * @see lowcoders.AdditiveFeedback#getNumOfInsertion()
+	 * @see #getAdditiveFeedback()
+	 * @generated
+	 */
+	EAttribute getAdditiveFeedback_NumOfInsertion();
+
+	/**
+	 * Returns the meta object for the reference '{@link lowcoders.AdditiveFeedback#getRecommender <em>Recommender</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Recommender</em>'.
+	 * @see lowcoders.AdditiveFeedback#getRecommender()
+	 * @see #getAdditiveFeedback()
+	 * @generated
+	 */
+	EReference getAdditiveFeedback_Recommender();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.ExplicitFeedback <em>Explicit Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Explicit Feedback</em>'.
+	 * @see lowcoders.ExplicitFeedback
+	 * @generated
+	 */
+	EClass getExplicitFeedback();
+
+	/**
+	 * Returns the meta object for class '{@link lowcoders.Rating <em>Rating</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Rating</em>'.
+	 * @see lowcoders.Rating
+	 * @generated
+	 */
+	EClass getRating();
+
+	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.Rating#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see lowcoders.Rating#getType()
+	 * @see #getRating()
+	 * @generated
+	 */
+	EAttribute getRating_Type();
+
+	/**
 	 * Returns the meta object for enum '{@link lowcoders.UserEventType <em>User Event Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5667,6 +6276,16 @@ public interface LowcodersPackage extends EPackage {
 	EEnum getValidationLibrary();
 
 	/**
+	 * Returns the meta object for enum '{@link lowcoders.RatingType <em>Rating Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Rating Type</em>'.
+	 * @see lowcoders.RatingType
+	 * @generated
+	 */
+	EEnum getRatingType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5816,6 +6435,14 @@ public interface LowcodersPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RS_MODEL__RECOMMENDATION_SYSTEM = eINSTANCE.getRSModel_RecommendationSystem();
+
+		/**
+		 * The meta object literal for the '<em><b>Feedback</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RS_MODEL__FEEDBACK = eINSTANCE.getRSModel_Feedback();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.impl.RecommendationHandlerImpl <em>Recommendation Handler</em>}' class.
@@ -5976,6 +6603,30 @@ public interface LowcodersPackage extends EPackage {
 		 * @generated
 		 */
 		EClass WEB_APPLICATION = eINSTANCE.getWebApplication();
+
+		/**
+		 * The meta object literal for the '<em><b>Library</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_APPLICATION__LIBRARY = eINSTANCE.getWebApplication_Library();
+
+		/**
+		 * The meta object literal for the '<em><b>Port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_APPLICATION__PORT = eINSTANCE.getWebApplication_Port();
+
+		/**
+		 * The meta object literal for the '<em><b>Host</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WEB_APPLICATION__HOST = eINSTANCE.getWebApplication_Host();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.impl.IDEIntegrationImpl <em>IDE Integration</em>}' class.
@@ -6924,6 +7575,150 @@ public interface LowcodersPackage extends EPackage {
 		EClass GUI_ELEMENT = eINSTANCE.getGUIElement();
 
 		/**
+		 * The meta object literal for the '{@link lowcoders.impl.UserImpl <em>User</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.UserImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getUser()
+		 * @generated
+		 */
+		EClass USER = eINSTANCE.getUser();
+
+		/**
+		 * The meta object literal for the '<em><b>Expressed Feedback</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference USER__EXPRESSED_FEEDBACK = eINSTANCE.getUser_ExpressedFeedback();
+
+		/**
+		 * The meta object literal for the '<em><b>Query</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference USER__QUERY = eINSTANCE.getUser_Query();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.FeedbackComponentImpl <em>Feedback Component</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.FeedbackComponentImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getFeedbackComponent()
+		 * @generated
+		 */
+		EClass FEEDBACK_COMPONENT = eINSTANCE.getFeedbackComponent();
+
+		/**
+		 * The meta object literal for the '<em><b>Query</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEEDBACK_COMPONENT__QUERY = eINSTANCE.getFeedbackComponent_Query();
+
+		/**
+		 * The meta object literal for the '<em><b>Expressed Feedback</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEEDBACK_COMPONENT__EXPRESSED_FEEDBACK = eINSTANCE.getFeedbackComponent_ExpressedFeedback();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.FeedbackImpl <em>Feedback</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.FeedbackImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getFeedback()
+		 * @generated
+		 */
+		EClass FEEDBACK = eINSTANCE.getFeedback();
+
+		/**
+		 * The meta object literal for the '<em><b>Item</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FEEDBACK__ITEM = eINSTANCE.getFeedback_Item();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.ImplicitFeedbackImpl <em>Implicit Feedback</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.ImplicitFeedbackImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getImplicitFeedback()
+		 * @generated
+		 */
+		EClass IMPLICIT_FEEDBACK = eINSTANCE.getImplicitFeedback();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.HybridFeedbackImpl <em>Hybrid Feedback</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.HybridFeedbackImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getHybridFeedback()
+		 * @generated
+		 */
+		EClass HYBRID_FEEDBACK = eINSTANCE.getHybridFeedback();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.AdditiveFeedbackImpl <em>Additive Feedback</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.AdditiveFeedbackImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getAdditiveFeedback()
+		 * @generated
+		 */
+		EClass ADDITIVE_FEEDBACK = eINSTANCE.getAdditiveFeedback();
+
+		/**
+		 * The meta object literal for the '<em><b>Num Of Insertion</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADDITIVE_FEEDBACK__NUM_OF_INSERTION = eINSTANCE.getAdditiveFeedback_NumOfInsertion();
+
+		/**
+		 * The meta object literal for the '<em><b>Recommender</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADDITIVE_FEEDBACK__RECOMMENDER = eINSTANCE.getAdditiveFeedback_Recommender();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.ExplicitFeedbackImpl <em>Explicit Feedback</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.ExplicitFeedbackImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getExplicitFeedback()
+		 * @generated
+		 */
+		EClass EXPLICIT_FEEDBACK = eINSTANCE.getExplicitFeedback();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.impl.RatingImpl <em>Rating</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.impl.RatingImpl
+		 * @see lowcoders.impl.LowcodersPackageImpl#getRating()
+		 * @generated
+		 */
+		EClass RATING = eINSTANCE.getRating();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RATING__TYPE = eINSTANCE.getRating_Type();
+
+		/**
 		 * The meta object literal for the '{@link lowcoders.UserEventType <em>User Event Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7142,6 +7937,16 @@ public interface LowcodersPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum VALIDATION_LIBRARY = eINSTANCE.getValidationLibrary();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.RatingType <em>Rating Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.RatingType
+		 * @see lowcoders.impl.LowcodersPackageImpl#getRatingType()
+		 * @generated
+		 */
+		EEnum RATING_TYPE = eINSTANCE.getRatingType();
 
 	}
 
