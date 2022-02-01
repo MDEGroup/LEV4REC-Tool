@@ -1,0 +1,12 @@
+[comment encoding = UTF-8 /]
+[module generateBusinessLogic('https://it.disim.univaq/lowcode')/]
+[import lev4rec::code::template::utils::generateBusinessLogicSkeleton/]
+[template public generateBusinessLogic(recSys : RSModel)]
+	
+[comment @main /]
+[file (recSys.name+'_business.py', false, 'UTF-8')]
+[if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
+[generateBusinessLogicSkelton(recSys)/]
+[/if]
+[/file]	
+[/template]

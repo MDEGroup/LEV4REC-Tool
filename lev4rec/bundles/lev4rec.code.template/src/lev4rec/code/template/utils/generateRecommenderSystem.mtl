@@ -7,14 +7,12 @@
 
 [template public generateRecommenderSystem(recSys : RSModel)]
 
-	[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FeedForwardNN))]
+[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FeedForwardNN))]
 [generateMLModel(recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN))/]
-	[/if]
-
+[/if]
 [if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::Bayesian))]
 [generateBayesian(recSys.recommendationSystem.oclAsType(lowcoders::Bayesian)) /]
 [/if]
-
 [if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FilteringRS))]
 [generateFilteringRS(recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS)) /]
 [/if]

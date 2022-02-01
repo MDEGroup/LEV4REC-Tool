@@ -4,13 +4,10 @@
 
 [template public generateSURDataset(dataset : Dataset)]
 [if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
-from surprise import Dataset
-data = Dataset.load_builtin('ml-100k')
-
-[/if]
-
+[/if]   
 [if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]
-
-
+	from surprise import Dataset
+	data = Dataset.load_builtin('[dataset.path/]')	
+	return data
 [/if]
 [/template]

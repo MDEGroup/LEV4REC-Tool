@@ -1,0 +1,9 @@
+[comment encoding = UTF-8 /]
+[module generateDatasetHandler('https://it.disim.univaq/lowcode')]
+
+
+[template public generateDatasetHandler(dml : DatasetManipulationLibrary)]
+[if (dml = DatasetManipulationLibrary::PANDAS)]
+import pandas as pd		
+[/if]
+[/template]

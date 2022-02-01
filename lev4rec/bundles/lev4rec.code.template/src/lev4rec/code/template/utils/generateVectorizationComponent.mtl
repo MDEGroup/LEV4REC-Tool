@@ -1,0 +1,9 @@
+[comment encoding = UTF-8 /]
+[module generateVectorizationComponent('https://it.disim.univaq/lowcode')]
+
+
+[template public generateVectorizationComponent(recSys : RSModel)]
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN /]
+	from sklearn.feature_extraction.text import CountVectorizer
+    preprocess = CountVectorizer(ngram_range=(1,1))    
+[/template]

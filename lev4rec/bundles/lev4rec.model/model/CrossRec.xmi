@@ -6,20 +6,43 @@
     xmlns:lowcoders="https://it.disim.univaq/lowcode"
     xsi:schemaLocation="https://it.disim.univaq/lowcode lowcoders.ecore"
     name="CrossRec">
-  <dataset xsi:type="lowcoders:UnsupervisedDataset">
+  <dataset xsi:type="lowcoders:SupervisedDataset"
+      name="movielens"
+      path="ml-100k">
     <indipendentVariables
-        name="item"/>
+        name="User"/>
+    <indipendentVariables
+        name="Item"/>
     <dataStructure
-        xsi:type="lowcoders:Graph"/>
+        xsi:type="lowcoders:Matrix"
+        name="RatingsMatrix"
+        columns="//@dataset/@indipendentVariables.0 //@dataset/@indipendentVariables.1"/>
+    <datasetManipulationLibrary>PANDAS</datasetManipulationLibrary>
+    <dependatVariable
+        name="Rating"/>
   </dataset>
+  <presentationLayer
+      xsi:type="lowcoders:WebApplication"
+      name="FlaskApp"
+      port="5000"
+      host="0.0.0.0"/>
+  <evaluation>
+    <validationTechnique
+        xsi:type="lowcoders:ContextValidation"/>
+  </evaluation>
   <recommendationSystem
-      xsi:type="lowcoders:MachineLearningBasedRS">
-    <scope/>
+      xsi:type="lowcoders:FilteringRS"
+      name="KNN"
+      generator="SURPRISE"
+      cutoff="10"
+      neighborhood="40">
+    <context
+        name="UserContext"
+        userContext="//@dataset/@dataStructure"/>
   </recommendationSystem>
   <feedback>
-    <query userContext="//@dataset/@dataStructure"/>
+    <query/>
     <expressedFeedback
-        xsi:type="lowcoders:ExplicitFeedback"
-        item="//@recommendationSystem/@scope"/>
+        xsi:type="lowcoders:ExplicitFeedback"/>
   </feedback>
 </lowcoders:RSModel>
