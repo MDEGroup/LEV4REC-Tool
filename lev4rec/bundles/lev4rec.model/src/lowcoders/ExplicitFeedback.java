@@ -10,7 +10,7 @@ package lowcoders;
  *
  *
  * @see lowcoders.LowcodersPackage#getExplicitFeedback()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface ExplicitFeedback extends Feedback {

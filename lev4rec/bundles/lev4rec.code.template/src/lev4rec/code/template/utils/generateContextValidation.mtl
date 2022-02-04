@@ -13,8 +13,9 @@ predicted = clf.predict(X_new_tfidf)
 print('predicted as',predicted)
 [/if]
 [if (recSys.recommendationSystem.generator = PyLibType::SURPRISE)]
+[if (recSys.dataset.isBuiltIn = true)]
 	from collections import defaultdict
-    data = load_dataset()
+	data = load_dataset()
 	trainset = data.build_full_trainset()
     algo = algorithm_settings()
     algo.fit(trainset)
@@ -30,6 +31,30 @@ print('predicted as',predicted)
         top_n['['/]uid[']'/] = user_ratings['['/]:n_items[']'/] 
 
 	results = top_n.get(context)
+[/if]
+[if  (recSys.dataset.isBuiltIn = false)]
+	lista = ['['/][']'/]
+    ['['/]lista.append(['['/]"query", lib, 1[']'/]) for lib in context[']'/]
+    df = pd.read_csv('result.csv', sep=",")
+    queryDF = pd.DataFrame(lista,columns=['['/]'ProjectID', 'LibID', 'rating'[']'/])   
+    df = df.append(queryDF, ignore_index=True)
+    reader = Reader(rating_scale=(0, 1))
+    data = Dataset.load_from_df(df['['/]['['/]'ProjectID', 'LibID', 'rating'[']'/][']'/], reader)
+    
+    algo = algorithm settings()
+   	k = 0
+    #TRAIN
+    trainset = data.build_full_trainset()
+    algo.fit(trainset)
+    list_ird = ['['/]trainset.to_raw_iid(key) for key in trainset.ir.keys()[']'/]
+    result = {}
+    for elem in list_ird:
+        k = algo.predict(uid="query", iid=elem)
+        result['['/]elem[']'/] = k.est
+    sorted_result = {k: v for k, v in sorted(result.items(), key=lambda item: item['['/]1[']'/], reverse=True)}
+
+    results = list(sorted_result.keys())['['/] : n_items[']'/]
+[/if]
 [/if]
 [/if]
 [/for]

@@ -110,11 +110,9 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 			case LowcodersPackage.GUI_ELEMENT: return createGUIElement();
 			case LowcodersPackage.USER: return createUser();
 			case LowcodersPackage.FEEDBACK_COMPONENT: return createFeedbackComponent();
-			case LowcodersPackage.FEEDBACK: return createFeedback();
 			case LowcodersPackage.IMPLICIT_FEEDBACK: return createImplicitFeedback();
 			case LowcodersPackage.HYBRID_FEEDBACK: return createHybridFeedback();
 			case LowcodersPackage.ADDITIVE_FEEDBACK: return createAdditiveFeedback();
-			case LowcodersPackage.EXPLICIT_FEEDBACK: return createExplicitFeedback();
 			case LowcodersPackage.RATING: return createRating();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -159,6 +157,8 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 				return createSimilarityFunctionFromString(eDataType, initialValue);
 			case LowcodersPackage.PY_LIB_TYPE:
 				return createPyLibTypeFromString(eDataType, initialValue);
+			case LowcodersPackage.FEEDBACK_LIB_TYPE:
+				return createFeedbackLibTypeFromString(eDataType, initialValue);
 			case LowcodersPackage.SOLVER_TYPE:
 				return createSolverTypeFromString(eDataType, initialValue);
 			case LowcodersPackage.KERNEL_TYPE:
@@ -218,6 +218,8 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 				return convertSimilarityFunctionToString(eDataType, instanceValue);
 			case LowcodersPackage.PY_LIB_TYPE:
 				return convertPyLibTypeToString(eDataType, instanceValue);
+			case LowcodersPackage.FEEDBACK_LIB_TYPE:
+				return convertFeedbackLibTypeToString(eDataType, instanceValue);
 			case LowcodersPackage.SOLVER_TYPE:
 				return convertSolverTypeToString(eDataType, instanceValue);
 			case LowcodersPackage.KERNEL_TYPE:
@@ -828,17 +830,6 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * @generated
 	 */
 	@Override
-	public Feedback createFeedback() {
-		FeedbackImpl feedback = new FeedbackImpl();
-		return feedback;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public ImplicitFeedback createImplicitFeedback() {
 		ImplicitFeedbackImpl implicitFeedback = new ImplicitFeedbackImpl();
 		return implicitFeedback;
@@ -864,17 +855,6 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	public AdditiveFeedback createAdditiveFeedback() {
 		AdditiveFeedbackImpl additiveFeedback = new AdditiveFeedbackImpl();
 		return additiveFeedback;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ExplicitFeedback createExplicitFeedback() {
-		ExplicitFeedbackImpl explicitFeedback = new ExplicitFeedbackImpl();
-		return explicitFeedback;
 	}
 
 	/**
@@ -1185,6 +1165,26 @@ public class LowcodersFactoryImpl extends EFactoryImpl implements LowcodersFacto
 	 * @generated
 	 */
 	public String convertPyLibTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FeedbackLibType createFeedbackLibTypeFromString(EDataType eDataType, String initialValue) {
+		FeedbackLibType result = FeedbackLibType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertFeedbackLibTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

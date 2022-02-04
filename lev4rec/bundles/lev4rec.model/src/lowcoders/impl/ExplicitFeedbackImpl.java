@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class ExplicitFeedbackImpl extends FeedbackImpl implements ExplicitFeedback {
+public abstract class ExplicitFeedbackImpl extends FeedbackImpl implements ExplicitFeedback {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

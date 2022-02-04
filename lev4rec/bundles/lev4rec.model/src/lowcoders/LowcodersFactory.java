@@ -499,15 +499,6 @@ public interface LowcodersFactory extends EFactory {
 	FeedbackComponent createFeedbackComponent();
 
 	/**
-	 * Returns a new object of class '<em>Feedback</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Feedback</em>'.
-	 * @generated
-	 */
-	Feedback createFeedback();
-
-	/**
 	 * Returns a new object of class '<em>Implicit Feedback</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -533,15 +524,6 @@ public interface LowcodersFactory extends EFactory {
 	 * @generated
 	 */
 	AdditiveFeedback createAdditiveFeedback();
-
-	/**
-	 * Returns a new object of class '<em>Explicit Feedback</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Explicit Feedback</em>'.
-	 * @generated
-	 */
-	ExplicitFeedback createExplicitFeedback();
 
 	/**
 	 * Returns a new object of class '<em>Rating</em>'.

@@ -7,8 +7,8 @@
     xsi:schemaLocation="https://it.disim.univaq/lowcode lowcoders.ecore"
     name="CrossRec">
   <dataset xsi:type="lowcoders:SupervisedDataset"
-      name="movielens"
-      path="ml-100k">
+      name="crossrec"
+      path="results.csv">
     <indipendentVariables
         name="User"/>
     <indipendentVariables
@@ -28,7 +28,10 @@
       host="0.0.0.0"/>
   <evaluation>
     <validationTechnique
-        xsi:type="lowcoders:ContextValidation"/>
+        xsi:type="lowcoders:ContextValidation"
+        name="recommend list"
+        nOfRecommendations="10"
+        testContext="//@recommendationSystem/@context"/>
   </evaluation>
   <recommendationSystem
       xsi:type="lowcoders:FilteringRS"
@@ -41,8 +44,10 @@
         userContext="//@dataset/@dataStructure"/>
   </recommendationSystem>
   <feedback>
-    <query/>
     <expressedFeedback
-        xsi:type="lowcoders:ExplicitFeedback"/>
+        xsi:type="lowcoders:Rating">
+      <item
+          outcame="//@dataset/@indipendentVariables.1"/>
+    </expressedFeedback>
   </feedback>
 </lowcoders:RSModel>

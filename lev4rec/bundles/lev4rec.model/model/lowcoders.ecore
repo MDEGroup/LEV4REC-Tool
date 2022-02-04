@@ -24,6 +24,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="datasetManipulationLibrary"
         upperBound="-1" eType="#//DatasetManipulationLibrary"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBuiltIn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RSModel" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" eType="#//Dataset"
@@ -298,6 +299,10 @@
     <eLiterals name="PYTORCH" value="3"/>
     <eLiterals name="ELLIOT" value="4"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FeedbackLibType">
+    <eLiterals name="LIGHTFM"/>
+    <eLiterals name="LIGHTGBM" value="1"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SolverType">
     <eLiterals name="ADAM"/>
     <eLiterals name="LBFGS" value="1"/>
@@ -366,9 +371,11 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expressedFeedback" eType="#//Feedback"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="library" eType="#//FeedbackLibType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Feedback">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="item" eType="#//RecommendedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Feedback" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" eType="#//RecommendedItem"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ImplicitFeedback" eSuperTypes="#//Feedback"/>
   <eClassifiers xsi:type="ecore:EClass" name="HybridFeedback" eSuperTypes="#//Feedback"/>
@@ -376,7 +383,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numOfInsertion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="recommender" eType="#//RecommendationSystem"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExplicitFeedback" eSuperTypes="#//Feedback"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExplicitFeedback" abstract="true" eSuperTypes="#//Feedback"/>
   <eClassifiers xsi:type="ecore:EClass" name="Rating" eSuperTypes="#//ExplicitFeedback">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RatingType"/>
   </eClassifiers>

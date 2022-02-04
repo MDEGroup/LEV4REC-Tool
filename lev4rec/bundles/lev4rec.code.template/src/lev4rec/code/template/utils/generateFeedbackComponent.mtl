@@ -1,0 +1,12 @@
+[comment encoding = UTF-8 /]
+[module generateFeedbackComponent('https://it.disim.univaq/lowcode')]
+
+[import lev4rec::code::template::utils::generateRatingFeedbackFM /]
+[template public generateFeedbackComponent(feed : FeedbackComponent)]
+
+[if feed.expressedFeedback.oclIsTypeOf(lowcoders::Rating)]
+[if feed.library = FeedbackLibType::LIGHTFM]
+[generateRatingFeedbackFM(feed.expressedFeedback.oclAsType(lowcoders::Rating))/]
+[/if]
+[/if]
+[/template]

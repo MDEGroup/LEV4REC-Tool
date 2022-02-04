@@ -10,7 +10,7 @@ from flask import jsonify
 import os
 import json
 
-from generated_business import load_dataset, get_recommendations, algorithm_settings
+
 
 app = Flask(__name__)
 @app.route("/get_recommendation", methods=['["'/]POST['"]'/])

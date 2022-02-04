@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link lowcoders.FeedbackComponent#getQuery <em>Query</em>}</li>
  *   <li>{@link lowcoders.FeedbackComponent#getExpressedFeedback <em>Expressed Feedback</em>}</li>
+ *   <li>{@link lowcoders.FeedbackComponent#getLibrary <em>Library</em>}</li>
  * </ul>
  *
  * @see lowcoders.LowcodersPackage#getFeedbackComponent()
@@ -65,5 +66,30 @@ public interface FeedbackComponent extends EObject {
 	 * @generated
 	 */
 	void setExpressedFeedback(Feedback value);
+
+	/**
+	 * Returns the value of the '<em><b>Library</b></em>' attribute.
+	 * The literals are from the enumeration {@link lowcoders.FeedbackLibType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Library</em>' attribute.
+	 * @see lowcoders.FeedbackLibType
+	 * @see #setLibrary(FeedbackLibType)
+	 * @see lowcoders.LowcodersPackage#getFeedbackComponent_Library()
+	 * @model
+	 * @generated
+	 */
+	FeedbackLibType getLibrary();
+
+	/**
+	 * Sets the value of the '{@link lowcoders.FeedbackComponent#getLibrary <em>Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Library</em>' attribute.
+	 * @see lowcoders.FeedbackLibType
+	 * @see #getLibrary()
+	 * @generated
+	 */
+	void setLibrary(FeedbackLibType value);
 
 } // FeedbackComponent

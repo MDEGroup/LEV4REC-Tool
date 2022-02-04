@@ -197,13 +197,22 @@ public interface LowcodersPackage extends EPackage {
 	int DATASET__PATH = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Is Built In</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATASET__IS_BUILT_IN = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Dataset</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATASET_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int DATASET_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Dataset</em>' class.
@@ -1094,6 +1103,15 @@ public interface LowcodersPackage extends EPackage {
 	int UNSUPERVISED_DATASET__PATH = DATASET__PATH;
 
 	/**
+	 * The feature id for the '<em><b>Is Built In</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNSUPERVISED_DATASET__IS_BUILT_IN = DATASET__IS_BUILT_IN;
+
+	/**
 	 * The number of structural features of the '<em>Unsupervised Dataset</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1174,6 +1192,15 @@ public interface LowcodersPackage extends EPackage {
 	 * @ordered
 	 */
 	int SUPERVISED_DATASET__PATH = DATASET__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Is Built In</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPERVISED_DATASET__IS_BUILT_IN = DATASET__IS_BUILT_IN;
 
 	/**
 	 * The feature id for the '<em><b>Dependat Variable</b></em>' containment reference.
@@ -3862,13 +3889,22 @@ public interface LowcodersPackage extends EPackage {
 	int FEEDBACK_COMPONENT__EXPRESSED_FEEDBACK = 1;
 
 	/**
+	 * The feature id for the '<em><b>Library</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEEDBACK_COMPONENT__LIBRARY = 2;
+
+	/**
 	 * The number of structural features of the '<em>Feedback Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEEDBACK_COMPONENT_FEATURE_COUNT = 2;
+	int FEEDBACK_COMPONENT_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Feedback Component</em>' class.
@@ -3890,7 +3926,7 @@ public interface LowcodersPackage extends EPackage {
 	int FEEDBACK = 59;
 
 	/**
-	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * The feature id for the '<em><b>Item</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3927,7 +3963,7 @@ public interface LowcodersPackage extends EPackage {
 	int IMPLICIT_FEEDBACK = 60;
 
 	/**
-	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * The feature id for the '<em><b>Item</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3964,7 +4000,7 @@ public interface LowcodersPackage extends EPackage {
 	int HYBRID_FEEDBACK = 61;
 
 	/**
-	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * The feature id for the '<em><b>Item</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4001,7 +4037,7 @@ public interface LowcodersPackage extends EPackage {
 	int ADDITIVE_FEEDBACK = 62;
 
 	/**
-	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * The feature id for the '<em><b>Item</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4056,7 +4092,7 @@ public interface LowcodersPackage extends EPackage {
 	int EXPLICIT_FEEDBACK = 63;
 
 	/**
-	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * The feature id for the '<em><b>Item</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4093,7 +4129,7 @@ public interface LowcodersPackage extends EPackage {
 	int RATING = 64;
 
 	/**
-	 * The feature id for the '<em><b>Item</b></em>' reference.
+	 * The feature id for the '<em><b>Item</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4279,6 +4315,16 @@ public interface LowcodersPackage extends EPackage {
 	int PY_LIB_TYPE = 79;
 
 	/**
+	 * The meta object id for the '{@link lowcoders.FeedbackLibType <em>Feedback Lib Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lowcoders.FeedbackLibType
+	 * @see lowcoders.impl.LowcodersPackageImpl#getFeedbackLibType()
+	 * @generated
+	 */
+	int FEEDBACK_LIB_TYPE = 80;
+
+	/**
 	 * The meta object id for the '{@link lowcoders.SolverType <em>Solver Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4286,7 +4332,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getSolverType()
 	 * @generated
 	 */
-	int SOLVER_TYPE = 80;
+	int SOLVER_TYPE = 81;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.KernelType <em>Kernel Type</em>}' enum.
@@ -4296,7 +4342,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getKernelType()
 	 * @generated
 	 */
-	int KERNEL_TYPE = 81;
+	int KERNEL_TYPE = 82;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.ActivationType <em>Activation Type</em>}' enum.
@@ -4306,7 +4352,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getActivationType()
 	 * @generated
 	 */
-	int ACTIVATION_TYPE = 82;
+	int ACTIVATION_TYPE = 83;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.DatasetManipulationLibrary <em>Dataset Manipulation Library</em>}' enum.
@@ -4316,7 +4362,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getDatasetManipulationLibrary()
 	 * @generated
 	 */
-	int DATASET_MANIPULATION_LIBRARY = 83;
+	int DATASET_MANIPULATION_LIBRARY = 84;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.WebInterfaceLibrary <em>Web Interface Library</em>}' enum.
@@ -4326,7 +4372,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getWebInterfaceLibrary()
 	 * @generated
 	 */
-	int WEB_INTERFACE_LIBRARY = 84;
+	int WEB_INTERFACE_LIBRARY = 85;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.RawFormat <em>Raw Format</em>}' enum.
@@ -4336,7 +4382,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRawFormat()
 	 * @generated
 	 */
-	int RAW_FORMAT = 85;
+	int RAW_FORMAT = 86;
 
 	/**
 	 * The meta object id for the '{@link lowcoders.ValidationLibrary <em>Validation Library</em>}' enum.
@@ -4346,7 +4392,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getValidationLibrary()
 	 * @generated
 	 */
-	int VALIDATION_LIBRARY = 86;
+	int VALIDATION_LIBRARY = 87;
 
 
 	/**
@@ -4357,7 +4403,7 @@ public interface LowcodersPackage extends EPackage {
 	 * @see lowcoders.impl.LowcodersPackageImpl#getRatingType()
 	 * @generated
 	 */
-	int RATING_TYPE = 87;
+	int RATING_TYPE = 88;
 
 
 	/**
@@ -4466,6 +4512,17 @@ public interface LowcodersPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataset_Path();
+
+	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.Dataset#isIsBuiltIn <em>Is Built In</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Built In</em>'.
+	 * @see lowcoders.Dataset#isIsBuiltIn()
+	 * @see #getDataset()
+	 * @generated
+	 */
+	EAttribute getDataset_IsBuiltIn();
 
 	/**
 	 * Returns the meta object for class '{@link lowcoders.RSModel <em>RS Model</em>}'.
@@ -5952,6 +6009,17 @@ public interface LowcodersPackage extends EPackage {
 	EReference getFeedbackComponent_ExpressedFeedback();
 
 	/**
+	 * Returns the meta object for the attribute '{@link lowcoders.FeedbackComponent#getLibrary <em>Library</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Library</em>'.
+	 * @see lowcoders.FeedbackComponent#getLibrary()
+	 * @see #getFeedbackComponent()
+	 * @generated
+	 */
+	EAttribute getFeedbackComponent_Library();
+
+	/**
 	 * Returns the meta object for class '{@link lowcoders.Feedback <em>Feedback</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5962,10 +6030,10 @@ public interface LowcodersPackage extends EPackage {
 	EClass getFeedback();
 
 	/**
-	 * Returns the meta object for the reference '{@link lowcoders.Feedback#getItem <em>Item</em>}'.
+	 * Returns the meta object for the containment reference '{@link lowcoders.Feedback#getItem <em>Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Item</em>'.
+	 * @return the meta object for the containment reference '<em>Item</em>'.
 	 * @see lowcoders.Feedback#getItem()
 	 * @see #getFeedback()
 	 * @generated
@@ -6206,6 +6274,16 @@ public interface LowcodersPackage extends EPackage {
 	EEnum getPyLibType();
 
 	/**
+	 * Returns the meta object for enum '{@link lowcoders.FeedbackLibType <em>Feedback Lib Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Feedback Lib Type</em>'.
+	 * @see lowcoders.FeedbackLibType
+	 * @generated
+	 */
+	EEnum getFeedbackLibType();
+
+	/**
 	 * Returns the meta object for enum '{@link lowcoders.SolverType <em>Solver Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6393,6 +6471,14 @@ public interface LowcodersPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATASET__PATH = eINSTANCE.getDataset_Path();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Built In</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATASET__IS_BUILT_IN = eINSTANCE.getDataset_IsBuiltIn();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.impl.RSModelImpl <em>RS Model</em>}' class.
@@ -7627,6 +7713,14 @@ public interface LowcodersPackage extends EPackage {
 		EReference FEEDBACK_COMPONENT__EXPRESSED_FEEDBACK = eINSTANCE.getFeedbackComponent_ExpressedFeedback();
 
 		/**
+		 * The meta object literal for the '<em><b>Library</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEEDBACK_COMPONENT__LIBRARY = eINSTANCE.getFeedbackComponent_Library();
+
+		/**
 		 * The meta object literal for the '{@link lowcoders.impl.FeedbackImpl <em>Feedback</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7637,7 +7731,7 @@ public interface LowcodersPackage extends EPackage {
 		EClass FEEDBACK = eINSTANCE.getFeedback();
 
 		/**
-		 * The meta object literal for the '<em><b>Item</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Item</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -7867,6 +7961,16 @@ public interface LowcodersPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum PY_LIB_TYPE = eINSTANCE.getPyLibType();
+
+		/**
+		 * The meta object literal for the '{@link lowcoders.FeedbackLibType <em>Feedback Lib Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lowcoders.FeedbackLibType
+		 * @see lowcoders.impl.LowcodersPackageImpl#getFeedbackLibType()
+		 * @generated
+		 */
+		EEnum FEEDBACK_LIB_TYPE = eINSTANCE.getFeedbackLibType();
 
 		/**
 		 * The meta object literal for the '{@link lowcoders.SolverType <em>Solver Type</em>}' enum.

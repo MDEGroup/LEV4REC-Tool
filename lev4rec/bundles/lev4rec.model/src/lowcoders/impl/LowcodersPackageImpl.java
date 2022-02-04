@@ -28,6 +28,7 @@ import lowcoders.ExplicitFeedback;
 import lowcoders.FeedForwardNN;
 import lowcoders.Feedback;
 import lowcoders.FeedbackComponent;
+import lowcoders.FeedbackLibType;
 import lowcoders.File;
 import lowcoders.FilteringRS;
 import lowcoders.FilteringRSAlgorithm;
@@ -671,6 +672,13 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum feedbackLibTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum solverTypeEEnum = null;
 
 	/**
@@ -881,6 +889,16 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	@Override
 	public EAttribute getDataset_Path() {
 		return (EAttribute)datasetEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDataset_IsBuiltIn() {
+		return (EAttribute)datasetEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2289,6 +2307,16 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
+	public EAttribute getFeedbackComponent_Library() {
+		return (EAttribute)feedbackComponentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getFeedback() {
 		return feedbackEClass;
 	}
@@ -2539,6 +2567,16 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 	 * @generated
 	 */
 	@Override
+	public EEnum getFeedbackLibType() {
+		return feedbackLibTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getSolverType() {
 		return solverTypeEEnum;
 	}
@@ -2654,6 +2692,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		createEAttribute(datasetEClass, DATASET__PREPROCESSING);
 		createEAttribute(datasetEClass, DATASET__DATASET_MANIPULATION_LIBRARY);
 		createEAttribute(datasetEClass, DATASET__PATH);
+		createEAttribute(datasetEClass, DATASET__IS_BUILT_IN);
 
 		rsModelEClass = createEClass(RS_MODEL);
 		createEReference(rsModelEClass, RS_MODEL__DATASET);
@@ -2850,6 +2889,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		feedbackComponentEClass = createEClass(FEEDBACK_COMPONENT);
 		createEReference(feedbackComponentEClass, FEEDBACK_COMPONENT__QUERY);
 		createEReference(feedbackComponentEClass, FEEDBACK_COMPONENT__EXPRESSED_FEEDBACK);
+		createEAttribute(feedbackComponentEClass, FEEDBACK_COMPONENT__LIBRARY);
 
 		feedbackEClass = createEClass(FEEDBACK);
 		createEReference(feedbackEClass, FEEDBACK__ITEM);
@@ -2883,6 +2923,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		userStudyAnalysisEEnum = createEEnum(USER_STUDY_ANALYSIS);
 		similarityFunctionEEnum = createEEnum(SIMILARITY_FUNCTION);
 		pyLibTypeEEnum = createEEnum(PY_LIB_TYPE);
+		feedbackLibTypeEEnum = createEEnum(FEEDBACK_LIB_TYPE);
 		solverTypeEEnum = createEEnum(SOLVER_TYPE);
 		kernelTypeEEnum = createEEnum(KERNEL_TYPE);
 		activationTypeEEnum = createEEnum(ACTIVATION_TYPE);
@@ -2991,6 +3032,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEAttribute(getDataset_Preprocessing(), this.getPreprocessingTechnique(), "preprocessing", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataset_DatasetManipulationLibrary(), this.getDatasetManipulationLibrary(), "datasetManipulationLibrary", null, 0, -1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataset_Path(), ecorePackage.getEString(), "path", null, 1, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataset_IsBuiltIn(), ecorePackage.getEBoolean(), "isBuiltIn", null, 0, 1, Dataset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rsModelEClass, RSModel.class, "RSModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRSModel_Dataset(), this.getDataset(), null, "dataset", null, 0, 1, RSModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3187,9 +3229,10 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEClass(feedbackComponentEClass, FeedbackComponent.class, "FeedbackComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFeedbackComponent_Query(), this.getRecommendationContext(), null, "query", null, 0, 1, FeedbackComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFeedbackComponent_ExpressedFeedback(), this.getFeedback(), null, "expressedFeedback", null, 0, 1, FeedbackComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFeedbackComponent_Library(), this.getFeedbackLibType(), "library", null, 0, 1, FeedbackComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(feedbackEClass, Feedback.class, "Feedback", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFeedback_Item(), this.getRecommendedItem(), null, "item", null, 0, 1, Feedback.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(feedbackEClass, Feedback.class, "Feedback", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFeedback_Item(), this.getRecommendedItem(), null, "item", null, 0, 1, Feedback.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(implicitFeedbackEClass, ImplicitFeedback.class, "ImplicitFeedback", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3199,7 +3242,7 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		initEAttribute(getAdditiveFeedback_NumOfInsertion(), ecorePackage.getEInt(), "numOfInsertion", null, 0, 1, AdditiveFeedback.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAdditiveFeedback_Recommender(), this.getRecommendationSystem(), null, "recommender", null, 0, 1, AdditiveFeedback.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(explicitFeedbackEClass, ExplicitFeedback.class, "ExplicitFeedback", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(explicitFeedbackEClass, ExplicitFeedback.class, "ExplicitFeedback", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(ratingEClass, Rating.class, "Rating", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRating_Type(), this.getRatingType(), "type", null, 0, 1, Rating.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3303,6 +3346,10 @@ public class LowcodersPackageImpl extends EPackageImpl implements LowcodersPacka
 		addEEnumLiteral(pyLibTypeEEnum, PyLibType.TENSOR_FLOW);
 		addEEnumLiteral(pyLibTypeEEnum, PyLibType.PYTORCH);
 		addEEnumLiteral(pyLibTypeEEnum, PyLibType.ELLIOT);
+
+		initEEnum(feedbackLibTypeEEnum, FeedbackLibType.class, "FeedbackLibType");
+		addEEnumLiteral(feedbackLibTypeEEnum, FeedbackLibType.LIGHTFM);
+		addEEnumLiteral(feedbackLibTypeEEnum, FeedbackLibType.LIGHTGBM);
 
 		initEEnum(solverTypeEEnum, SolverType.class, "SolverType");
 		addEEnumLiteral(solverTypeEEnum, SolverType.ADAM);

@@ -4,6 +4,7 @@ package lowcoders.impl;
 
 import lowcoders.Feedback;
 import lowcoders.FeedbackComponent;
+import lowcoders.FeedbackLibType;
 import lowcoders.LowcodersPackage;
 import lowcoders.RecommendationContext;
 
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link lowcoders.impl.FeedbackComponentImpl#getQuery <em>Query</em>}</li>
  *   <li>{@link lowcoders.impl.FeedbackComponentImpl#getExpressedFeedback <em>Expressed Feedback</em>}</li>
+ *   <li>{@link lowcoders.impl.FeedbackComponentImpl#getLibrary <em>Library</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,6 +52,26 @@ public class FeedbackComponentImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected Feedback expressedFeedback;
+
+	/**
+	 * The default value of the '{@link #getLibrary() <em>Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final FeedbackLibType LIBRARY_EDEFAULT = FeedbackLibType.LIGHTFM;
+
+	/**
+	 * The cached value of the '{@link #getLibrary() <em>Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected FeedbackLibType library = LIBRARY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -166,6 +188,29 @@ public class FeedbackComponentImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
+	public FeedbackLibType getLibrary() {
+		return library;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setLibrary(FeedbackLibType newLibrary) {
+		FeedbackLibType oldLibrary = library;
+		library = newLibrary == null ? LIBRARY_EDEFAULT : newLibrary;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.FEEDBACK_COMPONENT__LIBRARY, oldLibrary, library));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LowcodersPackage.FEEDBACK_COMPONENT__QUERY:
@@ -188,6 +233,8 @@ public class FeedbackComponentImpl extends MinimalEObjectImpl.Container implemen
 				return getQuery();
 			case LowcodersPackage.FEEDBACK_COMPONENT__EXPRESSED_FEEDBACK:
 				return getExpressedFeedback();
+			case LowcodersPackage.FEEDBACK_COMPONENT__LIBRARY:
+				return getLibrary();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -205,6 +252,9 @@ public class FeedbackComponentImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case LowcodersPackage.FEEDBACK_COMPONENT__EXPRESSED_FEEDBACK:
 				setExpressedFeedback((Feedback)newValue);
+				return;
+			case LowcodersPackage.FEEDBACK_COMPONENT__LIBRARY:
+				setLibrary((FeedbackLibType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -224,6 +274,9 @@ public class FeedbackComponentImpl extends MinimalEObjectImpl.Container implemen
 			case LowcodersPackage.FEEDBACK_COMPONENT__EXPRESSED_FEEDBACK:
 				setExpressedFeedback((Feedback)null);
 				return;
+			case LowcodersPackage.FEEDBACK_COMPONENT__LIBRARY:
+				setLibrary(LIBRARY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -240,8 +293,26 @@ public class FeedbackComponentImpl extends MinimalEObjectImpl.Container implemen
 				return query != null;
 			case LowcodersPackage.FEEDBACK_COMPONENT__EXPRESSED_FEEDBACK:
 				return expressedFeedback != null;
+			case LowcodersPackage.FEEDBACK_COMPONENT__LIBRARY:
+				return library != LIBRARY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (library: ");
+		result.append(library);
+		result.append(')');
+		return result.toString();
 	}
 
 } //FeedbackComponentImpl

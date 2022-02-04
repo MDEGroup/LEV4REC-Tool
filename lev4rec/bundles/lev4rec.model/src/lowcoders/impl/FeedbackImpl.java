@@ -7,7 +7,7 @@ import lowcoders.LowcodersPackage;
 import lowcoders.RecommendedItem;
 
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -27,9 +27,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class FeedbackImpl extends MinimalEObjectImpl.Container implements Feedback {
+public abstract class FeedbackImpl extends MinimalEObjectImpl.Container implements Feedback {
 	/**
-	 * The cached value of the '{@link #getItem() <em>Item</em>}' reference.
+	 * The cached value of the '{@link #getItem() <em>Item</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getItem()
@@ -64,14 +64,6 @@ public class FeedbackImpl extends MinimalEObjectImpl.Container implements Feedba
 	 */
 	@Override
 	public RecommendedItem getItem() {
-		if (item != null && item.eIsProxy()) {
-			InternalEObject oldItem = (InternalEObject)item;
-			item = (RecommendedItem)eResolveProxy(oldItem);
-			if (item != oldItem) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LowcodersPackage.FEEDBACK__ITEM, oldItem, item));
-			}
-		}
 		return item;
 	}
 
@@ -80,8 +72,14 @@ public class FeedbackImpl extends MinimalEObjectImpl.Container implements Feedba
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RecommendedItem basicGetItem() {
-		return item;
+	public NotificationChain basicSetItem(RecommendedItem newItem, NotificationChain msgs) {
+		RecommendedItem oldItem = item;
+		item = newItem;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LowcodersPackage.FEEDBACK__ITEM, oldItem, newItem);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -91,10 +89,31 @@ public class FeedbackImpl extends MinimalEObjectImpl.Container implements Feedba
 	 */
 	@Override
 	public void setItem(RecommendedItem newItem) {
-		RecommendedItem oldItem = item;
-		item = newItem;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.FEEDBACK__ITEM, oldItem, item));
+		if (newItem != item) {
+			NotificationChain msgs = null;
+			if (item != null)
+				msgs = ((InternalEObject)item).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.FEEDBACK__ITEM, null, msgs);
+			if (newItem != null)
+				msgs = ((InternalEObject)newItem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LowcodersPackage.FEEDBACK__ITEM, null, msgs);
+			msgs = basicSetItem(newItem, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.FEEDBACK__ITEM, newItem, newItem));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case LowcodersPackage.FEEDBACK__ITEM:
+				return basicSetItem(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -106,8 +125,7 @@ public class FeedbackImpl extends MinimalEObjectImpl.Container implements Feedba
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LowcodersPackage.FEEDBACK__ITEM:
-				if (resolve) return getItem();
-				return basicGetItem();
+				return getItem();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

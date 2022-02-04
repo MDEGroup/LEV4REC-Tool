@@ -6,7 +6,7 @@
 [import lev4rec::code::template::utils::generateCrossFoldValidation/]
 [import lev4rec::code::template::utils::generatePreprocessingTechnique/]
 [import lev4rec::code::template::utils::generateSKDataset/]
-
+[import lev4rec::code::template::utils::generateFeedbackComponent /]
 
 
 [template public generateApplicationSkeleton(recSys : RSModel)]
@@ -38,4 +38,9 @@ def run_cross_fold():
 [generateCrossFoldValidation(recSys)/]
 [/if]
 [/for]
+
+
+[generateFeedbackComponent(recSys.feedback)/]
+
+
 [/template]

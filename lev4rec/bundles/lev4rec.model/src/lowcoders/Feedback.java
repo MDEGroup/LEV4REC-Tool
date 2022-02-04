@@ -17,27 +17,27 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see lowcoders.LowcodersPackage#getFeedback()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Feedback extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Item</b></em>' reference.
+	 * Returns the value of the '<em><b>Item</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Item</em>' reference.
+	 * @return the value of the '<em>Item</em>' containment reference.
 	 * @see #setItem(RecommendedItem)
 	 * @see lowcoders.LowcodersPackage#getFeedback_Item()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	RecommendedItem getItem();
 
 	/**
-	 * Sets the value of the '{@link lowcoders.Feedback#getItem <em>Item</em>}' reference.
+	 * Sets the value of the '{@link lowcoders.Feedback#getItem <em>Item</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Item</em>' reference.
+	 * @param value the new value of the '<em>Item</em>' containment reference.
 	 * @see #getItem()
 	 * @generated
 	 */

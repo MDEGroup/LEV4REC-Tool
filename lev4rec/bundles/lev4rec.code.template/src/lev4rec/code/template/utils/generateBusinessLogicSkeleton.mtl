@@ -5,8 +5,8 @@
 
 [template public generateBusinessLogicSkelton(recSys : RSModel)]
 [if recSys.presentationLayer.oclAsType(lowcoders::WebApplication).library = WebInterfaceLibrary::FLASK]
-	[if (recSys.dataset.datasetManipulationLibrary -> size()> 0)]
-		[for (dml : DatasetManipulationLibrary | recSys.dataset.datasetManipulationLibrary)]
+[if (recSys.dataset.datasetManipulationLibrary -> size()> 0)]
+[for (dml : DatasetManipulationLibrary | recSys.dataset.datasetManipulationLibrary)]
 [generateDatasetHandler(dml)/]
 [/for]
 [generateApplicationSkeleton(recSys)/]
