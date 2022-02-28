@@ -17,18 +17,17 @@
 
 <div>        
         <input id="algorithm_feature_parent_1" type="checkbox" th:field="*{CollaborativeFiltering}" onclick="set_constraints('algorithm_feature_parent_1')"> <label>Collaborative filtering </label>
-  
         <ul>        
-        <li> <input id="coll_sub_feature" type="checkbox" th:field="*{ItemBased}" > Item based</li>		
-        <li> <input id="coll_sub_feature2"  type="checkbox" th:field="*{UserBased}"  > User Based  </li> 
+        <li> <input id="coll_sub_feature" type="checkbox" th:field="*{ItemBased}" onclick="disable_sub_features('coll_sub_feature', 'coll_sub_feature2')"> Item based</li>		
+        <li> <input id="coll_sub_feature2"  type="checkbox" th:field="*{UserBased}" onclick="disable_sub_features('coll_sub_feature2', 'coll_sub_feature')" > User Based  </li> 
         </ul>
 
 </div>
 
 <div>        
-        <input id="algorithm_feature_parent_2" type="checkbox" th:field="*{ContentBased}"> <label>Content based </label>
+        <input id="algorithm_feature_parent_2" type="checkbox" th:field="*{ContentBased}" onclick="set_constraints('algorithm_feature_parent_2')"> <label>Content based </label>
 </div><div>        
-        <input id="algorithm_feature_parent_3" type="checkbox" th:field="*{Classification}"> <label>Classification </label>
+        <input id="algorithm_feature_parent_3" type="checkbox" th:field="*{Classification}" onclick="set_constraints('algorithm_feature_parent_3')"> <label>Classification </label>
         
         
         <ul>        
@@ -51,6 +50,8 @@
 
 </body>
 <script>
+
+
 
 function disable_sub_features(id, id_to_disable){
 	const checkbox = document.getElementById(id, id_to_disable)
@@ -85,16 +86,31 @@ function disable_sub_feature_with_parent(current,parent_id, map_sub_feature){
 	
 	
 function disable_parent(list_key,current,map_features){	
+	
+
+
+	console.log(list_key)
+
+	const index = list_key.indexOf(current)
+	console.log(index)
+	if (index > -1) {
+	  list_key.splice(index, 1) // 2nd parameter means remove one item only
+	}
+	
 	const checkbox = document.getElementById(current)
 	checkbox.addEventListener('change', (event) => {
 	  if (event.currentTarget.checked) {
-	    document.getElementById(list_key[1]).disabled = true;
-	    document.getElementById(list_key[2]).disabled = true;
-	    disable_sub_feature_with_parent(current,list_key[2], map_features)
-	    document.getElementById(list_key[2]).disabled = true;
+		  
+		for (var i = 0; i < list_key.length;i++){
+			document.getElementById(list_key[i]).disabled = true;
+			disable_sub_feature_with_parent(current,list_key[i],map_features)
+		}
+	    
 	  } else {			    
-	    document.getElementById(list_key[1]).disabled = false;
-	    document.getElementById(list_key[2]).disabled = false;
+		  for (var i = 0; i < list_key.length;i++){
+				document.getElementById(list_key[i]).disabled =false;		    
+			  
+			}
 	  }
 	})
 	}
@@ -110,11 +126,10 @@ function get_list_checkboxes(){
 	}
 	return checkboxes
 }
-function set_constraints(id){
-	
-	
+function set_constraints(id){	
 	
 	checkboxes=get_list_checkboxes()
+	
 	var map_features = {}
 	
 	var key_parents = []
