@@ -15,9 +15,9 @@
 
 <form id="checkForm" th:action="@{/}" method="post" th:object="${config}" >    
 
-<div>        
+<div >        
         <input id="algorithm_feature_parent_1" type="checkbox" th:field="*{CollaborativeFiltering}" onclick="set_constraints('algorithm_feature_parent_1')"> <label>Collaborative filtering </label>
-        <ul>        
+        <ul id="collaborative_sub" style="display: none;">        
         <li> <input id="coll_sub_feature" type="checkbox" th:field="*{ItemBased}" onclick="disable_sub_features('coll_sub_feature', 'coll_sub_feature2')"> Item based</li>		
         <li> <input id="coll_sub_feature2"  type="checkbox" th:field="*{UserBased}" onclick="disable_sub_features('coll_sub_feature2', 'coll_sub_feature')" > User Based  </li> 
         </ul>
@@ -66,12 +66,14 @@ function disable_sub_features(id, id_to_disable){
 	
 function disable_sub_feature_with_parent(current,parent_id, map_sub_feature){
 	const checkbox = document.getElementById(current)
+	console.log(parent_id)
+	list_sub=map_sub_feature[parent_id] 
 	
-	list_sub=map_sub_feature[parent_id] 	
+	
+	console.log(list_sub)
 	checkbox.addEventListener('change', (event) => {
 		  if (event.currentTarget.checked) {
-			  for(var i = 0; i < list_sub.length; i++) { 
-				  console.log(i)
+			  for(var i = 0; i < list_sub.length; i++) { 				  
 				  document.getElementById(list_sub[i]).disabled = true;
 			  }  
 			  
@@ -83,16 +85,33 @@ function disable_sub_feature_with_parent(current,parent_id, map_sub_feature){
 		  }
 		})
 	}
-	
+
+
+function show_sub_features(current) {	
+	const checkbox = document.getElementById(current)
+	var x = document.getElementById("collaborative_sub");
+	checkbox.addEventListener('change', (event) => {
+	  if (event.currentTarget.checked) {
+		  if (x.style.display === "none") {
+			    x.style.display = "block";
+			  } 
+	    
+	  	  }
+	  else{
+		  if (x.style.display === "block") {
+			    x.style.display = "none";
+			  } 
+	  }
+	  
+	  
+		})
+	}
 	
 function disable_parent(list_key,current,map_features){	
 	
 
-
-	console.log(list_key)
-
 	const index = list_key.indexOf(current)
-	console.log(index)
+	
 	if (index > -1) {
 	  list_key.splice(index, 1) // 2nd parameter means remove one item only
 	}
@@ -104,8 +123,7 @@ function disable_parent(list_key,current,map_features){
 		for (var i = 0; i < list_key.length;i++){
 			document.getElementById(list_key[i]).disabled = true;
 			disable_sub_feature_with_parent(current,list_key[i],map_features)
-		}
-	    
+		}	    
 	  } else {			    
 		  for (var i = 0; i < list_key.length;i++){
 				document.getElementById(list_key[i]).disabled =false;		    
@@ -124,8 +142,22 @@ function get_list_checkboxes(){
 	        checkboxes.push(inputs[i].id)
 	    }  
 	}
-	return checkboxes
+	return checkboxes	
+	
 }
+
+function get_list_sub_field(){
+	var inputs = document.getElementsByTagName("ul");
+	var list_sub_fields=[]
+	for(var i = 0; i < inputs.length; i++) {	   
+		list_sub_fields.push(inputs[i].id)    
+	}
+	return list_sub_fields	
+	
+}
+
+
+
 function set_constraints(id){	
 	
 	checkboxes=get_list_checkboxes()
@@ -143,6 +175,8 @@ function set_constraints(id){
 	    }
 	}
 	
+	
+	
 	for(var i = 0; i < checkboxes.length; i++) {	    
 	    if (checkboxes[i].includes("coll")){
 	    	coll_features.push(checkboxes[i])
@@ -153,12 +187,19 @@ function set_constraints(id){
 	    if (checkboxes[i].includes("class")){	    	
 	    	class_features.push(checkboxes[i])
 	    }
-	}	
+	}
+	
+	
 	
 	map_features[key_parents[0]] = coll_features
 	map_features[key_parents[2]] = class_features	
 	
-	disable_parent(key_parents, id, map_features)	
+	disable_parent(key_parents, id, map_features)
+	sub_field=get_list_sub_field()
+	
+	show_sub_features(id)
+	
+	
 	
 }
 
