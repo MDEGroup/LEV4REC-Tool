@@ -137,6 +137,42 @@ public class RSConfiguration {
 	private boolean Surprise;
 	private boolean PyTorch;
 	private boolean TensorFlow;
+	private boolean FeedbackLibrary;
+	private boolean LightFM;
+	private boolean DatasetLibrary;
+	private boolean Pandas;
+	private boolean Numpy;
+	private boolean PresentationLibrary;
+	private boolean WebLibrary;
+	private boolean Flask;
+	private boolean Spring;
+	private boolean IDELibrary;
+	private boolean EclipsePlugin;
+	private boolean IntellijPlugin;
+	private boolean VisualizationLibrary;
+	private boolean MathplotLib;
+	private boolean Seaborn;
+	private boolean EvaluationLibrary;
+	private boolean SklearnSplit;
+	private boolean SKCrossFold;
+	private boolean SKRandomSplit;
+	private boolean SurpriseSplit;
+	private boolean SurpriseCrossFold;
+	private boolean SurpriseRandomSplit;
+	private boolean PreprocessingLibrary;
+	private boolean PandasPreprocessing;
+	private boolean SklearnPreprocessing;
+	private boolean SurprisePreprocessing;
+	private boolean NLTK;
+	
+	
+	
+	public boolean isFPgrowth() {
+		return FPgrowth;
+	}
+	public void setFPgrowth(boolean fPgrowth) {
+		FPgrowth = fPgrowth;
+	}
 	public boolean isRecommenderSpecification() {
 		return RecommenderSpecification;
 	}
@@ -329,12 +365,7 @@ public class RSConfiguration {
 	public void setApriori(boolean apriori) {
 		Apriori = apriori;
 	}
-	public boolean isFP() {
-		return FPgrowth;
-	}
-	public void setFP(boolean fPgrowth) {
-		FPgrowth = fPgrowth;
-	}
+	
 	public boolean isDatasetComponent() {
 		return DatasetComponent;
 	}
@@ -1115,33 +1146,7 @@ public class RSConfiguration {
 	public void setNLTK(boolean nLTK) {
 		NLTK = nLTK;
 	}
-	private boolean FeedbackLibrary;
-	private boolean LightFM;
-	private boolean DatasetLibrary;
-	private boolean Pandas;
-	private boolean Numpy;
-	private boolean PresentationLibrary;
-	private boolean WebLibrary;
-	private boolean Flask;
-	private boolean Spring;
-	private boolean IDELibrary;
-	private boolean EclipsePlugin;
-	private boolean IntellijPlugin;
-	private boolean VisualizationLibrary;
-	private boolean MathplotLib;
-	private boolean Seaborn;
-	private boolean EvaluationLibrary;
-	private boolean SklearnSplit;
-	private boolean SKCrossFold;
-	private boolean SKRandomSplit;
-	private boolean SurpriseSplit;
-	private boolean SurpriseCrossFold;
-	private boolean SurpriseRandomSplit;
-	private boolean PreprocessingLibrary;
-	private boolean PandasPreprocessing;
-	private boolean SklearnPreprocessing;
-	private boolean SurprisePreprocessing;
-	private boolean NLTK;
+
 
 
 }
