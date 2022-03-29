@@ -3,11 +3,18 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="en-us">
 	<title>Example Web Editor</title>
-	<link rel="stylesheet" type="text/css" href="http://localhost:8080/xtext/2.23.0/xtext-ace.css"/>
-	<link rel="stylesheet" type="text/css" href="http://localhost:8080/style.css"/>
-	<script src="http://localhost:8080/webjars/requirejs/2.3.6/require.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js"></script>
-	<script type="text/javascript"  th:src="@{/js/mode-rec.js}"></script>
+	
+	
+	<link th:rel="stylesheet" th:href=@{/css/style.css}/>
+	<link th:rel="stylesheet" th:href=@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}/>
+	<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+	<script th:src="@{/webjars/requirejs/2.3.6/require.min.js}"></script>
+	<script th:src="@{/js/mode-rec.js}"></script>
+	
+
+	
+	
+	
 	<script type="text/javascript">
 		//var baseUrl = window.location.pathname;
 		var baseUrl = "http://localhost:8080/"

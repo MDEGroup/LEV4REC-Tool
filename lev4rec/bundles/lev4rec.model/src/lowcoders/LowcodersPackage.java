@@ -4394,7 +4394,6 @@ public interface LowcodersPackage extends EPackage {
 	 */
 	int VALIDATION_LIBRARY = 87;
 
-
 	/**
 	 * The meta object id for the '{@link lowcoders.RatingType <em>Rating Type</em>}' enum.
 	 * <!-- begin-user-doc -->

@@ -16,7 +16,7 @@ public class DemoController {
 	public String index(Model model) {
 		RSConfiguration config = new RSConfiguration();
 		model.addAttribute("config",config);			
-		return "home";
+		return "home.html";
 	}
 	@RequestMapping(value="/", method = RequestMethod.POST)
 	public String save(@ModelAttribute("config") RSConfiguration config) {		
@@ -27,6 +27,12 @@ public class DemoController {
 		fh.getRSConfiguration(config);
 		
 		return "dsl";
+	}
+	@RequestMapping(value="/dsl")
+	public String getEditor() {		
+
+		
+		return "dsl.html";
 	}
 
 }
