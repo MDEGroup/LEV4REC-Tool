@@ -32,6 +32,10 @@ public class GatewayApplication {
 				            .filters(f-> f.rewritePath("/lev4rec/dsl","/lev4rec/dsl"))
 				            .uri("http://localhost:8888"))
 			        
+			        .route(p-> p.path("/lev4rec/generate").and().method("POST")
+				            .filters(f-> f.rewritePath("/lev4rec/generate","/lev4rec/generate"))
+				            .uri("http://localhost:8888"))
+			        
 			        .route(p->p.path("/lev4rec/webjars/requirejs/2.3.6/require.min.js")
 			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/dsl"))
 			        		.uri("http://localhost:8888"))

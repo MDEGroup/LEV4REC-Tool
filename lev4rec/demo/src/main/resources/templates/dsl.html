@@ -33,6 +33,8 @@
 			});
 		});
 	</script> 
+	
+	
 </head>
 <body>
 
@@ -41,11 +43,60 @@
 		<h1>Example RsDsl Web Editor</h1>
 	</div>
 	<div class="content">
-		<div id="xtext-editor" data-editor-xtext-lang="rec"></div>
+		<div id="xtext-editor" data-editor-xtext-lang="rec">  </div>
 	</div>
 	
+ 	
 	
 </div>
 
+
+
+
+
 </body>
+<script type="text/javascript"  th:inline="javascript">
+
+
+//default model
+var resultString = "RSModel CrossRec { dataset "
+
+var isItemBased = [[${config.ItemBased}]];
+var isUserBased = [[${config.UserBased}]];
+var isCollaborativeFiltering = [[${config.CollaborativeFiltering}]];
+
+var isUnsupervisedDataset = [[${config.UnsupervisedDataset}]];
+var isSupervisedDataset = [[${config.SupervisedDataset}]];
+ console.log(isUnsupervisedDataset);
+ console.log(isSupervisedDataset);
+
+//inserting dataset settings
+if(isUnsupervisedDataset){	
+	resultString = resultString + 'UnsupervisedDataset data { path "path/path" }'
+}
+if(isSupervisedDataset){
+	resultString = resultString + 'SupervisedDataset data { path "path/path" }'
+}
+
+//inserting recommeder systems settings
+resultString = resultString +'\n' + ' recommendationSystem '
+
+
+
+if(isCollaborativeFiltering){
+	
+	resultString = resultString + 'FilteringRS AlgoName { filteringRSAlgorithm '
+}
+if(isItemBased){
+	resultString = resultString + 'ITEM_BASED }}'
+}
+
+if(isUserBased){
+	resultString = resultString + 'USER_BASED }}'
+}
+
+ console.log(resultString)
+
+
+document.getElementById("xtext-editor").innerHTML = resultString;</script>
 </html>

@@ -18,21 +18,18 @@ public class DemoController {
 		model.addAttribute("config",config);			
 		return "home.html";
 	}
-	@RequestMapping(value="/", method = RequestMethod.POST)
-	public String save(@ModelAttribute("config") RSConfiguration config) {		
-		System.out.println(config.isCollaborativeFiltering());
-		System.out.println(config.isItemBased());
-		System.out.println(config.isUserBased());
+	@RequestMapping(value="/dsl", method = RequestMethod.POST)
+	public String save(@ModelAttribute("config") RSConfiguration config) {			
 		FeatureHandler fh = new FeatureHandler();
 		fh.getRSConfiguration(config);
 		
 		return "dsl";
 	}
-	@RequestMapping(value="/dsl")
-	public String getEditor() {		
-
-		
-		return "dsl.html";
+	@RequestMapping("/generate")
+	public String generate() {			
+		return "generate.html";
 	}
+	
+	
 
 }

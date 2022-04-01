@@ -10,11 +10,17 @@ import java.util.Map;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.xml.sax.SAXException;
+import org.xtext.lev4recgrammar.first.RsDslStandaloneSetup;
 
 import com.google.common.collect.Lists;
 import com.lev4rec.dto.RSConfiguration;
@@ -33,6 +39,7 @@ import lowcoders.FeedForwardNN;
 import lowcoders.FilteringRS;
 import lowcoders.FilteringRSAlgorithm;
 import lowcoders.LowcodersFactory;
+import lowcoders.LowcodersPackage;
 import lowcoders.PreprocessingTechnique;
 import lowcoders.PresentationLayer;
 import lowcoders.PyLibType;
@@ -55,6 +62,9 @@ public class FeatureHandler {
 		FeatureHandler i = new FeatureHandler();
 		try {
 			serializeModel(i.generate(config), "generated/demo.xmi");
+			RSModel coarseModel = loadModel("generated/demo.xmi");		
+			
+			
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (SAXException e) {
@@ -63,6 +73,19 @@ public class FeatureHandler {
 			e.printStackTrace();
 		}
 	}
+	
+	public static RSModel loadModel(String modelPath) {
+		
+		ResourceSet resourceSet = new ResourceSetImpl();
+		resourceSet.getPackageRegistry().put(LowcodersPackage.eINSTANCE.getNsURI(), LowcodersPackage.eINSTANCE);
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
+		Resource resource = resourceSet.getResource(URI.createURI(modelPath), true);
+		RSModel model = (RSModel) resource.getContents().get(0);
+		return model;
+	}
+
+	
+
 	
 	
 	public FeatureHandler() {
