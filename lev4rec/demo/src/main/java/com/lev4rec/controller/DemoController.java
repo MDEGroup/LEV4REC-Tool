@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lev4rec.dto.RSConfiguration;
+
+import lowcoders.RSModel;
+
 import com.lev4rec.business.FeatureHandler;
 
 @Controller
@@ -23,10 +26,14 @@ public class DemoController {
 		FeatureHandler fh = new FeatureHandler();
 		fh.getRSConfiguration(config);
 		
-		return "dsl";
+		return "dsl.html";
 	}
 	@RequestMapping("/generate")
-	public String generate() {			
+	public String generate() {		
+		
+		RSModel coarseModel = FeatureHandler.loadModel("generated/demo.xmi");	
+		
+		
 		return "generate.html";
 	}
 	

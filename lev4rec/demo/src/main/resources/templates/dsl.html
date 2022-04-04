@@ -40,16 +40,20 @@
 
 <div class="container">
 	<div class="header">
-		<h1>Example RsDsl Web Editor</h1>
+		<h1>LEV4REC Web Editor</h1>
+		
 	</div>
 	<div class="content">
 		<div id="xtext-editor" data-editor-xtext-lang="rec">  </div>
 	</div>
-	
  	
 	
 </div>
 
+
+
+<div class="generator"><input type="submit" value="Generate Code" 
+    onclick="window.location='http://localhost:8891/lev4rec/generate/';" />  </div> 
 
 
 
@@ -67,6 +71,11 @@ var isCollaborativeFiltering = [[${config.CollaborativeFiltering}]];
 
 var isUnsupervisedDataset = [[${config.UnsupervisedDataset}]];
 var isSupervisedDataset = [[${config.SupervisedDataset}]];
+
+var isSplittingKfold = [[${config.isSplittingKfold}]];
+
+var isRandomSpltting = [[${config.isRandomSpltting}]];
+
  console.log(isUnsupervisedDataset);
  console.log(isSupervisedDataset);
 
@@ -75,7 +84,19 @@ if(isUnsupervisedDataset){
 	resultString = resultString + 'UnsupervisedDataset data { path "path/path" }'
 }
 if(isSupervisedDataset){
-	resultString = resultString + 'SupervisedDataset data { path "path/path" }'
+	resultString = resultString + 'SupervisedDataset data { path "path/path" } '
+}
+
+
+
+
+resultString = resultString + '\n' +'evaluation Evaluation Validator { validationTechnique { '
+
+if(isSplittingKfold){	
+	resultString = resultString + 'CrossValidation' +'\n'+ 'crossFold {nOfRecommendations 0 } } }'
+}
+if(isRandomSpltting){
+	resultString = resultString + 'RandomSpltting' + '\n'+ 'crossFold {nOfRecommendations 0 } } }'
 }
 
 //inserting recommeder systems settings

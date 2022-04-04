@@ -1,14 +1,17 @@
 package com.lev4rec.business;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -25,6 +28,7 @@ import org.xtext.lev4recgrammar.first.RsDslStandaloneSetup;
 import com.google.common.collect.Lists;
 import com.lev4rec.dto.RSConfiguration;
 
+import lev4rec.code.template.main.Generate;
 import lowcoders.AutomatedValidation;
 import lowcoders.Bayesian;
 import lowcoders.DataMiningRS;
@@ -62,7 +66,7 @@ public class FeatureHandler {
 		FeatureHandler i = new FeatureHandler();
 		try {
 			serializeModel(i.generate(config), "generated/demo.xmi");
-			RSModel coarseModel = loadModel("generated/demo.xmi");		
+				
 			
 			
 		} catch (ParserConfigurationException e) {
@@ -83,6 +87,21 @@ public class FeatureHandler {
 		RSModel model = (RSModel) resource.getContents().get(0);
 		return model;
 	}
+	
+/*public static void generateFromTML(String modelUri, String folderS) {
+		
+		try {
+			List<String> arguments = new ArrayList<String>();
+			System.out.print("\t" + "Generate all the files from the template...");
+			File folder = new File(folderS);
+			Generate generator = new Generate(loadModel(modelUri), folder, arguments);
+			generator.doGenerate(new BasicMonitor());
+			System.out.println("Generated!");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}*/
 
 	
 

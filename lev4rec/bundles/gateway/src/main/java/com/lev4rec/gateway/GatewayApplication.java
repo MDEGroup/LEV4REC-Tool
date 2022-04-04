@@ -25,19 +25,19 @@ public class GatewayApplication {
 				            .uri("http://localhost:8888"))
 			        
 			        .route(p-> p.path("/lev4rec/dsl").and().method("GET")
-				            .filters(f-> f.rewritePath("/lev4rec/dsl","/lev4rec/dsl"))
+				            .filters(f-> f.rewritePath("/lev4rec/dsl","/lev4rec/dsl/"))
 				            .uri("http://localhost:8888"))
 			        
 			        .route(p-> p.path("/lev4rec/dsl").and().method("POST")
-				            .filters(f-> f.rewritePath("/lev4rec/dsl","/lev4rec/dsl"))
+				            .filters(f-> f.rewritePath("/lev4rec/dsl/","/lev4rec/dsl/"))
 				            .uri("http://localhost:8888"))
 			        
-			        .route(p-> p.path("/lev4rec/generate").and().method("POST")
+			        .route(p-> p.path("/lev4rec/generate").and().method("GET")
 				            .filters(f-> f.rewritePath("/lev4rec/generate","/lev4rec/generate"))
 				            .uri("http://localhost:8888"))
 			        
 			        .route(p->p.path("/lev4rec/webjars/requirejs/2.3.6/require.min.js")
-			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/dsl"))
+			        		.filters(f-> f.rewritePath("/lev4rec/dsl","/lev4rec/dsl"))
 			        		.uri("http://localhost:8888"))
 			        
 			        
@@ -47,8 +47,17 @@ public class GatewayApplication {
 			        
 			        .route(p->p.path("/lev4rec/css/style.css")
 			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
-			        		.uri("http://localhost:8888"))			        
-			       
+			        		.uri("http://localhost:8888"))		
+			        
+			        
+			        .route(p->p.path("/lev4rec/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css/")
+			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
+			        		.uri("http://localhost:8888"))
+			        
+			        .route(p->p.path("/lev4rec/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js")
+			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
+			        		.uri("http://localhost:8888"))
+			        
 			        
 			        .route(p->p.path("/lev4rec/js/xtext-ace.js")
 			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
@@ -58,6 +67,18 @@ public class GatewayApplication {
 			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
 			        		.uri("http://localhost:8888"))
 			        
+			        
+			        .route(p->p.path("/lev4rec/webjars/ace/1.3.3/src/ace.js")
+			        		.filters(f-> f.rewritePath("/lev4rec/dsl","/lev4rec/dsl"))
+			        		.uri("http://localhost:8888"))
+			        
+			        .route(p->p.path("/lev4rec/webjars/ace/1.3.3/src/ext-language_tools.js")
+			        		.filters(f-> f.rewritePath("/lev4rec/dsl","/lev4rec/dsl"))
+			        		.uri("http://localhost:8888"))
+			        
+			        .route(p->p.path("/lev4rec/webjars/ace/1.3.3/src/theme-eclipse.js")
+			        		.filters(f-> f.rewritePath("/lev4rec/dsl","/lev4rec/dsl"))
+			        		.uri("http://localhost:8888"))
 			        
 			        .route(p->p.path("/lev4rec/js/mode-rec.js")
 			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
