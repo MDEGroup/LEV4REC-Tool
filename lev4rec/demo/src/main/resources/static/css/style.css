@@ -27,9 +27,9 @@ a:hover {
 .generator {
 	display: block;
 	position: absolute;
-	top: 600px;
+	top: 200px;
 	bottom: 600px;
-	left: 500;
+	left: 500px;
 	right: 0;
 	margin: 213px;
 }

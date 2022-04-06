@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,10 +22,13 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.xtext.parsetree.reconstr.impl.KeywordSerializer;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.xml.sax.SAXException;
 import org.xtext.lev4recgrammar.first.RsDslStandaloneSetup;
+
+
 
 import com.google.common.collect.Lists;
 import com.lev4rec.dto.RSConfiguration;
@@ -60,7 +65,10 @@ public class FeatureHandler {
 	
 	private final RSConfiguration config;
 	
-
+	private final ArrayList<String> KEYWORDS;
+	
+	
+	
 	public void getRSConfiguration(RSConfiguration config) {
 		// TODO Auto-generated method stub
 		FeatureHandler i = new FeatureHandler();
@@ -88,30 +96,35 @@ public class FeatureHandler {
 		return model;
 	}
 	
-/*public static void generateFromTML(String modelUri, String folderS) {
+public static void generateFromTML(String modelUri, String folderS) {
 		
 		try {
 			List<String> arguments = new ArrayList<String>();
 			System.out.print("\t" + "Generate all the files from the template...");
 			File folder = new File(folderS);
 			Generate generator = new Generate(loadModel(modelUri), folder, arguments);
-			generator.doGenerate(new BasicMonitor());
+			generator.doGenerate(new BasicMonitor());			
 			System.out.println("Generated!");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-	}*/
-
-	
+	}
 
 	
 	
 	public FeatureHandler() {
-		this.config = new RSConfiguration();
+		this.config = new RSConfiguration();		
+		this.KEYWORDS = new ArrayList<String>();
 		
 
 	}
+	
+	
+	public ArrayList<String> getKEYWORDS() {
+		return KEYWORDS;
+	}
+
 	public RSModel generate(RSConfiguration config) throws ParserConfigurationException, SAXException, IOException {
 		
 		RSModel model = LowcodersFactory.eINSTANCE.createRSModel();
@@ -138,12 +151,16 @@ public class FeatureHandler {
 		Dataset dataset = null;
 
 		if (config.isUnsupervisedDataset()) {
-			dataset = LowcodersFactory.eINSTANCE.createUnsupervisedDataset();		
+			dataset = LowcodersFactory.eINSTANCE.createUnsupervisedDataset();	
+			
 
 		}
 		if (config.isSupervisedDataset()) {
-			dataset = LowcodersFactory.eINSTANCE.createSupervisedDataset();			
+			dataset = LowcodersFactory.eINSTANCE.createSupervisedDataset();	
+			
 		}
+		
+		
 		dataset.setName("DATASET NAME");
 		// DataStructure
 		if (dataset != null) {
@@ -343,6 +360,40 @@ public class FeatureHandler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static RSModel parseUserString(String dslString, RSModel coarseModel) {
+		String keywords ="ADAM|ARFF|ASSOCIATION_RULE|AdditiveFeedback|AutomatedValidation|Bayesian|Boolean|BugTrackingSystem|CATALOG_COVERAGE|CLUSTERING|CONTENT_BASED|CONTEXT_AWARE|CONTROLLED_EXPERIMENT|COSINE_SIMILARITY|CROSSOVER|CSV|CategoricalData|Click|CodeRepository|CommunicationChannel|ContextValidation|ConvolutionalNN|CrossValidation|CustomRecommender|DEMOGRAPHIC|DUPLICATES_REMOVAL|DUPLICATION|DataMiningRS|DecisionTree|DeepNN|DependencyManager|E|EGGHOLDER_FUNCTION|ELLIOT|EPC|EUCLIDEAN_DISTANCE|EVENT_STREAM|Evaluation|F1_MEASURE|FEATURE_SCALING|FIELD_STUDIES|FIT_BIT|FLASK|FREQUENT_ITEM_SET|FeedForwardNN|FeedbackComponent|File|FilteringRS|Float|GINI|GRADIENT_DESCENT|GRAPH_BASED|GUIElement|GeneticAlgorithm|Graph|GroundTruthExtraction|HILL_CLIMBING|HYBRID|HybridFeedback|IDEIntegration|ITEM_BASED|ITEM_COVERAGE|ImplicitFeedback|Integer|JACCARD_DISTANCE|LBFGS|LEVENSHTEIN_DISTANCE|LIGHTFM|LIGHTGBM|LINEAR|MISSING_DATA_MANIPULATION|MSD|MachineLearningBasedRS|Matrix|NDCG|NEGATIVE|NLP|NORMALIZATION|NOVELTY|NUMERICAL|NUMPY|ORDINAL|PANDAS|PARTIAL_HYPER_MUTATION|POLY|POSITIVE|PRECISION|PRECOMPUTED|PYTORCH|Preprocessing|ProactiveHandler|QUALITATIVE|QUANTITATIVE|RBF|RECALL|RELU|REPACE_MUTATION|RSModel|RandomSplitting|Rating|RawOutcomes|ReactiveHandler|RecommendationContext|RecommendationHandler|RecommendationSetting|RecommendationUsage|RecommendedItem|RecurrentNN|SALE_DIVERSITY|SGD|SHRINK_MUTATION|SIGMOID|SIMULATED_ANNELING|SKLEARN|SPRING|SURPRISE|SVD|SVM|Selection|String|SupervisedDataset|TANH|TENSOR_FLOW|TEXT_MINING|TFIDF|TextualContent|Transformative|TraversableGraph|Tree|UNARY|USER_BASED|UnsupervisedDataset|UserEvent|UserStudy|VECTORIZATION|VSCodePlugin|Variable|VariableRelation|Visualization|WORD_EMBEDDINGS|WebApplication|WebIService|activationFunction|alpha|analysis|baselines|columns|condition|contents|context|cutoff|dataMiningRSAlgorithm|dataSource|dataStructure|dataset|datasetManipulationLibrary|dependatVariable|description|e|encoding|evaluation|event|eventType|expressedFeedback|false|feedback|filteringRSAlgorithm|fitnessFunction|format|generator|groundTruthExtractor|guielements|handler|host|indipendentVariables|isBuiltIn|isMissingValueAllowed|isMultiple|isProactiveSystem|item|kernel|key|learningRate|library|metadata|metrics|miniBatchSize|mutationOperator|nOfRecommendations|neighborhood|nodes|numEpochs|numHiddenLayer|numOfInsertion|numberOfFold|ordered|outcame|path|port|preprocessigTechnique|preprocessing|presentationLayer|query|randomState|recommendationSystem|recommendations|recommendedItems|recommender|relations|requiredTools|rootPath|scope|searchStrategy|settings|similarityCalculator|sizeGT|solver|source|sourcePath|splittingRules|target|targetVariable|testContext|true|type|usage|usageType|userContext|validationTechnique|value|variables|webService";
+		String cleanKeys  = keywords.replace("|", "#");
+		
+		String[] splittedKeys= cleanKeys.split("#");
+		
+		HashMap< String, String> mapKeys = new HashMap<String, String>();
+		
+		HashMap<String, String> mapModel = new HashMap<String, String>();
+		
+		
+		mapModel.put("RSModel", coarseModel.getName());
+		
+		if (coarseModel.getDataset()!= null) {
+			mapModel.put("dataset", coarseModel.getDataset().eClass().getName());
+		}		
+		
+		
+		mapModel.put("evaluation", coarseModel.getEvaluation().eClass().getName());		
+		
+		
+		String[] cleanString = dslString.replace("X", "").split(" ");
+		int pathIndex = Arrays.asList(cleanString).indexOf("path");
+		
+		coarseModel.getDataset().setPath(cleanString[pathIndex+1]);
+		for (String s: cleanString) {
+			System.out.println(s);
+		}
+		
+		
+		return coarseModel;
+		
 	}
 
 }

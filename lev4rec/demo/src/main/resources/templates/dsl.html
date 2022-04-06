@@ -53,7 +53,7 @@
 
 
 <div class="generator"><input type="submit" value="Generate Code" 
-    onclick="window.location='http://localhost:8891/lev4rec/generate/';" />  </div> 
+    onclick="get_user_string('xtext-editor')" />  </div> 
 
 
 
@@ -76,8 +76,6 @@ var isSplittingKfold = [[${config.isSplittingKfold}]];
 
 var isRandomSpltting = [[${config.isRandomSpltting}]];
 
- console.log(isUnsupervisedDataset);
- console.log(isSupervisedDataset);
 
 //inserting dataset settings
 if(isUnsupervisedDataset){	
@@ -88,15 +86,13 @@ if(isSupervisedDataset){
 }
 
 
-
-
 resultString = resultString + '\n' +'evaluation Evaluation Validator { validationTechnique { '
 
 if(isSplittingKfold){	
 	resultString = resultString + 'CrossValidation' +'\n'+ 'crossFold {nOfRecommendations 0 } } }'
 }
 if(isRandomSpltting){
-	resultString = resultString + 'RandomSpltting' + '\n'+ 'crossFold {nOfRecommendations 0 } } }'
+	resultString = resultString + 'RandomSplitting' + '\n'+ 'crossFold {nOfRecommendations 0 } } }'
 }
 
 //inserting recommeder systems settings
@@ -118,6 +114,43 @@ if(isUserBased){
 
  console.log(resultString)
 
+document.getElementById("xtext-editor").innerHTML = resultString;
+ </script>
+ 
+ <script type="text/javascript">
+ 
+ 
+ function formatParams( params ){
+	  return "?" + Object
+	        .keys(params)
+	        .map(function(key){
+	          return key+"="+encodeURIComponent(params[key])
+	        })
+	        .join("&")
+	}
+ 
+ 
+ function get_user_string(id_content) {
+	 
+	 const text_dsl = document.getElementById(id_content);
+	 
+	 console.log(text_dsl.textContent)
+	 
+	 var string_dsl = text_dsl.textContent
+	 
+	 
+	 var params = {
+			  user_string:string_dsl 
+			 
+			}
 
-document.getElementById("xtext-editor").innerHTML = resultString;</script>
+			var url = endpoint + formatParams(params)
+	 var endpoint = 'http://localhost:8891/lev4rec/generate';
+	 var url = endpoint + formatParams(params)
+	 window.location=url;
+	 
+	 
+ }
+ 
+ </script>
 </html>
