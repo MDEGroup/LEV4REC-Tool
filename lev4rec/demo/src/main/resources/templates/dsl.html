@@ -63,7 +63,7 @@
 
 
 //default model
-var resultString = "RSModel CrossRec { dataset "
+var resultString = "RSModel CrossRec  dataset : "
 
 var isItemBased = [[${config.ItemBased}]];
 var isUserBased = [[${config.UserBased}]];
@@ -71,46 +71,64 @@ var isCollaborativeFiltering = [[${config.CollaborativeFiltering}]];
 
 var isUnsupervisedDataset = [[${config.UnsupervisedDataset}]];
 var isSupervisedDataset = [[${config.SupervisedDataset}]];
-
 var isSplittingKfold = [[${config.isSplittingKfold}]];
-
 var isRandomSpltting = [[${config.isRandomSpltting}]];
 
+var isPandas = [[${config.isPandas}]];
+var isNumpy = [[${config.isNumpy}]];
 
 //inserting dataset settings
 if(isUnsupervisedDataset){	
-	resultString = resultString + 'UnsupervisedDataset data { path "path/path" }'
+	resultString = resultString + 'UnsupervisedDataset data : path "insert your path here" '
 }
 if(isSupervisedDataset){
-	resultString = resultString + 'SupervisedDataset data { path "path/path" } '
+	resultString = resultString + 'SupervisedDataset data : path "insert your path here"  '
+}
+	
+if(isPandas && !isNumpy){
+	resultString = resultString + 'datasetManipulationLibrary  PANDAS '	
+}	
+if (isNumpy && !isPandas) {
+	resultString = resultString + 'datasetManipulationLibrary NUMPY  '
 }
 
 
-resultString = resultString + '\n' +'evaluation Evaluation Validator { validationTechnique { '
+
+//evaluation settings
+resultString = resultString + '\n ' +'evaluation :  Evaluation Validator  validationTechnique  '
 
 if(isSplittingKfold){	
-	resultString = resultString + 'CrossValidation' +'\n'+ 'crossFold {nOfRecommendations 0 } } }'
+	resultString = resultString + 'CrossValidation' +'\n'+ 'crossFold nOfRecommendations 0 '
 }
 if(isRandomSpltting){
-	resultString = resultString + 'RandomSplitting' + '\n'+ 'crossFold {nOfRecommendations 0 } } }'
+	resultString = resultString + 'RandomSplitting' + '\n'+ 'crossFold nOfRecommendations 0 '
 }
-
+	
+	
 //inserting recommeder systems settings
-resultString = resultString +'\n' + ' recommendationSystem '
+resultString = resultString +'\n' + ' recommendationSystem : '
+
 
 
 
 if(isCollaborativeFiltering){
 	
-	resultString = resultString + 'FilteringRS AlgoName { filteringRSAlgorithm '
+	resultString = resultString + 'FilteringRS AlgoName  filteringRSAlgorithm '
 }
 if(isItemBased){
-	resultString = resultString + 'ITEM_BASED }}'
+	resultString = resultString + 'ITEM_BASED '
 }
 
 if(isUserBased){
-	resultString = resultString + 'USER_BASED }}'
+	resultString = resultString + 'USER_BASED '
 }
+	
+	
+	
+
+
+
+
 
  console.log(resultString)
 

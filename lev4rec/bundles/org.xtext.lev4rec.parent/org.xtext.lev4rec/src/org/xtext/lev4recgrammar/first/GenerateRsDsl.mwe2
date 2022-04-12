@@ -38,7 +38,12 @@ Workflow {
 			fileExtensions = "rec"
 
 			serializer = {
-				generateStub = false
+				generateStub = true
+			}
+			
+			formatter = {
+				generateStub = true
+				generateXtendStub = true
 			}
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"

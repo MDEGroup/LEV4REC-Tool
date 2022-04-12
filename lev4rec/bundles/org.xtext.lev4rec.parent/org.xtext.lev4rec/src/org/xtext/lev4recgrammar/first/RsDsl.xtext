@@ -14,12 +14,13 @@ RSModel returns RSModel:
 	'RSModel'
 	name=EString
 	'{'
-		('dataset' dataset=Dataset)?
-		('presentationLayer' presentationLayer=PresentationLayer)?
-		('evaluation' evaluation=Evaluation)?
-		'recommendationSystem' recommendationSystem=RecommendationSystem
-		('feedback' feedback=FeedbackComponent)?
-	'}';
+		('dataset' ':' dataset=Dataset)?
+		('presentationLayer' ':' presentationLayer=PresentationLayer)?
+		('evaluation' ':' evaluation=Evaluation)?
+		'recommendationSystem' ':' recommendationSystem=RecommendationSystem
+		('feedback' ':' feedback=FeedbackComponent)?
+	'}'
+	;
 
 Dataset returns Dataset:
 	UnsupervisedDataset | SupervisedDataset;
@@ -66,19 +67,21 @@ Evaluation returns Evaluation:
 	'Evaluation'
 	name=EString
 	'{'
-		('baselines' '{' baselines+=EString ( "," baselines+=EString)* '}' )?
-		('metrics' '{' metrics+=Metric ( "," metrics+=Metric)* '}' )?
-		('validationTechnique' '{' validationTechnique+=ValidationTechnique ( "," validationTechnique+=ValidationTechnique)* '}' )?
-	'}';
+		('baselines' '[' baselines+=EString ( "," baselines+=EString)* ']' )?
+		('metrics' '[' metrics+=Metric ( "," metrics+=Metric)* ']' )?
+		('validationTechnique' '[' validationTechnique+=ValidationTechnique ( "," validationTechnique+=ValidationTechnique)* ']' )?
+		
+	'}'
+	;
 
 FeedbackComponent returns FeedbackComponent:
 	{FeedbackComponent}
 	'FeedbackComponent'
-	'{'
+	
 		('library' library=FeedbackLibType)?
 		('query' query=RecommendationContext)?
 		('expressedFeedback' expressedFeedback=Feedback)?
-	'}';
+	;
 
 Variable returns Variable:
 	(isMissingValueAllowed?='isMissingValueAllowed')?
@@ -105,32 +108,35 @@ UnsupervisedDataset returns UnsupervisedDataset:
 	'UnsupervisedDataset'
 	name=EString
 	'{'
-		('preprocessing' '{' preprocessing+=PreprocessingTechnique ( "," preprocessing+=PreprocessingTechnique)* '}' )?
-		('datasetManipulationLibrary' '{' datasetManipulationLibrary+=DatasetManipulationLibrary ( "," datasetManipulationLibrary+=DatasetManipulationLibrary)* '}' )?
+		('preprocessing' '[' preprocessing+=PreprocessingTechnique ( "," preprocessing+=PreprocessingTechnique)* ']' )?
+		('datasetManipulationLibrary' '[' datasetManipulationLibrary+=DatasetManipulationLibrary ( "," datasetManipulationLibrary+=DatasetManipulationLibrary)* ']' )?
 		'path' path=EString
-		('indipendentVariables' '{' indipendentVariables+=Variable ( "," indipendentVariables+=Variable)* '}' )?
+		('indipendentVariables' '[' indipendentVariables+=Variable ( "," indipendentVariables+=Variable)* ']' )?
 		('dataStructure' dataStructure=DataStructure)?
-	'}';
+	'}'
+	;
 
 SupervisedDataset returns SupervisedDataset:
 	(isBuiltIn?='isBuiltIn')?
 	'SupervisedDataset'
 	name=EString
 	'{'
-		('preprocessing' '{' preprocessing+=PreprocessingTechnique ( "," preprocessing+=PreprocessingTechnique)* '}' )?
-		('datasetManipulationLibrary' '{' datasetManipulationLibrary+=DatasetManipulationLibrary ( "," datasetManipulationLibrary+=DatasetManipulationLibrary)* '}' )?
+		('preprocessing' '[' preprocessing+=PreprocessingTechnique ( "," preprocessing+=PreprocessingTechnique)* ']' )?
+		('datasetManipulationLibrary' '[' datasetManipulationLibrary+=DatasetManipulationLibrary ( "," datasetManipulationLibrary+=DatasetManipulationLibrary)* ']' )?
 		'path' path=EString
-		('indipendentVariables' '{' indipendentVariables+=Variable ( "," indipendentVariables+=Variable)* '}' )?
+		('indipendentVariables' '[' indipendentVariables+=Variable ( "," indipendentVariables+=Variable)* ']' )?
 		('dataStructure' dataStructure=DataStructure)?
 		'dependatVariable' dependatVariable=Variable
-	'}';
+	'}'
+	;
 
 Preprocessing returns Preprocessing:
 	{Preprocessing}
-	'Preprocessing'
+	'Preprocessing'	
 	'{'
-		('preprocessigTechnique' '{' preprocessigTechnique+=PreprocessingTechnique ( "," preprocessigTechnique+=PreprocessingTechnique)* '}' )?
-	'}';
+		('preprocessigTechnique' '[' preprocessigTechnique+=PreprocessingTechnique ( "," preprocessigTechnique+=PreprocessingTechnique)* ']' )?
+	'}'
+	;
 
 enum VariableType returns VariableType:
 				String = 'String' | Boolean = 'Boolean' | CategoricalData = 'CategoricalData' | Integer = 'Integer' | Float = 'Float';
@@ -664,4 +670,7 @@ Rating returns Rating:
 
 enum RatingType returns RatingType:
 				POSITIVE = 'POSITIVE' | NEGATIVE = 'NEGATIVE' | NUMERICAL = 'NUMERICAL' | ORDINAL = 'ORDINAL' | UNARY = 'UNARY';
+				
+				
+
 	

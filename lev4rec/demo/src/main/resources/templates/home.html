@@ -111,7 +111,7 @@ fieldset {
 	</div>
 	
 	
-<h3>PreprocessingComponent</h3>
+<h3>Preprocessing Data Component</h3>
 	<fieldset id="preprocess_sub">
 		<div> <input id="preprocess_sub_feature_1" type="checkbox" th:field="*{NLP}" >NLP</div>
 		<div> <input id="preprocess_sub_feature_2" type="checkbox" th:field="*{FeatureScaling}" >FeatureScaling</div>
@@ -119,6 +119,12 @@ fieldset {
 		<div> <input id="preprocess_sub_feature_4" type="checkbox" th:field="*{DuplicatesRemoval}" >DuplicatesRemoval</div>
 		<div> <input id="preprocess_sub_feature_5" type="checkbox" th:field="*{MissingDataManipulation}"  >MissingDataManipulation</div>
 		<div> <input id="preprocess_sub_feature_6" type="checkbox" th:field="*{Normalization}" >Normalization</div>	
+	</fieldset>
+	
+	<h3>Dataset Preprocessing</h3>
+		<fieldset id="dataset_sub">
+		<div> <input id="dataset_sub_feature_1" type="checkbox" th:field="*{Pandas}" >Pandas </div>
+		<div> <input id="dataset_sub_feature_2" type="checkbox" th:field="*{Numpy}"> Numpy </div>		
 	</fieldset>
 <h3>Evaluation Component</h3>
 	

@@ -4,13 +4,17 @@
 
 [template public generateSURDataset(dataset : Dataset)]
 from surprise import Dataset, Reader
-[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
-[/if]
+
 [if (dataset.isBuiltIn = true)]
 [if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]	
 	data = Dataset.load_builtin('[dataset.path/]')	
 	return data
 [/if] 
+
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data = Dataset.load_builtin('[dataset.path/]')	
+	return data
+[/if]
 [/if]
 
 [if (dataset.isBuiltIn = false)]
@@ -18,6 +22,11 @@ from surprise import Dataset, Reader
 	data = pd.read_csv('[dataset.path/]', sep=",")
 	return data
 [/if] 
+
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data = pd.read_csv('[dataset.path/]', sep=",")	
+	return data
+[/if]
  
 [/if]
 [/template]

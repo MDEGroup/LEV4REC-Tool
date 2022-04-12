@@ -15,10 +15,14 @@ warnings.filterwarnings("ignore")
 ##TODO Generating dataset
 from surprise import Dataset, Reader
 
+
+
+	data = pd.read_csv('"path/path"', sep=",")	
+	return data
  
 
 
-	is_user_based=True
+	is_user_based=False
 	neighborhood=0
 	cutoff=0
 	sim_funct='cosine'
@@ -48,7 +52,7 @@ kf = KFold(n_splits=n_splits)
 	
 
 
-	is_user_based=True
+	is_user_based=False
 	
 
 

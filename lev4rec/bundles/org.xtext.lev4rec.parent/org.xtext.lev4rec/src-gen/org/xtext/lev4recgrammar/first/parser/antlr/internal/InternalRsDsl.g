@@ -109,12 +109,16 @@ ruleRSModel returns [EObject current=null]
 			{
 				newLeafNode(otherlv_3, grammarAccess.getRSModelAccess().getDatasetKeyword_3_0());
 			}
+			otherlv_4=':'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getRSModelAccess().getColonKeyword_3_1());
+			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRSModelAccess().getDatasetDatasetParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getRSModelAccess().getDatasetDatasetParserRuleCall_3_2_0());
 					}
-					lv_dataset_4_0=ruleDataset
+					lv_dataset_5_0=ruleDataset
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getRSModelRule());
@@ -122,7 +126,7 @@ ruleRSModel returns [EObject current=null]
 						set(
 							$current,
 							"dataset",
-							lv_dataset_4_0,
+							lv_dataset_5_0,
 							"org.xtext.lev4recgrammar.first.RsDsl.Dataset");
 						afterParserOrEnumRuleCall();
 					}
@@ -130,16 +134,20 @@ ruleRSModel returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_5='presentationLayer'
+			otherlv_6='presentationLayer'
 			{
-				newLeafNode(otherlv_5, grammarAccess.getRSModelAccess().getPresentationLayerKeyword_4_0());
+				newLeafNode(otherlv_6, grammarAccess.getRSModelAccess().getPresentationLayerKeyword_4_0());
+			}
+			otherlv_7=':'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getRSModelAccess().getColonKeyword_4_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRSModelAccess().getPresentationLayerPresentationLayerParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getRSModelAccess().getPresentationLayerPresentationLayerParserRuleCall_4_2_0());
 					}
-					lv_presentationLayer_6_0=rulePresentationLayer
+					lv_presentationLayer_8_0=rulePresentationLayer
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getRSModelRule());
@@ -147,7 +155,7 @@ ruleRSModel returns [EObject current=null]
 						set(
 							$current,
 							"presentationLayer",
-							lv_presentationLayer_6_0,
+							lv_presentationLayer_8_0,
 							"org.xtext.lev4recgrammar.first.RsDsl.PresentationLayer");
 						afterParserOrEnumRuleCall();
 					}
@@ -155,16 +163,20 @@ ruleRSModel returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_7='evaluation'
+			otherlv_9='evaluation'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getRSModelAccess().getEvaluationKeyword_5_0());
+				newLeafNode(otherlv_9, grammarAccess.getRSModelAccess().getEvaluationKeyword_5_0());
+			}
+			otherlv_10=':'
+			{
+				newLeafNode(otherlv_10, grammarAccess.getRSModelAccess().getColonKeyword_5_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRSModelAccess().getEvaluationEvaluationParserRuleCall_5_1_0());
+						newCompositeNode(grammarAccess.getRSModelAccess().getEvaluationEvaluationParserRuleCall_5_2_0());
 					}
-					lv_evaluation_8_0=ruleEvaluation
+					lv_evaluation_11_0=ruleEvaluation
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getRSModelRule());
@@ -172,23 +184,27 @@ ruleRSModel returns [EObject current=null]
 						set(
 							$current,
 							"evaluation",
-							lv_evaluation_8_0,
+							lv_evaluation_11_0,
 							"org.xtext.lev4recgrammar.first.RsDsl.Evaluation");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)?
-		otherlv_9='recommendationSystem'
+		otherlv_12='recommendationSystem'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getRSModelAccess().getRecommendationSystemKeyword_6());
+			newLeafNode(otherlv_12, grammarAccess.getRSModelAccess().getRecommendationSystemKeyword_6());
+		}
+		otherlv_13=':'
+		{
+			newLeafNode(otherlv_13, grammarAccess.getRSModelAccess().getColonKeyword_7());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRSModelAccess().getRecommendationSystemRecommendationSystemParserRuleCall_7_0());
+					newCompositeNode(grammarAccess.getRSModelAccess().getRecommendationSystemRecommendationSystemParserRuleCall_8_0());
 				}
-				lv_recommendationSystem_10_0=ruleRecommendationSystem
+				lv_recommendationSystem_14_0=ruleRecommendationSystem
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getRSModelRule());
@@ -196,23 +212,27 @@ ruleRSModel returns [EObject current=null]
 					set(
 						$current,
 						"recommendationSystem",
-						lv_recommendationSystem_10_0,
+						lv_recommendationSystem_14_0,
 						"org.xtext.lev4recgrammar.first.RsDsl.RecommendationSystem");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_11='feedback'
+			otherlv_15='feedback'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getRSModelAccess().getFeedbackKeyword_8_0());
+				newLeafNode(otherlv_15, grammarAccess.getRSModelAccess().getFeedbackKeyword_9_0());
+			}
+			otherlv_16=':'
+			{
+				newLeafNode(otherlv_16, grammarAccess.getRSModelAccess().getColonKeyword_9_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getRSModelAccess().getFeedbackFeedbackComponentParserRuleCall_8_1_0());
+						newCompositeNode(grammarAccess.getRSModelAccess().getFeedbackFeedbackComponentParserRuleCall_9_2_0());
 					}
-					lv_feedback_12_0=ruleFeedbackComponent
+					lv_feedback_17_0=ruleFeedbackComponent
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getRSModelRule());
@@ -220,16 +240,16 @@ ruleRSModel returns [EObject current=null]
 						set(
 							$current,
 							"feedback",
-							lv_feedback_12_0,
+							lv_feedback_17_0,
 							"org.xtext.lev4recgrammar.first.RsDsl.FeedbackComponent");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)?
-		otherlv_13='}'
+		otherlv_18='}'
 		{
-			newLeafNode(otherlv_13, grammarAccess.getRSModelAccess().getRightCurlyBracketKeyword_9());
+			newLeafNode(otherlv_18, grammarAccess.getRSModelAccess().getRightCurlyBracketKeyword_10());
 		}
 	)
 ;
@@ -800,9 +820,9 @@ ruleEvaluation returns [EObject current=null]
 			{
 				newLeafNode(otherlv_4, grammarAccess.getEvaluationAccess().getBaselinesKeyword_4_0());
 			}
-			otherlv_5='{'
+			otherlv_5='['
 			{
-				newLeafNode(otherlv_5, grammarAccess.getEvaluationAccess().getLeftCurlyBracketKeyword_4_1());
+				newLeafNode(otherlv_5, grammarAccess.getEvaluationAccess().getLeftSquareBracketKeyword_4_1());
 			}
 			(
 				(
@@ -848,9 +868,9 @@ ruleEvaluation returns [EObject current=null]
 					)
 				)
 			)*
-			otherlv_9='}'
+			otherlv_9=']'
 			{
-				newLeafNode(otherlv_9, grammarAccess.getEvaluationAccess().getRightCurlyBracketKeyword_4_4());
+				newLeafNode(otherlv_9, grammarAccess.getEvaluationAccess().getRightSquareBracketKeyword_4_4());
 			}
 		)?
 		(
@@ -858,9 +878,9 @@ ruleEvaluation returns [EObject current=null]
 			{
 				newLeafNode(otherlv_10, grammarAccess.getEvaluationAccess().getMetricsKeyword_5_0());
 			}
-			otherlv_11='{'
+			otherlv_11='['
 			{
-				newLeafNode(otherlv_11, grammarAccess.getEvaluationAccess().getLeftCurlyBracketKeyword_5_1());
+				newLeafNode(otherlv_11, grammarAccess.getEvaluationAccess().getLeftSquareBracketKeyword_5_1());
 			}
 			(
 				(
@@ -906,9 +926,9 @@ ruleEvaluation returns [EObject current=null]
 					)
 				)
 			)*
-			otherlv_15='}'
+			otherlv_15=']'
 			{
-				newLeafNode(otherlv_15, grammarAccess.getEvaluationAccess().getRightCurlyBracketKeyword_5_4());
+				newLeafNode(otherlv_15, grammarAccess.getEvaluationAccess().getRightSquareBracketKeyword_5_4());
 			}
 		)?
 		(
@@ -916,9 +936,9 @@ ruleEvaluation returns [EObject current=null]
 			{
 				newLeafNode(otherlv_16, grammarAccess.getEvaluationAccess().getValidationTechniqueKeyword_6_0());
 			}
-			otherlv_17='{'
+			otherlv_17='['
 			{
-				newLeafNode(otherlv_17, grammarAccess.getEvaluationAccess().getLeftCurlyBracketKeyword_6_1());
+				newLeafNode(otherlv_17, grammarAccess.getEvaluationAccess().getLeftSquareBracketKeyword_6_1());
 			}
 			(
 				(
@@ -964,9 +984,9 @@ ruleEvaluation returns [EObject current=null]
 					)
 				)
 			)*
-			otherlv_21='}'
+			otherlv_21=']'
 			{
-				newLeafNode(otherlv_21, grammarAccess.getEvaluationAccess().getRightCurlyBracketKeyword_6_4());
+				newLeafNode(otherlv_21, grammarAccess.getEvaluationAccess().getRightSquareBracketKeyword_6_4());
 			}
 		)?
 		otherlv_22='}'
@@ -1003,21 +1023,17 @@ ruleFeedbackComponent returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getFeedbackComponentAccess().getFeedbackComponentKeyword_1());
 		}
-		otherlv_2='{'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getFeedbackComponentAccess().getLeftCurlyBracketKeyword_2());
-		}
 		(
-			otherlv_3='library'
+			otherlv_2='library'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getFeedbackComponentAccess().getLibraryKeyword_3_0());
+				newLeafNode(otherlv_2, grammarAccess.getFeedbackComponentAccess().getLibraryKeyword_2_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getFeedbackComponentAccess().getLibraryFeedbackLibTypeEnumRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getFeedbackComponentAccess().getLibraryFeedbackLibTypeEnumRuleCall_2_1_0());
 					}
-					lv_library_4_0=ruleFeedbackLibType
+					lv_library_3_0=ruleFeedbackLibType
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getFeedbackComponentRule());
@@ -1025,7 +1041,7 @@ ruleFeedbackComponent returns [EObject current=null]
 						set(
 							$current,
 							"library",
-							lv_library_4_0,
+							lv_library_3_0,
 							"org.xtext.lev4recgrammar.first.RsDsl.FeedbackLibType");
 						afterParserOrEnumRuleCall();
 					}
@@ -1033,16 +1049,16 @@ ruleFeedbackComponent returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_5='query'
+			otherlv_4='query'
 			{
-				newLeafNode(otherlv_5, grammarAccess.getFeedbackComponentAccess().getQueryKeyword_4_0());
+				newLeafNode(otherlv_4, grammarAccess.getFeedbackComponentAccess().getQueryKeyword_3_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getFeedbackComponentAccess().getQueryRecommendationContextParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getFeedbackComponentAccess().getQueryRecommendationContextParserRuleCall_3_1_0());
 					}
-					lv_query_6_0=ruleRecommendationContext
+					lv_query_5_0=ruleRecommendationContext
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getFeedbackComponentRule());
@@ -1050,7 +1066,7 @@ ruleFeedbackComponent returns [EObject current=null]
 						set(
 							$current,
 							"query",
-							lv_query_6_0,
+							lv_query_5_0,
 							"org.xtext.lev4recgrammar.first.RsDsl.RecommendationContext");
 						afterParserOrEnumRuleCall();
 					}
@@ -1058,16 +1074,16 @@ ruleFeedbackComponent returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_7='expressedFeedback'
+			otherlv_6='expressedFeedback'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getFeedbackComponentAccess().getExpressedFeedbackKeyword_5_0());
+				newLeafNode(otherlv_6, grammarAccess.getFeedbackComponentAccess().getExpressedFeedbackKeyword_4_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getFeedbackComponentAccess().getExpressedFeedbackFeedbackParserRuleCall_5_1_0());
+						newCompositeNode(grammarAccess.getFeedbackComponentAccess().getExpressedFeedbackFeedbackParserRuleCall_4_1_0());
 					}
-					lv_expressedFeedback_8_0=ruleFeedback
+					lv_expressedFeedback_7_0=ruleFeedback
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getFeedbackComponentRule());
@@ -1075,17 +1091,13 @@ ruleFeedbackComponent returns [EObject current=null]
 						set(
 							$current,
 							"expressedFeedback",
-							lv_expressedFeedback_8_0,
+							lv_expressedFeedback_7_0,
 							"org.xtext.lev4recgrammar.first.RsDsl.Feedback");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)?
-		otherlv_9='}'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getFeedbackComponentAccess().getRightCurlyBracketKeyword_6());
-		}
 	)
 ;
 
@@ -1300,9 +1312,9 @@ ruleUnsupervisedDataset returns [EObject current=null]
 			{
 				newLeafNode(otherlv_4, grammarAccess.getUnsupervisedDatasetAccess().getPreprocessingKeyword_4_0());
 			}
-			otherlv_5='{'
+			otherlv_5='['
 			{
-				newLeafNode(otherlv_5, grammarAccess.getUnsupervisedDatasetAccess().getLeftCurlyBracketKeyword_4_1());
+				newLeafNode(otherlv_5, grammarAccess.getUnsupervisedDatasetAccess().getLeftSquareBracketKeyword_4_1());
 			}
 			(
 				(
@@ -1348,9 +1360,9 @@ ruleUnsupervisedDataset returns [EObject current=null]
 					)
 				)
 			)*
-			otherlv_9='}'
+			otherlv_9=']'
 			{
-				newLeafNode(otherlv_9, grammarAccess.getUnsupervisedDatasetAccess().getRightCurlyBracketKeyword_4_4());
+				newLeafNode(otherlv_9, grammarAccess.getUnsupervisedDatasetAccess().getRightSquareBracketKeyword_4_4());
 			}
 		)?
 		(
@@ -1358,9 +1370,9 @@ ruleUnsupervisedDataset returns [EObject current=null]
 			{
 				newLeafNode(otherlv_10, grammarAccess.getUnsupervisedDatasetAccess().getDatasetManipulationLibraryKeyword_5_0());
 			}
-			otherlv_11='{'
+			otherlv_11='['
 			{
-				newLeafNode(otherlv_11, grammarAccess.getUnsupervisedDatasetAccess().getLeftCurlyBracketKeyword_5_1());
+				newLeafNode(otherlv_11, grammarAccess.getUnsupervisedDatasetAccess().getLeftSquareBracketKeyword_5_1());
 			}
 			(
 				(
@@ -1406,9 +1418,9 @@ ruleUnsupervisedDataset returns [EObject current=null]
 					)
 				)
 			)*
-			otherlv_15='}'
+			otherlv_15=']'
 			{
-				newLeafNode(otherlv_15, grammarAccess.getUnsupervisedDatasetAccess().getRightCurlyBracketKeyword_5_4());
+				newLeafNode(otherlv_15, grammarAccess.getUnsupervisedDatasetAccess().getRightSquareBracketKeyword_5_4());
 			}
 		)?
 		otherlv_16='path'
@@ -1439,9 +1451,9 @@ ruleUnsupervisedDataset returns [EObject current=null]
 			{
 				newLeafNode(otherlv_18, grammarAccess.getUnsupervisedDatasetAccess().getIndipendentVariablesKeyword_8_0());
 			}
-			otherlv_19='{'
+			otherlv_19='['
 			{
-				newLeafNode(otherlv_19, grammarAccess.getUnsupervisedDatasetAccess().getLeftCurlyBracketKeyword_8_1());
+				newLeafNode(otherlv_19, grammarAccess.getUnsupervisedDatasetAccess().getLeftSquareBracketKeyword_8_1());
 			}
 			(
 				(
@@ -1487,9 +1499,9 @@ ruleUnsupervisedDataset returns [EObject current=null]
 					)
 				)
 			)*
-			otherlv_23='}'
+			otherlv_23=']'
 			{
-				newLeafNode(otherlv_23, grammarAccess.getUnsupervisedDatasetAccess().getRightCurlyBracketKeyword_8_4());
+				newLeafNode(otherlv_23, grammarAccess.getUnsupervisedDatasetAccess().getRightSquareBracketKeyword_8_4());
 			}
 		)?
 		(
@@ -1586,9 +1598,9 @@ ruleSupervisedDataset returns [EObject current=null]
 			{
 				newLeafNode(otherlv_4, grammarAccess.getSupervisedDatasetAccess().getPreprocessingKeyword_4_0());
 			}
-			otherlv_5='{'
+			otherlv_5='['
 			{
-				newLeafNode(otherlv_5, grammarAccess.getSupervisedDatasetAccess().getLeftCurlyBracketKeyword_4_1());
+				newLeafNode(otherlv_5, grammarAccess.getSupervisedDatasetAccess().getLeftSquareBracketKeyword_4_1());
 			}
 			(
 				(
@@ -1634,9 +1646,9 @@ ruleSupervisedDataset returns [EObject current=null]
 					)
 				)
 			)*
-			otherlv_9='}'
+			otherlv_9=']'
 			{
-				newLeafNode(otherlv_9, grammarAccess.getSupervisedDatasetAccess().getRightCurlyBracketKeyword_4_4());
+				newLeafNode(otherlv_9, grammarAccess.getSupervisedDatasetAccess().getRightSquareBracketKeyword_4_4());
 			}
 		)?
 		(
@@ -1644,9 +1656,9 @@ ruleSupervisedDataset returns [EObject current=null]
 			{
 				newLeafNode(otherlv_10, grammarAccess.getSupervisedDatasetAccess().getDatasetManipulationLibraryKeyword_5_0());
 			}
-			otherlv_11='{'
+			otherlv_11='['
 			{
-				newLeafNode(otherlv_11, grammarAccess.getSupervisedDatasetAccess().getLeftCurlyBracketKeyword_5_1());
+				newLeafNode(otherlv_11, grammarAccess.getSupervisedDatasetAccess().getLeftSquareBracketKeyword_5_1());
 			}
 			(
 				(
@@ -1692,9 +1704,9 @@ ruleSupervisedDataset returns [EObject current=null]
 					)
 				)
 			)*
-			otherlv_15='}'
+			otherlv_15=']'
 			{
-				newLeafNode(otherlv_15, grammarAccess.getSupervisedDatasetAccess().getRightCurlyBracketKeyword_5_4());
+				newLeafNode(otherlv_15, grammarAccess.getSupervisedDatasetAccess().getRightSquareBracketKeyword_5_4());
 			}
 		)?
 		otherlv_16='path'
@@ -1725,9 +1737,9 @@ ruleSupervisedDataset returns [EObject current=null]
 			{
 				newLeafNode(otherlv_18, grammarAccess.getSupervisedDatasetAccess().getIndipendentVariablesKeyword_8_0());
 			}
-			otherlv_19='{'
+			otherlv_19='['
 			{
-				newLeafNode(otherlv_19, grammarAccess.getSupervisedDatasetAccess().getLeftCurlyBracketKeyword_8_1());
+				newLeafNode(otherlv_19, grammarAccess.getSupervisedDatasetAccess().getLeftSquareBracketKeyword_8_1());
 			}
 			(
 				(
@@ -1773,9 +1785,9 @@ ruleSupervisedDataset returns [EObject current=null]
 					)
 				)
 			)*
-			otherlv_23='}'
+			otherlv_23=']'
 			{
-				newLeafNode(otherlv_23, grammarAccess.getSupervisedDatasetAccess().getRightCurlyBracketKeyword_8_4());
+				newLeafNode(otherlv_23, grammarAccess.getSupervisedDatasetAccess().getRightSquareBracketKeyword_8_4());
 			}
 		)?
 		(
@@ -1869,9 +1881,9 @@ rulePreprocessing returns [EObject current=null]
 			{
 				newLeafNode(otherlv_3, grammarAccess.getPreprocessingAccess().getPreprocessigTechniqueKeyword_3_0());
 			}
-			otherlv_4='{'
+			otherlv_4='['
 			{
-				newLeafNode(otherlv_4, grammarAccess.getPreprocessingAccess().getLeftCurlyBracketKeyword_3_1());
+				newLeafNode(otherlv_4, grammarAccess.getPreprocessingAccess().getLeftSquareBracketKeyword_3_1());
 			}
 			(
 				(
@@ -1917,9 +1929,9 @@ rulePreprocessing returns [EObject current=null]
 					)
 				)
 			)*
-			otherlv_8='}'
+			otherlv_8=']'
 			{
-				newLeafNode(otherlv_8, grammarAccess.getPreprocessingAccess().getRightCurlyBracketKeyword_3_4());
+				newLeafNode(otherlv_8, grammarAccess.getPreprocessingAccess().getRightSquareBracketKeyword_3_4());
 			}
 		)?
 		otherlv_9='}'
