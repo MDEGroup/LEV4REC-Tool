@@ -970,6 +970,7 @@ define('xtext/ServiceBuilder',[
 	ServiceBuilder.prototype.createServices = function() {
 		var services = this.services;
 		var options = services.options;
+		options.enableFormattingAction = true;
 		var editorContext = services.editorContext;
 		editorContext.xtextServices = services;
 		var self = this;
@@ -1426,6 +1427,7 @@ define('xtext/xtext-ace',[
 			options = {};
 		
 		var query;
+		options.enableFormattingAction = true;
 		if (jQuery.type(options.parent) === 'string') {
 			query = jQuery('#' + options.parent, options.document);
 		} else if (options.parent) {
@@ -1439,6 +1441,7 @@ define('xtext/xtext-ace',[
 		}
 		
 		var editors = [];
+		
 		query.each(function(index, parent) {
 			var editor = ace.edit(parent);
 			editor.$blockScrolling = Infinity;
@@ -1723,6 +1726,7 @@ define('xtext/xtext-ace',[
 	 */
 	AceServiceBuilder.prototype.setupFormattingService = function() {
 		var services = this.services;
+		services.options.enableFormattingAction = true;
 		if (services.options.enableFormattingAction && this.editor.commands) {
 			this.editor.commands.addCommand({
 				name: 'xtext-format',

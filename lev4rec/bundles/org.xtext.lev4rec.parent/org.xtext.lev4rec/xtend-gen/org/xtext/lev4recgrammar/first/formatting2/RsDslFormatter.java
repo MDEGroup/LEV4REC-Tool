@@ -18,7 +18,6 @@ import org.xtext.lev4recgrammar.first.rsDsl.FeedbackComponent;
 import org.xtext.lev4recgrammar.first.rsDsl.PresentationLayer;
 import org.xtext.lev4recgrammar.first.rsDsl.RSModel;
 import org.xtext.lev4recgrammar.first.rsDsl.RecommendationSystem;
-import org.xtext.lev4recgrammar.first.rsDsl.UnsupervisedDataset;
 import org.xtext.lev4recgrammar.first.rsDsl.ValidationTechnique;
 import org.xtext.lev4recgrammar.first.services.RsDslGrammarAccess;
 
@@ -30,9 +29,9 @@ public class RsDslFormatter extends AbstractFormatter2 {
   
   protected void _format(final RSModel rSModel, @Extension final IFormattableDocument document) {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      rSModel.getName();
+      it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(rSModel).keyword("RSModel"), _function);
+    document.append(this.textRegionExtensions.regionFor(rSModel).keyword("{"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
@@ -40,60 +39,88 @@ public class RsDslFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(rSModel.getDataset()).keyword(":"), _function_2);
+    document.append(this.textRegionExtensions.regionFor(rSModel.getDataset()).keyword("{"), _function_2);
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
     document.prepend(this.textRegionExtensions.regionFor(rSModel.getDataset()).keyword("}"), _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(this.textRegionExtensions.allRegionsFor(rSModel.getDataset()).keyword("]"), _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.prepend(this.textRegionExtensions.regionFor(rSModel.getDataset()).keyword("preprocessing"), _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(this.textRegionExtensions.regionFor(rSModel.getDataset()).keyword("path"), _function_6);
     document.<PresentationLayer>format(rSModel.getPresentationLayer());
     document.<Evaluation>format(rSModel.getEvaluation());
+    final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(this.textRegionExtensions.regionFor(rSModel).keyword("validationTechnique"), _function_7);
+    final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(this.textRegionExtensions.regionFor(rSModel.getEvaluation()).keyword("library"), _function_8);
     document.<RecommendationSystem>format(rSModel.getRecommendationSystem());
     document.<FeedbackComponent>format(rSModel.getFeedback());
   }
   
   protected void _format(final Evaluation evaluation, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(this.textRegionExtensions.regionFor(evaluation).keyword("{"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(this.textRegionExtensions.regionFor(evaluation).keyword("}"), _function_1);
     EList<ValidationTechnique> _validationTechnique = evaluation.getValidationTechnique();
     for (final ValidationTechnique validationTechnique : _validationTechnique) {
       document.<ValidationTechnique>format(validationTechnique);
     }
   }
   
-  protected void _format(final UnsupervisedDataset unsupervisedDataset, @Extension final IFormattableDocument document) {
+  protected void _format(final RecommendationSystem recsys, @Extension final IFormattableDocument document) {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(unsupervisedDataset).keyword("{"), _function);
+    document.append(this.textRegionExtensions.regionFor(recsys).keyword("{"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(unsupervisedDataset).keyword("}"), _function_1);
+    document.append(this.textRegionExtensions.regionFor(recsys).keyword("}"), _function_1);
   }
   
-  public void format(final Object unsupervisedDataset, final IFormattableDocument document) {
-    if (unsupervisedDataset instanceof XtextResource) {
-      _format((XtextResource)unsupervisedDataset, document);
+  public void format(final Object evaluation, final IFormattableDocument document) {
+    if (evaluation instanceof XtextResource) {
+      _format((XtextResource)evaluation, document);
       return;
-    } else if (unsupervisedDataset instanceof UnsupervisedDataset) {
-      _format((UnsupervisedDataset)unsupervisedDataset, document);
+    } else if (evaluation instanceof Evaluation) {
+      _format((Evaluation)evaluation, document);
       return;
-    } else if (unsupervisedDataset instanceof Evaluation) {
-      _format((Evaluation)unsupervisedDataset, document);
+    } else if (evaluation instanceof RSModel) {
+      _format((RSModel)evaluation, document);
       return;
-    } else if (unsupervisedDataset instanceof RSModel) {
-      _format((RSModel)unsupervisedDataset, document);
+    } else if (evaluation instanceof RecommendationSystem) {
+      _format((RecommendationSystem)evaluation, document);
       return;
-    } else if (unsupervisedDataset instanceof EObject) {
-      _format((EObject)unsupervisedDataset, document);
+    } else if (evaluation instanceof EObject) {
+      _format((EObject)evaluation, document);
       return;
-    } else if (unsupervisedDataset == null) {
+    } else if (evaluation == null) {
       _format((Void)null, document);
       return;
-    } else if (unsupervisedDataset != null) {
-      _format(unsupervisedDataset, document);
+    } else if (evaluation != null) {
+      _format(evaluation, document);
       return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(unsupervisedDataset, document).toString());
+        Arrays.<Object>asList(evaluation, document).toString());
     }
   }
 }

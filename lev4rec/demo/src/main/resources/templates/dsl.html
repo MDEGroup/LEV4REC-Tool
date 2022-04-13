@@ -63,45 +63,103 @@
 
 
 //default model
-var resultString = "RSModel CrossRec  dataset : "
+var resultString = "RSModel CrossRec { dataset : "
 
+	
+// recommender system
 var isItemBased = [[${config.ItemBased}]];
 var isUserBased = [[${config.UserBased}]];
 var isCollaborativeFiltering = [[${config.CollaborativeFiltering}]];
 
+//dataset selection
 var isUnsupervisedDataset = [[${config.UnsupervisedDataset}]];
 var isSupervisedDataset = [[${config.SupervisedDataset}]];
+
+// evaluation 
 var isSplittingKfold = [[${config.isSplittingKfold}]];
 var isRandomSpltting = [[${config.isRandomSpltting}]];
 
+//library preprocessing
 var isPandas = [[${config.isPandas}]];
 var isNumpy = [[${config.isNumpy}]];
 
+// library generator
+var isSklearn = [[${config.isSklearn}]];
+var isSurprise = [[${config.isSurprise}]];
+//data preprocessing
+var isNLP = [[${config.isNLP}]];
+var isFeatureScaling = [[${config.isFeatureScaling}]];
+var isVectorization = [[${config.isVectorization}]];
+var isDuplicatesRemoval = [[${config.isDuplicatesRemoval}]];
+var isMissingDataManipulation =[[${config.isMissingDataManipulation}]];
+var isNormalization = [[${config.isNormalization}]];
+
+const listPreprocessing = []
+const listPreprocessingLibs = []
+
+
+
+if (isPandas){
+	listPreprocessingLibs.push("PANDAS")
+}
+
+if (isNumpy){
+	listPreprocessingLibs.push("NUMPY")
+}
+
+if (isNLP) {
+	listPreprocessing.push("NLP")
+}
+
+if (isFeatureScaling) {
+	listPreprocessing.push("FEATURE_SCALING")
+}
+if (isVectorization) {
+	listPreprocessing.push("VECTORIZATION")
+}
+if (isDuplicatesRemoval){
+	listPreprocessing.push("DUPLICATES_REMOVAL")
+}
+if (isMissingDataManipulation){
+	listPreprocessing.push("MISSING_DATA_MANIPULATION")
+}
+
+if (isNormalization){
+	listPreprocessing.push("NORMALIZATION")
+}
+
+
 //inserting dataset settings
 if(isUnsupervisedDataset){	
-	resultString = resultString + 'UnsupervisedDataset data : path "insert your path here" '
+	resultString = resultString + 'UnsupervisedDataset data {'
 }
 if(isSupervisedDataset){
-	resultString = resultString + 'SupervisedDataset data : path "insert your path here"  '
+	resultString = resultString + 'SupervisedDataset data {'
 }
+
+
+resultString = resultString + 'preprocessing [ '+ listPreprocessing.toString()+ ' ]';
+
+resultString = resultString + ' datasetManipulationLibrary ['+ listPreprocessingLibs.toString() +'] path "insert your path here" }'
 	
-if(isPandas && !isNumpy){
-	resultString = resultString + 'datasetManipulationLibrary  PANDAS '	
-}	
-if (isNumpy && !isPandas) {
-	resultString = resultString + 'datasetManipulationLibrary NUMPY  '
-}
+
 
 
 
 //evaluation settings
-resultString = resultString + '\n ' +'evaluation :  Evaluation Validator  validationTechnique  '
+resultString = resultString + '\n ' +'evaluation :  Evaluation eval { validationTechnique [ '
 
 if(isSplittingKfold){	
-	resultString = resultString + 'CrossValidation' +'\n'+ 'crossFold nOfRecommendations 0 '
+	resultString = resultString + 'CrossValidation' +'\n'+ 'crossFold { nOfRecommendations 0 '
+	if (isSurprise){
+		resultString = resultString + 'library SURPRISE }]} '
+	}	
 }
 if(isRandomSpltting){
-	resultString = resultString + 'RandomSplitting' + '\n'+ 'crossFold nOfRecommendations 0 '
+	resultString = resultString + 'RandomSplitting' + '\n'+ 'crossFold { nOfRecommendations 0 '
+	if (isSurprise){
+		resultString = resultString + 'library SURPRISE }]} '
+	}	
 }
 	
 	
@@ -111,26 +169,23 @@ resultString = resultString +'\n' + ' recommendationSystem : '
 
 
 
-if(isCollaborativeFiltering){
-	
-	resultString = resultString + 'FilteringRS AlgoName  filteringRSAlgorithm '
+if(isCollaborativeFiltering){	
+	resultString = resultString + 'FilteringRS AlgoName {   '
+	if (isSurprise){
+		resultString = resultString + 'generator SURPRISE  filteringRSAlgorithm '
+	}	
+		
 }
+	
+
 if(isItemBased){
-	resultString = resultString + 'ITEM_BASED '
+	resultString = resultString + 'ITEM_BASED }}'
 }
 
 if(isUserBased){
-	resultString = resultString + 'USER_BASED '
+	resultString = resultString + 'USER_BASED }}'
 }
 	
-	
-	
-
-
-
-
-
- console.log(resultString)
 
 document.getElementById("xtext-editor").innerHTML = resultString;
  </script>
@@ -158,8 +213,7 @@ document.getElementById("xtext-editor").innerHTML = resultString;
 	 
 	 
 	 var params = {
-			  user_string:string_dsl 
-			 
+			  user_string:string_dsl 			 
 			}
 
 			var url = endpoint + formatParams(params)

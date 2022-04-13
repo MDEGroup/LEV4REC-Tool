@@ -47,9 +47,7 @@ public class GatewayApplication {
 			        
 			        .route(p->p.path("/lev4rec/css/style.css")
 			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
-			        		.uri("http://localhost:8888"))		        
-			        
-			        
+			        		.uri("http://localhost:8888"))	   
 			        
 			        .route(p->p.path("/lev4rec/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css/")
 			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
@@ -113,6 +111,10 @@ public class GatewayApplication {
 			        
 			        .route(p->p.path("/xtext-service/assist").and().method("POST")
 			        		.filters(f-> f.rewritePath("/xtext-service/assist","/xtext-service/assist"))
+			        		.uri("http://localhost:8080"))
+			        
+			        .route(p->p.path("/xtext-service/format").and().method("POST")
+			        		.filters(f-> f.rewritePath("/xtext-service/format","/xtext-service/format"))
 			        		.uri("http://localhost:8080"))
 			        
 			        

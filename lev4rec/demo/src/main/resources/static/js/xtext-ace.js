@@ -472,15 +472,14 @@ define('xtext/services/ValidationService',['xtext/services/XtextService', 'jquer
 	ValidationService.prototype = new XtextService();
 	
 	ValidationService.prototype._checkPreconditions = function(editorContext, params) {
-		console.log("params");
-		console.log(params);
+	
 		
 		return this._state === undefined;
 	}
 
 	ValidationService.prototype._onConflict = function(editorContext, cause) {
-		console.log("fail");
-		console.log(cause);
+		
+
 		this.setState(undefined);
 		return {
 			suppressForcedUpdate: true
@@ -961,7 +960,8 @@ define('xtext/ServiceBuilder',[
 	 */
 	function ServiceBuilder(xtextServices) {
 		this.services = xtextServices;
-		console.log(xtextServices);
+		
+
 	};
 
 	/**
@@ -1022,8 +1022,7 @@ define('xtext/ServiceBuilder',[
 		if (options.enableValidationService || options.enableValidationService === undefined) {
 			services.validationService = new ValidationService(options.serviceUrl, options.resourceId);
 			services.validate = function(addParams) {
-				console.log("Initializing validation service");
-				console.log(services.validationService);
+
 				return services.validationService.invoke(editorContext, ServiceBuilder.mergeOptions(addParams, options));
 			}
 		}
@@ -1424,7 +1423,7 @@ define('xtext/xtext-ace',[
 	exports.createEditor = function(options) {
 		if (!options)
 			options = {};
-		
+		options.enableFormattingAction = true;
 		var query;
 		if (jQuery.type(options.parent) === 'string') {
 			query = jQuery('#' + options.parent, options.document);
@@ -1447,7 +1446,7 @@ define('xtext/xtext-ace',[
 			
 			var editorOptions = ServiceBuilder.mergeParentOptions(parent, options);
 			
-			console.log(editorOptions);
+			
 			exports.createServices(editor, editorOptions);
 			if (editorOptions.theme)
 				editor.setTheme(editorOptions.theme);
@@ -1475,8 +1474,7 @@ define('xtext/xtext-ace',[
 	 * with createEditor(options).
 	 */
 	exports.createServices = function(editor, options) {
-	console.log(editor);
-	console.log(options);
+	
 		var xtextServices = {
 			options: options,
 			editorContext: new EditorContext(editor)
@@ -1640,14 +1638,14 @@ define('xtext/xtext-ace',[
 		var session = this.editor.getSession();
 		var self = this;
 		services.validate().always(function() {
-		console.log("Enter validation");
-			console.log(editorContext)
+		
+			
 			var annotations = editorContext._annotations;
 			
 			if (annotations) {
 				for (var i = 0; i < annotations.length; i++) {
 					var annotation = annotations[i];
-					console.log(annotation)
+					
 					session.removeMarker(annotation.markerId);
 				}
 			}
@@ -1655,11 +1653,11 @@ define('xtext/xtext-ace',[
 		}).done(function(result) {
 			for (var i = 0; i < result.issues.length; i++) {
 				var entry = result.issues[i];
-				console.log("Entry value")
+				
 				var marker = self._addMarker(session, entry.offset, entry.offset + entry.length, entry.severity);
-				console.log(marker)
+				
 				var start = session.getDocument().indexToPosition(entry.offset);
-				console.log(start)
+				
 				editorContext._annotations.push({
 					row: start.row,
 					column: start.column,
@@ -1723,6 +1721,7 @@ define('xtext/xtext-ace',[
 	 */
 	AceServiceBuilder.prototype.setupFormattingService = function() {
 		var services = this.services;
+		services.options.enableFormattingAction = true;
 		if (services.options.enableFormattingAction && this.editor.commands) {
 			this.editor.commands.addCommand({
 				name: 'xtext-format',
