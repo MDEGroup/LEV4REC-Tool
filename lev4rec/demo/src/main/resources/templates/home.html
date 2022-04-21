@@ -132,7 +132,10 @@ fieldset {
 		<legend>Cross Fold Validation</legend>
 			<div> <input id="cross_fold_sub_feature_1" type="checkbox" th:field="*{SplittingKfold}" onclick="disable_sub_features('cross_fold_sub_feature_1', 'cross_fold_sub_feature_2')">SplittingKfold</div>
 			<div> <input id="cross_fold_sub_feature_2" type="checkbox" th:field="*{RandomSpltting}" onclick="disable_sub_features('cross_fold_sub_feature_2', 'cross_fold_sub_feature_1')" >RandomSpltting</div>			
-		</fieldset>
+		</fieldset>		
+		
+		
+		
 <h3>Algorithm Library</h3>
 
 
@@ -145,7 +148,16 @@ fieldset {
 
 </fieldset>
 
+<h3>Presentation Layer</h3>
 
+
+<fieldset id="presentation_sub">
+<div> <input id="presentation_sub_1" type="checkbox" th:field="*{IDEPlugin}" onclick="disable_presentation_features('presentation_sub_1')" >IDE plugin</div>
+<div> <input id="presentation_sub_2" type="checkbox" th:field="*{WebInterface}" onclick="disable_presentation_features('presentation_sub_2')">Web Interface</div>
+<div> <input id="presentation_sub_3" type="checkbox" th:field="*{RawOutcomes}" onclick="disable_presentation_features('presentation_sub_3')">Raw outcomes</div>
+
+
+</fieldset>
 
 <input type="submit" value="Submit">   
 
@@ -285,6 +297,19 @@ function get_data_structure_features(){
 	
 }
 
+function get_presentation_features(){
+	var features=[]
+	checkboxes=get_list_checkboxes()
+	for(var i = 0; i < checkboxes.length; i++) {	    
+	    if (checkboxes[i].includes("presentation")){
+	    	features.push(checkboxes[i])
+	    	
+	    }
+	}
+	return features
+	
+}
+
 function get_NN_supervised_features(){
 	var features=[]
 	checkboxes=get_list_checkboxes()
@@ -361,6 +386,34 @@ function disable_lib_algo_features(current){
 	})
 	
 	check_constraints(current, checkbox)
+	
+}
+
+
+function disable_presentation_features(current){
+	list_keys= get_presentation_features()
+	
+	const index = list_keys.indexOf(current)
+	
+	if (index > -1) {
+	  list_keys.splice(index, 1) 
+	}
+	
+	console.log(list_keys)
+	
+	const checkbox = document.getElementById(current)
+	checkbox.addEventListener('change', (event) => {
+	  if (event.currentTarget.checked) {
+		  
+		for (var i = 0; i < list_keys.length;i++){
+			document.getElementById(list_keys[i]).disabled = true;			
+		}	    
+	  } else {			    
+		  for (var i = 0; i < list_keys.length;i++){
+			document.getElementById(list_keys[i]).disabled =false;
+			}
+	  }
+	})
 	
 }
 

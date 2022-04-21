@@ -79,6 +79,12 @@ var isSupervisedDataset = [[${config.SupervisedDataset}]];
 var isSplittingKfold = [[${config.isSplittingKfold}]];
 var isRandomSpltting = [[${config.isRandomSpltting}]];
 
+//presentation layer
+
+var isIDEPlugin = [[${config.isIDEPlugin}]];
+var isWebInterface = [[${config.isWebInterface}]];
+var isRawOutcomes = [[${config.isRawOutcomes}]];
+
 //library preprocessing
 var isPandas = [[${config.isPandas}]];
 var isNumpy = [[${config.isNumpy}]];
@@ -144,6 +150,20 @@ resultString = resultString + ' datasetManipulationLibrary ['+ listPreprocessing
 	
 
 
+"presentationLayer : IDEIntegration ide { }"
+
+resultString = resultString + 'presentationLayer :';
+
+if(isIDEPlugin){	
+	resultString = resultString + 'IDEIntegration ideName {}';	
+}
+
+if(isWebInterface){	
+	resultString = resultString + 'WebApplication webAppName {}';	
+}
+if(isRawOutcomes){	
+	resultString = resultString + 'RawOutcomes plainTextFileName {}';	
+}
 
 
 //evaluation settings

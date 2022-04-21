@@ -5,6 +5,7 @@
     <preprocessing>FEATURE_SCALING</preprocessing>
     <datasetManipulationLibrary>PANDAS</datasetManipulationLibrary>
   </dataset>
+  <presentationLayer xsi:type="lowcoders:IDEIntegration"/>
   <evaluation>
     <validationTechnique xsi:type="lowcoders:CrossValidation"/>
   </evaluation>
