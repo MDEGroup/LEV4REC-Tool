@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -30,15 +31,57 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.parsetree.reconstr.impl.KeywordSerializer;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
+//import org.springframework.ui.Model;
 import org.xml.sax.SAXException;
 import org.xtext.lev4recgrammar.first.RsDslStandaloneSetup;
+//import org.xtext.example.mydsl.MyDslStandaloneSetup;
 
+import org.xtext.lev4recgrammar.first.rsDsl.RSModel;
+import org.xtext.lev4recgrammar.first.rsDsl.RandomSplitting;
+import org.xtext.lev4recgrammar.first.rsDsl.UnsupervisedDataset;
+import org.xtext.lev4recgrammar.first.rsDsl.FilteringRS;
+import org.xtext.lev4recgrammar.first.rsDsl.RsDslFactory;
+import org.xtext.lev4recgrammar.first.rsDsl.AutomatedValidation;
+
+
+import org.xtext.lev4recgrammar.first.rsDsl.Bayesian;
+import org.xtext.lev4recgrammar.first.rsDsl.CrossValidation;
+import org.xtext.lev4recgrammar.first.rsDsl.DataMiningRS;
+import org.xtext.lev4recgrammar.first.rsDsl.DataMiningRSAlgorithm;
+import org.xtext.lev4recgrammar.first.rsDsl.DataStructure;
+import org.xtext.lev4recgrammar.first.rsDsl.Dataset;
+import org.xtext.lev4recgrammar.first.rsDsl.DatasetManipulationLibrary;
+import org.xtext.lev4recgrammar.first.rsDsl.DecisionTree;
+import org.xtext.lev4recgrammar.first.rsDsl.DeepNN;
+import org.xtext.lev4recgrammar.first.rsDsl.Evaluation;
+import org.xtext.lev4recgrammar.first.rsDsl.FeedForwardNN;
+
+import org.xtext.lev4recgrammar.first.rsDsl.FilteringRSAlgorithm;
+import org.xtext.lev4recgrammar.first.rsDsl.RsDslFactory;
+import lowcoders.LowcodersPackage;
+import org.xtext.lev4recgrammar.first.rsDsl.PreprocessingTechnique;
+import org.xtext.lev4recgrammar.first.rsDsl.PresentationLayer;
+import org.xtext.lev4recgrammar.first.rsDsl.PyLibType;
+
+import org.xtext.lev4recgrammar.first.rsDsl.RecommendationSystem;
+import org.xtext.lev4recgrammar.first.rsDsl.RecurrentNN;
+
+import org.xtext.lev4recgrammar.first.rsDsl.ValidationLibrary;
+import org.xtext.lev4recgrammar.first.rsDsl.WebIService;
+import org.xtext.lev4recgrammar.first.rsDsl.WebInterfaceLibrary;
 
 
 import com.google.common.collect.Lists;
+import com.google.inject.Injector;
 import com.lev4rec.dto.RSConfiguration;
 
 import lev4rec.code.template.main.Generate;
+
+
+
+
+
+/*
 import lowcoders.AutomatedValidation;
 import lowcoders.Bayesian;
 import lowcoders.DataMiningRS;
@@ -52,7 +95,7 @@ import lowcoders.Evaluation;
 import lowcoders.FeedForwardNN;
 import lowcoders.FilteringRS;
 import lowcoders.FilteringRSAlgorithm;
-import lowcoders.LowcodersFactory;
+import lowcoders.RsDslFactory;
 import lowcoders.LowcodersPackage;
 import lowcoders.PreprocessingTechnique;
 import lowcoders.PresentationLayer;
@@ -64,6 +107,10 @@ import lowcoders.UnsupervisedDataset;
 import lowcoders.ValidationLibrary;
 import lowcoders.WebIService;
 import lowcoders.WebInterfaceLibrary;
+
+*/
+
+
 
 
 
@@ -77,6 +124,8 @@ public class FeatureHandler {
 	public void getRSConfiguration(RSConfiguration config) {
 		// TODO Auto-generated method stub
 		FeatureHandler i = new FeatureHandler();
+		
+		/*
 		try {
 			serializeModel(i.generate(config), "generated/demo.xmi");
 				
@@ -88,7 +137,7 @@ public class FeatureHandler {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public static RSModel loadModel(String modelPath) {
@@ -132,8 +181,8 @@ public static void generateFromTML(String modelUri, String folderS) {
 
 	public RSModel generate(RSConfiguration config) throws ParserConfigurationException, SAXException, IOException {
 		
-		RSModel model = LowcodersFactory.eINSTANCE.createRSModel();
-		model.setName("Generated Model");
+		RSModel model = RsDslFactory.eINSTANCE.createRSModel();
+		model.setName("myRsModel");
 		Dataset dataset = getDataSet(config);
 		if (dataset != null)
 			model.setDataset(dataset);
@@ -156,38 +205,42 @@ public static void generateFromTML(String modelUri, String folderS) {
 		Dataset dataset = null;
 
 		if (config.isUnsupervisedDataset()) {
-			dataset = LowcodersFactory.eINSTANCE.createUnsupervisedDataset();	
+			dataset = RsDslFactory.eINSTANCE.createUnsupervisedDataset();	
 			
 
 		}
 		if (config.isSupervisedDataset()) {
-			dataset = LowcodersFactory.eINSTANCE.createSupervisedDataset();	
+			dataset = RsDslFactory.eINSTANCE.createSupervisedDataset();	
 			
 		}
 		
 		
-		dataset.setName("DATASET NAME");
+		dataset.setName("datasetName");
+		
+		dataset.setPath("'/mypath'");
 		// DataStructure
 		if (dataset != null) {
 			DataStructure dataStructure = null;
 			if (config.isMatrix())
-				dataStructure = LowcodersFactory.eINSTANCE.createMatrix();
+				dataStructure = RsDslFactory.eINSTANCE.createMatrix();
 
 			if (config.isGraphData())
-				dataStructure = LowcodersFactory.eINSTANCE.createGraph();
+				dataStructure = RsDslFactory.eINSTANCE.createGraph();
 
 			if (config.isARFF())
-				dataStructure = LowcodersFactory.eINSTANCE.createARFF();
+				dataStructure = RsDslFactory.eINSTANCE.createARFF();
 
 			if (config.isTree())
-				dataStructure = LowcodersFactory.eINSTANCE.createTree();
+				dataStructure = RsDslFactory.eINSTANCE.createTree();
 
 			if (config.isTextualData())
-				dataStructure = LowcodersFactory.eINSTANCE.createMatrix();
+				dataStructure = RsDslFactory.eINSTANCE.createMatrix();
 
 			if (dataStructure != null) {
 				dataset.setDataStructure(dataStructure);
 			}
+			
+			dataStructure.setName("data");
 
 			// Preprocessing
 			List<PreprocessingTechnique> preprocessingTechniques = Lists.newArrayList();
@@ -219,74 +272,78 @@ public static void generateFromTML(String modelUri, String folderS) {
 		RecommendationSystem recommendationSystem = null;
 
 		// COLLABORATIVE FILTERING
+		
+		
 		if (config.isItemBased()) {
-			FilteringRS filtering = LowcodersFactory.eINSTANCE.createFilteringRS();
+			FilteringRS filtering = RsDslFactory.eINSTANCE.createFilteringRS();
 			filtering.setFilteringRSAlgorithm(FilteringRSAlgorithm.ITEM_BASED);
 			recommendationSystem = filtering;
 		}
 		if (config.isUserBased()) {
-			FilteringRS filtering = LowcodersFactory.eINSTANCE.createFilteringRS();
+			FilteringRS filtering = RsDslFactory.eINSTANCE.createFilteringRS();
 			filtering.setFilteringRSAlgorithm(FilteringRSAlgorithm.USER_BASED);
 			recommendationSystem = filtering;
 		}
 
 		if (config.isContentBased()) {
-			FilteringRS filtering = LowcodersFactory.eINSTANCE.createFilteringRS();
+			FilteringRS filtering = RsDslFactory.eINSTANCE.createFilteringRS();
 			filtering.setFilteringRSAlgorithm(FilteringRSAlgorithm.CONTENT_BASED);
 			recommendationSystem = filtering;
 		}
+		
+		
 		// CLASSIFICATION
 		/*
 		if (config.isSVM()) {
-			MachineLearningBasedRS machineLearning = LowcodersFactory.eINSTANCE.createMachineLearningBasedRS();
+			MachineLearningBasedRS machineLearning = RsDslFactory.eINSTANCE.createMachineLearningBasedRS();
 			machineLearning.setMachineLearningRSAlgoithm(MachineLearningBasedRS.SVM);
 			recommendationSystem = machineLearning;
 		}
 		if (config.isMNB()) {
-			MachineLearningBasedRS machineLearning = LowcodersFactory.eINSTANCE.createMachineLearningBasedRS();
+			MachineLearningBasedRS machineLearning = RsDslFactory.eINSTANCE.createMachineLearningBasedRS();
 			machineLearning.setMachineLearningRSAlgoithm(MachineLearningBasedRS.MNB);
 			recommendationSystem = machineLearning;
 //		}*/
 
 		if (config.isSupervisedRNN() || config.isUnsupervisedRNN()) {
-			RecurrentNN machineLearningBasedRS = LowcodersFactory.eINSTANCE.createRecurrentNN();
+			RecurrentNN machineLearningBasedRS = RsDslFactory.eINSTANCE.createRecurrentNN();
 			recommendationSystem = machineLearningBasedRS;
 		}
 		if (config.isSupervisedDNN() || config.isUnsupervisedDNN()) {
 			
-			DeepNN machineLearningBasedRS = LowcodersFactory.eINSTANCE.createDeepNN();
+			DeepNN machineLearningBasedRS = RsDslFactory.eINSTANCE.createDeepNN();
 			
 			recommendationSystem = machineLearningBasedRS;
 		}
 		
 		if (config.isSupervisedFeedForwardNN()
 				|| config.isUnsupervisedFeedForwardNN()) {
-			FeedForwardNN machineLearningBasedRS = LowcodersFactory.eINSTANCE.createFeedForwardNN();
+			FeedForwardNN machineLearningBasedRS = RsDslFactory.eINSTANCE.createFeedForwardNN();
 			recommendationSystem = machineLearningBasedRS;
 		}
 
 	
 		if (config.isBayesianNN()) {
-			Bayesian machineLearningBasedRS = LowcodersFactory.eINSTANCE.createBayesian();
+			Bayesian machineLearningBasedRS = RsDslFactory.eINSTANCE.createBayesian();
 			recommendationSystem = machineLearningBasedRS;
 		}
 		if (config.isDecisionTree()) {
-			DecisionTree machineLearningBasedRS = LowcodersFactory.eINSTANCE.createDecisionTree();
+			DecisionTree machineLearningBasedRS = RsDslFactory.eINSTANCE.createDecisionTree();
 			recommendationSystem = machineLearningBasedRS;
 		}
 
 //		if (isSelected(configuration, "KNeighborhood")) {
-//			MachineLearningBasedRS machineLearningBasedRS = LowcodersFactory.eINSTANCE.createMachineLearningBasedRS();
+//			MachineLearningBasedRS machineLearningBasedRS = RsDslFactory.eINSTANCE.createMachineLearningBasedRS();
 //			machineLearningBasedRS.setMachineLearningRSAlgoithm(MachineLearningRSAlgorithm.);
 //			recommendationSystem = machineLearningBasedRS;
 //		}
 		if (config.isMiningAlgorithm()) {
-			DataMiningRS dataMiningRS = LowcodersFactory.eINSTANCE.createDataMiningRS();
+			DataMiningRS dataMiningRS = RsDslFactory.eINSTANCE.createDataMiningRS();
 			dataMiningRS.setDataMiningRSAlgorithm(DataMiningRSAlgorithm.CLUSTERING);
 			recommendationSystem = dataMiningRS;
 		}
 
-		recommendationSystem.setName("GENERATED RECOMMENDER SYSTEM");
+		recommendationSystem.setName("recsys");
 		if (config.isSklearn()) {
 			recommendationSystem.setGenerator(PyLibType.SKLEARN);
 		}
@@ -304,44 +361,53 @@ public static void generateFromTML(String modelUri, String folderS) {
 	}
 	
 	public Evaluation getEvaluation(RSConfiguration config) {
-		Evaluation evaluation = LowcodersFactory.eINSTANCE.createEvaluation();
-		AutomatedValidation automatedValidation = null;
+		Evaluation evaluation = RsDslFactory.eINSTANCE.createEvaluation();
+		evaluation.setName("eval");
+		//AutomatedValidation automatedValidation = null;
 		if (config.isSplittingKfold()) {
-			automatedValidation = LowcodersFactory.eINSTANCE.createCrossValidation();
+			
+			
+			CrossValidation crossValidation = RsDslFactory.eINSTANCE.createCrossValidation();
 			if (config.isSKCrossFold() ||config.isSKRandomSplit())
-				automatedValidation.setLibrary(ValidationLibrary.SKLEARN);
+				crossValidation.setLibrary(ValidationLibrary.SKLEARN);
 			if (config.isSurpriseCrossFold() || config.isSurpriseRandomSplit())
-				automatedValidation.setLibrary(ValidationLibrary.SURPRISE);
-			evaluation.getValidationTechnique().add(automatedValidation);
+				crossValidation.setLibrary(ValidationLibrary.SURPRISE);
+			crossValidation.setName("cross");
+			evaluation.getValidationTechnique().add(crossValidation);
 		}
 		if (config.isRandomSpltting()) {
-			automatedValidation = LowcodersFactory.eINSTANCE.createRandomSplitting();
+			RandomSplitting randomValidation = RsDslFactory.eINSTANCE.createRandomSplitting();
 			if (config.isSKCrossFold() || config.isSKRandomSplit())
-				automatedValidation.setLibrary(ValidationLibrary.SKLEARN);
+				randomValidation.setLibrary(ValidationLibrary.SKLEARN);
 			if (config.isSurpriseCrossFold() || config.isSurpriseRandomSplit())
-				automatedValidation.setLibrary(ValidationLibrary.SURPRISE);
-			evaluation.getValidationTechnique().add(automatedValidation);
+				randomValidation.setLibrary(ValidationLibrary.SURPRISE);
+			randomValidation.setName("random");
+			evaluation.getValidationTechnique().add(randomValidation);
 		}
 		//if (isSelected(configuration, "UserStudy"))
-			//evaluation.getValidationTechnique().add(LowcodersFactory.eINSTANCE.createUserStudy());
+			//evaluation.getValidationTechnique().add(RsDslFactory.eINSTANCE.createUserStudy());
 		return evaluation;
 	}
 	
 	public PresentationLayer getPresentationLayer(RSConfiguration config) {
 		PresentationLayer presentationLayer = null;
 		if (config.isWebInterface()) {
-			WebIService webInterface = LowcodersFactory.eINSTANCE.createWebIService();
+			WebIService webInterface = RsDslFactory.eINSTANCE.createWebIService();
 			if (config.isFlask())
 				webInterface.setLibrary(WebInterfaceLibrary.FLASK);
 			if (config.isSpring())
 				webInterface.setLibrary(WebInterfaceLibrary.SPRING);
 			presentationLayer = webInterface;
 		}
+		
+		
 		if (config.isIDEPlugin()) {
-			presentationLayer = LowcodersFactory.eINSTANCE.createIDEIntegration();
+			presentationLayer = RsDslFactory.eINSTANCE.createIDEIntegration();
 		}
 		if (config.isRawOutcomes())
-			presentationLayer = LowcodersFactory.eINSTANCE.createRawOutcomes();
+			presentationLayer = RsDslFactory.eINSTANCE.createRawOutcomes();
+		
+		presentationLayer.setName("presentation_layer");
 		return presentationLayer;
 	}
 
@@ -403,23 +469,35 @@ public static void generateFromTML(String modelUri, String folderS) {
 	
 	public static Resource writeXtextString(RSConfiguration  rsConf, String path) {
 		// popola da rs configuration a rs model
-		XtextResourceSet resourceSetXText = new RsDslStandaloneSetup().createInjectorAndDoEMFRegistration()
-				.getInstance(XtextResourceSet.class);
-		resourceSetXText.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
-		Resource resource = resourceSetXText.createResource(URI.createURI(path));
+		//ResourceSet resourceSetXText = new RsDslStandaloneSetup().createInjectorAndDoEMFRegistration()
+		//		.getInstance(ResourceSet.class);
+		
+		Injector injector = new RsDslStandaloneSetup().createInjectorAndDoEMFRegistration();
+		//resourceSetXText.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+		
+		
+		
+		/*
+		Resource resource = resourceSetXtext.createResource(URI.createURI(path));
 		EcoreUtil.resolveAll(resource);
-		Copier copier = new  EcoreUtil.Copier(true, false);
+		//Copier copier = new  EcoreUtil.Copier(true, false);
 		
 		FeatureHandler fh = new FeatureHandler();
-		RSModel rsModel = LowcodersFactory.eINSTANCE.createRSModel();
 		
-		rsModel.setName("Generated Model");
 		
-		UnsupervisedDataset data = LowcodersFactory.eINSTANCE.createUnsupervisedDataset();
-		data.setName("dataset");
+		//RSModel rsModel = RsDslFactory.eINSTANCE.createRSModel();
 		
-		rsModel.setDataset(data);
+		Model
 		
+		//rsModel.setName("Generated Model");
+		
+		//UnsupervisedDataset data = RsDslFactory.eINSTANCE.createUnsupervisedDataset();
+		//data.setName("dataset");
+		
+		//rsModel.setDataset(data);
+		
+	
+		/*
 		
 		try {
 			rsModel = fh.generate(rsConf);
@@ -436,17 +514,68 @@ public static void generateFromTML(String modelUri, String folderS) {
 		
 		
 		
-		EObject copiedRoot = copier.copy(rsModel);
-		copier.copyReferences();
+		//EObject copiedRoot = copier.copy(rsModel);
+		//copier.copyReferences();
         resource.getContents().add(rsModel);       
         
         
         try {
-            resource.save(null);
+            resource.save(Collections.EMPTY_MAP);
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        return resource;
+        }*/
+		
+		ResourceSet rs = injector.getInstance(ResourceSet.class);
+		Resource r = rs.createResource(URI.createURI(path));
+		/*RSModel m = RsDslFactory.eINSTANCE.createRSModel();
+		
+		
+		
+		m.setName("KNN model");
+		
+		FilteringRS algo = RsDslFactory.eINSTANCE.createFilteringRS();
+		
+		algo.setName("context-aware");
+		UnsupervisedDataset data = RsDslFactory.eINSTANCE.createUnsupervisedDataset();
+		
+		
+		
+		
+		data.setName("data");
+		data.setPath("mypath");
+		//Greeting g2 = MyDslFactory.eINSTANCE.createGreeting();
+		
+		m.setDataset(data);
+		m.setRecommendationSystem(algo);
+		//m.getGreetings().add(g2);*/
+		FeatureHandler fh = new FeatureHandler();
+		RSModel m = RsDslFactory.eINSTANCE.createRSModel();
+		
+		try {
+			m = fh.generate(rsConf);
+		} catch (ParserConfigurationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SAXException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		r.getContents().add(m);
+		try {
+			r.save(null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+        return r;
         
 	}
 
@@ -455,6 +584,11 @@ public static void generateFromTML(String modelUri, String folderS) {
 		Resource r = writeXtextString(config, "/generated/demo.rec"); //estensione dsl 
 		//System.out.println(r.getURI());	
 		
+		File file = new File(r.getURI().toString());
+
+		String content = FileUtils.readFileToString(file, "UTF-8");
+		
+		/*
 		try {
 		      File myObj = new File(r.getURI().toString());
 		      Scanner myReader = new Scanner(myObj);
@@ -466,21 +600,12 @@ public static void generateFromTML(String modelUri, String folderS) {
 		    } catch (FileNotFoundException e) {
 		      System.out.println("An error occurred.");
 		      e.printStackTrace();
-		    }
-
+		    }*/
+	
 		
+		//FileWriter wr = new FileWriter(file);	
 		
-		
-		
-		
-		
-		//FileWriter wr = new FileWriter(file);
-		
-		
-		
-		
-		
-		return null;
+		return content;
 	}
 
 }

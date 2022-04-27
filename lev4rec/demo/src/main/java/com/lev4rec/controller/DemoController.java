@@ -49,6 +49,8 @@ public class DemoController {
 			e.printStackTrace();
 		}
 		
+		System.out.println(s);
+		
 		
 		model.addAttribute("xtext", s);
 		
@@ -60,12 +62,12 @@ public class DemoController {
 		
 		
 		
-		RSModel coarse_model= FeatureHandler.loadModel("generated/demo.xmi");
+		//RSModel coarse_model= FeatureHandler.loadModel("generated/demo.xmi");
 		
 		// da dsl string a xmi /  
 		
 		// Update model
-		coarse_model.setName("KNN recsys");
+		//coarse_model.setName("KNN recsys");
 		
 		//RSModel fineGrainModel = FeatureHandler.parseUserString(dsl_string, coarse_model);
 		//FeatureHandler.serializeModel(fineGrainModel, "generated/demo.xmi");
