@@ -75,6 +75,13 @@ var isCollaborativeFiltering = [[${config.CollaborativeFiltering}]];
 var isUnsupervisedDataset = [[${config.UnsupervisedDataset}]];
 var isSupervisedDataset = [[${config.SupervisedDataset}]];
 
+//data structure
+var isTextualData = [[${config.TextualData}]];
+var isGraphData = [[${config.GraphData}]]
+var isMatrix = [[${config.Matrix}]]
+var isTree = [[${config.Tree}]]
+var isARFF = [[${config.ARFF}]]
+
 // evaluation 
 var isSplittingKfold = [[${config.isSplittingKfold}]];
 var isRandomSpltting = [[${config.isRandomSpltting}]];
@@ -146,8 +153,16 @@ if(isSupervisedDataset){
 
 resultString = resultString + 'preprocessing [ '+ listPreprocessing.toString()+ ' ]';
 
-resultString = resultString + ' datasetManipulationLibrary ['+ listPreprocessingLibs.toString() +'] path "insert your path here" }'
+resultString = resultString + ' datasetManipulationLibrary ['+ listPreprocessingLibs.toString() +'] path "insert your path here" '
+
+resultString = resultString + ' dataStructure '
+
+if(isMatrix){
+	resultString = resultString + ' Matrix matrix {} }'
+}
 	
+
+
 
 
 "presentationLayer : IDEIntegration ide { }"

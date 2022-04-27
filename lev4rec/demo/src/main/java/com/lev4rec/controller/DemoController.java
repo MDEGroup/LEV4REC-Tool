@@ -37,27 +37,40 @@ public class DemoController {
 		return "home.html";
 	}
 	@RequestMapping(value="/dsl", method = RequestMethod.POST)
-	public String save(@ModelAttribute("config") RSConfiguration config) {			
+	public String save(Model model, @ModelAttribute("config") RSConfiguration config) {
+		
 		FeatureHandler fh = new FeatureHandler();
 		fh.getRSConfiguration(config);
+		String s = "";
+		try {
+			s = fh.getXtexString(config);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		model.addAttribute("xtext", s);
 		
 		return "dsl.html";
 	}
 	
 	@RequestMapping(value="/generate", method = RequestMethod.GET)
-	public @ResponseBody String generate(@RequestParam("user_string") String dsl_string) {		
-		
-		
+	public @ResponseBody String generate(@RequestParam("user_string") String dsl_string) {	
 		
 		
 		
 		RSModel coarse_model= FeatureHandler.loadModel("generated/demo.xmi");
 		
+		// da dsl string a xmi /  
+		
 		// Update model
 		coarse_model.setName("KNN recsys");
 		
-		RSModel fineGrainModel = FeatureHandler.parseUserString(dsl_string, coarse_model);
-		FeatureHandler.serializeModel(fineGrainModel, "generated/demo.xmi");
+		//RSModel fineGrainModel = FeatureHandler.parseUserString(dsl_string, coarse_model);
+		//FeatureHandler.serializeModel(fineGrainModel, "generated/demo.xmi");
+		
+		
 		FeatureHandler.generateFromTML("generated/demo.xmi", "generated");			
 		
 		return "";

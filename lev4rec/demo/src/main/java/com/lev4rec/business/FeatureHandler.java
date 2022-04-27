@@ -1,6 +1,10 @@
 package com.lev4rec.business;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,6 +14,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -55,6 +60,7 @@ import lowcoders.PyLibType;
 import lowcoders.RSModel;
 import lowcoders.RecommendationSystem;
 import lowcoders.RecurrentNN;
+import lowcoders.UnsupervisedDataset;
 import lowcoders.ValidationLibrary;
 import lowcoders.WebIService;
 import lowcoders.WebInterfaceLibrary;
@@ -63,7 +69,6 @@ import lowcoders.WebInterfaceLibrary;
 
 public class FeatureHandler {
 	
-	private final RSConfiguration config;
 	
 	private final ArrayList<String> KEYWORDS;
 	
@@ -114,7 +119,7 @@ public static void generateFromTML(String modelUri, String folderS) {
 	
 	
 	public FeatureHandler() {
-		this.config = new RSConfiguration();		
+			
 		this.KEYWORDS = new ArrayList<String>();
 		
 
@@ -394,6 +399,88 @@ public static void generateFromTML(String modelUri, String folderS) {
 		
 		return coarseModel;
 		
+	}
+	
+	public static Resource writeXtextString(RSConfiguration  rsConf, String path) {
+		// popola da rs configuration a rs model
+		XtextResourceSet resourceSetXText = new RsDslStandaloneSetup().createInjectorAndDoEMFRegistration()
+				.getInstance(XtextResourceSet.class);
+		resourceSetXText.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+		Resource resource = resourceSetXText.createResource(URI.createURI(path));
+		EcoreUtil.resolveAll(resource);
+		Copier copier = new  EcoreUtil.Copier(true, false);
+		
+		FeatureHandler fh = new FeatureHandler();
+		RSModel rsModel = LowcodersFactory.eINSTANCE.createRSModel();
+		
+		rsModel.setName("Generated Model");
+		
+		UnsupervisedDataset data = LowcodersFactory.eINSTANCE.createUnsupervisedDataset();
+		data.setName("dataset");
+		
+		rsModel.setDataset(data);
+		
+		
+		try {
+			rsModel = fh.generate(rsConf);
+		} catch (ParserConfigurationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SAXException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		
+		EObject copiedRoot = copier.copy(rsModel);
+		copier.copyReferences();
+        resource.getContents().add(rsModel);       
+        
+        
+        try {
+            resource.save(null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return resource;
+        
+	}
+
+	public String getXtexString(RSConfiguration config) throws IOException {
+		// TODO Auto-generated method stub
+		Resource r = writeXtextString(config, "/generated/demo.rec"); //estensione dsl 
+		//System.out.println(r.getURI());	
+		
+		try {
+		      File myObj = new File(r.getURI().toString());
+		      Scanner myReader = new Scanner(myObj);
+		      while (myReader.hasNextLine()) {
+		        String data = myReader.nextLine();
+		        System.out.println(data);
+		      }
+		      myReader.close();
+		    } catch (FileNotFoundException e) {
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		    }
+
+		
+		
+		
+		
+		
+		
+		//FileWriter wr = new FileWriter(file);
+		
+		
+		
+		
+		
+		return null;
 	}
 
 }

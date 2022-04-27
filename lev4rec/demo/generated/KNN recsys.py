@@ -17,7 +17,7 @@ from surprise import Dataset, Reader
 
 
 
-	data = pd.read_csv('here"}', sep=",")	
+	data = pd.read_csv('here"', sep=",")	
 	return data
  
 
@@ -40,11 +40,8 @@ from surprise.model_selection import KFold
 from collections import defaultdict
 kf = KFold(n_splits=n_splits)
 #algo = SVD()
-		from sklearn.preprocessing import StandardScaler
-		sc = StandardScaler()
-		X_train = sc.fit_transform(X_split)
-		X_test = sc.transform(X_test)
-	
+		from sklearn.feature_extraction.text import CountVectorizer
+	    preprocess = CountVectorizer(ngram_range=(1,1))    
 	
 
 
