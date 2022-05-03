@@ -24,9 +24,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lev4rec.dto.RSConfiguration;
 
-import lowcoders.RSModel;
+import org.xtext.lev4recgrammar.first.lowcoders.RSModel;
+//import lowcoders.RSModel;;
 
 import com.lev4rec.business.FeatureHandler;
+import com.lev4rec.business.GenerationHandler;
 
 @Controller
 public class DemoController {	
@@ -49,7 +51,7 @@ public class DemoController {
 			e.printStackTrace();
 		}
 		
-		System.out.println(s);
+		//System.out.println(s);
 		
 		
 		model.addAttribute("xtext", s);
@@ -62,18 +64,23 @@ public class DemoController {
 		
 		
 		
-		//RSModel coarse_model= FeatureHandler.loadModel("generated/demo.xmi");
+		//RSModel coarse_model= GenerationHandler.loadModel("generated/demo.xmi");
 		
 		// da dsl string a xmi /  
 		
 		// Update model
 		//coarse_model.setName("KNN recsys");
 		
-		//RSModel fineGrainModel = FeatureHandler.parseUserString(dsl_string, coarse_model);
-		//FeatureHandler.serializeModel(fineGrainModel, "generated/demo.xmi");
+		RSModel fineGrainModel = FeatureHandler.parseUserString(dsl_string);
+		
+		System.out.println("User string parsed");
 		
 		
-		FeatureHandler.generateFromTML("generated/demo.xmi", "generated");			
+		FeatureHandler.serializeModel(fineGrainModel, "lev4rec/generated/demo.xmi");
+		System.out.println("Model serialized");
+		
+		
+		FeatureHandler.generateFromTML("lev4rec/generated/demo.xmi", "lev4rec/generated");			
 		
 		return "";
 	}

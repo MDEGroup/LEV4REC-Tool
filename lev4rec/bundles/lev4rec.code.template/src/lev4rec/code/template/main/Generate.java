@@ -26,8 +26,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.xtext.lev4recgrammar.first.lowcoders.LowcodersPackage;
 
-import lowcoders.LowcodersPackage;
+//import lowcoders.LowcodersPackage;
 
 /**
  * Entry point of the 'Generate' generation module.
