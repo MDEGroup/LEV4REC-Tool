@@ -7,32 +7,28 @@
 [import lev4rec::code::template::utils::generateRecommenderSystem/]
 [import lev4rec::code::template::utils::generateContextValidation/]
 [import lev4rec::code::template::utils::generateCrossFoldValidation/]
+[import lev4rec::code::template::utils::generatePreprocessingTechnique/]
 [template public generateRecSys(recSys : RSModel)]
 [comment @main/]
 [file (recSys.name+ '.py', false, 'UTF-8')]
 
-
-import nbformat as nbf
-
-nb = nbf.v4.new_notebook()
-
-text = """\
-# Lowcode model generator
-Generated recommneder system from model."""
-
-code = """\
-import pandas as pd
-import warnings
-warnings.filterwarnings("ignore")
-##TODO Generating dataset
-[if recSys.recommendationSystem.generator = PyLibType::SKLEARN]
-[generateSKDataset(recSys.dataset)/]
+def load_dataset():
+[if recSys.recommendationSystem.generator = PyLibType :: SURPRISE]
+[generateSURDataset(dataset)/]
 [/if]
-[if recSys.recommendationSystem.generator = PyLibType::SURPRISE]
-[generateSURDataset(recSys.dataset)/]
+[if recommendationSystem.generator = PyLibType :: SKLEARN]
+[generateSKDataset(dataset)/]
 [/if]
+[if (recSys.dataset.preprocessing -> size()>0)]
+[for (pr : PreprocessingTechnique | recSys.dataset.preprocessing)]
+def set_preprocessing():
+[generatePreprocessingTechnique(pr,recSys)/]
+	return preprocess
+[/for]
+[/if]
+def algorithm_settings():
 [generateRecommenderSystem(recSys)/]
-[if (recSys.evaluation.validationTechnique -> size()>0)]
+	return algo
 [for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
 [if (val.oclIsTypeOf(lowcoders::ContextValidation))]
 def get_recommendations(context,n_items):
@@ -43,14 +39,9 @@ def get_recommendations(context,n_items):
 def run_cross_fold():
 [generateCrossFoldValidation(recSys)/]
 [/if]
+
+
 [/for]
-[/if]
-
-"""
-nb['["cells"]'/] = ['['/]nbf.v4.new_markdown_cell(text),
-               nbf.v4.new_code_cell(code) [']'/]
-
-nbf.write(nb, '[recSys.name/].ipynb')
 [/file]
 
 [/template]

@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" type="text/css" th:href="@{/css/xtext-ace.css}" />
 <link th:rel="stylesheet" th:href=@{/css/style.css} />
+<link th:rel="stylesheet" th:href=@{/css/formStyle2.css} />
 
 <script th:src="@{/webjars/requirejs/2.3.6/require.min.js}"></script>
 
@@ -56,8 +57,10 @@
 
 
 
-		<div class="generator"><input type="submit" value="Generate Code" 
-    onclick="get_user_string('xtext-editor')" />  </div> 
+	<div class="generator">
+		<input type="button"  class = "button" value="Generate Code"
+			onclick="get_user_string('xtext-editor')" />
+	</div>
 
 
 
@@ -68,37 +71,39 @@
 
 
 <script type="text/javascript">
-function formatParams( params ){
-    return "?" + Object
-          .keys(params)
-          .map(function(key){
-            return key+"="+encodeURIComponent(params[key])
-          })
-          .join("&")
-  }
+	function formatParams(params) {
+		return "?" + Object.keys(params).map(function(key) {
+			return key + "=" + encodeURIComponent(params[key])
+		}).join("&")
+	}
 
+	function get_user_string(id_content) {
 
-function get_user_string(id_content) {
-   
-   const text_dsl = document.getElementById(id_content);
-   
-   console.log(text_dsl.textContent)
-   
-   var string_dsl = text_dsl.textContent
-   
-   
-   var params = {
-            user_string:string_dsl             
-          }
+		const text_dsl = document.getElementById(id_content);
 
-          var url = endpoint + formatParams(params)
-   var endpoint = 'http://localhost:8891/lev4rec/generate';
-   var url = endpoint + formatParams(params)
-   
-   //alert("Code generated!")
-   window.location=url;
-   
-   
-}
+		console.log(text_dsl.textContent)
+
+		var string_dsl = text_dsl.textContent
+
+		var params = {
+			user_string : string_dsl
+		}
+
+		var url = endpoint + formatParams(params)
+		var endpoint = 'http://localhost:8891/lev4rec/generate';
+		var url = endpoint + formatParams(params)
+
+		/*$.ajax({
+			url : url,
+			context : document.body
+		}).done(function(data) {
+			console.log(data)
+			alert("Code generated!")
+		});*/
+
+		
+		window.location = url;
+
+	}
 </script>
 </html>

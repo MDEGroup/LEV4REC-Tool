@@ -24,28 +24,20 @@ a:hover {
 	margin: 20px;
 }
 
-.generator {
-	display: block;
-	position: absolute;
-	top: 200px;
-	bottom: 600px;
-	left: 500px;
-	right: 0;
-	margin: 213px;
-}
-
-
-
 .header {
 	display: block;
 	position: absolute;
-	background-color: #e8e8e8;
+	background-color: #3232cd;
 	top: 0;
 	left: 0;
 	right: 0;
 	height: 60px;
 	padding: 10px;
 }
+
+
+
+
 
 .content {
 	display: block;

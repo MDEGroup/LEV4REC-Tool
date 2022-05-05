@@ -41,25 +41,21 @@ public class DemoController {
 	@RequestMapping(value="/dsl", method = RequestMethod.POST)
 	public String save(Model model, @ModelAttribute("config") RSConfiguration config) {
 		
-		FeatureHandler fh = new FeatureHandler();
-		fh.getRSConfiguration(config);
+		FeatureHandler fh = new FeatureHandler();		
 		String s = "";
 		try {
 			s = fh.getXtexString(config);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		//System.out.println(s);
-		
+		}		
 		
 		model.addAttribute("xtext", s);
 		
 		return "dsl.html";
 	}
 	
-	@RequestMapping(value="/generate", method = RequestMethod.GET)
+	/*@RequestMapping(value="/generate", method = RequestMethod.GET)
 	public @ResponseBody String generate(@RequestParam("user_string") String dsl_string) {	
 		
 		
@@ -83,30 +79,34 @@ public class DemoController {
 		FeatureHandler.generateFromTML("lev4rec/generated/demo.xmi", "lev4rec/generated");			
 		
 		return "";
-	}
-	
-	/*@RequestMapping("/generate{user_string}")
-	public @ResponseBody String getAttr(@PathVariable(value="user_string") String id, 
-	                                 @RequestParam String user_string) {
-		RSModel coarse_model= FeatureHandler.loadModel("generated/demo.xmi");
-		coarse_model.setName("KNN recsys");
-		FeatureHandler.serializeModel(coarse_model, "generated/demo.xmi");
-		FeatureHandler.generateFromTML("generated/demo.xmi", "generated");			
-		
-		return "generate.html";	
-		
 	}*/
 	
-	/*@RequestMapping(path = "/generate", method = RequestMethod.GET)
-	public ResponseEntity<ByteArrayResource> download(String param) throws IOException {
+	
+	
+	@RequestMapping(path = "/generate", method = RequestMethod.GET)
+	public ResponseEntity<ByteArrayResource> download(@RequestParam("user_string") String dsl_string) throws IOException {
 
-	    // ...
+	  
 		
-		RSModel coarse_model= FeatureHandler.loadModel("generated/demo.xmi");
+		/*RSModel coarse_model= FeatureHandler.loadModel("generated/demo.xmi");
 		coarse_model.setName("KNN recsys");
 		FeatureHandler.serializeModel(coarse_model, "generated/demo.xmi");
-		FeatureHandler.generateFromTML("generated/demo.xmi", "generated");			
-		File file = new File("generated/demo.xmi");
+		FeatureHandler.generateFromTML("generated/demo.xmi", "generated");*/	
+		
+		RSModel fineGrainModel = FeatureHandler.parseUserString(dsl_string);
+		
+		System.out.println("User string parsed");
+		
+		
+		FeatureHandler.serializeModel(fineGrainModel, "lev4rec/generated/demo.xmi");
+		System.out.println("Model serialized");
+		
+		
+		FeatureHandler.generateFromTML("lev4rec/generated/demo.xmi", "lev4rec/generated");		
+		
+		
+		
+		File file = new File("lev4rec/generated/invalid.py");
 	    Path path = Paths.get(file.getAbsolutePath());
 	    ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
 	    HttpHeaders headers = new HttpHeaders();
@@ -118,7 +118,7 @@ public class DemoController {
 	            .contentLength(file.length())
 	            .contentType(MediaType.APPLICATION_OCTET_STREAM)
 	            .body(resource);
-	}*/
+	}
 	
 	
 

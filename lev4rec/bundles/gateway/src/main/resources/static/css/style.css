@@ -27,7 +27,7 @@ a:hover {
 .header {
 	display: block;
 	position: absolute;
-	background-color: #e8e8e8;
+	background-color: #3232cd;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -35,15 +35,8 @@ a:hover {
 	padding: 10px;
 }
 
-.generator {
-	display: block;
-	position: absolute;
-	top: 600px;
-	bottom: 600px;
-	left: 500;
-	right: 0;
-	margin: 213px;
-}
+
+
 
 .content {
 	display: block;

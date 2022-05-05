@@ -12,7 +12,7 @@ code = """\
 import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
-##TODO Generating dataset
+##TODO Generating dataset   myRsModel
 from surprise import Dataset, Reader
 
 
@@ -46,63 +46,49 @@ kf = KFold(n_splits=n_splits)
 		X_test = sc.transform(X_test)
 	
 	
-			NORMALIZATION
-	
-	
 
 
 
-	
 	
 
 
 	is_user_based=False
 	
-	
 
 
 	neighborhood=0
-	
 	
 
 
 	cutoff=0
 	
-	
 
 
 	sim_funct='cosine'
-	
 	
 
 
 	sim_settings = {'name': sim_funct,
 	
-	
 
 
                'user_based': is_user_based  # compute  similarities between items
-	
 	
 
 
                }
 	
-	
 
 
 	from surprise import KNNWithMeans
-	
 	
 
 
 	algo = KNNWithMeans(k=neighborhood, sim_options=sim_settings)
 	
-	
 
 
 
-	
 	
 
 
@@ -128,4 +114,4 @@ for trainset, testset in kf.split(data):
 nb["cells"] = [nbf.v4.new_markdown_cell(text),
                nbf.v4.new_code_cell(code) ]
 
-nbf.write(nb, 'invalid.ipynb')
+nbf.write(nb, 'myRsModel.ipynb')

@@ -3,13 +3,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link th:rel="stylesheet" th:href=@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}/>
+<!-- <link th:href=@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css} th:rel="stylesheet" /> -->
+<link th:href="@{/css/formStyle.css}" rel="stylesheet" />  
+
+<link th:href="@{/css/formStyle2.css}" rel="stylesheet" /> 
 
 <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 
-	<script th:src="@{/webjars/requirejs/2.3.6/require.min.js}"></script> 
+<script th:src="@{/webjars/requirejs/2.3.6/require.min.js}"></script>
 
-		<script type="text/javascript">
+<script type="text/javascript">
 		//var baseUrl = window.location.pathname;
 		var baseUrl = "http://localhost:8891/"
 		console.log(baseUrl);
@@ -33,15 +36,13 @@
 				});
 			});
 		});
-	</script> 
-	
+	</script>
+
 
 <style>
 fieldset {
-  border: 0;
+	border: 0;
 }
-
-
 </style>
 </head>
 
@@ -53,152 +54,478 @@ fieldset {
 
 
 
-<form id="checkForm" th:action="@{/dsl}" method="post" th:object="${config}" >  
-<h3>Algorithm Component</h3>  
-	<fieldset>	
-			<div >        
-	        <input id="algorithm_feature_parent_1" type="checkbox" th:field="*{CollaborativeFiltering}" onclick="set_algorithm_constraints('algorithm_feature_parent_1')"> <label>Collaborative filtering </label>
-	        	<fieldset id="collaborative_sub" style="display: none;">        
-	         		<div><input id="coll_sub_feature_1" type="checkbox" th:field="*{ItemBased}" onclick="disable_sub_features('coll_sub_feature_1', 'coll_sub_feature_2')"> Item based </div>		
-	       			<div> <input id="coll_sub_feature_2"  type="checkbox" th:field="*{UserBased}" onclick="disable_sub_features('coll_sub_feature_2', 'coll_sub_feature_1')" > User Based  </div>
-	        	</fieldset>
+	<form id="checkForm" th:action="@{/dsl}" method="post"
+		th:object="${config}">
+		<h3>Algorithm Component</h3>
+		<fieldset class="fieldset-frame">
+			<div>
+				<input id="algorithm_feature_parent_1" type="checkbox"
+					th:field="*{CollaborativeFiltering}"
+					onclick="set_algorithm_constraints('algorithm_feature_parent_1')">
+				<label>Collaborative filtering </label>
+				<fieldset id="collaborative_sub" style="display: none;">
+					<div>
+						<input id="coll_sub_feature_1" type="checkbox"
+							th:field="*{ItemBased}"
+							onclick="disable_sub_features('coll_sub_feature_1', 'coll_sub_feature_2')">
+						Item based
+					</div>
+					<div>
+						<input id="coll_sub_feature_2" type="checkbox"
+							th:field="*{UserBased}"
+							onclick="disable_sub_features('coll_sub_feature_2', 'coll_sub_feature_1')">
+						User Based
+					</div>
+				</fieldset>
 			</div>
-	
-			<div>       
-	        	<input id="algorithm_feature_parent_2" type="checkbox" th:field="*{ContentBased}" onclick="set_algorithm_constraints('algorithm_feature_parent_2')"> <label>Content based </label>
+
+			<div>
+				<input id="algorithm_feature_parent_2" type="checkbox"
+					th:field="*{ContentBased}"
+					onclick="set_algorithm_constraints('algorithm_feature_parent_2')">
+				<label>Content based </label>
 			</div>
-			<div>        
-	        	<input id="algorithm_feature_parent_3" type="checkbox" th:field="*{Classification}" onclick="set_algorithm_constraints('algorithm_feature_parent_3')"> <label>Classification </label>
-	        
-	        
-	        <fieldset id="classification_sub" style="display: none;">        
-	        	<div><input id="class_sub_feature_1" type="checkbox" th:field="*{SupervisedAlgorithm}" onclick="set_classifier_constraints('class_sub_feature_1')" > Supervised algorithm </div> 
-	       
-			        <fieldset id="supervised_sub" style="display: none;">        
-			        	<div> <input id="supervised_sub_feature_1" type="checkbox" th:field="*{SVM}" onclick="set_supervised_constraints('supervised_sub_feature_1')"> SVM </div>		
-			        	<div> <input id="supervised_sub_feature_2"  type="checkbox" th:field="*{MNB}" onclick="set_supervised_constraints('supervised_sub_feature_2')"> MNB </div>
-			        	<div> <input id="supervised_sub_feature_3"  type="checkbox" th:field="*{SupervisedNeuralNetwork}" onclick="set_supervised_constraints('supervised_sub_feature_3')"> Supervised Neural Network </div>
-				        		<fieldset id="supervised_NN" style="display: none;">
-				        		<div> <input id="NNS_sub_1" type="checkbox" th:field="*{SupervisedRNN}" onclick="disable_NN_supervised_features('NNS_sub_1')">SupervisedRNN </div>
-								<div> <input id="NNS_sub_2"  type="checkbox" th:field="*{SupervisedDNN}" onclick="disable_NN_supervised_features('NNS_sub_2')">SupervisedDNN </div>
-								<div> <input id="NNS_sub_3"  type="checkbox" th:field="*{SupervisedFeedForwardNN}" onclick="disable_NN_supervised_features('NNS_sub_3')">SupervisedFeedForwardNN </div>
-								<div> <input id="NNS_sub_4"  type="checkbox" th:field="*{SupervisedGNN}" onclick="disable_NN_supervised_features('NNS_sub_4')">SupervisedGNN </div>
-								<div> <input id="NNS_sub_5"  type="checkbox" th:field="*{BayesianNN}" onclick="disable_NN_supervised_features('NNS_sub_5')">BayesianNN </div>
-								<div> <input id="NNS_sub_6"  type="checkbox" th:field="*{SupervisedCNN}" onclick="disable_NN_supervised_features('NNS_sub_6')">SupervisedCNN </div>
-				        	</fieldset>
-				        <div> <input id="supervised_sub_feature_4" type="checkbox" th:field="*{DecisionTree}" onclick="set_supervised_constraints('supervised_sub_feature_4')"> DecisionTree </div>
-							
-			         </fieldset>
-			            	
-	        	 <input id="class_sub_feature_2"  type="checkbox" th:field="*{UnsupervisedAlgorithm}" onclick="set_classifier_constraints('class_sub_feature_2')"> UnsupervisedAlgorithm
-	        	 
-		        	 <fieldset id="unsupervised_sub" style="display: none;">
-		        	 	<div> <input id="unsupervised_sub_feature_1" type="checkbox" th:field="*{KNeighborhood}" onclick="set_unsupervised_constraints('unsupervised_sub_feature_1')">KNeighborhood </div>
-						<div>  <input id="unsupervised_sub_feature_2" type="checkbox" th:field="*{HierarchicalClustering}" onclick="set_unsupervised_constraints('unsupervised_sub_feature_2')">HierarchicalClustering </div>
-						<div> <input  id="unsupervised_sub_feature_3" type="checkbox" th:field="*{UnsupervisedNeuralNetwork}" onclick="set_unsupervised_constraints('unsupervised_sub_feature_3')">UnsupervisedNeuralNetwork </div> 
-							<fieldset id="unsupervised_NN" style="display: none;">
-								<div> <input id="NNU_sub_1" type="checkbox" th:field="*{UnsupervisedRNN}" onclick="disable_NN_unsupervised_features('NNU_sub_1')">UnsupervisedRNN </div>
-								<div> <input id="NNU_sub_2" type="checkbox" th:field="*{UnsupervisedDNN}" onclick="disable_NN_unsupervised_features('NNU_sub_2')">UnsupervisedDNN  </div>
-								<div> <input id="NNU_sub_3"  type="checkbox" th:field="*{UnsupervisedFeedForwardNN}" onclick="disable_NN_unsupervised_features('NNU_sub_3')">UnsupervisedFeedForwardNN </div>
-								<div> <input id="NNU_sub_4" type="checkbox" th:field="*{UnsupervisedGNN}" onclick="disable_NN_unsupervised_features('NNU_sub_4')"> UnsupervisedGNN </div>
-								<div> <input id="NNU_sub_5" type="checkbox" th:field="*{UnsupervisedCNN}" onclick="disable_NN_unsupervised_features('NNU_sub_5')"> UnsupervisedCNN	</div>					
-							</fieldset>        	 
-		        	 </fieldset>
-	        </fieldset>   
-	        <div> <input id="algorithm_feature_parent_4"  type="checkbox" th:field="*{MiningAlgorithm}"  onclick="set_algorithm_constraints('algorithm_feature_parent_4')">MiningAlgorithm</div>
-	        	<fieldset id="data_mining_sub" style="display: none;">
-	        		<div> <input id="mining_sub_feature_1"  type="checkbox" th:field="*{AssociationRuleMining}" onclick="set_mining_constraints('mining_sub_feature_1')">AssociationRuleMining</div>
-					<div> <input id="mining_sub_feature_2" type="checkbox" th:field="*{FrequentPattern}" onclick="set_mining_constraints('mining_sub_feature_2')">FrequentPattern</div>
-						<fieldset id="pattern_sub" style="display: none;">
-							<div> <input id="pattern_sub_feature_1" type="checkbox" th:field="*{Apriori}" onclick="disable_pattern_features('pattern_sub_feature_1')" > Apriori</div>	
-							<div> <input id="pattern_sub_feature_2" type="checkbox" th:field="*{FPgrowth}" onclick="disable_pattern_features('pattern_sub_feature_2')" > FP-growth</div>					
-						</fieldset>			
-	        	</fieldset>
-	        	
-	        </div>
-	</fieldset>
-	
-<h3>Dataset component</h3>
-	<div>		
-			<fieldset>
-			<legend>Data structure</legend>
-				<div> <input id="data_structure_sub_feature_1"  type="checkbox" th:field="*{TextualData}"  onclick="disable_data_features('data_structure_sub_feature_1')">TextualData</div>
-				<div> <input id="data_structure_sub_feature_2" type="checkbox" th:field="*{GraphData}" onclick="disable_data_features('data_structure_sub_feature_2')" >GraphData</div>
-				<div> <input id="data_structure_sub_feature_3" type="checkbox" th:field="*{Matrix}" onclick="disable_data_features('data_structure_sub_feature_3')" >Matrix</div>
-				<div> <input id="data_structure_sub_feature_4" type="checkbox" th:field="*{ARFF}" onclick="disable_data_features('data_structure_sub_feature_4')">ARFF</div>
-				<div> <input id="data_structure_sub_feature_5" type="checkbox" th:field="*{Tree}" onclick="disable_data_features('data_structure_sub_feature_5')">Tree</div>			
-			</fieldset>
-	</div>		
-		<div>
-		<fieldset>
-		<legend>Dataset type</legend>
-				<div> <input id="dataset_type_sub_feature_1" type="checkbox" th:field="*{UnsupervisedDataset}" onclick="disable_sub_features('dataset_type_sub_feature_1', 'dataset_type_sub_feature_2')">UnsupervisedDataset</div>
-				<div> <input id="dataset_type_sub_feature_2" type="checkbox" th:field="*{SupervisedDataset}" onclick="disable_sub_features('dataset_type_sub_feature_2', 'dataset_type_sub_feature_1')" >SupervisedDataset</div>
+			<div>
+				<input id="algorithm_feature_parent_3" type="checkbox"
+					th:field="*{Classification}"
+					onclick="set_algorithm_constraints('algorithm_feature_parent_3')">
+				<label>Classification </label>
+
+
+				<fieldset id="classification_sub" style="display: none;">
+					<div>
+						<input id="class_sub_feature_1" type="checkbox"
+							th:field="*{SupervisedAlgorithm}"
+							onclick="set_classifier_constraints('class_sub_feature_1')">
+						Supervised algorithm
+					</div>
+
+					<fieldset id="supervised_sub" style="display: none;">
+						<div>
+							<input id="supervised_sub_feature_1" type="checkbox"
+								th:field="*{SVM}"
+								onclick="set_supervised_constraints('supervised_sub_feature_1')">
+							SVM
+						</div>
+						<div>
+							<input id="supervised_sub_feature_2" type="checkbox"
+								th:field="*{MNB}"
+								onclick="set_supervised_constraints('supervised_sub_feature_2')">
+							MNB
+						</div>
+						<div>
+							<input id="supervised_sub_feature_3" type="checkbox"
+								th:field="*{SupervisedNeuralNetwork}"
+								onclick="set_supervised_constraints('supervised_sub_feature_3')">
+							Supervised Neural Network
+						</div>
+						<fieldset id="supervised_NN" style="display: none;">
+							<div>
+								<input id="NNS_sub_1" type="checkbox"
+									th:field="*{SupervisedRNN}"
+									onclick="disable_NN_supervised_features('NNS_sub_1')">SupervisedRNN
+							</div>
+							<div>
+								<input id="NNS_sub_2" type="checkbox"
+									th:field="*{SupervisedDNN}"
+									onclick="disable_NN_supervised_features('NNS_sub_2')">SupervisedDNN
+							</div>
+							<div>
+								<input id="NNS_sub_3" type="checkbox"
+									th:field="*{SupervisedFeedForwardNN}"
+									onclick="disable_NN_supervised_features('NNS_sub_3')">SupervisedFeedForwardNN
+							</div>
+							<div>
+								<input id="NNS_sub_4" type="checkbox"
+									th:field="*{SupervisedGNN}"
+									onclick="disable_NN_supervised_features('NNS_sub_4')">SupervisedGNN
+							</div>
+							<div>
+								<input id="NNS_sub_5" type="checkbox" th:field="*{BayesianNN}"
+									onclick="disable_NN_supervised_features('NNS_sub_5')">BayesianNN
+							</div>
+							<div>
+								<input id="NNS_sub_6" type="checkbox"
+									th:field="*{SupervisedCNN}"
+									onclick="disable_NN_supervised_features('NNS_sub_6')">SupervisedCNN
+							</div>
+						</fieldset>
+						<div>
+							<input id="supervised_sub_feature_4" type="checkbox"
+								th:field="*{DecisionTree}"
+								onclick="set_supervised_constraints('supervised_sub_feature_4')">
+							DecisionTree
+						</div>
+
+					</fieldset>
+
+					<input id="class_sub_feature_2" type="checkbox"
+						th:field="*{UnsupervisedAlgorithm}"
+						onclick="set_classifier_constraints('class_sub_feature_2')">
+					UnsupervisedAlgorithm
+
+					<fieldset id="unsupervised_sub" style="display: none;">
+						<div>
+							<input id="unsupervised_sub_feature_1" type="checkbox"
+								th:field="*{KNeighborhood}"
+								onclick="set_unsupervised_constraints('unsupervised_sub_feature_1')">KNeighborhood
+						</div>
+						<div>
+							<input id="unsupervised_sub_feature_2" type="checkbox"
+								th:field="*{HierarchicalClustering}"
+								onclick="set_unsupervised_constraints('unsupervised_sub_feature_2')">HierarchicalClustering
+						</div>
+						<div>
+							<input id="unsupervised_sub_feature_3" type="checkbox"
+								th:field="*{UnsupervisedNeuralNetwork}"
+								onclick="set_unsupervised_constraints('unsupervised_sub_feature_3')">UnsupervisedNeuralNetwork
+						</div>
+						<fieldset id="unsupervised_NN" style="display: none;">
+							<div>
+								<input id="NNU_sub_1" type="checkbox"
+									th:field="*{UnsupervisedRNN}"
+									onclick="disable_NN_unsupervised_features('NNU_sub_1')">UnsupervisedRNN
+							</div>
+							<div>
+								<input id="NNU_sub_2" type="checkbox"
+									th:field="*{UnsupervisedDNN}"
+									onclick="disable_NN_unsupervised_features('NNU_sub_2')">UnsupervisedDNN
+							</div>
+							<div>
+								<input id="NNU_sub_3" type="checkbox"
+									th:field="*{UnsupervisedFeedForwardNN}"
+									onclick="disable_NN_unsupervised_features('NNU_sub_3')">UnsupervisedFeedForwardNN
+							</div>
+							<div>
+								<input id="NNU_sub_4" type="checkbox"
+									th:field="*{UnsupervisedGNN}"
+									onclick="disable_NN_unsupervised_features('NNU_sub_4')">
+								UnsupervisedGNN
+							</div>
+							<div>
+								<input id="NNU_sub_5" type="checkbox"
+									th:field="*{UnsupervisedCNN}"
+									onclick="disable_NN_unsupervised_features('NNU_sub_5')">
+								UnsupervisedCNN
+							</div>
+						</fieldset>
+					</fieldset>
+				</fieldset>
+				<!-- <div>
+					<input id="algorithm_feature_parent_4" type="checkbox"
+						th:field="*{MiningAlgorithm}"
+						onclick="set_algorithm_constraints('algorithm_feature_parent_4')">MiningAlgorithm
+				</div>
+				<fieldset id="data_mining_sub" style="display: none;">
+					<div>
+						<input id="mining_sub_feature_1" type="checkbox"
+							th:field="*{AssociationRuleMining}"
+							onclick="set_mining_constraints('mining_sub_feature_1')">AssociationRuleMining
+					</div>
+					<div>
+						<input id="mining_sub_feature_2" type="checkbox"
+							th:field="*{FrequentPattern}"
+							onclick="set_mining_constraints('mining_sub_feature_2')">FrequentPattern
+					</div>
+					<fieldset id="pattern_sub" style="display: none;">
+						<div>
+							<input id="pattern_sub_feature_1" type="checkbox"
+								th:field="*{Apriori}"
+								onclick="disable_pattern_features('pattern_sub_feature_1')">
+							Apriori
+						</div>
+						<div>
+							<input id="pattern_sub_feature_2" type="checkbox"
+								th:field="*{FPgrowth}"
+								onclick="disable_pattern_features('pattern_sub_feature_2')">
+							FP-growth
+						</div>
+					</fieldset>
+				</fieldset>-->
+
+			</div>
 		</fieldset>
+
+		<h3>Data structure</h3>
+		<div>
+			<fieldset class="fieldset-frame">
 				
-	
-	</div>
-	
-	
-<h3>Preprocessing Data Component</h3>
-	<fieldset id="preprocess_sub">
-		<div> <input id="preprocess_sub_feature_1" type="checkbox" th:field="*{NLP}" >NLP</div>
-		<div> <input id="preprocess_sub_feature_2" type="checkbox" th:field="*{FeatureScaling}" >FeatureScaling</div>
-		<div> <input id="preprocess_sub_feature_3" type="checkbox" th:field="*{Vectorization}" >Vectorization</div>
-		<div> <input id="preprocess_sub_feature_4" type="checkbox" th:field="*{DuplicatesRemoval}" >DuplicatesRemoval</div>
-		<div> <input id="preprocess_sub_feature_5" type="checkbox" th:field="*{MissingDataManipulation}"  >MissingDataManipulation</div>
-		<div> <input id="preprocess_sub_feature_6" type="checkbox" th:field="*{Normalization}" >Normalization</div>			
-	</fieldset>
-	
-	<h3>Dataset Preprocessing</h3>
-		<fieldset id="dataset_sub">
-		<div> <input id="dataset_sub_feature_1" type="checkbox" th:field="*{Pandas}" >Pandas </div>
-		<div> <input id="dataset_sub_feature_2" type="checkbox" th:field="*{Numpy}"> Numpy </div>		
-	</fieldset>
-<h3>Evaluation Component</h3>
-	
-		<fieldset id="cross_fold_sub">
-		<legend>Cross Fold Validation</legend>
-			<div> <input id="cross_fold_sub_feature_1" type="checkbox" th:field="*{SplittingKfold}" onclick="disable_sub_features('cross_fold_sub_feature_1', 'cross_fold_sub_feature_2')">SplittingKfold</div>
-			<div> <input id="cross_fold_sub_feature_2" type="checkbox" th:field="*{RandomSpltting}" onclick="disable_sub_features('cross_fold_sub_feature_2', 'cross_fold_sub_feature_1')" >RandomSpltting</div>			
-		</fieldset>		
+				<div>
+					<input id="data_structure_sub_feature_1" type="checkbox"
+						th:field="*{TextualData}"
+						onclick="disable_data_features('data_structure_sub_feature_1')">TextualData
+				</div>
+				<div>
+					<input id="data_structure_sub_feature_2" type="checkbox"
+						th:field="*{GraphData}"
+						onclick="disable_data_features('data_structure_sub_feature_2')">GraphData
+				</div>
+				<div>
+					<input id="data_structure_sub_feature_3" type="checkbox"
+						th:field="*{Matrix}"
+						onclick="disable_data_features('data_structure_sub_feature_3')">Matrix
+				</div>
+				<div>
+					<input id="data_structure_sub_feature_4" type="checkbox"
+						th:field="*{ARFF}"
+						onclick="disable_data_features('data_structure_sub_feature_4')">ARFF
+				</div>
+				<div>
+					<input id="data_structure_sub_feature_5" type="checkbox"
+						th:field="*{Tree}"
+						onclick="disable_data_features('data_structure_sub_feature_5')">Tree
+				</div>
+			</fieldset>
+		</div>
+		<div>
 		
-		
-		
-<h3>Algorithm Library</h3>
+		<h3>Dataset type</h3>
+			<fieldset class="fieldset-frame">
+				
+				<div>
+					<input id="dataset_type_sub_feature_1" type="checkbox"
+						th:field="*{UnsupervisedDataset}"
+						onclick="disable_sub_features('dataset_type_sub_feature_1', 'dataset_type_sub_feature_2')">UnsupervisedDataset
+				</div>
+				<div>
+					<input id="dataset_type_sub_feature_2" type="checkbox"
+						th:field="*{SupervisedDataset}"
+						onclick="disable_sub_features('dataset_type_sub_feature_2', 'dataset_type_sub_feature_1')">SupervisedDataset
+				</div>
+			</fieldset>
+
+
+		</div>
+
+
+		<h3>Preprocessing Data Component</h3>
+		<fieldset id="preprocess_sub" class="fieldset-frame">
+			<div>
+				<input id="preprocess_sub_feature_1" type="checkbox"
+					th:field="*{NLP}">NLP
+			</div>
+			<div>
+				<input id="preprocess_sub_feature_2" type="checkbox"
+					th:field="*{FeatureScaling}">FeatureScaling
+			</div>
+			<div>
+				<input id="preprocess_sub_feature_3" type="checkbox"
+					th:field="*{Vectorization}">Vectorization
+			</div>
+			<div>
+				<input id="preprocess_sub_feature_4" type="checkbox"
+					th:field="*{DuplicatesRemoval}">DuplicatesRemoval
+			</div>
+			<div>
+				<input id="preprocess_sub_feature_5" type="checkbox"
+					th:field="*{MissingDataManipulation}">MissingDataManipulation
+			</div>
+			<div>
+				<input id="preprocess_sub_feature_6" type="checkbox"
+					th:field="*{Normalization}">Normalization
+			</div>
+		</fieldset>
+
+		<h3>Dataset Preprocessing</h3>
+		<fieldset id="dataset_sub" class="fieldset-frame">
+			<div>
+				<input id="dataset_sub_feature_1" type="checkbox"
+					th:field="*{Pandas}">Pandas
+			</div>
+			<div>
+				<input id="dataset_sub_feature_2" type="checkbox"
+					th:field="*{Numpy}"> Numpy
+			</div>
+		</fieldset>
+		<h3>Evaluation Component</h3>
+
+		<fieldset id="cross_fold_sub" class="fieldset-frame">
+			
+			<div>
+				<input id="cross_fold_sub_feature_1" type="checkbox"
+					th:field="*{SplittingKfold}"
+					onclick="disable_sub_features('cross_fold_sub_feature_1', 'cross_fold_sub_feature_2')">SplittingKfold
+			</div>
+			<div>
+				<input id="cross_fold_sub_feature_2" type="checkbox"
+					th:field="*{RandomSpltting}"
+					onclick="disable_sub_features('cross_fold_sub_feature_2', 'cross_fold_sub_feature_1')">RandomSpltting
+			</div>
+		</fieldset>
 
 
 
-<fieldset>
-<div> <input id="lib_algo_sub_1" type="checkbox" th:field="*{Sklearn}" onclick="disable_lib_algo_features('lib_algo_sub_1')" >Sklearn</div>
-<div> <input id="lib_algo_sub_2" type="checkbox" th:field="*{Surprise}" onclick="disable_lib_algo_features('lib_algo_sub_2')">Surprise</div>
-<div> <input id="lib_algo_sub_3" type="checkbox" th:field="*{PyTorch}" onclick="disable_lib_algo_features('lib_algo_sub_3')">PyTorch</div>
-<div> <input id="lib_algo_sub_4" type="checkbox" th:field="*{TensorFlow}" onclick="disable_lib_algo_features('lib_algo_sub_4')">TensorFlow</div>
-
-</fieldset>
-
-<h3>Presentation Layer</h3>
+		<h3>Algorithm Library</h3>
 
 
-<fieldset id="presentation_sub">
-<div> <input id="presentation_sub_1" type="checkbox" th:field="*{IDEPlugin}" onclick="disable_presentation_features('presentation_sub_1')" >IDE plugin</div>
-<div> <input id="presentation_sub_2" type="checkbox" th:field="*{WebInterface}" onclick="disable_presentation_features('presentation_sub_2')">Web Interface</div>
-<div> <input id="presentation_sub_3" type="checkbox" th:field="*{RawOutcomes}" onclick="disable_presentation_features('presentation_sub_3')">Raw outcomes</div>
+
+		<fieldset class="fieldset-frame">
+			<div>
+				<input id="lib_algo_sub_1" type="checkbox" th:field="*{Sklearn}"
+					onclick="disable_lib_algo_features('lib_algo_sub_1')">Sklearn
+			</div>
+			<div>
+				<input id="lib_algo_sub_2" type="checkbox" th:field="*{Surprise}"
+					onclick="disable_lib_algo_features('lib_algo_sub_2')">Surprise
+			</div>
+			<div>
+				<input id="lib_algo_sub_3" type="checkbox" th:field="*{PyTorch}"
+					onclick="disable_lib_algo_features('lib_algo_sub_3')">PyTorch
+			</div>
+			<div>
+				<input id="lib_algo_sub_4" type="checkbox" th:field="*{TensorFlow}"
+					onclick="disable_lib_algo_features('lib_algo_sub_4')">TensorFlow
+			</div>
+
+		</fieldset>
+
+		<h3>Presentation Layer</h3>
 
 
-</fieldset>
+		<fieldset id="presentation_sub" class="fieldset-frame">
+			<div>
+				<input id="presentation_sub_1" type="checkbox"
+					th:field="*{IDEPlugin}"
+					onclick="disable_presentation_features('presentation_sub_1')">IDE
+				plugin
+			</div>
+			<div>
+				<input id="presentation_sub_2" type="checkbox"
+					th:field="*{WebInterface}"
+					onclick="disable_presentation_features('presentation_sub_2')">Web
+				Interface
+			</div>
+			<div>
+				<input id="presentation_sub_3" type="checkbox"
+					th:field="*{RawOutcomes}"
+					onclick="disable_presentation_features('presentation_sub_3')">Raw
+				outcomes
+			</div>
 
-<input type="submit" value="Submit">   
 
- 
-</form>  
+		</fieldset>
+
+		<input type="submit" value="Set configuration" onclick="return validate()" class= "button">
+
+
+	</form>
 
 
 
 </body>
 <script>
 
+function validate(){
+	//var options = get_list_checkboxes();
+	
+	//var dataOptions = get_data_structure_features();
+	
+	
+	
+	//var presentOptions =;
+	
+	
+	
+	//var flg = false;	
+	
+	var dataOptions = validateOptions(get_data_structure_features());
+	
+	var presentOptions = validateOptions(get_presentation_features());
+	
+	var filteringOptions = validateOptions(get_filtering_features());
+	
+	
+	var supervisedOptions = validateOptions(get_NN_supervised_features());
+	
+	
+	var unsupervisedOptions = validateOptions(get_NN_unsupervised_features());
+	
+	var algoParentOptions = validateOptions(get_algorithm_features());
+	
+	var algoOptions = validateOptions(get_lib_algo_features());
+	
+	
+	var datasetOptions = validateOptions(get_dataset_features());
+	
+	var evaluationOptions = validateOptions(get_evaluation_features());
+	
+	
+	console.log(dataOptions);
+	
+	
+	
+	if (dataOptions == false){
+		alert("Configuration not valid! Please specify at least a data structure");
+		return false;
+		
+	}
+	
+	
+	if (presentOptions == false){
+		alert("Configuration not valid! Please specify at least a presentation layer");
+		return false;
+	}
+	/*
+	if (filteringOptions == false){
+		alert("Configuration not valid! Please specify at least a filtering algorithm");
+		return false;
+	}
+	
+	if (algoOptions == false){
+		alert("Configuration not valid! Please specify at least an algorithm library");
+		return false;
+	}
+	/*if (supervisedOptions == false){
+		alert("Configuration not valid! Please specify at least a supervised algorithm");
+	}*/
+	
+	/*
+	if (unsupervisedOptions == false){
+		alert("Configuration not valid! Please specify at least a unsupervised algorithm");
+	}*/
+	if (algoParentOptions == false){
+		alert("Configuration not valid! Please specify at least a RS algorithm");
+		return false;
+	}
+	if (evaluationOptions == false){
+		alert("Configuration not valid! Please specify at least a evaluation method");
+		return false;
+	}
+	
+	if (dataOptions == true && presentOptions == true && filteringOptions == true 
+			&& algoParentOptions == true && evaluationOptions == true && algoOptions == true){
+		alert ("validation ok")
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
 
+function validateOptions(options){
+	
+	var flg = false;
+	for(var i = 0; i < options.length; i++) {
+		checkbox = document.getElementById(options[i]);	
+		
+		if (checkbox.checked == true){
+			flg = true;		
+			
+			return flg;
+		}		
+		
+		
+	}
+	return flg;
+}
 
 function disable_sub_features(id, id_to_disable){
 	const checkbox = document.getElementById(id)
@@ -312,14 +639,52 @@ function get_list_checkboxes(){
 	
 }
 
+function get_dataset_features(){
+	var features=[]
+	checkboxes=get_list_checkboxes()
+	for(var i = 0; i < checkboxes.length; i++) {	    
+	    if (checkboxes[i].includes("dataset_type")){
+	    	features.push(checkboxes[i])
+	    	
+	    }
+	}
+	return features
+	
+}
+
+function get_filtering_features(){
+	var features=[]
+	checkboxes=get_list_checkboxes()
+	for(var i = 0; i < checkboxes.length; i++) {	    
+	    if (checkboxes[i].includes("coll_sub")){
+	    	features.push(checkboxes[i])
+	    	
+	    }
+	}
+	return features
+	
+} 
+
+
+function get_evaluation_features(){
+	var features=[]
+	checkboxes=get_list_checkboxes()
+	for(var i = 0; i < checkboxes.length; i++) {	    
+	    if (checkboxes[i].includes("cross_fold")){
+	    	features.push(checkboxes[i])
+	    	
+	    }
+	}
+	return features
+	
+} 
 
 function get_data_structure_features(){
 	var features=[]
 	checkboxes=get_list_checkboxes()
 	for(var i = 0; i < checkboxes.length; i++) {	    
 	    if (checkboxes[i].includes("data_structure")){
-	    	features.push(checkboxes[i])
-	    	
+	    	features.push(checkboxes[i])	    	
 	    }
 	}
 	return features
@@ -363,6 +728,18 @@ function get_NN_unsupervised_features(){
 	}
 	return features
 	
+}
+
+function get_algorithm_features(){
+	var features=[]
+	checkboxes=get_list_checkboxes()
+	for(var i = 0; i < checkboxes.length; i++) {	    
+	    if (checkboxes[i].includes("algorithm_feature_parent")){
+	    	features.push(checkboxes[i])
+	    	
+	    }
+	}
+	return features	
 }
 
 function get_pattern_features(){
@@ -776,8 +1153,6 @@ function check_constraints(id,checkbox){
 			
 	
 	}
-	
-		
 	
 	
 	

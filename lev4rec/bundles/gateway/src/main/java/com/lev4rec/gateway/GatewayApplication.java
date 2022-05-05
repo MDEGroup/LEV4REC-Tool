@@ -53,6 +53,14 @@ public class GatewayApplication {
 			        
 			        .route(p->p.path("/lev4rec/css/style.css")
 			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
+			        		.uri("http://localhost:8888"))	
+			        
+			        .route(p->p.path("/lev4rec/css/formStyle.css")
+			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
+			        		.uri("http://localhost:8888"))	
+			        
+			        .route(p->p.path("/lev4rec/css/formStyle2.css")
+			        		.filters(f-> f.rewritePath("/lev4rec/","/lev4rec/"))
 			        		.uri("http://localhost:8888"))	   
 			        
 			        .route(p->p.path("/lev4rec/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css/")
