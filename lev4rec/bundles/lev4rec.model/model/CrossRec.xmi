@@ -8,18 +8,9 @@
     name="CrossRec">
   <dataset xsi:type="lowcoders:SupervisedDataset"
       name="crossrec"
-      path="results.csv">
-    <indipendentVariables
-        name="User"/>
-    <indipendentVariables
-        name="Item"/>
-    <dataStructure
-        xsi:type="lowcoders:Matrix"
-        name="RatingsMatrix"
-        columns="//@dataset/@indipendentVariables.0 //@dataset/@indipendentVariables.1"/>
+      path="ml-100k"
+      isBuiltIn="true">
     <datasetManipulationLibrary>PANDAS</datasetManipulationLibrary>
-    <dependatVariable
-        name="Rating"/>
   </dataset>
   <presentationLayer
       xsi:type="lowcoders:WebApplication"
@@ -27,11 +18,14 @@
       port="5000"
       host="0.0.0.0"/>
   <evaluation>
+    <metrics>PRECISION</metrics>
+    <metrics>RECALL</metrics>
+    <metrics>F1_MEASURE</metrics>
     <validationTechnique
-        xsi:type="lowcoders:ContextValidation"
-        name="recommend list"
+        xsi:type="lowcoders:CrossValidation"
         nOfRecommendations="10"
-        testContext="//@recommendationSystem/@context"/>
+        library="SURPRISE"
+        numberOfFold="10"/>
   </evaluation>
   <recommendationSystem
       xsi:type="lowcoders:FilteringRS"
@@ -40,14 +34,6 @@
       cutoff="10"
       neighborhood="40">
     <context
-        name="UserContext"
-        userContext="//@dataset/@dataStructure"/>
+        name="UserContext"/>
   </recommendationSystem>
-  <feedback>
-    <expressedFeedback
-        xsi:type="lowcoders:Rating">
-      <item
-          outcame="//@dataset/@indipendentVariables.1"/>
-    </expressedFeedback>
-  </feedback>
 </lowcoders:RSModel>

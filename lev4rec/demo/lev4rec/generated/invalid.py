@@ -9,15 +9,8 @@ from surprise import Dataset, Reader
  
 
 def set_preprocessing():
-	from sklearn.preprocessing import StandardScaler
-	sc = StandardScaler()
-	X_train = sc.fit_transform(X_split)
-	X_test = sc.transform(X_test)
-
-
-	return preprocess
-def set_preprocessing():
-		NORMALIZATION
+	from sklearn.feature_extraction.text import CountVectorizer
+    preprocess = CountVectorizer(ngram_range=(1,1))    
 
 	return preprocess
 def algorithm_settings():
@@ -41,69 +34,52 @@ from surprise.model_selection import KFold
 from collections import defaultdict
 kf = KFold(n_splits=n_splits)
 #algo = SVD()
-		from sklearn.preprocessing import StandardScaler
-		sc = StandardScaler()
-		X_train = sc.fit_transform(X_split)
-		X_test = sc.transform(X_test)
-	
-	
-			NORMALIZATION
-	
+		from sklearn.feature_extraction.text import CountVectorizer
+	    preprocess = CountVectorizer(ngram_range=(1,1))    
 	
 
 
 
-	
 	
 
 
 	is_user_based=False
 	
-	
 
 
 	neighborhood=0
-	
 	
 
 
 	cutoff=0
 	
-	
 
 
 	sim_funct='cosine'
-	
 	
 
 
 	sim_settings = {'name': sim_funct,
 	
-	
 
 
                'user_based': is_user_based  # compute  similarities between items
-	
 	
 
 
                }
 	
-	
 
 
 	from surprise import KNNWithMeans
-	
 	
 
 
 	algo = KNNWithMeans(k=neighborhood, sim_options=sim_settings)
 	
-	
 
 
 
-	
 	
 
 
