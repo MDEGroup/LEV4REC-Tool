@@ -16,10 +16,6 @@ def set_preprocessing():
 
 
 	return preprocess
-def set_preprocessing():
-		NORMALIZATION
-
-	return preprocess
 def algorithm_settings():
 
 	is_user_based=False
@@ -47,74 +43,16 @@ kf = KFold(n_splits=n_splits)
 		X_test = sc.transform(X_test)
 	
 	
-			NORMALIZATION
-	
-	
 
 
 
-	
-	
-
-
-	is_user_based=False
-	
-	
-
-
-	neighborhood=0
-	
-	
-
-
-	cutoff=0
-	
-	
-
-
-	sim_funct='cosine'
-	
-	
-
-
-	sim_settings = {'name': sim_funct,
-	
-	
-
-
-               'user_based': is_user_based  # compute  similarities between items
-	
-	
-
-
-               }
-	
-	
-
-
-	from surprise import KNNWithMeans
-	
-	
-
-
-	algo = KNNWithMeans(k=neighborhood, sim_options=sim_settings)
-	
-	
-
-
-
-	
-	
-
-
-
-
-threshold = 3.5
-k=10
-for trainset, testset in kf.split(data):
-    algo.fit(trainset)
-    predictions = algo.test(testset)
-    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
+	algo=algorithm_settings()
+	threshold = 3.5
+	k=10
+	for trainset, testset in kf.split(data):
+	    algo.fit(trainset)
+	    predictions = algo.test(testset)
+	    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
 
 	precision= sum(prec for prec in precisions.values()) / len(precisions)
 	recall =sum(rec for rec in recalls.values()) / len(recalls)

@@ -134,6 +134,46 @@
 			<version>1.0.0</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.eclipse.acceleo/org.eclipse.acceleo.common -->
+		<dependency>
+			<groupId>org.eclipse.acceleo</groupId>
+			<artifactId>org.eclipse.acceleo.common</artifactId>
+			<version>3.5.1.201409021433</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.eclipse.acceleo/org.eclipse.acceleo.model -->
+		<dependency>
+			<groupId>org.eclipse.acceleo</groupId>
+			<artifactId>org.eclipse.acceleo.model</artifactId>
+			<version>3.5.1.201409021433</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.eclipse.ocl/org.eclipse.ocl.ecore -->
+		<dependency>
+			<groupId>org.eclipse.ocl</groupId>
+			<artifactId>org.eclipse.ocl.ecore</artifactId>
+			<version>3.3.0.v20130520-1222</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.eclipse.ocl/org.eclipse.ocl -->
+		<dependency>
+			<groupId>org.eclipse.ocl</groupId>
+			<artifactId>org.eclipse.ocl</artifactId>
+			<version>3.3.0.v20130909-1552</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.eclipse.ocl/org.eclipse.ocl.common -->
+		<dependency>
+			<groupId>org.eclipse.ocl</groupId>
+			<artifactId>org.eclipse.ocl.common</artifactId>
+			<version>1.1.0.v20130531-0544</version>
+		</dependency>
+
+
+
+
+
+
 
 
 

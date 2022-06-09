@@ -5,7 +5,7 @@ datasetManipulationLibrary [ PANDAS ]
 path '/mypath'
 dataStructure Matrix data { }
 }
-presentationLayer : IDEIntegration presentation_layer { } evaluation : Evaluation eval {
+presentationLayer : WebIService presentation_layer { } evaluation : Evaluation eval {
 validationTechnique [ CrossValidation cross { nOfRecommendations 0 } ]
 } recommendationSystem : FilteringRS recsys {
 generator SURPRISE filteringRSAlgorithm ITEM_BASED }
