@@ -1,3 +1,10 @@
+[comment encoding = UTF-8 /]
+[module generateFlaggerInterface('https://it.disim.univaq/lowcode')/]
+
+[template public generateFlaggerInterface(recSys : RSModel)]
+	
+	[comment @main /]
+	[file (recSys.name.concat('.py'), false, 'UTF-8')]
 
 from flask import Flask
 
@@ -6,11 +13,11 @@ import os
 
 from flasgger import Swagger
 
-from CrossRec_business_logic import  run_cross_fold
+from [recSys.name/]_business_logic import  run_cross_fold
 
 
 app = Flask(__name__)
-app.config['SWAGGER'] = {
+app.config['['/]'SWAGGER'[']'/] = {
     'title': 'LEV4REC-API',
     'uiversion': 3
 }
@@ -80,3 +87,6 @@ if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
 		
+	[/file]
+	
+[/template]

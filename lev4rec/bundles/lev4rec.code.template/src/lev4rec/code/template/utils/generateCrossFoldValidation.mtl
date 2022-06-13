@@ -73,14 +73,14 @@ kf = KFold(n_splits=n_splits)
 	[/if]
 
 
-[generateRecommenderSystem(recSys)/]
 
-threshold = 3.5
-k=10
-for trainset, testset in kf.split(data):
-    algo.fit(trainset)
-    predictions = algo.test(testset)
-    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
+	algo=algorithm_settings()
+	threshold = 3.5
+	k=10
+	for trainset, testset in kf.split(data):
+	    algo.fit(trainset)
+	    predictions = algo.test(testset)
+	    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
 
 [for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
 	[if (metric = Metric::PRECISION) ]
