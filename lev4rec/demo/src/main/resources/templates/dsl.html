@@ -12,7 +12,7 @@
 
 <script type="text/javascript">
 	//var baseUrl = window.location.pathname;
-	var baseUrl = "http://apigateway-service:8891/"
+	var baseUrl = ""
 	console.log(baseUrl);
 	var fileIndex = baseUrl.indexOf("dsl.html");
 	if (fileIndex > 0)
@@ -30,6 +30,7 @@
 		require([ "xtext/xtext-ace" ], function(xtext) {
 			xtext.createEditor({
 				baseUrl : baseUrl,
+				serviceUrl : "http://apigateway-service:8891/xtext-service",
 				syntaxDefinition : "/lev4rec/js/mode-rec.js"
 			});
 		});

@@ -973,11 +973,15 @@ define('xtext/ServiceBuilder',[
 		var editorContext = services.editorContext;
 		editorContext.xtextServices = services;
 		var self = this;
+		console.log("juri 1");
+		console.log(options.serviceUrl);
 		if (!options.serviceUrl) {
 			if (!options.baseUrl)
 				options.baseUrl = '/';
 			else if (options.baseUrl.charAt(0) != '/')
 				options.baseUrl =  options.baseUrl;
+			console.log("juri 2");
+			console.log(baseUrl);
 			options.serviceUrl = options.baseUrl + 'xtext-service';
 		}
 		if (options.resourceId) {
