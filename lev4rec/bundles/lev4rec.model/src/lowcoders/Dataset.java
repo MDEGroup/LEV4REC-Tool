@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link lowcoders.Dataset#getPreprocessing <em>Preprocessing</em>}</li>
  *   <li>{@link lowcoders.Dataset#getDatasetManipulationLibrary <em>Dataset Manipulation Library</em>}</li>
  *   <li>{@link lowcoders.Dataset#getPath <em>Path</em>}</li>
+ *   <li>{@link lowcoders.Dataset#isIsBuiltIn <em>Is Built In</em>}</li>
  * </ul>
  *
  * @see lowcoders.LowcodersPackage#getDataset()
@@ -108,5 +109,27 @@ public interface Dataset extends NamedElement {
 	 * @generated
 	 */
 	void setPath(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Is Built In</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Built In</em>' attribute.
+	 * @see #setIsBuiltIn(boolean)
+	 * @see lowcoders.LowcodersPackage#getDataset_IsBuiltIn()
+	 * @model
+	 * @generated
+	 */
+	boolean isIsBuiltIn();
+
+	/**
+	 * Sets the value of the '{@link lowcoders.Dataset#isIsBuiltIn <em>Is Built In</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Built In</em>' attribute.
+	 * @see #isIsBuiltIn()
+	 * @generated
+	 */
+	void setIsBuiltIn(boolean value);
 
 } // Dataset

@@ -246,11 +246,13 @@ public class Injector {
 		if (isSelected(configuration, "UnsupervisedDataset")) {
 			dataset = LowcodersFactory.eINSTANCE.createUnsupervisedDataset();
 			dataset.setName("DATASET NAME");
+			
 
 		}
 		if (isSelected(configuration, "SupervisedDataset")) {
 			dataset = LowcodersFactory.eINSTANCE.createSupervisedDataset();
-			dataset.setName("DATASET NAME");
+			dataset.setName("DATASET NAME");		
+			
 		}
 		// DataStructure
 		if (dataset != null) {

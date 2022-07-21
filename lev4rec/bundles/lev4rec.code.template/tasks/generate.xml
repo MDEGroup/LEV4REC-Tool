@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="lev4rec.code.template">
-    <property name="ECLIPSE_HOME" value="../../../../../../../eclipse/modeling-2020-06/Eclipse.app/Contents/Eclipse"/>
-    <property name="ECLIPSE_WORKSPACE" value="../../../../../../workspaces/low_code"/>
+    <property name="ECLIPSE_HOME" value="C:/Users/claudio/eclipse/jee-2020-06/eclipse"/>
+    <property name="ECLIPSE_WORKSPACE" value="C:/Users/claudio/eclipse-workspace/LEV4REC-UMUAI"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="lev4rec.code.template.libraryclasspath">

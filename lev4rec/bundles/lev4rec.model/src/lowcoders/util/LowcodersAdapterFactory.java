@@ -296,6 +296,38 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 				return createGUIElementAdapter();
 			}
 			@Override
+			public Adapter caseUser(User object) {
+				return createUserAdapter();
+			}
+			@Override
+			public Adapter caseFeedbackComponent(FeedbackComponent object) {
+				return createFeedbackComponentAdapter();
+			}
+			@Override
+			public Adapter caseFeedback(Feedback object) {
+				return createFeedbackAdapter();
+			}
+			@Override
+			public Adapter caseImplicitFeedback(ImplicitFeedback object) {
+				return createImplicitFeedbackAdapter();
+			}
+			@Override
+			public Adapter caseHybridFeedback(HybridFeedback object) {
+				return createHybridFeedbackAdapter();
+			}
+			@Override
+			public Adapter caseAdditiveFeedback(AdditiveFeedback object) {
+				return createAdditiveFeedbackAdapter();
+			}
+			@Override
+			public Adapter caseExplicitFeedback(ExplicitFeedback object) {
+				return createExplicitFeedbackAdapter();
+			}
+			@Override
+			public Adapter caseRating(Rating object) {
+				return createRatingAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -1110,6 +1142,118 @@ public class LowcodersAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGUIElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.User <em>User</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.User
+	 * @generated
+	 */
+	public Adapter createUserAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.FeedbackComponent <em>Feedback Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.FeedbackComponent
+	 * @generated
+	 */
+	public Adapter createFeedbackComponentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.Feedback <em>Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.Feedback
+	 * @generated
+	 */
+	public Adapter createFeedbackAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.ImplicitFeedback <em>Implicit Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.ImplicitFeedback
+	 * @generated
+	 */
+	public Adapter createImplicitFeedbackAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.HybridFeedback <em>Hybrid Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.HybridFeedback
+	 * @generated
+	 */
+	public Adapter createHybridFeedbackAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.AdditiveFeedback <em>Additive Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.AdditiveFeedback
+	 * @generated
+	 */
+	public Adapter createAdditiveFeedbackAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.ExplicitFeedback <em>Explicit Feedback</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.ExplicitFeedback
+	 * @generated
+	 */
+	public Adapter createExplicitFeedbackAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lowcoders.Rating <em>Rating</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lowcoders.Rating
+	 * @generated
+	 */
+	public Adapter createRatingAdapter() {
 		return null;
 	}
 

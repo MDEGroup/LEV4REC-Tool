@@ -7,6 +7,7 @@ import lowcoders.PresentationLayer;
 import lowcoders.RecommendedItem;
 import lowcoders.WebApplication;
 
+import lowcoders.WebInterfaceLibrary;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -23,6 +24,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link lowcoders.impl.WebApplicationImpl#getRecommendations <em>Recommendations</em>}</li>
+ *   <li>{@link lowcoders.impl.WebApplicationImpl#getLibrary <em>Library</em>}</li>
+ *   <li>{@link lowcoders.impl.WebApplicationImpl#getPort <em>Port</em>}</li>
+ *   <li>{@link lowcoders.impl.WebApplicationImpl#getHost <em>Host</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,6 +41,61 @@ public class WebApplicationImpl extends NamedElementImpl implements WebApplicati
 	 * @ordered
 	 */
 	protected RecommendedItem recommendations;
+
+	/**
+	 * The default value of the '{@link #getLibrary() <em>Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final WebInterfaceLibrary LIBRARY_EDEFAULT = WebInterfaceLibrary.FLASK;
+	/**
+	 * The cached value of the '{@link #getLibrary() <em>Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected WebInterfaceLibrary library = LIBRARY_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getPort() <em>Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PORT_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getPort() <em>Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected String port = PORT_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getHost() <em>Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHost()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String HOST_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getHost() <em>Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHost()
+	 * @generated
+	 * @ordered
+	 */
+	protected String host = HOST_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,11 +162,86 @@ public class WebApplicationImpl extends NamedElementImpl implements WebApplicati
 	 * @generated
 	 */
 	@Override
+	public WebInterfaceLibrary getLibrary() {
+		return library;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setLibrary(WebInterfaceLibrary newLibrary) {
+		WebInterfaceLibrary oldLibrary = library;
+		library = newLibrary == null ? LIBRARY_EDEFAULT : newLibrary;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.WEB_APPLICATION__LIBRARY, oldLibrary, library));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getPort() {
+		return port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setPort(String newPort) {
+		String oldPort = port;
+		port = newPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.WEB_APPLICATION__PORT, oldPort, port));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getHost() {
+		return host;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setHost(String newHost) {
+		String oldHost = host;
+		host = newHost;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.WEB_APPLICATION__HOST, oldHost, host));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case LowcodersPackage.WEB_APPLICATION__RECOMMENDATIONS:
 				if (resolve) return getRecommendations();
 				return basicGetRecommendations();
+			case LowcodersPackage.WEB_APPLICATION__LIBRARY:
+				return getLibrary();
+			case LowcodersPackage.WEB_APPLICATION__PORT:
+				return getPort();
+			case LowcodersPackage.WEB_APPLICATION__HOST:
+				return getHost();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -122,6 +256,15 @@ public class WebApplicationImpl extends NamedElementImpl implements WebApplicati
 		switch (featureID) {
 			case LowcodersPackage.WEB_APPLICATION__RECOMMENDATIONS:
 				setRecommendations((RecommendedItem)newValue);
+				return;
+			case LowcodersPackage.WEB_APPLICATION__LIBRARY:
+				setLibrary((WebInterfaceLibrary)newValue);
+				return;
+			case LowcodersPackage.WEB_APPLICATION__PORT:
+				setPort((String)newValue);
+				return;
+			case LowcodersPackage.WEB_APPLICATION__HOST:
+				setHost((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,6 +281,15 @@ public class WebApplicationImpl extends NamedElementImpl implements WebApplicati
 			case LowcodersPackage.WEB_APPLICATION__RECOMMENDATIONS:
 				setRecommendations((RecommendedItem)null);
 				return;
+			case LowcodersPackage.WEB_APPLICATION__LIBRARY:
+				setLibrary(LIBRARY_EDEFAULT);
+				return;
+			case LowcodersPackage.WEB_APPLICATION__PORT:
+				setPort(PORT_EDEFAULT);
+				return;
+			case LowcodersPackage.WEB_APPLICATION__HOST:
+				setHost(HOST_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -152,6 +304,12 @@ public class WebApplicationImpl extends NamedElementImpl implements WebApplicati
 		switch (featureID) {
 			case LowcodersPackage.WEB_APPLICATION__RECOMMENDATIONS:
 				return recommendations != null;
+			case LowcodersPackage.WEB_APPLICATION__LIBRARY:
+				return library != LIBRARY_EDEFAULT;
+			case LowcodersPackage.WEB_APPLICATION__PORT:
+				return PORT_EDEFAULT == null ? port != null : !PORT_EDEFAULT.equals(port);
+			case LowcodersPackage.WEB_APPLICATION__HOST:
+				return HOST_EDEFAULT == null ? host != null : !HOST_EDEFAULT.equals(host);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -186,6 +344,26 @@ public class WebApplicationImpl extends NamedElementImpl implements WebApplicati
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (library: ");
+		result.append(library);
+		result.append(", port: ");
+		result.append(port);
+		result.append(", host: ");
+		result.append(host);
+		result.append(')');
+		return result.toString();
 	}
 
 } //WebApplicationImpl

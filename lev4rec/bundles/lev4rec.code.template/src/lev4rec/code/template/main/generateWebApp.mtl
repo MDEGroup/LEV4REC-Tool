@@ -1,0 +1,17 @@
+[comment encoding = UTF-8 /]
+[module generateWebApp('https://it.disim.univaq/lowcode')/]
+[import lev4rec::code::template::utils::generateWebApplication /]
+
+[template public generateWebApp(recSys : RSModel)]
+	
+[comment @main /]
+
+[file (recSys.name+'_service.py', false, 'UTF-8')]
+[if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
+from [recSys.name/]_business import load_dataset, get_recommendations, algorithm_settings
+[generateWebApplication(recSys.presentationLayer.oclAsType(lowcoders::WebApplication))/]
+[/if]
+	
+[/file]
+	
+[/template]

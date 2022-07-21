@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link lowcoders.impl.DatasetImpl#getPreprocessing <em>Preprocessing</em>}</li>
  *   <li>{@link lowcoders.impl.DatasetImpl#getDatasetManipulationLibrary <em>Dataset Manipulation Library</em>}</li>
  *   <li>{@link lowcoders.impl.DatasetImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link lowcoders.impl.DatasetImpl#isIsBuiltIn <em>Is Built In</em>}</li>
  * </ul>
  *
  * @generated
@@ -102,6 +103,26 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 	 * @ordered
 	 */
 	protected String path = PATH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsBuiltIn() <em>Is Built In</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsBuiltIn()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_BUILT_IN_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsBuiltIn() <em>Is Built In</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsBuiltIn()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isBuiltIn = IS_BUILT_IN_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -235,6 +256,29 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 	 * @generated
 	 */
 	@Override
+	public boolean isIsBuiltIn() {
+		return isBuiltIn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIsBuiltIn(boolean newIsBuiltIn) {
+		boolean oldIsBuiltIn = isBuiltIn;
+		isBuiltIn = newIsBuiltIn;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LowcodersPackage.DATASET__IS_BUILT_IN, oldIsBuiltIn, isBuiltIn));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case LowcodersPackage.DATASET__INDIPENDENT_VARIABLES:
@@ -263,6 +307,8 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 				return getDatasetManipulationLibrary();
 			case LowcodersPackage.DATASET__PATH:
 				return getPath();
+			case LowcodersPackage.DATASET__IS_BUILT_IN:
+				return isIsBuiltIn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -294,6 +340,9 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 			case LowcodersPackage.DATASET__PATH:
 				setPath((String)newValue);
 				return;
+			case LowcodersPackage.DATASET__IS_BUILT_IN:
+				setIsBuiltIn((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -321,6 +370,9 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 			case LowcodersPackage.DATASET__PATH:
 				setPath(PATH_EDEFAULT);
 				return;
+			case LowcodersPackage.DATASET__IS_BUILT_IN:
+				setIsBuiltIn(IS_BUILT_IN_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -343,6 +395,8 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 				return datasetManipulationLibrary != null && !datasetManipulationLibrary.isEmpty();
 			case LowcodersPackage.DATASET__PATH:
 				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+			case LowcodersPackage.DATASET__IS_BUILT_IN:
+				return isBuiltIn != IS_BUILT_IN_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -363,6 +417,8 @@ public abstract class DatasetImpl extends NamedElementImpl implements Dataset {
 		result.append(datasetManipulationLibrary);
 		result.append(", path: ");
 		result.append(path);
+		result.append(", isBuiltIn: ");
+		result.append(isBuiltIn);
 		result.append(')');
 		return result.toString();
 	}

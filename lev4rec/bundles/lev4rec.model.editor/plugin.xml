@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated lowcode -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="lowcoders.presentation.LowcodersModelWizardID"
+            name="%_UI_LowcodersModelWizard_label"
+            class="lowcoders.presentation.LowcodersModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/LowcodersModelFile.gif">
+         <description>%_UI_LowcodersModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated lowcode -->
+      <editor
+            id="lowcoders.presentation.LowcodersEditorID"
+            name="%_UI_LowcodersEditor_label"
+            icon="icons/full/obj16/LowcodersModelFile.gif"
+            extensions="lowcoders"
+            class="lowcoders.presentation.LowcodersEditor"
+            contributorClass="lowcoders.presentation.LowcodersActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

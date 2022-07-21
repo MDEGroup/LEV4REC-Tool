@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rsDsl" nsURI="http://www.xtext.org/lev4recgrammar/first/RsDsl"
+    nsPrefix="rsDsl">
+  <eClassifiers xsi:type="ecore:EClass" name="RSModel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataset" eType="#//Dataset"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="presentationLayer" eType="#//PresentationLayer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evaluation" eType="#//Evaluation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="recommendationSystem" eType="#//RecommendationSystem"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feedback" eType="#//FeedbackComponent"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Dataset">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBuiltIn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preprocessing" unique="false"
+        upperBound="-1" eType="#//PreprocessingTechnique"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="datasetManipulationLibrary"
+        unique="false" upperBound="-1" eType="#//DatasetManipulationLibrary"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="indipendentVariables" upperBound="-1"
+        eType="#//Variable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataStructure" eType="#//DataStructure"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PresentationLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="recommendations" eType="#//RecommendedItem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generator" eType="#//PyLibType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="settings" upperBound="-1"
+        eType="#//RecommendationSetting" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scope" eType="#//RecommendedItem"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//RecommendationContext"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidationTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nOfRecommendations" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feedback">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" eType="#//RecommendedItem"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataStructure">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecommendationHandler">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="webService" eType="#//WebIService"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//RecommendationContext"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usage" upperBound="-1"
+        eType="#//RecommendationUsage" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Evaluation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baselines" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metrics" unique="false"
+        upperBound="-1" eType="#//Metric"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validationTechnique" upperBound="-1"
+        eType="#//ValidationTechnique" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeedbackComponent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="library" eType="#//FeedbackLibType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//RecommendationContext"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressedFeedback" eType="#//Feedback"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMissingValueAllowed"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMultiple" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//VariableType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataSource" eType="#//DataSource"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preprocessing" eType="#//Preprocessing"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PreprocessingTechnique">
+    <eLiterals name="DUPLICATES_REMOVAL" literal="DUPLICATES_REMOVAL"/>
+    <eLiterals name="NLP" value="1" literal="NLP"/>
+    <eLiterals name="NORMALIZATION" value="2" literal="NORMALIZATION"/>
+    <eLiterals name="MISSING_DATA_MANIPULATION" value="3" literal="MISSING_DATA_MANIPULATION"/>
+    <eLiterals name="VECTORIZATION" value="4" literal="VECTORIZATION"/>
+    <eLiterals name="FEATURE_SCALING" value="5" literal="FEATURE_SCALING"/>
+    <eLiterals name="TFIDF" value="6" literal="TFIDF"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DatasetManipulationLibrary">
+    <eLiterals name="PANDAS" literal="PANDAS"/>
+    <eLiterals name="NUMPY" value="1" literal="NUMPY"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnsupervisedDataset" eSuperTypes="#//Dataset"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SupervisedDataset" eSuperTypes="#//Dataset">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dependatVariable" eType="#//Variable"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Preprocessing">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preprocessigTechnique"
+        unique="false" upperBound="-1" eType="#//PreprocessingTechnique"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VariableType">
+    <eLiterals name="String" literal="String"/>
+    <eLiterals name="Boolean" value="1" literal="Boolean"/>
+    <eLiterals name="CategoricalData" value="2" literal="CategoricalData"/>
+    <eLiterals name="Integer" value="3" literal="Integer"/>
+    <eLiterals name="Float" value="4" literal="Float"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CodeRepository" eSuperTypes="#//DataSource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommunicationChannel" eSuperTypes="#//DataSource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BugTrackingSystem" eSuperTypes="#//DataSource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DependencyManager" eSuperTypes="#//DataSource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="File" eSuperTypes="#//DataSource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourcePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="encoding" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Graph" eSuperTypes="#//DataStructure">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" unique="false" upperBound="-1"
+        eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relations" eType="#//VariableRelation"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Matrix" eSuperTypes="#//DataStructure">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" unique="false"
+        upperBound="-1" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tree" eSuperTypes="#//DataStructure">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" unique="false" upperBound="-1"
+        eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relations" eType="#//VariableRelation"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextualContent" eSuperTypes="#//DataStructure">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rootPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contents" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ARFF" eSuperTypes="#//DataStructure">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" unique="false"
+        upperBound="-1" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableRelation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecommendedItem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordered" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outcame" unique="false"
+        upperBound="-1" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WebIService" eSuperTypes="#//PresentationLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="library" eType="#//WebInterfaceLibrary"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WebApplication" eSuperTypes="#//PresentationLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="library" eType="#//WebInterfaceLibrary"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="host" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IDEIntegration" eSuperTypes="#//PresentationLayer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VSCodePlugin" eSuperTypes="#//PresentationLayer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="handler" unique="false"
+        upperBound="-1" eType="#//RecommendationHandler"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TraversableGraph" eSuperTypes="#//PresentationLayer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RawOutcomes" eSuperTypes="#//PresentationLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="#//RawFormat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WebInterfaceLibrary">
+    <eLiterals name="FLASK" literal="FLASK"/>
+    <eLiterals name="SPRING" value="1" literal="SPRING"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecommendationUsage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="usageType" eType="#//RecommendationUsageType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="recommendedItems" unique="false"
+        upperBound="-1" eType="#//RecommendedItem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guielements" upperBound="-1"
+        eType="#//GUIElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecommendationContext">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isProactiveSystem" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="userContext" eType="#//DataStructure"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProactiveHandler" eSuperTypes="#//RecommendationHandler">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReactiveHandler" eSuperTypes="#//RecommendationHandler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" eType="#//UserEvent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RecommendationUsageType">
+    <eLiterals name="Transformative" literal="Transformative"/>
+    <eLiterals name="Visualization" value="1" literal="Visualization"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GUIElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UserEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventType" eType="#//UserEventType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UserEventType">
+    <eLiterals name="Click" literal="Click"/>
+    <eLiterals name="Selection" value="1" literal="Selection"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RawFormat">
+    <eLiterals name="CSV" literal="CSV"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Metric">
+    <eLiterals name="PRECISION" literal="PRECISION"/>
+    <eLiterals name="RECALL" value="1" literal="RECALL"/>
+    <eLiterals name="F1_MEASURE" value="2" literal="F1_MEASURE"/>
+    <eLiterals name="CATALOG_COVERAGE" value="3" literal="CATALOG_COVERAGE"/>
+    <eLiterals name="NOVELTY" value="4" literal="NOVELTY"/>
+    <eLiterals name="SALE_DIVERSITY" value="5" literal="SALE_DIVERSITY"/>
+    <eLiterals name="NDCG" value="6" literal="NDCG"/>
+    <eLiterals name="ITEM_COVERAGE" value="7" literal="ITEM_COVERAGE"/>
+    <eLiterals name="EPC" value="8" literal="EPC"/>
+    <eLiterals name="GINI" value="9" literal="GINI"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UserStudy" eSuperTypes="#//ValidationTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//UserStudyType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="analysis" eType="#//UserStudyAnalysis"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CrossValidation" eSuperTypes="#//ValidationTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="library" eType="#//ValidationLibrary"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfFold" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groundTruthExtractor" eType="#//GroundTruthExtraction"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextValidation" eSuperTypes="#//ValidationTechnique">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="testContext" eType="#//RecommendationContext"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RandomSplitting" eSuperTypes="#//ValidationTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="library" eType="#//ValidationLibrary"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AutomatedValidation" eSuperTypes="#//ValidationTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="library" eType="#//ValidationLibrary"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UserStudyType">
+    <eLiterals name="FIELD_STUDIES" literal="FIELD_STUDIES"/>
+    <eLiterals name="CONTROLLED_EXPERIMENT" value="1" literal="CONTROLLED_EXPERIMENT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UserStudyAnalysis">
+    <eLiterals name="QUALITATIVE" literal="QUALITATIVE"/>
+    <eLiterals name="QUANTITATIVE" value="1" literal="QUANTITATIVE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ValidationLibrary">
+    <eLiterals name="SKLEARN" literal="SKLEARN"/>
+    <eLiterals name="SURPRISE" value="1" literal="SURPRISE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GroundTruthExtraction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeGT" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="splittingRules" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetVariable" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecommendationSetting">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PyLibType">
+    <eLiterals name="SKLEARN" literal="SKLEARN"/>
+    <eLiterals name="SURPRISE" value="1" literal="SURPRISE"/>
+    <eLiterals name="TENSOR_FLOW" value="2" literal="TENSOR_FLOW"/>
+    <eLiterals name="PYTORCH" value="3" literal="PYTORCH"/>
+    <eLiterals name="ELLIOT" value="4" literal="ELLIOT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MachineLearningBasedRS" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numEpochs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learningRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="miniBatchSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FilteringRS" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filteringRSAlgorithm" eType="#//FilteringRSAlgorithm"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="similarityCalculator" eType="#//SimilarityFunction"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cutoff" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="neighborhood" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMiningRS" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataMiningRSAlgorithm"
+        eType="#//DataMiningRSAlgorithm"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomRecommender" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiredTools" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneticAlgorithm" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fitnessFunction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="searchStrategy" eType="#//SearchStrategy"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mutationOperator" eType="#//MutationOperation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeepNN" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numEpochs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learningRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="miniBatchSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numHiddenLayer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConvolutionalNN" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numEpochs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learningRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="miniBatchSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bayesian" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numEpochs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learningRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="miniBatchSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecurrentNN" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numEpochs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learningRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="miniBatchSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SVM" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numEpochs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learningRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="miniBatchSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kernel" eType="#//KernelType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionTree" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numEpochs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learningRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="miniBatchSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeedForwardNN" eSuperTypes="#//RecommendationSystem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numEpochs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learningRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="miniBatchSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="solver" eType="#//SolverType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alpha" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activationFunction" eType="#//ActivationType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="randomState" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FilteringRSAlgorithm">
+    <eLiterals name="CONTENT_BASED" literal="CONTENT_BASED"/>
+    <eLiterals name="DEMOGRAPHIC" value="1" literal="DEMOGRAPHIC"/>
+    <eLiterals name="USER_BASED" value="2" literal="USER_BASED"/>
+    <eLiterals name="ITEM_BASED" value="3" literal="ITEM_BASED"/>
+    <eLiterals name="CONTEXT_AWARE" value="4" literal="CONTEXT_AWARE"/>
+    <eLiterals name="HYBRID" value="5" literal="HYBRID"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SimilarityFunction">
+    <eLiterals name="COSINE_SIMILARITY" literal="COSINE_SIMILARITY"/>
+    <eLiterals name="JACCARD_DISTANCE" value="1" literal="JACCARD_DISTANCE"/>
+    <eLiterals name="WORD_EMBEDDINGS" value="2" literal="WORD_EMBEDDINGS"/>
+    <eLiterals name="LEVENSHTEIN_DISTANCE" value="3" literal="LEVENSHTEIN_DISTANCE"/>
+    <eLiterals name="SVD" value="4" literal="SVD"/>
+    <eLiterals name="GRAPH_BASED" value="5" literal="GRAPH_BASED"/>
+    <eLiterals name="MSD" value="6" literal="MSD"/>
+    <eLiterals name="EUCLIDEAN_DISTANCE" value="7" literal="EUCLIDEAN_DISTANCE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataMiningRSAlgorithm">
+    <eLiterals name="CLUSTERING" literal="CLUSTERING"/>
+    <eLiterals name="FREQUENT_ITEM_SET" value="1" literal="FREQUENT_ITEM_SET"/>
+    <eLiterals name="ASSOCIATION_RULE" value="2" literal="ASSOCIATION_RULE"/>
+    <eLiterals name="EVENT_STREAM" value="3" literal="EVENT_STREAM"/>
+    <eLiterals name="TEXT_MINING" value="4" literal="TEXT_MINING"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SearchStrategy">
+    <eLiterals name="SIMULATED_ANNELING" literal="SIMULATED_ANNELING"/>
+    <eLiterals name="HILL_CLIMBING" value="1" literal="HILL_CLIMBING"/>
+    <eLiterals name="GRADIENT_DESCENT" value="2" literal="GRADIENT_DESCENT"/>
+    <eLiterals name="EGGHOLDER_FUNCTION" value="3" literal="EGGHOLDER_FUNCTION"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MutationOperation">
+    <eLiterals name="FIT_BIT" literal="FIT_BIT"/>
+    <eLiterals name="CROSSOVER" value="1" literal="CROSSOVER"/>
+    <eLiterals name="SHRINK_MUTATION" value="2" literal="SHRINK_MUTATION"/>
+    <eLiterals name="REPACE_MUTATION" value="3" literal="REPACE_MUTATION"/>
+    <eLiterals name="PARTIAL_HYPER_MUTATION" value="4" literal="PARTIAL_HYPER_MUTATION"/>
+    <eLiterals name="DUPLICATION" value="5" literal="DUPLICATION"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="KernelType">
+    <eLiterals name="PRECOMPUTED" literal="PRECOMPUTED"/>
+    <eLiterals name="LINEAR" value="1" literal="LINEAR"/>
+    <eLiterals name="POLY" value="2" literal="POLY"/>
+    <eLiterals name="RBF" value="3" literal="RBF"/>
+    <eLiterals name="SIGMOID" value="4" literal="SIGMOID"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SolverType">
+    <eLiterals name="ADAM" literal="ADAM"/>
+    <eLiterals name="LBFGS" value="1" literal="LBFGS"/>
+    <eLiterals name="SGD" value="2" literal="SGD"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ActivationType">
+    <eLiterals name="RELU" literal="RELU"/>
+    <eLiterals name="SIGMOID" value="1" literal="SIGMOID"/>
+    <eLiterals name="TANH" value="2" literal="TANH"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FeedbackLibType">
+    <eLiterals name="LIGHTFM" literal="LIGHTFM"/>
+    <eLiterals name="LIGHTGBM" value="1" literal="LIGHTGBM"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplicitFeedback" eSuperTypes="#//Feedback"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HybridFeedback" eSuperTypes="#//Feedback"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AdditiveFeedback" eSuperTypes="#//Feedback">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numOfInsertion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="recommender" eType="#//RecommendationSystem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rating" eSuperTypes="#//Feedback">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RatingType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RatingType">
+    <eLiterals name="POSITIVE" literal="POSITIVE"/>
+    <eLiterals name="NEGATIVE" value="1" literal="NEGATIVE"/>
+    <eLiterals name="NUMERICAL" value="2" literal="NUMERICAL"/>
+    <eLiterals name="ORDINAL" value="3" literal="ORDINAL"/>
+    <eLiterals name="UNARY" value="4" literal="UNARY"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -6,29 +6,24 @@
 [import lev4rec::code::template::utils::generatePreprocessingTechnique/]
 [template public generateSKDataset(dataset : Dataset)]
 [if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
-dataset=pd.read_csv('[dataset.name/]')
-X = dataset.iloc['[:,:-1]'/].values
+	data=pd.read_csv('[dataset.name/]')
+	X = data.iloc['[:,:-1]'/].values
+	return X
 [/if]
-
 [if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]
-
-
 [if (dataset.dataStructure.oclIsTypeOf(lowcoders::TextualContent))]
 [generateTextualContent(dataset.dataStructure.oclAsType(lowcoders::TextualContent))/]
 [/if]
-
 [if (dataset.preprocessing -> size()>0)]
 	[for (pr : PreprocessingTechnique | dataset.preprocessing)]
-[generatePreprocessingTechnique(pr)/]
+[comment [generatePreprocessingTechnique(pr)/] 
 	[/for]
 [/if]
-
 [if (dataset.dataStructure.oclIsTypeOf(lowcoders::Matrix))]
-dataset=pd.read_csv('[dataset.name/]')
-#X = dataset.iloc['[:,:-1]'/].values
-#y = dataset.iloc['[:, -1]'/].values
-[checkDatasetConsistency(null)/]
+	data=pd.read_csv('[dataset.path/]')
+	X = data.iloc['[:,:-1]'/].values
+	y = data.iloc['[:, -1]'/].values
 [/if]
-
 [/if]
+	return X,y
 [/template]

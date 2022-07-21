@@ -16,6 +16,7 @@ package lowcoders;
  *   <li>{@link lowcoders.RSModel#getPresentationLayer <em>Presentation Layer</em>}</li>
  *   <li>{@link lowcoders.RSModel#getEvaluation <em>Evaluation</em>}</li>
  *   <li>{@link lowcoders.RSModel#getRecommendationSystem <em>Recommendation System</em>}</li>
+ *   <li>{@link lowcoders.RSModel#getFeedback <em>Feedback</em>}</li>
  * </ul>
  *
  * @see lowcoders.LowcodersPackage#getRSModel()
@@ -110,5 +111,27 @@ public interface RSModel extends NamedElement {
 	 * @generated
 	 */
 	void setRecommendationSystem(RecommendationSystem value);
+
+	/**
+	 * Returns the value of the '<em><b>Feedback</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Feedback</em>' containment reference.
+	 * @see #setFeedback(FeedbackComponent)
+	 * @see lowcoders.LowcodersPackage#getRSModel_Feedback()
+	 * @model containment="true"
+	 * @generated
+	 */
+	FeedbackComponent getFeedback();
+
+	/**
+	 * Sets the value of the '{@link lowcoders.RSModel#getFeedback <em>Feedback</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Feedback</em>' containment reference.
+	 * @see #getFeedback()
+	 * @generated
+	 */
+	void setFeedback(FeedbackComponent value);
 
 } // RSModel

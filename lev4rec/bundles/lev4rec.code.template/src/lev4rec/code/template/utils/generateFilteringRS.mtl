@@ -3,25 +3,22 @@
 
 [template public generateFilteringRS(algo : FilteringRS)]
 [if (algo.filteringRSAlgorithm = FilteringRSAlgorithm::USER_BASED)]
-is_user_based=True
+	is_user_based=True
 [/if]
 [if(algo.filteringRSAlgorithm= FilteringRSAlgorithm::ITEM_BASED)]
-is_user_based=False
+	is_user_based=False
 [/if] 		
-neighborhood=[algo.neighborhood/]
-cutoff=[algo.cutoff/]
-
+	neighborhood=[algo.neighborhood/]
+	cutoff=[algo.cutoff/]
 [if (algo.similarityCalculator = SimilarityFunction::COSINE_SIMILARITY)]
-sim_funct='cosine'
+	sim_funct='cosine'
 [/if]
 [if (algo.similarityCalculator = SimilarityFunction::MSD)]
-sim_funct='msd'
+	sim_funct='msd'
 [/if]
-
-sim_settings = {'name': sim_funct,
+	sim_settings = {'name': sim_funct,
                'user_based': is_user_based  # compute  similarities between items
                }
-from surprise import KNNWithMeans
-algo = KNNWithMeans(k=neighborhood, sim_options=sim_settings)
-
+	from surprise import KNNWithMeans
+	algo = KNNWithMeans(k=neighborhood, sim_options=sim_settings)
 [/template]
