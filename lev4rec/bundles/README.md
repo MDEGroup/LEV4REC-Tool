@@ -43,7 +43,7 @@ To install LEV4REC within Ecplise, please follow these steps:
 
 ## Installation - Stand-alone jars
 
-Inside the **lev4rec_standalone** folder, you can find:
+Inside the [lev4rec_standalone](https://github.com/MDEGroup/LEV4REC-Tool/tree/main/lev4rec/lev4rec_standalone)  folder, you can find:
 
 - **demo-0.0.1-SNAPSHOT.jar**: it contains the Spring project
 - **gateway-0.0.1-SNAPSHOT.jar** : it contains the gateway used to handle the cross-origin requests
