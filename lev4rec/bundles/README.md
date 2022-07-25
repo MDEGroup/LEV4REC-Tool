@@ -47,7 +47,7 @@ Inside the [lev4rec_standalone](https://github.com/MDEGroup/LEV4REC-Tool/tree/ma
 
 - **demo-0.0.1-SNAPSHOT.jar**: it contains the Spring project
 - **gateway-0.0.1-SNAPSHOT.jar** : it contains the gateway used to handle the cross-origin requests
-- **xtext_dsl_editor.war**  : it contains the DSL web project
+- **xtext_dsl_editor.jar**  : it contains the DSL web project
 You have to run the three jars file using the command  `java -jar file.jar`.
 
 
