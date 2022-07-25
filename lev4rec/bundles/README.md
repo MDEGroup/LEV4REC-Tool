@@ -47,8 +47,8 @@ Inside the **lev4rec_standalone** folder, you can find:
 
 - **demo-0.0.1-SNAPSHOT.jar**: it contains the Spring project
 - **gateway-0.0.1-SNAPSHOT.jar** : it contains the gateway used to handle the cross-origin requests
-- **org.xtext.lev4rec.web.war**  : it contains the DSL web project
-You have to run the two jars file using the command  `java -jar file.jar` while the **.war** should be deployed in a web container, e.g., Tomcat.
+- **xtext_dsl_editor.war**  : it contains the DSL web project
+You have to run the three jars file using the command  `java -jar file.jar`.
 
 
 ## Tool Usage
