@@ -51,6 +51,11 @@ Inside the [lev4rec_standalone](https://github.com/MDEGroup/LEV4REC-Tool/tree/ma
 You have to run the three jars file using the command  `java -jar file.jar`.
 
 
+## Installation - Docker deployment
+
+Inside the [lev4rec_standalone](https://github.com/MDEGroup/LEV4REC-Tool/tree/main/lev4rec/lev4rec_standalone)  folder, you can find:
+
+
 ## Tool Usage
 Once you run the three projects, you can go to `http://localhost:8891/lev4rec/` and start to configure the recommender system using the RS configuration form. It is worth noting that some features are currently under development and the system can cover the use case presented in the paper. 
 
