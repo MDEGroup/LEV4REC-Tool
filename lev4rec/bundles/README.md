@@ -43,7 +43,7 @@ To install LEV4REC within Ecplise, please follow these steps:
 
 ## Installation - Stand-alone jars
 
-Inside the [lev4rec_standalone](https://github.com/MDEGroup/LEV4REC-Tool/tree/main/lev4rec/lev4rec_standalone)  folder, you can find:
+Inside the [lev4rec_standalone](https://github.com/MDEGroup/LEV4REC-Tool/tree/main/lev4rec/lev4rec_standalone) folder, you can find:
 
 - **demo-0.0.1-SNAPSHOT.jar**: it contains the Spring project
 - **gateway-0.0.1-SNAPSHOT.jar** : it contains the gateway used to handle the cross-origin requests
@@ -53,7 +53,7 @@ You have to run the three jars file using the command  `java -jar file.jar`.
 
 ## Installation - Docker deployment
 
-Inside the [lev4rec_standalone](https://github.com/MDEGroup/LEV4REC-Tool/tree/main/lev4rec/lev4rec_docker_package)  folder, you can find:
+Inside the [lev4rec_docker_package](https://github.com/MDEGroup/LEV4REC-Tool/tree/main/lev4rec/lev4rec_docker_package) folder, you can find:
 
 - **apiGateway**: this folder contains the Spring Gateway project and the corresponding Docker configuration file
 - **spring** : this folder contains the Spring Web project and the corresponding Docker configuration file
