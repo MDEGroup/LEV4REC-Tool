@@ -53,7 +53,15 @@ You have to run the three jars file using the command  `java -jar file.jar`.
 
 ## Installation - Docker deployment
 
-Inside the [lev4rec_standalone](https://github.com/MDEGroup/LEV4REC-Tool/tree/main/lev4rec/lev4rec_standalone)  folder, you can find:
+Inside the [lev4rec_standalone](https://github.com/MDEGroup/LEV4REC-Tool/tree/main/lev4rec/lev4rec_docker_package)  folder, you can find:
+
+- **apiGateway**: this folder contains the Spring Gateway project and the corresponding Docker configuration file
+- **spring** : this folder contains the Spring Web project and the corresponding Docker configuration file
+- **xtext**  : this folder contains the Xtext project and the corresponding Docker configuration file
+- **docker-compose.yml** : this configuration file is used to compose and deploy the three projects
+
+You have to run `docker_compose.yml` inside a Docker installation. You can use Docker Hub (available [here](https://docs.docker.com/get-docker/) ) 
+
 
 
 ## Tool Usage
