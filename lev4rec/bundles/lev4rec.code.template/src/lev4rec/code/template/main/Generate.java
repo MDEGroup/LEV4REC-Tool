@@ -191,7 +191,7 @@ public class Generate extends AbstractAcceleoGenerator {
          * note that those instructions may have a significant impact on the performances.
          */
 
-        org.eclipse.emf.ecore.util.EcoreUtil.resolveAll(model);
+        //org.eclipse.emf.ecore.util.EcoreUtil.resolveAll(model);
 
         /*
          * If you want to check for potential errors in your models before the launch of the generation, you
