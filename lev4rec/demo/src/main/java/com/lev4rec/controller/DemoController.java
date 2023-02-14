@@ -98,16 +98,17 @@ public class DemoController {
 		System.out.println("User string parsed");
 		
 		
-		FeatureHandler.serializeModel(fineGrainModel, "lev4rec/generated/demo.xmi");
+		FeatureHandler.serializeModel(fineGrainModel, "demo.xmi");
 		System.out.println("Model serialized");
 		
 		
-		FeatureHandler.generateFromTML("lev4rec/generated/demo.xmi", "lev4rec/generated");		
+		FeatureHandler.generateFromTML("demo.xmi", "/Users/juri/demo");		
 		
 		
 		
-		File file = new File("lev4rec/generated/invalid.py");
+		File file = new File("/Users/juri/demo/"+ fineGrainModel.getName() + ".py");
 	    Path path = Paths.get(file.getAbsolutePath());
+	    System.out.println("juri: " + path);
 	    ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.set("Baeldung-Example-Header", 
