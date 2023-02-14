@@ -24,7 +24,6 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -74,6 +73,8 @@ import org.xtext.lev4recgrammar.first.lowcoders.Variable;
 import org.xtext.lev4recgrammar.first.lowcoders.WebIService;
 import org.xtext.lev4recgrammar.first.lowcoders.WebInterfaceLibrary;
 
+
+
 import com.google.common.collect.Lists;
 import com.google.inject.Injector;
 import com.lev4rec.dto.RSConfiguration;
@@ -95,11 +96,6 @@ public class FeatureHandler {
 	public static void generateFromTML(String modelUri, String folderS) {
 
 		try {
-			//Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap( ).put("*", new XMIResourceFactoryImpl());
-			EPackage.Registry.INSTANCE.put(LowcodersPackage.eNS_URI, LowcodersPackage.eINSTANCE);
-	        Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(".xmi", new XMIResourceFactoryImpl());
-	        
-
 			List<String> arguments = new ArrayList<String>();
 			System.out.print("\t" + "Generate all the files from the template...");
 			File folder = new File(folderS);
@@ -351,6 +347,10 @@ public class FeatureHandler {
 
 		if (config.isIDEPlugin()) {
 			presentationLayer = LowcodersFactory.eINSTANCE.createIDEIntegration();
+		}
+		
+		if (config.isJupyterNotebook()) {
+			
 		}
 		if (config.isRawOutcomes())
 			presentationLayer = LowcodersFactory.eINSTANCE.createRawOutcomes();
