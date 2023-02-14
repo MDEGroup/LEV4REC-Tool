@@ -13,7 +13,7 @@ public abstract class AbstractRsDslValidator extends AbstractDeclarativeValidato
 	@Override
 	protected List<EPackage> getEPackages() {
 		List<EPackage> result = new ArrayList<EPackage>();
-		result.add(org.xtext.lev4recgrammar.first.rsDsl.RsDslPackage.eINSTANCE);
+		result.add(org.xtext.lev4recgrammar.first.lowcoders.LowcodersPackage.eINSTANCE);
 		return result;
 	}
 }

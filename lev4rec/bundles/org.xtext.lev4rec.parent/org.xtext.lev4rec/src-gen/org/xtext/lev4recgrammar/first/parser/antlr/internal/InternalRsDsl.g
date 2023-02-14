@@ -359,6 +359,15 @@ rulePresentationLayer returns [EObject current=null]
 			$current = $this_RawOutcomes_5.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getPresentationLayerAccess().getJupyterNotebookParserRuleCall_6());
+		}
+		this_JupyterNotebook_6=ruleJupyterNotebook
+		{
+			$current = $this_JupyterNotebook_6.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -3386,6 +3395,85 @@ ruleIDEIntegration_Impl returns [EObject current=null]
 		otherlv_6='}'
 		{
 			newLeafNode(otherlv_6, grammarAccess.getIDEIntegration_ImplAccess().getRightCurlyBracketKeyword_5());
+		}
+	)
+;
+
+// Entry rule entryRuleJupyterNotebook
+entryRuleJupyterNotebook returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getJupyterNotebookRule()); }
+	iv_ruleJupyterNotebook=ruleJupyterNotebook
+	{ $current=$iv_ruleJupyterNotebook.current; }
+	EOF;
+
+// Rule JupyterNotebook
+ruleJupyterNotebook returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getJupyterNotebookAccess().getJupyterNotebookAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='JupyterNotebook'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getJupyterNotebookAccess().getJupyterNotebookKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getJupyterNotebookAccess().getNameEStringParserRuleCall_2_0());
+				}
+				lv_name_2_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getJupyterNotebookRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_2_0,
+						"org.xtext.lev4recgrammar.first.RsDsl.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_3='{'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getJupyterNotebookAccess().getLeftCurlyBracketKeyword_3());
+		}
+		(
+			otherlv_4='recommendations'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getJupyterNotebookAccess().getRecommendationsKeyword_4_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getJupyterNotebookRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getJupyterNotebookAccess().getRecommendationsRecommendedItemCrossReference_4_1_0());
+					}
+					ruleEString
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		otherlv_6='}'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getJupyterNotebookAccess().getRightCurlyBracketKeyword_5());
 		}
 	)
 ;

@@ -38,7 +38,7 @@ Workflow {
 			fileExtensions = "rec"
 
 			serializer = {
-				generateStub = true
+				generateStub = false
 			}
 			
 			formatter = {

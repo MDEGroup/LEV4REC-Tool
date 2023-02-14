@@ -6,13 +6,13 @@ package org.xtext.lev4recgrammar.first.formatting2
 import com.google.inject.Inject
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
-import org.xtext.lev4recgrammar.first.rsDsl.Evaluation
-import org.xtext.lev4recgrammar.first.rsDsl.RSModel
+import org.xtext.lev4recgrammar.first.lowcoders.Evaluation
+import org.xtext.lev4recgrammar.first.lowcoders.RSModel
 import org.xtext.lev4recgrammar.first.services.RsDslGrammarAccess
 
-import org.xtext.lev4recgrammar.first.rsDsl.UnsupervisedDataset
-import org.xtext.lev4recgrammar.first.rsDsl.RecommendationSystem
-import org.xtext.lev4recgrammar.first.rsDsl.DatasetManipulationLibrary
+import org.xtext.lev4recgrammar.first.lowcoders.UnsupervisedDataset
+import org.xtext.lev4recgrammar.first.lowcoders.RecommendationSystem
+import org.xtext.lev4recgrammar.first.lowcoders.DatasetManipulationLibrary
 import com.google.common.base.Strings
 
 class RsDslFormatter extends AbstractFormatter2 {
@@ -30,14 +30,19 @@ class RsDslFormatter extends AbstractFormatter2 {
 		rSModel.dataset.regionFor.keyword('{').append[newLine]
 		rSModel.dataset.regionFor.keyword('}').prepend[newLine]
 		rSModel.dataset.allRegionsFor.keyword(']').append[newLine]
-		rSModel.dataset.regionFor.keyword("preprocessing").prepend[indent]		
-		rSModel.dataset.regionFor.keyword("path").prepend[newLine]
+		rSModel.regionFor.keyword('preprocessing').prepend[indent]
+		rSModel.dataset.regionFor.keyword('dataStructure').prepend[newLine]		
+		rSModel.dataset.regionFor.keyword('path').prepend[newLine]
 		
 		
 		rSModel.presentationLayer.format
 		
 		
 		rSModel.evaluation.format
+		rSModel.regionFor.keyword("dataStructure").prepend[newLine]
+		rSModel.regionFor.keyword("dependatVariable").prepend[newLine]
+		rSModel.regionFor.keyword("indipendentVariables").prepend[newLine]
+		rSModel.regionFor.keyword("presentationLayer").prepend[newLine]
 		rSModel.regionFor.keyword("validationTechnique").prepend[newLine]
 		rSModel.evaluation.regionFor.keyword("library").prepend[newLine]
 		
@@ -64,6 +69,14 @@ class RsDslFormatter extends AbstractFormatter2 {
 		recsys.regionFor.keyword('{').append[newLine]
 		recsys.regionFor.keyword('}').append[newLine]
 	}
+	
+		def dispatch void format(UnsupervisedDataset dataset, extension IFormattableDocument document) {
+		
+		dataset.regionFor.keyword('dataStructure').prepend[newLine]
+		//recsys.regionFor.keyword('}').append[newLine]
+	}
+	
+	
 	
 
 	

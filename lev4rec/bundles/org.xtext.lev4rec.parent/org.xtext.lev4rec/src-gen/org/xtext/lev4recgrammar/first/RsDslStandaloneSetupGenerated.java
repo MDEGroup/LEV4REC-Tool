@@ -11,7 +11,7 @@ import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.common.TerminalsStandaloneSetup;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
-import org.xtext.lev4recgrammar.first.rsDsl.RsDslPackage;
+import org.xtext.lev4recgrammar.first.lowcoders.LowcodersPackage;
 
 @SuppressWarnings("all")
 public class RsDslStandaloneSetupGenerated implements ISetup {
@@ -30,8 +30,8 @@ public class RsDslStandaloneSetupGenerated implements ISetup {
 	}
 	
 	public void register(Injector injector) {
-		if (!EPackage.Registry.INSTANCE.containsKey("http://www.xtext.org/lev4recgrammar/first/RsDsl")) {
-			EPackage.Registry.INSTANCE.put("http://www.xtext.org/lev4recgrammar/first/RsDsl", RsDslPackage.eINSTANCE);
+		if (!EPackage.Registry.INSTANCE.containsKey("https://it.disim.univaq/lowcode")) {
+			EPackage.Registry.INSTANCE.put("https://it.disim.univaq/lowcode", LowcodersPackage.eINSTANCE);
 		}
 		IResourceFactory resourceFactory = injector.getInstance(IResourceFactory.class);
 		IResourceServiceProvider serviceProvider = injector.getInstance(IResourceServiceProvider.class);

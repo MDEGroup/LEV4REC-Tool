@@ -14,62 +14,63 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.xtext.lev4recgrammar.first.rsDsl.ARFF;
-import org.xtext.lev4recgrammar.first.rsDsl.AdditiveFeedback;
-import org.xtext.lev4recgrammar.first.rsDsl.AutomatedValidation;
-import org.xtext.lev4recgrammar.first.rsDsl.Bayesian;
-import org.xtext.lev4recgrammar.first.rsDsl.BugTrackingSystem;
-import org.xtext.lev4recgrammar.first.rsDsl.CodeRepository;
-import org.xtext.lev4recgrammar.first.rsDsl.CommunicationChannel;
-import org.xtext.lev4recgrammar.first.rsDsl.ContextValidation;
-import org.xtext.lev4recgrammar.first.rsDsl.ConvolutionalNN;
-import org.xtext.lev4recgrammar.first.rsDsl.CrossValidation;
-import org.xtext.lev4recgrammar.first.rsDsl.CustomRecommender;
-import org.xtext.lev4recgrammar.first.rsDsl.DataMiningRS;
-import org.xtext.lev4recgrammar.first.rsDsl.DecisionTree;
-import org.xtext.lev4recgrammar.first.rsDsl.DeepNN;
-import org.xtext.lev4recgrammar.first.rsDsl.DependencyManager;
-import org.xtext.lev4recgrammar.first.rsDsl.Evaluation;
-import org.xtext.lev4recgrammar.first.rsDsl.FeedForwardNN;
-import org.xtext.lev4recgrammar.first.rsDsl.FeedbackComponent;
-import org.xtext.lev4recgrammar.first.rsDsl.File;
-import org.xtext.lev4recgrammar.first.rsDsl.FilteringRS;
-import org.xtext.lev4recgrammar.first.rsDsl.GUIElement;
-import org.xtext.lev4recgrammar.first.rsDsl.GeneticAlgorithm;
-import org.xtext.lev4recgrammar.first.rsDsl.Graph;
-import org.xtext.lev4recgrammar.first.rsDsl.GroundTruthExtraction;
-import org.xtext.lev4recgrammar.first.rsDsl.HybridFeedback;
-import org.xtext.lev4recgrammar.first.rsDsl.IDEIntegration;
-import org.xtext.lev4recgrammar.first.rsDsl.ImplicitFeedback;
-import org.xtext.lev4recgrammar.first.rsDsl.MachineLearningBasedRS;
-import org.xtext.lev4recgrammar.first.rsDsl.Matrix;
-import org.xtext.lev4recgrammar.first.rsDsl.Preprocessing;
-import org.xtext.lev4recgrammar.first.rsDsl.ProactiveHandler;
-import org.xtext.lev4recgrammar.first.rsDsl.RSModel;
-import org.xtext.lev4recgrammar.first.rsDsl.RandomSplitting;
-import org.xtext.lev4recgrammar.first.rsDsl.Rating;
-import org.xtext.lev4recgrammar.first.rsDsl.RawOutcomes;
-import org.xtext.lev4recgrammar.first.rsDsl.ReactiveHandler;
-import org.xtext.lev4recgrammar.first.rsDsl.RecommendationContext;
-import org.xtext.lev4recgrammar.first.rsDsl.RecommendationHandler;
-import org.xtext.lev4recgrammar.first.rsDsl.RecommendationSetting;
-import org.xtext.lev4recgrammar.first.rsDsl.RecommendationUsage;
-import org.xtext.lev4recgrammar.first.rsDsl.RecommendedItem;
-import org.xtext.lev4recgrammar.first.rsDsl.RecurrentNN;
-import org.xtext.lev4recgrammar.first.rsDsl.RsDslPackage;
-import org.xtext.lev4recgrammar.first.rsDsl.SVM;
-import org.xtext.lev4recgrammar.first.rsDsl.SupervisedDataset;
-import org.xtext.lev4recgrammar.first.rsDsl.TextualContent;
-import org.xtext.lev4recgrammar.first.rsDsl.TraversableGraph;
-import org.xtext.lev4recgrammar.first.rsDsl.Tree;
-import org.xtext.lev4recgrammar.first.rsDsl.UnsupervisedDataset;
-import org.xtext.lev4recgrammar.first.rsDsl.UserEvent;
-import org.xtext.lev4recgrammar.first.rsDsl.UserStudy;
-import org.xtext.lev4recgrammar.first.rsDsl.VSCodePlugin;
-import org.xtext.lev4recgrammar.first.rsDsl.Variable;
-import org.xtext.lev4recgrammar.first.rsDsl.VariableRelation;
-import org.xtext.lev4recgrammar.first.rsDsl.WebApplication;
-import org.xtext.lev4recgrammar.first.rsDsl.WebIService;
+import org.xtext.lev4recgrammar.first.lowcoders.ARFF;
+import org.xtext.lev4recgrammar.first.lowcoders.AdditiveFeedback;
+import org.xtext.lev4recgrammar.first.lowcoders.AutomatedValidation;
+import org.xtext.lev4recgrammar.first.lowcoders.Bayesian;
+import org.xtext.lev4recgrammar.first.lowcoders.BugTrackingSystem;
+import org.xtext.lev4recgrammar.first.lowcoders.CodeRepository;
+import org.xtext.lev4recgrammar.first.lowcoders.CommunicationChannel;
+import org.xtext.lev4recgrammar.first.lowcoders.ContextValidation;
+import org.xtext.lev4recgrammar.first.lowcoders.ConvolutionalNN;
+import org.xtext.lev4recgrammar.first.lowcoders.CrossValidation;
+import org.xtext.lev4recgrammar.first.lowcoders.CustomRecommender;
+import org.xtext.lev4recgrammar.first.lowcoders.DataMiningRS;
+import org.xtext.lev4recgrammar.first.lowcoders.DecisionTree;
+import org.xtext.lev4recgrammar.first.lowcoders.DeepNN;
+import org.xtext.lev4recgrammar.first.lowcoders.DependencyManager;
+import org.xtext.lev4recgrammar.first.lowcoders.Evaluation;
+import org.xtext.lev4recgrammar.first.lowcoders.FeedForwardNN;
+import org.xtext.lev4recgrammar.first.lowcoders.FeedbackComponent;
+import org.xtext.lev4recgrammar.first.lowcoders.File;
+import org.xtext.lev4recgrammar.first.lowcoders.FilteringRS;
+import org.xtext.lev4recgrammar.first.lowcoders.GUIElement;
+import org.xtext.lev4recgrammar.first.lowcoders.GeneticAlgorithm;
+import org.xtext.lev4recgrammar.first.lowcoders.Graph;
+import org.xtext.lev4recgrammar.first.lowcoders.GroundTruthExtraction;
+import org.xtext.lev4recgrammar.first.lowcoders.HybridFeedback;
+import org.xtext.lev4recgrammar.first.lowcoders.IDEIntegration;
+import org.xtext.lev4recgrammar.first.lowcoders.ImplicitFeedback;
+import org.xtext.lev4recgrammar.first.lowcoders.JupyterNotebook;
+import org.xtext.lev4recgrammar.first.lowcoders.LowcodersPackage;
+import org.xtext.lev4recgrammar.first.lowcoders.MachineLearningBasedRS;
+import org.xtext.lev4recgrammar.first.lowcoders.Matrix;
+import org.xtext.lev4recgrammar.first.lowcoders.Preprocessing;
+import org.xtext.lev4recgrammar.first.lowcoders.ProactiveHandler;
+import org.xtext.lev4recgrammar.first.lowcoders.RSModel;
+import org.xtext.lev4recgrammar.first.lowcoders.RandomSplitting;
+import org.xtext.lev4recgrammar.first.lowcoders.Rating;
+import org.xtext.lev4recgrammar.first.lowcoders.RawOutcomes;
+import org.xtext.lev4recgrammar.first.lowcoders.ReactiveHandler;
+import org.xtext.lev4recgrammar.first.lowcoders.RecommendationContext;
+import org.xtext.lev4recgrammar.first.lowcoders.RecommendationHandler;
+import org.xtext.lev4recgrammar.first.lowcoders.RecommendationSetting;
+import org.xtext.lev4recgrammar.first.lowcoders.RecommendationUsage;
+import org.xtext.lev4recgrammar.first.lowcoders.RecommendedItem;
+import org.xtext.lev4recgrammar.first.lowcoders.RecurrentNN;
+import org.xtext.lev4recgrammar.first.lowcoders.SVM;
+import org.xtext.lev4recgrammar.first.lowcoders.SupervisedDataset;
+import org.xtext.lev4recgrammar.first.lowcoders.TextualContent;
+import org.xtext.lev4recgrammar.first.lowcoders.TraversableGraph;
+import org.xtext.lev4recgrammar.first.lowcoders.Tree;
+import org.xtext.lev4recgrammar.first.lowcoders.UnsupervisedDataset;
+import org.xtext.lev4recgrammar.first.lowcoders.UserEvent;
+import org.xtext.lev4recgrammar.first.lowcoders.UserStudy;
+import org.xtext.lev4recgrammar.first.lowcoders.VSCodePlugin;
+import org.xtext.lev4recgrammar.first.lowcoders.Variable;
+import org.xtext.lev4recgrammar.first.lowcoders.VariableRelation;
+import org.xtext.lev4recgrammar.first.lowcoders.WebApplication;
+import org.xtext.lev4recgrammar.first.lowcoders.WebIService;
 import org.xtext.lev4recgrammar.first.services.RsDslGrammarAccess;
 
 @SuppressWarnings("all")
@@ -84,171 +85,174 @@ public class RsDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		ParserRule rule = context.getParserRule();
 		Action action = context.getAssignedAction();
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
-		if (epackage == RsDslPackage.eINSTANCE)
+		if (epackage == LowcodersPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case RsDslPackage.ARFF:
+			case LowcodersPackage.ARFF:
 				sequence_ARFF(context, (ARFF) semanticObject); 
 				return; 
-			case RsDslPackage.ADDITIVE_FEEDBACK:
+			case LowcodersPackage.ADDITIVE_FEEDBACK:
 				sequence_AdditiveFeedback(context, (AdditiveFeedback) semanticObject); 
 				return; 
-			case RsDslPackage.AUTOMATED_VALIDATION:
+			case LowcodersPackage.AUTOMATED_VALIDATION:
 				sequence_AutomatedValidation_Impl(context, (AutomatedValidation) semanticObject); 
 				return; 
-			case RsDslPackage.BAYESIAN:
+			case LowcodersPackage.BAYESIAN:
 				sequence_Bayesian(context, (Bayesian) semanticObject); 
 				return; 
-			case RsDslPackage.BUG_TRACKING_SYSTEM:
+			case LowcodersPackage.BUG_TRACKING_SYSTEM:
 				sequence_BugTrackingSystem(context, (BugTrackingSystem) semanticObject); 
 				return; 
-			case RsDslPackage.CODE_REPOSITORY:
+			case LowcodersPackage.CODE_REPOSITORY:
 				sequence_CodeRepository(context, (CodeRepository) semanticObject); 
 				return; 
-			case RsDslPackage.COMMUNICATION_CHANNEL:
+			case LowcodersPackage.COMMUNICATION_CHANNEL:
 				sequence_CommunicationChannel(context, (CommunicationChannel) semanticObject); 
 				return; 
-			case RsDslPackage.CONTEXT_VALIDATION:
+			case LowcodersPackage.CONTEXT_VALIDATION:
 				sequence_ContextValidation(context, (ContextValidation) semanticObject); 
 				return; 
-			case RsDslPackage.CONVOLUTIONAL_NN:
+			case LowcodersPackage.CONVOLUTIONAL_NN:
 				sequence_ConvolutionalNN(context, (ConvolutionalNN) semanticObject); 
 				return; 
-			case RsDslPackage.CROSS_VALIDATION:
+			case LowcodersPackage.CROSS_VALIDATION:
 				sequence_CrossValidation(context, (CrossValidation) semanticObject); 
 				return; 
-			case RsDslPackage.CUSTOM_RECOMMENDER:
+			case LowcodersPackage.CUSTOM_RECOMMENDER:
 				sequence_CustomRecommender(context, (CustomRecommender) semanticObject); 
 				return; 
-			case RsDslPackage.DATA_MINING_RS:
+			case LowcodersPackage.DATA_MINING_RS:
 				sequence_DataMiningRS(context, (DataMiningRS) semanticObject); 
 				return; 
-			case RsDslPackage.DECISION_TREE:
+			case LowcodersPackage.DECISION_TREE:
 				sequence_DecisionTree(context, (DecisionTree) semanticObject); 
 				return; 
-			case RsDslPackage.DEEP_NN:
+			case LowcodersPackage.DEEP_NN:
 				sequence_DeepNN(context, (DeepNN) semanticObject); 
 				return; 
-			case RsDslPackage.DEPENDENCY_MANAGER:
+			case LowcodersPackage.DEPENDENCY_MANAGER:
 				sequence_DependencyManager(context, (DependencyManager) semanticObject); 
 				return; 
-			case RsDslPackage.EVALUATION:
+			case LowcodersPackage.EVALUATION:
 				sequence_Evaluation(context, (Evaluation) semanticObject); 
 				return; 
-			case RsDslPackage.FEED_FORWARD_NN:
+			case LowcodersPackage.FEED_FORWARD_NN:
 				sequence_FeedForwardNN(context, (FeedForwardNN) semanticObject); 
 				return; 
-			case RsDslPackage.FEEDBACK_COMPONENT:
+			case LowcodersPackage.FEEDBACK_COMPONENT:
 				sequence_FeedbackComponent(context, (FeedbackComponent) semanticObject); 
 				return; 
-			case RsDslPackage.FILE:
+			case LowcodersPackage.FILE:
 				sequence_File(context, (File) semanticObject); 
 				return; 
-			case RsDslPackage.FILTERING_RS:
+			case LowcodersPackage.FILTERING_RS:
 				sequence_FilteringRS(context, (FilteringRS) semanticObject); 
 				return; 
-			case RsDslPackage.GUI_ELEMENT:
+			case LowcodersPackage.GUI_ELEMENT:
 				sequence_GUIElement(context, (GUIElement) semanticObject); 
 				return; 
-			case RsDslPackage.GENETIC_ALGORITHM:
+			case LowcodersPackage.GENETIC_ALGORITHM:
 				sequence_GeneticAlgorithm(context, (GeneticAlgorithm) semanticObject); 
 				return; 
-			case RsDslPackage.GRAPH:
+			case LowcodersPackage.GRAPH:
 				sequence_Graph_Impl(context, (Graph) semanticObject); 
 				return; 
-			case RsDslPackage.GROUND_TRUTH_EXTRACTION:
+			case LowcodersPackage.GROUND_TRUTH_EXTRACTION:
 				sequence_GroundTruthExtraction(context, (GroundTruthExtraction) semanticObject); 
 				return; 
-			case RsDslPackage.HYBRID_FEEDBACK:
+			case LowcodersPackage.HYBRID_FEEDBACK:
 				sequence_HybridFeedback(context, (HybridFeedback) semanticObject); 
 				return; 
-			case RsDslPackage.IDE_INTEGRATION:
+			case LowcodersPackage.IDE_INTEGRATION:
 				sequence_IDEIntegration_Impl(context, (IDEIntegration) semanticObject); 
 				return; 
-			case RsDslPackage.IMPLICIT_FEEDBACK:
+			case LowcodersPackage.IMPLICIT_FEEDBACK:
 				sequence_ImplicitFeedback(context, (ImplicitFeedback) semanticObject); 
 				return; 
-			case RsDslPackage.MACHINE_LEARNING_BASED_RS:
+			case LowcodersPackage.JUPYTER_NOTEBOOK:
+				sequence_JupyterNotebook(context, (JupyterNotebook) semanticObject); 
+				return; 
+			case LowcodersPackage.MACHINE_LEARNING_BASED_RS:
 				sequence_MachineLearningBasedRS_Impl(context, (MachineLearningBasedRS) semanticObject); 
 				return; 
-			case RsDslPackage.MATRIX:
+			case LowcodersPackage.MATRIX:
 				sequence_Matrix(context, (Matrix) semanticObject); 
 				return; 
-			case RsDslPackage.PREPROCESSING:
+			case LowcodersPackage.PREPROCESSING:
 				sequence_Preprocessing(context, (Preprocessing) semanticObject); 
 				return; 
-			case RsDslPackage.PROACTIVE_HANDLER:
+			case LowcodersPackage.PROACTIVE_HANDLER:
 				sequence_ProactiveHandler(context, (ProactiveHandler) semanticObject); 
 				return; 
-			case RsDslPackage.RS_MODEL:
+			case LowcodersPackage.RS_MODEL:
 				sequence_RSModel(context, (RSModel) semanticObject); 
 				return; 
-			case RsDslPackage.RANDOM_SPLITTING:
+			case LowcodersPackage.RANDOM_SPLITTING:
 				sequence_RandomSplitting(context, (RandomSplitting) semanticObject); 
 				return; 
-			case RsDslPackage.RATING:
+			case LowcodersPackage.RATING:
 				sequence_Rating(context, (Rating) semanticObject); 
 				return; 
-			case RsDslPackage.RAW_OUTCOMES:
+			case LowcodersPackage.RAW_OUTCOMES:
 				sequence_RawOutcomes(context, (RawOutcomes) semanticObject); 
 				return; 
-			case RsDslPackage.REACTIVE_HANDLER:
+			case LowcodersPackage.REACTIVE_HANDLER:
 				sequence_ReactiveHandler(context, (ReactiveHandler) semanticObject); 
 				return; 
-			case RsDslPackage.RECOMMENDATION_CONTEXT:
+			case LowcodersPackage.RECOMMENDATION_CONTEXT:
 				sequence_RecommendationContext(context, (RecommendationContext) semanticObject); 
 				return; 
-			case RsDslPackage.RECOMMENDATION_HANDLER:
+			case LowcodersPackage.RECOMMENDATION_HANDLER:
 				sequence_RecommendationHandler_Impl(context, (RecommendationHandler) semanticObject); 
 				return; 
-			case RsDslPackage.RECOMMENDATION_SETTING:
+			case LowcodersPackage.RECOMMENDATION_SETTING:
 				sequence_RecommendationSetting(context, (RecommendationSetting) semanticObject); 
 				return; 
-			case RsDslPackage.RECOMMENDATION_USAGE:
+			case LowcodersPackage.RECOMMENDATION_USAGE:
 				sequence_RecommendationUsage(context, (RecommendationUsage) semanticObject); 
 				return; 
-			case RsDslPackage.RECOMMENDED_ITEM:
+			case LowcodersPackage.RECOMMENDED_ITEM:
 				sequence_RecommendedItem(context, (RecommendedItem) semanticObject); 
 				return; 
-			case RsDslPackage.RECURRENT_NN:
+			case LowcodersPackage.RECURRENT_NN:
 				sequence_RecurrentNN(context, (RecurrentNN) semanticObject); 
 				return; 
-			case RsDslPackage.SVM:
+			case LowcodersPackage.SVM:
 				sequence_SVM(context, (SVM) semanticObject); 
 				return; 
-			case RsDslPackage.SUPERVISED_DATASET:
+			case LowcodersPackage.SUPERVISED_DATASET:
 				sequence_SupervisedDataset(context, (SupervisedDataset) semanticObject); 
 				return; 
-			case RsDslPackage.TEXTUAL_CONTENT:
+			case LowcodersPackage.TEXTUAL_CONTENT:
 				sequence_TextualContent(context, (TextualContent) semanticObject); 
 				return; 
-			case RsDslPackage.TRAVERSABLE_GRAPH:
+			case LowcodersPackage.TRAVERSABLE_GRAPH:
 				sequence_TraversableGraph(context, (TraversableGraph) semanticObject); 
 				return; 
-			case RsDslPackage.TREE:
+			case LowcodersPackage.TREE:
 				sequence_Tree(context, (Tree) semanticObject); 
 				return; 
-			case RsDslPackage.UNSUPERVISED_DATASET:
+			case LowcodersPackage.UNSUPERVISED_DATASET:
 				sequence_UnsupervisedDataset(context, (UnsupervisedDataset) semanticObject); 
 				return; 
-			case RsDslPackage.USER_EVENT:
+			case LowcodersPackage.USER_EVENT:
 				sequence_UserEvent(context, (UserEvent) semanticObject); 
 				return; 
-			case RsDslPackage.USER_STUDY:
+			case LowcodersPackage.USER_STUDY:
 				sequence_UserStudy(context, (UserStudy) semanticObject); 
 				return; 
-			case RsDslPackage.VS_CODE_PLUGIN:
+			case LowcodersPackage.VS_CODE_PLUGIN:
 				sequence_VSCodePlugin(context, (VSCodePlugin) semanticObject); 
 				return; 
-			case RsDslPackage.VARIABLE:
+			case LowcodersPackage.VARIABLE:
 				sequence_Variable(context, (Variable) semanticObject); 
 				return; 
-			case RsDslPackage.VARIABLE_RELATION:
+			case LowcodersPackage.VARIABLE_RELATION:
 				sequence_VariableRelation(context, (VariableRelation) semanticObject); 
 				return; 
-			case RsDslPackage.WEB_APPLICATION:
+			case LowcodersPackage.WEB_APPLICATION:
 				sequence_WebApplication(context, (WebApplication) semanticObject); 
 				return; 
-			case RsDslPackage.WEB_ISERVICE:
+			case LowcodersPackage.WEB_ISERVICE:
 				sequence_WebIService(context, (WebIService) semanticObject); 
 				return; 
 			}
@@ -327,8 +331,8 @@ public class RsDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 */
 	protected void sequence_BugTrackingSystem(ISerializationContext context, BugTrackingSystem semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RsDslPackage.Literals.DATA_SOURCE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RsDslPackage.Literals.DATA_SOURCE__NAME));
+			if (transientValues.isValueTransient(semanticObject, LowcodersPackage.Literals.DATA_SOURCE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LowcodersPackage.Literals.DATA_SOURCE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getBugTrackingSystemAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
@@ -359,8 +363,8 @@ public class RsDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 */
 	protected void sequence_CommunicationChannel(ISerializationContext context, CommunicationChannel semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RsDslPackage.Literals.DATA_SOURCE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RsDslPackage.Literals.DATA_SOURCE__NAME));
+			if (transientValues.isValueTransient(semanticObject, LowcodersPackage.Literals.DATA_SOURCE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LowcodersPackage.Literals.DATA_SOURCE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getCommunicationChannelAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
@@ -512,8 +516,8 @@ public class RsDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 */
 	protected void sequence_DependencyManager(ISerializationContext context, DependencyManager semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RsDslPackage.Literals.DATA_SOURCE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RsDslPackage.Literals.DATA_SOURCE__NAME));
+			if (transientValues.isValueTransient(semanticObject, LowcodersPackage.Literals.DATA_SOURCE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LowcodersPackage.Literals.DATA_SOURCE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getDependencyManagerAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
@@ -712,6 +716,19 @@ public class RsDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     PresentationLayer returns JupyterNotebook
+	 *     JupyterNotebook returns JupyterNotebook
+	 *
+	 * Constraint:
+	 *     (name=EString recommendations=[RecommendedItem|EString]?)
+	 */
+	protected void sequence_JupyterNotebook(ISerializationContext context, JupyterNotebook semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     RecommendationSystem returns MachineLearningBasedRS
 	 *     MachineLearningBasedRS_Impl returns MachineLearningBasedRS
 	 *
@@ -892,10 +909,10 @@ public class RsDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 */
 	protected void sequence_RecommendationSetting(ISerializationContext context, RecommendationSetting semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RsDslPackage.Literals.RECOMMENDATION_SETTING__KEY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RsDslPackage.Literals.RECOMMENDATION_SETTING__KEY));
-			if (transientValues.isValueTransient(semanticObject, RsDslPackage.Literals.RECOMMENDATION_SETTING__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RsDslPackage.Literals.RECOMMENDATION_SETTING__VALUE));
+			if (transientValues.isValueTransient(semanticObject, LowcodersPackage.Literals.RECOMMENDATION_SETTING__KEY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LowcodersPackage.Literals.RECOMMENDATION_SETTING__KEY));
+			if (transientValues.isValueTransient(semanticObject, LowcodersPackage.Literals.RECOMMENDATION_SETTING__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LowcodersPackage.Literals.RECOMMENDATION_SETTING__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getRecommendationSettingAccess().getKeyEStringParserRuleCall_3_0(), semanticObject.getKey());

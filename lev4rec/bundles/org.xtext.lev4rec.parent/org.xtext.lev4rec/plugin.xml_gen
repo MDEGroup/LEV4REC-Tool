@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "https://it.disim.univaq/lowcode"
+			class = "org.xtext.lev4recgrammar.first.lowcoders.LowcodersPackage"
+			genModel = "model/generated/RsDsl.genmodel" />
+	</extension>
+</plugin>

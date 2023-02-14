@@ -140,6 +140,8 @@ public class RsDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getWebApplicationAccess().getGroup_7(), "rule__WebApplication__Group_7__0");
 			builder.put(grammarAccess.getIDEIntegration_ImplAccess().getGroup(), "rule__IDEIntegration_Impl__Group__0");
 			builder.put(grammarAccess.getIDEIntegration_ImplAccess().getGroup_4(), "rule__IDEIntegration_Impl__Group_4__0");
+			builder.put(grammarAccess.getJupyterNotebookAccess().getGroup(), "rule__JupyterNotebook__Group__0");
+			builder.put(grammarAccess.getJupyterNotebookAccess().getGroup_4(), "rule__JupyterNotebook__Group_4__0");
 			builder.put(grammarAccess.getVSCodePluginAccess().getGroup(), "rule__VSCodePlugin__Group__0");
 			builder.put(grammarAccess.getVSCodePluginAccess().getGroup_3(), "rule__VSCodePlugin__Group_3__0");
 			builder.put(grammarAccess.getVSCodePluginAccess().getGroup_7(), "rule__VSCodePlugin__Group_7__0");
@@ -407,6 +409,8 @@ public class RsDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getWebApplicationAccess().getRecommendationsAssignment_7_1(), "rule__WebApplication__RecommendationsAssignment_7_1");
 			builder.put(grammarAccess.getIDEIntegration_ImplAccess().getNameAssignment_2(), "rule__IDEIntegration_Impl__NameAssignment_2");
 			builder.put(grammarAccess.getIDEIntegration_ImplAccess().getRecommendationsAssignment_4_1(), "rule__IDEIntegration_Impl__RecommendationsAssignment_4_1");
+			builder.put(grammarAccess.getJupyterNotebookAccess().getNameAssignment_2(), "rule__JupyterNotebook__NameAssignment_2");
+			builder.put(grammarAccess.getJupyterNotebookAccess().getRecommendationsAssignment_4_1(), "rule__JupyterNotebook__RecommendationsAssignment_4_1");
 			builder.put(grammarAccess.getVSCodePluginAccess().getNameAssignment_1(), "rule__VSCodePlugin__NameAssignment_1");
 			builder.put(grammarAccess.getVSCodePluginAccess().getRecommendationsAssignment_3_1(), "rule__VSCodePlugin__RecommendationsAssignment_3_1");
 			builder.put(grammarAccess.getVSCodePluginAccess().getHandlerAssignment_6(), "rule__VSCodePlugin__HandlerAssignment_6");

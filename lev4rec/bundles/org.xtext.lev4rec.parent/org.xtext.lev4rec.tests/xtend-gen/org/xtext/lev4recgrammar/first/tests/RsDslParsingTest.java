@@ -15,7 +15,8 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.xtext.lev4recgrammar.first.rsDsl.RSModel;
+import org.xtext.lev4recgrammar.first.lowcoders.RSModel;
+import org.xtext.lev4recgrammar.first.tests.RsDslInjectorProvider;
 
 @ExtendWith(InjectionExtension.class)
 @InjectWith(RsDslInjectorProvider.class)
