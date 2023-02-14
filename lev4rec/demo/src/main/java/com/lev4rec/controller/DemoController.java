@@ -9,18 +9,29 @@ import java.nio.file.Paths;
 
 import javax.annotation.Resource;
 
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.lev4rec.dto.RSConfiguration;
 
@@ -31,13 +42,16 @@ import com.lev4rec.business.FeatureHandler;
 
 
 @Controller
-public class DemoController {	
+@CrossOrigin(maxAge = 3600)
+public class DemoController  {	
+	
 	@RequestMapping("/")
 	public String index(Model model) {
 		RSConfiguration config = new RSConfiguration();
 		model.addAttribute("config",config);			
 		return "home.html";
 	}
+	
 	@RequestMapping(value="/dsl", method = RequestMethod.POST)
 	public String save(Model model, @ModelAttribute("config") RSConfiguration config) {
 		
@@ -98,19 +112,18 @@ public class DemoController {
 		System.out.println("User string parsed");
 		
 		
-		FeatureHandler.serializeModel(fineGrainModel, "lev4rec/generated/demo.xmi");
-		System.out.println("Model serialized");
+		FeatureHandler.serializeModel(fineGrainModel, "lev4rec/generated/generate.xmi");
+		System.out.println("Model serialized");		
 		
-		
-		FeatureHandler.generateFromTML("lev4rec/generated/demo.xmi", "lev4rec/generated");		
-		
+		FeatureHandler.generateFromTML("lev4rec/generated/generate.xmi", "lev4rec/generated");		
 		
 		
 		File file = new File("lev4rec/generated/invalid.py");
 	    Path path = Paths.get(file.getAbsolutePath());
+	    System.out.println(path);
 	    ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
 	    HttpHeaders headers = new HttpHeaders();
-	    headers.set("Baeldung-Example-Header", 
+	    headers.set("LEV4REC", 
 	      "Value-ResponseEntityBuilderWithHttpHeaders");
 
 	    return ResponseEntity.ok()
@@ -120,6 +133,11 @@ public class DemoController {
 	            .body(resource);
 	}
 	
+
+	
+
+	
+
 	
 
 }
