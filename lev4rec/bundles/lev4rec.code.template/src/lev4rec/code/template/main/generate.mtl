@@ -10,15 +10,15 @@
 [comment import lev4rec::code::template::utils::generatePreprocessingTechnique/]
 [template public generate(recSys : RSModel)]
 [comment @main/]
-[file (recSys.name+ '.py', false, 'UTF-8')]
+
 
 
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
 
 
-[file (recSys.name+'_service.py', false, 'UTF-8')]
+[file ('RecSys_interface.py', false, 'UTF-8')]
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
-from [recSys.name/]_business import load_dataset, get_recommendations, algorithm_settings
+from RecSys_business import load_dataset, get_recommendations, algorithm_settings, run_cross_fold, 
 [if recSys.presentationLayer.oclAsType(lowcoders::WebApplication).library = WebInterfaceLibrary::FLASK]
 from flask import Flask
 from flask import request
@@ -37,7 +37,15 @@ def recommend():
 
     
   
-    res = get_recommendations(context,n_items)
+    
+	[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+		[if (val.oclIsTypeOf(lowcoders::CrossValidation))]	
+	run_cross_fold()
+	[/if]
+	[if (val.oclIsTypeOf(lowcoders::ContextValidation))]	
+	get_recommendations(context,n_items)
+	[/if]	
+	[/for]
     
     try:
         
@@ -65,7 +73,7 @@ if __name__ == '__main__':
 [/file]
 
 
-[file (recSys.name+'_business.py', false, 'UTF-8')]
+[file ('RecSys_business.py', false, 'UTF-8')]
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
 [if recSys.presentationLayer.oclAsType(lowcoders::WebApplication).library = WebInterfaceLibrary::FLASK]
 [if (recSys.dataset.datasetManipulationLibrary -> size()> 0)]
@@ -427,12 +435,54 @@ def run_cross_fold():
 [/if]
 [/file]	
 
+
+
+[file ('Dockerfile', false, 'UTF-8')]
+
+#Deriving the latest base image
+FROM python:3.8
+
+
+#Labels as key value pair
+LABEL Maintainer="roushan.me17"
+
+
+# Any working directory can be chosen as per choice like '/' or '/home' etc
+# i have chosen /usr/app/src
+WORKDIR /usr/app/src
+
+
+#to COPY the remote file at working directory in container
+COPY . .
+# Now the structure looks like this '/usr/app/src/test.py'
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+#CMD instruction should be used to run the software
+#contained by your image, along with any arguments.
+
+CMD ['['/] "python", "./RecSys_interface.py"[']'/]
+EXPOSE 5000
+[/file]
+
+[file ('requirements.txt', false, 'UTF-8')]
+pandas==1.4.2
+scikit-surprise==1.1.1
+numpy
+scikit-learn=0.24.1
+flask==2.1.2
+flasgger==0.9.5
+[/file]
+
+
 [/if]
+ 
+
+
 
 
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::JupyterNotebook)]
 
-
+[file ('RecSys.py' ,false, 'UTF-8')]
 import nbformat as nbf
 
 nb = nbf.v4.new_notebook()
@@ -801,6 +851,37 @@ nb ['['/]"cells"[']'/] = ['['/]nbf.v4.new_markdown_cell(text),
 
 nbf.write(nb, 'CrossRec_2.ipynb')
 
+
+
+[/file]
+[file ('Dockerfile', false, 'UTF-8')]
+
+
+# Let's use the image base-notebook to build our image on top of it
+FROM jupyter/base-notebook
+
+LABEL Miguel Doctor <migueldoctor@gmail.com>
+COPY . .
+
+#Let's define this parameter to install jupyter lab instead of the default juyter notebook command so we don't have to use it when running the container with the option -e
+ENV JUPYTER_ENABLE_LAB=yes
+
+
+
+[/file]
+
+
+[file ('requirements.txt', false, 'UTF-8')]
+pandas==1.4.2
+scikit-surprise==1.1.1
+numpy
+scikit-learn=0.24.1
+flask==2.1.2
+flasgger==0.9.5
+[/file]
+
+
+
 [/if]
 
 
@@ -809,6 +890,9 @@ nbf.write(nb, 'CrossRec_2.ipynb')
 
 
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::RawOutcomes)]
+
+[file('RecSys.py',false, 'UTF-8')]
+
 def load_dataset():
 [if recSys.recommendationSystem.generator = PyLibType :: SURPRISE]
 from surprise import Dataset, Reader
@@ -1157,9 +1241,48 @@ def run_cross_fold():
 [/for]
 [/if]
 [/for]
+[/file]
+
+[file ('Dockerfile', false, 'UTF-8')]
+#Deriving the latest base image
+FROM python:3.8
+
+
+#Labels as key value pair
+LABEL Maintainer="roushan.me17"
+
+
+# Any working directory can be chosen as per choice like '/' or '/home' etc
+# i have chosen /usr/app/src
+WORKDIR /usr/app/src
+
+
+#to COPY the remote file at working directory in container
+COPY . .
+# Now the structure looks like this '/usr/app/src/test.py'
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+#CMD instruction should be used to run the software
+#contained by your image, along with any arguments.
+
+CMD ['['/] "python", "./RecSys.py"[']'/]
+[/file]
+
+
+[file ('requirements.txt', false, 'UTF-8')]
+pandas==1.4.2
+scikit-surprise==1.1.1
+numpy
+scikit-learn=0.24.1
+flask==2.1.2
+flasgger==0.9.5
+[/file]
+
 [/if]
 
-[/file]
+
+
+
 [/template]
 
 
