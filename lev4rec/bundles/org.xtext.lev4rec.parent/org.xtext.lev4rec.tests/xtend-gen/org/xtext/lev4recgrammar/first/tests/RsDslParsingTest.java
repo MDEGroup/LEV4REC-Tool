@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.xtext.lev4recgrammar.first.lowcoders.RSModel;
-import org.xtext.lev4recgrammar.first.tests.RsDslInjectorProvider;
 
 @ExtendWith(InjectionExtension.class)
 @InjectWith(RsDslInjectorProvider.class)
@@ -24,7 +23,7 @@ import org.xtext.lev4recgrammar.first.tests.RsDslInjectorProvider;
 public class RsDslParsingTest {
   @Inject
   private ParseHelper<RSModel> parseHelper;
-  
+
   @Test
   public void loadModel() {
     try {

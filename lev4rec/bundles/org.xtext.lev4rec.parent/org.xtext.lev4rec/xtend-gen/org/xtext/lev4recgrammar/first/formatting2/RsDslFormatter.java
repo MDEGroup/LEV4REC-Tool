@@ -27,7 +27,7 @@ public class RsDslFormatter extends AbstractFormatter2 {
   @Inject
   @Extension
   private RsDslGrammarAccess _rsDslGrammarAccess;
-  
+
   protected void _format(final RSModel rSModel, @Extension final IFormattableDocument document) {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.newLine();
@@ -90,7 +90,7 @@ public class RsDslFormatter extends AbstractFormatter2 {
     document.<RecommendationSystem>format(rSModel.getRecommendationSystem());
     document.<FeedbackComponent>format(rSModel.getFeedback());
   }
-  
+
   protected void _format(final Evaluation evaluation, @Extension final IFormattableDocument document) {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.newLine();
@@ -105,7 +105,7 @@ public class RsDslFormatter extends AbstractFormatter2 {
       document.<ValidationTechnique>format(validationTechnique);
     }
   }
-  
+
   protected void _format(final RecommendationSystem recsys, @Extension final IFormattableDocument document) {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.newLine();
@@ -116,14 +116,14 @@ public class RsDslFormatter extends AbstractFormatter2 {
     };
     document.append(this.textRegionExtensions.regionFor(recsys).keyword("}"), _function_1);
   }
-  
+
   protected void _format(final UnsupervisedDataset dataset, @Extension final IFormattableDocument document) {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
     document.prepend(this.textRegionExtensions.regionFor(dataset).keyword("dataStructure"), _function);
   }
-  
+
   public void format(final Object dataset, final IFormattableDocument document) {
     if (dataset instanceof XtextResource) {
       _format((XtextResource)dataset, document);
