@@ -73,6 +73,8 @@ import org.xtext.lev4recgrammar.first.lowcoders.Variable;
 import org.xtext.lev4recgrammar.first.lowcoders.WebIService;
 import org.xtext.lev4recgrammar.first.lowcoders.WebInterfaceLibrary;
 
+
+
 import com.google.common.collect.Lists;
 import com.google.inject.Injector;
 import com.lev4rec.dto.RSConfiguration;
@@ -345,6 +347,10 @@ public class FeatureHandler {
 
 		if (config.isIDEPlugin()) {
 			presentationLayer = LowcodersFactory.eINSTANCE.createIDEIntegration();
+		}
+		
+		if (config.isJupyterNotebook()) {
+			
 		}
 		if (config.isRawOutcomes())
 			presentationLayer = LowcodersFactory.eINSTANCE.createRawOutcomes();

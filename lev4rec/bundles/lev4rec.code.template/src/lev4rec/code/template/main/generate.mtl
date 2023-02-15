@@ -1,47 +1,1291 @@
 [comment encoding = UTF-8 /]
 [module generate('https://it.disim.univaq/lowcode')]
 
-[import lev4rec::code::template::utils::generateSURDataset/]
-[import lev4rec::code::template::utils::generateSKDataset /]
+[comment import lev4rec::code::template::utils::generateSURDataset/]
+[comment import lev4rec::code::template::utils::generateSKDataset /]
 
-[import lev4rec::code::template::utils::generateRecommenderSystem/]
-[import lev4rec::code::template::utils::generateContextValidation/]
-[import lev4rec::code::template::utils::generateCrossFoldValidation/]
-[import lev4rec::code::template::utils::generatePreprocessingTechnique/]
-[template public generateRecSys(recSys : RSModel)]
+[comment import lev4rec::code::template::utils::generateRecommenderSystem/]
+[comment import lev4rec::code::template::utils::generateContextValidation/]
+[comment import lev4rec::code::template::utils::generateCrossFoldValidation/]
+[comment import lev4rec::code::template::utils::generatePreprocessingTechnique/]
+[template public generate(recSys : RSModel)]
 [comment @main/]
-[file (recSys.name+ '.py', false, 'UTF-8')]
 
+
+
+[if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
+
+
+[file ('RecSys_interface.py', false, 'UTF-8')]
+[if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
+from RecSys_business import load_dataset, get_recommendations, algorithm_settings, run_cross_fold, 
+[if recSys.presentationLayer.oclAsType(lowcoders::WebApplication).library = WebInterfaceLibrary::FLASK]
+from flask import Flask
+from flask import request
+from flask import jsonify
+import os
+import json
+
+
+
+app = Flask(__name__)
+@app.route("/get_recommendation", methods=['["'/]POST['"]'/])
+def recommend():    
+    json_data = request.get_json()    
+    context = json_data['["'/]context['"]'/]
+    n_items = json_data['["'/]n_items['"]'/]
+
+    
+  
+    
+	[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+		[if (val.oclIsTypeOf(lowcoders::CrossValidation))]	
+	run_cross_fold()
+	[/if]
+	[if (val.oclIsTypeOf(lowcoders::ContextValidation))]	
+	get_recommendations(context,n_items)
+	[/if]	
+	[/for]
+    
+    try:
+        
+        message = {
+            'status': 200,
+            'message': 'OK',
+            'results': res
+        }
+        return jsonify(message)
+    except Exception:
+        message = {
+            'status': 500,
+            'message': 'KO'
+        }
+        return message
+
+
+if __name__ == '__main__':
+    app.debug = True
+    port = int(os.environ.get("PORT", [presentationLayer.oclAsType(lowcoders::WebApplication).port/]))
+    app.run(host='[presentationLayer.oclAsType(lowcoders::WebApplication).host/]', port=port)
+[/if]
+[/if]
+	
+[/file]
+
+
+[file ('RecSys_business.py', false, 'UTF-8')]
+[if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
+[if recSys.presentationLayer.oclAsType(lowcoders::WebApplication).library = WebInterfaceLibrary::FLASK]
+[if (recSys.dataset.datasetManipulationLibrary -> size()> 0)]
+[for (dml : DatasetManipulationLibrary | recSys.dataset.datasetManipulationLibrary)]
+[if (dml = DatasetManipulationLibrary::PANDAS)]
+import pandas as pd		
+[/if]
+[/for]
 def load_dataset():
 [if recSys.recommendationSystem.generator = PyLibType :: SURPRISE]
-[generateSURDataset(dataset)/]
+	from surprise import Dataset, Reader
+
+[if (dataset.isBuiltIn = true)]
+[if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]	
+	data = Dataset.load_builtin('[dataset.path/]')	
+	return data
+[/if] 
+
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data = Dataset.load_builtin('[dataset.path/]')	
+	return data
+[/if]
+[/if]
+
+[if (dataset.isBuiltIn = false)]
+[if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]
+	data = pd.read_csv('[dataset.path/]', sep=",")
+	return data
+[/if] 
+
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data = pd.read_csv('[dataset.path/]', sep=",")	
+	return data
+[/if]
+ 
+[/if]
 [/if]
 [if recommendationSystem.generator = PyLibType :: SKLEARN]
-[generateSKDataset(dataset)/]
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data=pd.read_csv('[dataset.name/]')
+	X = data.iloc['[:,:-1]'/].values
+	return X
 [/if]
+[if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]
+[if (dataset.preprocessing -> size()>0)]
+	[for (pr : PreprocessingTechnique | dataset.preprocessing)]
+[comment [generatePreprocessingTechnique(pr)/] 
+	[/for]
+[/if]
+[if (dataset.dataStructure.oclIsTypeOf(lowcoders::Matrix))]
+	data=pd.read_csv('[dataset.path/]')
+	X = data.iloc['[:,:-1]'/].values
+	y = data.iloc['[:, -1]'/].values
+[/if]
+[/if]
+	return X,y
+[/if]
+
+
+
 [if (recSys.dataset.preprocessing -> size()>0)]
 [for (pr : PreprocessingTechnique | recSys.dataset.preprocessing)]
 def set_preprocessing():
-[generatePreprocessingTechnique(pr,recSys)/]
+[if (pr = PreprocessingTechnique::DUPLICATES_REMOVAL) ]
+	dataset.drop_duplicates(inPlace=True)
+	X = dataset.iloc['[:,:-1]'/].values
+	y = dataset.iloc['[:, -1]'/].values		
+	[/if]
+	[if (pr = PreprocessingTechnique::FEATURE_SCALING) ]
+
+[if recSys.recommendationSystem.generator = PyLibType :: SKLEARN]
+	from sklearn.preprocessing import StandardScaler
+	sc = StandardScaler()
+	X_train = sc.fit_transform(X_split)
+	X_test = sc.transform(X_test)
+[/if]
+
+	[/if]
+	[if (pr = PreprocessingTechnique::NLP) ]
+		[pr /]
+	[/if]
+	[if (pr = PreprocessingTechnique::MISSING_DATA_MANIPULATION) ]
+		[pr /]
+	[/if]	
+	[if (pr = PreprocessingTechnique::TFIDF) ]
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN ]
+	from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
+	count_vect = TfidfVectorizer(input='train', stop_words={'english'}, lowercase=True, analyzer='word')
+	train_vectors = count_vect.fit_transform(X)
+	train_vectors.shape
+	tfidf_transformer = TfidfTransformer()
+	train_tfidf = tfidf_transformer.fit_transform(train_vectors)
+	train_tfidf.shape
+[/if]
+	[/if]
+	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
+		[pr /]
+	[/if]
+[if (pr = PreprocessingTechnique::VECTORIZATION)]
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN ]
+	from sklearn.feature_extraction.text import CountVectorizer
+    preprocess = CountVectorizer(ngram_range=(1,1))    
+[/if]
+[/if]
 	return preprocess
 [/for]
 [/if]
 def algorithm_settings():
-[generateRecommenderSystem(recSys)/]
+[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FeedForwardNN))]
+from sklearn.neural_network import MLPClassifier	
+	solver='[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).solver/]'
+	alpha=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).alpha/]
+	random_state=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).randomState/]		
+
+	algo = MLPClassifier(solver=solver, alpha=alpha,hidden_layer_sizes=hidden_layers, random_state=random_state)
+
+[/if]
+[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FilteringRS))]
+[if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).filteringRSAlgorithm = FilteringRSAlgorithm::USER_BASED)]
+	is_user_based=True
+[/if]
+[if(recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).filteringRSAlgorithm= FilteringRSAlgorithm::ITEM_BASED)]
+	is_user_based=False
+[/if] 		
+	neighborhood=[recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).neighborhood/]
+	cutoff=[recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).cutoff/]
+[if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).similarityCalculator = SimilarityFunction::COSINE_SIMILARITY)]
+	sim_funct='cosine'
+[/if]
+[if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).similarityCalculator = SimilarityFunction::MSD)]
+	sim_funct='msd'
+[/if]
+	sim_settings = {'name': sim_funct,
+               'user_based': is_user_based  # compute  similarities between items
+               }
+	from surprise import KNNWithMeans
+	algo = KNNWithMeans(k=neighborhood, sim_options=sim_settings)
+[/if]
 	return algo
 [for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
 [if (val.oclIsTypeOf(lowcoders::ContextValidation))]
 def get_recommendations(context,n_items):
-[generateContextValidation(recSys)/]
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::ContextValidation))]
+[if (recSys.recommendationSystem.generator = PyLibType::SKLEARN)]
+	var = input("Please enter a code snippet: ")
+	docs_new = ['['/]var[']'/]
+	X_new_counts = count_vect.transform(docs_new)
+	X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+	predicted = clf.predict(X_new_tfidf)
+	print('predicted as',predicted)
+[/if]
+[if (recSys.recommendationSystem.generator = PyLibType::SURPRISE)]
+[if (recSys.dataset.isBuiltIn = true)]
+	from collections import defaultdict
+	data = load_dataset()
+	trainset = data.build_full_trainset()
+    algo = algorithm_settings()
+    algo.fit(trainset)
+    testset = trainset.build_anti_testset()
+    predictions = algo.test(testset)
+    
+    top_n = defaultdict(list)
+    for uid, iid, true_r, est, _ in predictions:
+        top_n['['/]uid[']'/].append((iid, est))
+    
+    for uid, user_ratings in top_n.items():
+        user_ratings.sort(key=lambda x: x['['/]1[']'/] , reverse=True)
+        top_n['['/]uid[']'/] = user_ratings['['/]:n_items[']'/] 
+
+	results = top_n.get(context)
+[/if]
+[if  (recSys.dataset.isBuiltIn = false)]
+	lista = ['['/][']'/]
+    ['['/]lista.append(['['/]"query", lib, 1[']'/]) for lib in context[']'/]
+    df = pd.read_csv('result.csv', sep=",")
+    queryDF = pd.DataFrame(lista,columns=['['/]'ProjectID', 'LibID', 'rating'[']'/])   
+    df = df.append(queryDF, ignore_index=True)
+    reader = Reader(rating_scale=(0, 1))
+    data = Dataset.load_from_df(df['['/]['['/]'ProjectID', 'LibID', 'rating'[']'/][']'/], reader)
+    
+    algo = algorithm settings()
+   	k = 0
+    #TRAIN
+    trainset = data.build_full_trainset()
+    algo.fit(trainset)
+    list_ird = ['['/]trainset.to_raw_iid(key) for key in trainset.ir.keys()[']'/]
+    result = {}
+    for elem in list_ird:
+        k = algo.predict(uid="query", iid=elem)
+        result['['/]elem[']'/] = k.est
+    sorted_result = {k: v for k, v in sorted(result.items(), key=lambda item: item['['/]1[']'/], reverse=True)}
+
+    results = list(sorted_result.keys())['['/] : n_items[']'/]
+[/if]
+[/if]
+[/if]
+[/for]
 	return results
 [/if]
 [if (val.oclIsTypeOf(lowcoders::CrossValidation))]
 def run_cross_fold():
-[generateCrossFoldValidation(recSys)/]
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]	
+[if (recSys.recommendationSystem.generator = PyLibType::SKLEARN)]
+	X,y = load_dataset()
+	from sklearn.model_selection import  KFold
+    n_splits=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
+    kf = KFold(n_splits = n_splits)	
+	prec_all = 0
+	acc_all = 0
+	rec_all = 0
+	f1_all = 0	
+	list_metrics=['['/][']'/]
+	for  train, test in kf.split(X):
+		X_split, X_test, y_split, y_test = X['['/]train[']'/],X['['/]test[']'/], y['['/]train[']'/], y['['/]test[']'/]	
+		sc=set_preprocessing()
+		list_train=['['/][']'/]
+        list_test =['['/][']'/]
+        for x in X_split.tolist():
+            list_train.append(str(x))
+        for t in X_test.tolist():
+            list_test.append(str(t))
+        X_train=sc.fit_transform(list_train)
+        X_test=sc.transform(list_test)     
+		clf= algorithm_settings()
+        clf.fit(X_train, y_split)        
+        y_pred= clf.predict(X_test)				
+	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::PRECISION) ]
+		from sklearn.metrics import precision_score
+		precision = precision_score(y_pred, y_test, average=None)
+		prec_all = prec_all + sum(precision)/len(precision)	
+	[/if]	
+	[if (metric = Metric::RECALL) ]
+		from sklearn.metrics import recall_score
+		recall = recall_score(y_pred, y_test, average=None)
+		rec_all = rec_all + sum(recall)/len(recall)
+	[/if]
+	[if (metric = Metric::F1_MEASURE) ]
+		from sklearn.metrics import f1_score
+		f1 = f1_score(y_pred, y_test, average=None)
+		f1_all = f1_all + sum(f1)/len(f1)
+	[/if]	
+	[/for]
+	prec_all=(prec_all /n_splits)
+    rec_all=(rec_all /n_splits)
+    f1_all=(f1_all /n_splits)  
+ 
+    list_metrics.append(prec_all)
+    list_metrics.append(rec_all)
+    list_metrics.append(f1_all)
+
+	return list_metrics
+    
+[/if]
+[/if]
+
+[if (recSys.recommendationSystem.generator = PyLibType::SURPRISE)]
+
+	from surprise.model_selection import KFold
+	from collections import defaultdict
+	kf = KFold(n_splits=n_splits)
+
+[if (recSys.dataset.preprocessing -> size()>0)]
+		[for (pr : PreprocessingTechnique | recSys.dataset.preprocessing)]
+[if (pr = PreprocessingTechnique::DUPLICATES_REMOVAL) ]
+	dataset.drop_duplicates(inPlace=True)
+	X = dataset.iloc['[:,:-1]'/].values
+	y = dataset.iloc['[:, -1]'/].values		
+	[/if]
+	[if (pr = PreprocessingTechnique::FEATURE_SCALING) ]
+	from sklearn.preprocessing import StandardScaler
+	sc = StandardScaler()
+	X_train = sc.fit_transform(X_split)
+	X_test = sc.transform(X_test)
+
+	[/if]
+	[if (pr = PreprocessingTechnique::NLP) ]
+		[pr /]
+	[/if]
+	[if (pr = PreprocessingTechnique::MISSING_DATA_MANIPULATION) ]
+		[pr /]
+	[/if]	
+	[if (pr = PreprocessingTechnique::TFIDF) ]
+	from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
+	count_vect = TfidfVectorizer(input='train', stop_words={'english'}, lowercase=True, analyzer='word')
+	train_vectors = count_vect.fit_transform(X)
+	train_vectors.shape
+	tfidf_transformer = TfidfTransformer()
+	train_tfidf = tfidf_transformer.fit_transform(train_vectors)
+	train_tfidf.shape
+	[/if]
+	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
+		[pr /]
+	[/if]
+[if (pr = PreprocessingTechnique::VECTORIZATION)]
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN]
+	from sklearn.feature_extraction.text import CountVectorizer
+    preprocess = CountVectorizer(ngram_range=(1,1))    
+[/if]
+[/if]
+		[/for]
+	[/if]
+
+
+
+	algo=algorithm_settings()
+	threshold = 3.5
+	k=10
+	for trainset, testset in kf.split(data):
+	    algo.fit(trainset)
+	    predictions = algo.test(testset)
+	    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
+
+[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::PRECISION) ]
+	user_est_true = defaultdict(list)
+    for uid, _, true_r, est, _ in predictions:
+        user_est_true['['/]uid[']'/].append((est, true_r))
+
+    precisions = dict()
+	recalls = dict()
+    for uid, user_ratings in user_est_true.items():
+        n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
+
+        # Number of recommended items in top k
+        n_rec_k = sum((est >= threshold) for (est, _) in user_ratings['['/]:k[']'/])
+        n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
+                              for (est, true_r) in user_ratings['['/]:k[']'/])
+        precisions['['/]uid[']'/] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
+
+	[/if]	
+	[if (metric = Metric::RECALL) ]
+		recalls['['/]uid[']'/] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
+	[/if]
+
+	[/for]
+	precision= sum(prec for prec in precisions.values()) / len(precisions)
+	recall =sum(rec for rec in recalls.values()) / len(recalls)
+    # Precision and recall can then be averaged over all users
+    print(precision)
+    print(recall)
+	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::F1_MEASURE) ]
+	f1_measure=(2*precision* recall) / (recall + precision)
+	print(f1_measure)
+	[/if]	
+
+	[/for]
+
+
+[/if]
+[/for]
+[/if]
+[/for]
+[/if]
+[/if]
+[/if]
+[/file]	
+
+
+
+[file ('Dockerfile', false, 'UTF-8')]
+
+#Deriving the latest base image
+FROM python:3.8
+
+
+#Labels as key value pair
+LABEL Maintainer="roushan.me17"
+
+
+# Any working directory can be chosen as per choice like '/' or '/home' etc
+# i have chosen /usr/app/src
+WORKDIR /usr/app/src
+
+
+#to COPY the remote file at working directory in container
+COPY . .
+# Now the structure looks like this '/usr/app/src/test.py'
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+#CMD instruction should be used to run the software
+#contained by your image, along with any arguments.
+
+CMD ['['/] "python", "./RecSys_interface.py"[']'/]
+EXPOSE 5000
+[/file]
+
+[file ('requirements.txt', false, 'UTF-8')]
+pandas==1.4.2
+scikit-surprise==1.1.1
+numpy
+scikit-learn=0.24.1
+flask==2.1.2
+flasgger==0.9.5
+[/file]
+
+
+[/if]
+ 
+
+
+
+
+[if recSys.presentationLayer.oclIsTypeOf(lowcoders::JupyterNotebook)]
+
+[file ('RecSys.py' ,false, 'UTF-8')]
+import nbformat as nbf
+
+nb = nbf.v4.new_notebook()
+
+text = """\
+# Lowcode model generator
+Generated recommneder system from model."""
+
+code = """\
+
+
+def load_dataset():
+[if recSys.recommendationSystem.generator = PyLibType :: SURPRISE]
+from surprise import Dataset, Reader
+
+[if (dataset.isBuiltIn = true)]
+[if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]	
+	data = Dataset.load_builtin('[dataset.path/]')	
+	return data
+[/if] 
+
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data = Dataset.load_builtin('[dataset.path/]')	
+	return data
+[/if]
+[/if]
+
+[if (dataset.isBuiltIn = false)]
+[if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]
+	data = pd.read_csv('[dataset.path/]', sep=",")
+	return data
+[/if] 
+
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data = pd.read_csv('[dataset.path/]', sep=",")	
+	return data
+[/if]
+ 
+[/if]
+[/if]
+[if recommendationSystem.generator = PyLibType :: SKLEARN]
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data=pd.read_csv('[dataset.name/]')
+	X = data.iloc['[:,:-1]'/].values
+	return X
+[/if]
+[if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]
+[if (dataset.preprocessing -> size()>0)]
+	[for (pr : PreprocessingTechnique | dataset.preprocessing)]
+[comment [generatePreprocessingTechnique(pr)/] 
+	[/for]
+[/if]
+[if (dataset.dataStructure.oclIsTypeOf(lowcoders::Matrix))]
+	data=pd.read_csv('[dataset.path/]')
+	X = data.iloc['[:,:-1]'/].values
+	y = data.iloc['[:, -1]'/].values
+[/if]
+[/if]
+	return X,y
 [/if]
 
 
+
+[if (recSys.dataset.preprocessing -> size()>0)]
+[for (pr : PreprocessingTechnique | recSys.dataset.preprocessing)]
+def set_preprocessing():
+[if (pr = PreprocessingTechnique::DUPLICATES_REMOVAL) ]
+	dataset.drop_duplicates(inPlace=True)
+	X = dataset.iloc['[:,:-1]'/].values
+	y = dataset.iloc['[:, -1]'/].values		
+	[/if]
+	[if (pr = PreprocessingTechnique::FEATURE_SCALING) ]
+
+[if recSys.recommendationSystem.generator = PyLibType :: SKLEARN]
+	from sklearn.preprocessing import StandardScaler
+	sc = StandardScaler()
+	X_train = sc.fit_transform(X_split)
+	X_test = sc.transform(X_test)
+[/if]
+
+	[/if]
+	[if (pr = PreprocessingTechnique::NLP) ]
+		[pr /]
+	[/if]
+	[if (pr = PreprocessingTechnique::MISSING_DATA_MANIPULATION) ]
+		[pr /]
+	[/if]	
+	[if (pr = PreprocessingTechnique::TFIDF) ]
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN ]
+	from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
+	count_vect = TfidfVectorizer(input='train', stop_words={'english'}, lowercase=True, analyzer='word')
+	train_vectors = count_vect.fit_transform(X)
+	train_vectors.shape
+	tfidf_transformer = TfidfTransformer()
+	train_tfidf = tfidf_transformer.fit_transform(train_vectors)
+	train_tfidf.shape
+[/if]
+	[/if]
+	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
+		[pr /]
+	[/if]
+[if (pr = PreprocessingTechnique::VECTORIZATION)]
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN ]
+	from sklearn.feature_extraction.text import CountVectorizer
+    preprocess = CountVectorizer(ngram_range=(1,1))    
+[/if]
+[/if]
+	return preprocess
+[/for]
+[/if]
+def algorithm_settings():
+[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FeedForwardNN))]
+from sklearn.neural_network import MLPClassifier	
+	solver='[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).solver/]'
+	alpha=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).alpha/]
+	random_state=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).randomState/]		
+
+	algo = MLPClassifier(solver=solver, alpha=alpha,hidden_layer_sizes=hidden_layers, random_state=random_state)
+
+[/if]
+[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FilteringRS))]
+[if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).filteringRSAlgorithm = FilteringRSAlgorithm::USER_BASED)]
+	is_user_based=True
+[/if]
+[if(recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).filteringRSAlgorithm= FilteringRSAlgorithm::ITEM_BASED)]
+	is_user_based=False
+[/if] 		
+	neighborhood=[recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).neighborhood/]
+	cutoff=[recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).cutoff/]
+[if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).similarityCalculator = SimilarityFunction::COSINE_SIMILARITY)]
+	sim_funct='cosine'
+[/if]
+[if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).similarityCalculator = SimilarityFunction::MSD)]
+	sim_funct='msd'
+[/if]
+	sim_settings = {'name': sim_funct,
+               'user_based': is_user_based  # compute  similarities between items
+               }
+	from surprise import KNNWithMeans
+	algo = KNNWithMeans(k=neighborhood, sim_options=sim_settings)
+[/if]
+	return algo
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::ContextValidation))]
+def get_recommendations(context,n_items):
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::ContextValidation))]
+[if (recSys.recommendationSystem.generator = PyLibType::SKLEARN)]
+	var = input("Please enter a code snippet: ")
+	docs_new = ['['/]var[']'/]
+	X_new_counts = count_vect.transform(docs_new)
+	X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+	predicted = clf.predict(X_new_tfidf)
+	print('predicted as',predicted)
+[/if]
+[if (recSys.recommendationSystem.generator = PyLibType::SURPRISE)]
+[if (recSys.dataset.isBuiltIn = true)]
+	from collections import defaultdict
+	data = load_dataset()
+	trainset = data.build_full_trainset()
+    algo = algorithm_settings()
+    algo.fit(trainset)
+    testset = trainset.build_anti_testset()
+    predictions = algo.test(testset)
+    
+    top_n = defaultdict(list)
+    for uid, iid, true_r, est, _ in predictions:
+        top_n['['/]uid[']'/].append((iid, est))
+    
+    for uid, user_ratings in top_n.items():
+        user_ratings.sort(key=lambda x: x['['/]1[']'/] , reverse=True)
+        top_n['['/]uid[']'/] = user_ratings['['/]:n_items[']'/] 
+
+	results = top_n.get(context)
+[/if]
+[if  (recSys.dataset.isBuiltIn = false)]
+	lista = ['['/][']'/]
+    ['['/]lista.append(['['/]"query", lib, 1[']'/]) for lib in context[']'/]
+    df = pd.read_csv('result.csv', sep=",")
+    queryDF = pd.DataFrame(lista,columns=['['/]'ProjectID', 'LibID', 'rating'[']'/])   
+    df = df.append(queryDF, ignore_index=True)
+    reader = Reader(rating_scale=(0, 1))
+    data = Dataset.load_from_df(df['['/]['['/]'ProjectID', 'LibID', 'rating'[']'/][']'/], reader)
+    
+    algo = algorithm settings()
+   	k = 0
+    #TRAIN
+    trainset = data.build_full_trainset()
+    algo.fit(trainset)
+    list_ird = ['['/]trainset.to_raw_iid(key) for key in trainset.ir.keys()[']'/]
+    result = {}
+    for elem in list_ird:
+        k = algo.predict(uid="query", iid=elem)
+        result['['/]elem[']'/] = k.est
+    sorted_result = {k: v for k, v in sorted(result.items(), key=lambda item: item['['/]1[']'/], reverse=True)}
+
+    results = list(sorted_result.keys())['['/] : n_items[']'/]
+[/if]
+[/if]
+[/if]
+[/for]
+	return results
+[/if]
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]
+def run_cross_fold():
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]	
+[if (recSys.recommendationSystem.generator = PyLibType::SKLEARN)]
+	X,y = load_dataset()
+	from sklearn.model_selection import  KFold
+    n_splits=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
+    kf = KFold(n_splits = n_splits)	
+	prec_all = 0
+	acc_all = 0
+	rec_all = 0
+	f1_all = 0	
+	list_metrics=['['/][']'/]
+	for  train, test in kf.split(X):
+		X_split, X_test, y_split, y_test = X['['/]train[']'/],X['['/]test[']'/], y['['/]train[']'/], y['['/]test[']'/]	
+		sc=set_preprocessing()
+		list_train=['['/][']'/]
+        list_test =['['/][']'/]
+        for x in X_split.tolist():
+            list_train.append(str(x))
+        for t in X_test.tolist():
+            list_test.append(str(t))
+        X_train=sc.fit_transform(list_train)
+        X_test=sc.transform(list_test)     
+		clf= algorithm_settings()
+        clf.fit(X_train, y_split)        
+        y_pred= clf.predict(X_test)				
+	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::PRECISION) ]
+		from sklearn.metrics import precision_score
+		precision = precision_score(y_pred, y_test, average=None)
+		prec_all = prec_all + sum(precision)/len(precision)	
+	[/if]	
+	[if (metric = Metric::RECALL) ]
+		from sklearn.metrics import recall_score
+		recall = recall_score(y_pred, y_test, average=None)
+		rec_all = rec_all + sum(recall)/len(recall)
+	[/if]
+	[if (metric = Metric::F1_MEASURE) ]
+		from sklearn.metrics import f1_score
+		f1 = f1_score(y_pred, y_test, average=None)
+		f1_all = f1_all + sum(f1)/len(f1)
+	[/if]	
+	[/for]
+	prec_all=(prec_all /n_splits)
+    rec_all=(rec_all /n_splits)
+    f1_all=(f1_all /n_splits)  
+ 
+    list_metrics.append(prec_all)
+    list_metrics.append(rec_all)
+    list_metrics.append(f1_all)
+
+	return list_metrics
+    
+[/if]
+[/if]
+
+[if (recSys.recommendationSystem.generator = PyLibType::SURPRISE)]
+
+	from surprise.model_selection import KFold
+	from collections import defaultdict
+	kf = KFold(n_splits=n_splits)
+
+[if (recSys.dataset.preprocessing -> size()>0)]
+		[for (pr : PreprocessingTechnique | recSys.dataset.preprocessing)]
+[if (pr = PreprocessingTechnique::DUPLICATES_REMOVAL) ]
+	dataset.drop_duplicates(inPlace=True)
+	X = dataset.iloc['[:,:-1]'/].values
+	y = dataset.iloc['[:, -1]'/].values		
+	[/if]
+	[if (pr = PreprocessingTechnique::FEATURE_SCALING) ]
+	from sklearn.preprocessing import StandardScaler
+	sc = StandardScaler()
+	X_train = sc.fit_transform(X_split)
+	X_test = sc.transform(X_test)
+
+	[/if]
+	[if (pr = PreprocessingTechnique::NLP) ]
+		[pr /]
+	[/if]
+	[if (pr = PreprocessingTechnique::MISSING_DATA_MANIPULATION) ]
+		[pr /]
+	[/if]	
+	[if (pr = PreprocessingTechnique::TFIDF) ]
+	from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
+	count_vect = TfidfVectorizer(input='train', stop_words={'english'}, lowercase=True, analyzer='word')
+	train_vectors = count_vect.fit_transform(X)
+	train_vectors.shape
+	tfidf_transformer = TfidfTransformer()
+	train_tfidf = tfidf_transformer.fit_transform(train_vectors)
+	train_tfidf.shape
+	[/if]
+	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
+		[pr /]
+	[/if]
+[if (pr = PreprocessingTechnique::VECTORIZATION)]
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN]
+	from sklearn.feature_extraction.text import CountVectorizer
+    preprocess = CountVectorizer(ngram_range=(1,1))    
+[/if]
+[/if]
+		[/for]
+	[/if]
+
+
+
+	algo=algorithm_settings()
+	threshold = 3.5
+	k=10
+	for trainset, testset in kf.split(data):
+	    algo.fit(trainset)
+	    predictions = algo.test(testset)
+	    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
+
+[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::PRECISION) ]
+	user_est_true = defaultdict(list)
+    for uid, _, true_r, est, _ in predictions:
+        user_est_true['['/]uid[']'/].append((est, true_r))
+
+    precisions = dict()
+	recalls = dict()
+    for uid, user_ratings in user_est_true.items():
+        n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
+
+        # Number of recommended items in top k
+        n_rec_k = sum((est >= threshold) for (est, _) in user_ratings['['/]:k[']'/])
+        n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
+                              for (est, true_r) in user_ratings['['/]:k[']'/])
+        precisions['['/]uid[']'/] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
+
+	[/if]	
+	[if (metric = Metric::RECALL) ]
+		recalls['['/]uid[']'/] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
+	[/if]
+
+	[/for]
+	precision= sum(prec for prec in precisions.values()) / len(precisions)
+	recall =sum(rec for rec in recalls.values()) / len(recalls)
+    # Precision and recall can then be averaged over all users
+    print(precision)
+    print(recall)
+	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::F1_MEASURE) ]
+	f1_measure=(2*precision* recall) / (recall + precision)
+	print(f1_measure)
+	[/if]	
+
+	[/for]
+
+
+[/if]
+[/for]
+[/if]
+[/for]
+
+
+"""
+
+nb ['['/]"cells"[']'/] = ['['/]nbf.v4.new_markdown_cell(text),
+               nbf.v4.new_code_cell(code) [']'/]
+
+nbf.write(nb, 'CrossRec_2.ipynb')
+
+
+
+[/file]
+[file ('Dockerfile', false, 'UTF-8')]
+
+
+# Let's use the image base-notebook to build our image on top of it
+FROM jupyter/base-notebook
+
+LABEL Miguel Doctor <migueldoctor@gmail.com>
+COPY . .
+
+#Let's define this parameter to install jupyter lab instead of the default juyter notebook command so we don't have to use it when running the container with the option -e
+ENV JUPYTER_ENABLE_LAB=yes
+
+
+
+[/file]
+
+
+[file ('requirements.txt', false, 'UTF-8')]
+pandas==1.4.2
+scikit-surprise==1.1.1
+numpy
+scikit-learn=0.24.1
+flask==2.1.2
+flasgger==0.9.5
+[/file]
+
+
+
+[/if]
+
+
+
+
+
+
+[if recSys.presentationLayer.oclIsTypeOf(lowcoders::RawOutcomes)]
+
+[file('RecSys.py',false, 'UTF-8')]
+
+def load_dataset():
+[if recSys.recommendationSystem.generator = PyLibType :: SURPRISE]
+from surprise import Dataset, Reader
+
+[if (dataset.isBuiltIn = true)]
+[if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]	
+	data = Dataset.load_builtin('[dataset.path/]')	
+	return data
+[/if] 
+
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data = Dataset.load_builtin('[dataset.path/]')	
+	return data
+[/if]
+[/if]
+
+[if (dataset.isBuiltIn = false)]
+[if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]
+	data = pd.read_csv('[dataset.path/]', sep=",")
+	return data
+[/if] 
+
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data = pd.read_csv('[dataset.path/]', sep=",")	
+	return data
+[/if]
+ 
+[/if]
+[/if]
+[if recommendationSystem.generator = PyLibType :: SKLEARN]
+[if (dataset.oclIsTypeOf(lowcoders::UnsupervisedDataset))]
+	data=pd.read_csv('[dataset.name/]')
+	X = data.iloc['[:,:-1]'/].values
+	return X
+[/if]
+[if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]
+[if (dataset.preprocessing -> size()>0)]
+	[for (pr : PreprocessingTechnique | dataset.preprocessing)]
+[comment [generatePreprocessingTechnique(pr)/] 
+	[/for]
+[/if]
+[if (dataset.dataStructure.oclIsTypeOf(lowcoders::Matrix))]
+	data=pd.read_csv('[dataset.path/]')
+	X = data.iloc['[:,:-1]'/].values
+	y = data.iloc['[:, -1]'/].values
+[/if]
+[/if]
+	return X,y
+[/if]
+
+
+
+[if (recSys.dataset.preprocessing -> size()>0)]
+[for (pr : PreprocessingTechnique | recSys.dataset.preprocessing)]
+def set_preprocessing():
+[if (pr = PreprocessingTechnique::DUPLICATES_REMOVAL) ]
+	dataset.drop_duplicates(inPlace=True)
+	X = dataset.iloc['[:,:-1]'/].values
+	y = dataset.iloc['[:, -1]'/].values		
+	[/if]
+	[if (pr = PreprocessingTechnique::FEATURE_SCALING) ]
+
+[if recSys.recommendationSystem.generator = PyLibType :: SKLEARN]
+	from sklearn.preprocessing import StandardScaler
+	sc = StandardScaler()
+	X_train = sc.fit_transform(X_split)
+	X_test = sc.transform(X_test)
+[/if]
+
+	[/if]
+	[if (pr = PreprocessingTechnique::NLP) ]
+		[pr /]
+	[/if]
+	[if (pr = PreprocessingTechnique::MISSING_DATA_MANIPULATION) ]
+		[pr /]
+	[/if]	
+	[if (pr = PreprocessingTechnique::TFIDF) ]
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN ]
+	from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
+	count_vect = TfidfVectorizer(input='train', stop_words={'english'}, lowercase=True, analyzer='word')
+	train_vectors = count_vect.fit_transform(X)
+	train_vectors.shape
+	tfidf_transformer = TfidfTransformer()
+	train_tfidf = tfidf_transformer.fit_transform(train_vectors)
+	train_tfidf.shape
+[/if]
+	[/if]
+	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
+		[pr /]
+	[/if]
+[if (pr = PreprocessingTechnique::VECTORIZATION)]
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN ]
+	from sklearn.feature_extraction.text import CountVectorizer
+    preprocess = CountVectorizer(ngram_range=(1,1))    
+[/if]
+[/if]
+	return preprocess
+[/for]
+[/if]
+def algorithm_settings():
+[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FeedForwardNN))]
+from sklearn.neural_network import MLPClassifier	
+	solver='[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).solver/]'
+	alpha=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).alpha/]
+	random_state=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).randomState/]		
+
+	algo = MLPClassifier(solver=solver, alpha=alpha,hidden_layer_sizes=hidden_layers, random_state=random_state)
+
+[/if]
+[if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FilteringRS))]
+[if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).filteringRSAlgorithm = FilteringRSAlgorithm::USER_BASED)]
+	is_user_based=True
+[/if]
+[if(recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).filteringRSAlgorithm= FilteringRSAlgorithm::ITEM_BASED)]
+	is_user_based=False
+[/if] 		
+	neighborhood=[recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).neighborhood/]
+	cutoff=[recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).cutoff/]
+[if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).similarityCalculator = SimilarityFunction::COSINE_SIMILARITY)]
+	sim_funct='cosine'
+[/if]
+[if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).similarityCalculator = SimilarityFunction::MSD)]
+	sim_funct='msd'
+[/if]
+	sim_settings = {'name': sim_funct,
+               'user_based': is_user_based  # compute  similarities between items
+               }
+	from surprise import KNNWithMeans
+	algo = KNNWithMeans(k=neighborhood, sim_options=sim_settings)
+[/if]
+	return algo
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::ContextValidation))]
+def get_recommendations(context,n_items):
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::ContextValidation))]
+[if (recSys.recommendationSystem.generator = PyLibType::SKLEARN)]
+	var = input("Please enter a code snippet: ")
+	docs_new = ['['/]var[']'/]
+	X_new_counts = count_vect.transform(docs_new)
+	X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+	predicted = clf.predict(X_new_tfidf)
+	print('predicted as',predicted)
+[/if]
+[if (recSys.recommendationSystem.generator = PyLibType::SURPRISE)]
+[if (recSys.dataset.isBuiltIn = true)]
+	from collections import defaultdict
+	data = load_dataset()
+	trainset = data.build_full_trainset()
+    algo = algorithm_settings()
+    algo.fit(trainset)
+    testset = trainset.build_anti_testset()
+    predictions = algo.test(testset)
+    
+    top_n = defaultdict(list)
+    for uid, iid, true_r, est, _ in predictions:
+        top_n['['/]uid[']'/].append((iid, est))
+    
+    for uid, user_ratings in top_n.items():
+        user_ratings.sort(key=lambda x: x['['/]1[']'/] , reverse=True)
+        top_n['['/]uid[']'/] = user_ratings['['/]:n_items[']'/] 
+
+	results = top_n.get(context)
+[/if]
+[if  (recSys.dataset.isBuiltIn = false)]
+	lista = ['['/][']'/]
+    ['['/]lista.append(['['/]"query", lib, 1[']'/]) for lib in context[']'/]
+    df = pd.read_csv('result.csv', sep=",")
+    queryDF = pd.DataFrame(lista,columns=['['/]'ProjectID', 'LibID', 'rating'[']'/])   
+    df = df.append(queryDF, ignore_index=True)
+    reader = Reader(rating_scale=(0, 1))
+    data = Dataset.load_from_df(df['['/]['['/]'ProjectID', 'LibID', 'rating'[']'/][']'/], reader)
+    
+    algo = algorithm settings()
+   	k = 0
+    #TRAIN
+    trainset = data.build_full_trainset()
+    algo.fit(trainset)
+    list_ird = ['['/]trainset.to_raw_iid(key) for key in trainset.ir.keys()[']'/]
+    result = {}
+    for elem in list_ird:
+        k = algo.predict(uid="query", iid=elem)
+        result['['/]elem[']'/] = k.est
+    sorted_result = {k: v for k, v in sorted(result.items(), key=lambda item: item['['/]1[']'/], reverse=True)}
+
+    results = list(sorted_result.keys())['['/] : n_items[']'/]
+[/if]
+[/if]
+[/if]
+[/for]
+	return results
+[/if]
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]
+def run_cross_fold():
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]	
+[if (recSys.recommendationSystem.generator = PyLibType::SKLEARN)]
+	X,y = load_dataset()
+	from sklearn.model_selection import  KFold
+    n_splits=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
+    kf = KFold(n_splits = n_splits)	
+	prec_all = 0
+	acc_all = 0
+	rec_all = 0
+	f1_all = 0	
+	list_metrics=['['/][']'/]
+	for  train, test in kf.split(X):
+		X_split, X_test, y_split, y_test = X['['/]train[']'/],X['['/]test[']'/], y['['/]train[']'/], y['['/]test[']'/]	
+		sc=set_preprocessing()
+		list_train=['['/][']'/]
+        list_test =['['/][']'/]
+        for x in X_split.tolist():
+            list_train.append(str(x))
+        for t in X_test.tolist():
+            list_test.append(str(t))
+        X_train=sc.fit_transform(list_train)
+        X_test=sc.transform(list_test)     
+		clf= algorithm_settings()
+        clf.fit(X_train, y_split)        
+        y_pred= clf.predict(X_test)				
+	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::PRECISION) ]
+		from sklearn.metrics import precision_score
+		precision = precision_score(y_pred, y_test, average=None)
+		prec_all = prec_all + sum(precision)/len(precision)	
+	[/if]	
+	[if (metric = Metric::RECALL) ]
+		from sklearn.metrics import recall_score
+		recall = recall_score(y_pred, y_test, average=None)
+		rec_all = rec_all + sum(recall)/len(recall)
+	[/if]
+	[if (metric = Metric::F1_MEASURE) ]
+		from sklearn.metrics import f1_score
+		f1 = f1_score(y_pred, y_test, average=None)
+		f1_all = f1_all + sum(f1)/len(f1)
+	[/if]	
+	[/for]
+	prec_all=(prec_all /n_splits)
+    rec_all=(rec_all /n_splits)
+    f1_all=(f1_all /n_splits)  
+ 
+    list_metrics.append(prec_all)
+    list_metrics.append(rec_all)
+    list_metrics.append(f1_all)
+
+	return list_metrics
+    
+[/if]
+[/if]
+
+[if (recSys.recommendationSystem.generator = PyLibType::SURPRISE)]
+
+	from surprise.model_selection import KFold
+	from collections import defaultdict
+	kf = KFold(n_splits=n_splits)
+
+[if (recSys.dataset.preprocessing -> size()>0)]
+		[for (pr : PreprocessingTechnique | recSys.dataset.preprocessing)]
+[if (pr = PreprocessingTechnique::DUPLICATES_REMOVAL) ]
+	dataset.drop_duplicates(inPlace=True)
+	X = dataset.iloc['[:,:-1]'/].values
+	y = dataset.iloc['[:, -1]'/].values		
+	[/if]
+	[if (pr = PreprocessingTechnique::FEATURE_SCALING) ]
+	from sklearn.preprocessing import StandardScaler
+	sc = StandardScaler()
+	X_train = sc.fit_transform(X_split)
+	X_test = sc.transform(X_test)
+
+	[/if]
+	[if (pr = PreprocessingTechnique::NLP) ]
+		[pr /]
+	[/if]
+	[if (pr = PreprocessingTechnique::MISSING_DATA_MANIPULATION) ]
+		[pr /]
+	[/if]	
+	[if (pr = PreprocessingTechnique::TFIDF) ]
+	from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
+	count_vect = TfidfVectorizer(input='train', stop_words={'english'}, lowercase=True, analyzer='word')
+	train_vectors = count_vect.fit_transform(X)
+	train_vectors.shape
+	tfidf_transformer = TfidfTransformer()
+	train_tfidf = tfidf_transformer.fit_transform(train_vectors)
+	train_tfidf.shape
+	[/if]
+	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
+		[pr /]
+	[/if]
+[if (pr = PreprocessingTechnique::VECTORIZATION)]
+[if recSys.recommendationSystem.generator = PyLibType::SKLEARN]
+	from sklearn.feature_extraction.text import CountVectorizer
+    preprocess = CountVectorizer(ngram_range=(1,1))    
+[/if]
+[/if]
+		[/for]
+	[/if]
+
+
+
+	algo=algorithm_settings()
+	threshold = 3.5
+	k=10
+	for trainset, testset in kf.split(data):
+	    algo.fit(trainset)
+	    predictions = algo.test(testset)
+	    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
+
+[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::PRECISION) ]
+	user_est_true = defaultdict(list)
+    for uid, _, true_r, est, _ in predictions:
+        user_est_true['['/]uid[']'/].append((est, true_r))
+
+    precisions = dict()
+	recalls = dict()
+    for uid, user_ratings in user_est_true.items():
+        n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
+
+        # Number of recommended items in top k
+        n_rec_k = sum((est >= threshold) for (est, _) in user_ratings['['/]:k[']'/])
+        n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
+                              for (est, true_r) in user_ratings['['/]:k[']'/])
+        precisions['['/]uid[']'/] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
+
+	[/if]	
+	[if (metric = Metric::RECALL) ]
+		recalls['['/]uid[']'/] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
+	[/if]
+
+	[/for]
+	precision= sum(prec for prec in precisions.values()) / len(precisions)
+	recall =sum(rec for rec in recalls.values()) / len(recalls)
+    # Precision and recall can then be averaged over all users
+    print(precision)
+    print(recall)
+	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	[if (metric = Metric::F1_MEASURE) ]
+	f1_measure=(2*precision* recall) / (recall + precision)
+	print(f1_measure)
+	[/if]	
+
+	[/for]
+
+
+[/if]
+[/for]
+[/if]
 [/for]
 [/file]
 
+[file ('Dockerfile', false, 'UTF-8')]
+#Deriving the latest base image
+FROM python:3.8
+
+
+#Labels as key value pair
+LABEL Maintainer="roushan.me17"
+
+
+# Any working directory can be chosen as per choice like '/' or '/home' etc
+# i have chosen /usr/app/src
+WORKDIR /usr/app/src
+
+
+#to COPY the remote file at working directory in container
+COPY . .
+# Now the structure looks like this '/usr/app/src/test.py'
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+#CMD instruction should be used to run the software
+#contained by your image, along with any arguments.
+
+CMD ['['/] "python", "./RecSys.py"[']'/]
+[/file]
+
+
+[file ('requirements.txt', false, 'UTF-8')]
+pandas==1.4.2
+scikit-surprise==1.1.1
+numpy
+scikit-learn=0.24.1
+flask==2.1.2
+flasgger==0.9.5
+[/file]
+
+[/if]
+
+
+
+
 [/template]
+
+
+
+
+

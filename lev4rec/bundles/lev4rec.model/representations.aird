@@ -3,4 +3,5 @@
   <semanticResources>model/CrossRec.xmi</semanticResources>
   <semanticResources>model/lowcoders.ecore</semanticResources>
   <semanticResources>model/lowcode.genmodel</semanticResources>
+  <semanticResources>model/Aurora.xmi</semanticResources>
 </viewpoint:DAnalysis>

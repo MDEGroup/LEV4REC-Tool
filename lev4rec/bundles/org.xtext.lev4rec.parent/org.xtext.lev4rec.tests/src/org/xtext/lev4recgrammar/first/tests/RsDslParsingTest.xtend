@@ -10,7 +10,7 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
-import org.xtext.lev4recgrammar.first.rsDsl.RSModel
+import org.xtext.lev4recgrammar.first.lowcoders.RSModel;
 
 @ExtendWith(InjectionExtension)
 @InjectWith(RsDslInjectorProvider)

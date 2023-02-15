@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import lev4rec.code.template.main.Generate;
-import lowcoders.LowcodersPackage;
-import lowcoders.RSModel;
+import org.xtext.lev4recgrammar.first.lowcoders.LowcodersPackage;
+import org.xtext.lev4recgrammar.first.lowcoders.RSModel;
 
 public class Runner {
 
