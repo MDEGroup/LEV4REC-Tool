@@ -1,21 +1,8 @@
 [comment encoding = UTF-8 /]
 [module generate('https://it.disim.univaq/lowcode')]
-
-[comment import lev4rec::code::template::utils::generateSURDataset/]
-[comment import lev4rec::code::template::utils::generateSKDataset /]
-
-[comment import lev4rec::code::template::utils::generateRecommenderSystem/]
-[comment import lev4rec::code::template::utils::generateContextValidation/]
-[comment import lev4rec::code::template::utils::generateCrossFoldValidation/]
-[comment import lev4rec::code::template::utils::generatePreprocessingTechnique/]
 [template public generate(recSys : RSModel)]
 [comment @main/]
-
-
-
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
-
-
 [file ('RecSys_interface.py', false, 'UTF-8')]
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
 from RecSys_business import load_dataset, get_recommendations, algorithm_settings, run_cross_fold, 
@@ -25,38 +12,30 @@ from flask import request
 from flask import jsonify
 import os
 import json
-
-
-
 app = Flask(__name__)
 @app.route("/get_recommendation", methods=['["'/]POST['"]'/])
 def recommend():    
-    json_data = request.get_json()    
-    context = json_data['["'/]context['"]'/]
-    n_items = json_data['["'/]n_items['"]'/]
-
-    
-  
-    
-	[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
-		[if (val.oclIsTypeOf(lowcoders::CrossValidation))]	
+	json_data = request.get_json()    
+	context = json_data['["'/]context['"]'/]
+	n_items = json_data['["'/]n_items['"]'/]
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]	
 	run_cross_fold()
-	[/if]
-	[if (val.oclIsTypeOf(lowcoders::ContextValidation))]	
+[/if]
+[if (val.oclIsTypeOf(lowcoders::ContextValidation))]	
 	get_recommendations(context,n_items)
-	[/if]	
-	[/for]
-    
-    try:
+[/if]	
+[/for]
+	try:
         
-        message = {
-            'status': 200,
-            'message': 'OK',
-            'results': res
-        }
-        return jsonify(message)
-    except Exception:
-        message = {
+		message = {
+			'status': 200,
+			'message': 'OK',
+			'results': res
+		}
+		return jsonify(message)
+	except Exception:
+		message = {
             'status': 500,
             'message': 'KO'
         }
@@ -64,15 +43,12 @@ def recommend():
 
 
 if __name__ == '__main__':
-    app.debug = True
-    port = int(os.environ.get("PORT", [presentationLayer.oclAsType(lowcoders::WebApplication).port/]))
-    app.run(host='[presentationLayer.oclAsType(lowcoders::WebApplication).host/]', port=port)
+	app.debug = True
+	port = int(os.environ.get("PORT", [presentationLayer.oclAsType(lowcoders::WebApplication).port/]))
+	app.run(host='[presentationLayer.oclAsType(lowcoders::WebApplication).host/]', port=port)
 [/if]
-[/if]
-	
+[/if]	
 [/file]
-
-
 [file ('RecSys_business.py', false, 'UTF-8')]
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
 [if recSys.presentationLayer.oclAsType(lowcoders::WebApplication).library = WebInterfaceLibrary::FLASK]
@@ -81,7 +57,11 @@ if __name__ == '__main__':
 [if (dml = DatasetManipulationLibrary::PANDAS)]
 import pandas as pd		
 [/if]
+[if (dml = DatasetManipulationLibrary::NUMPY)]
+import numpy as np	
+[/if]
 [/for]
+[/if]
 def load_dataset():
 [if recSys.recommendationSystem.generator = PyLibType :: SURPRISE]
 	from surprise import Dataset, Reader
@@ -170,12 +150,12 @@ def set_preprocessing():
 [/if]
 	[/if]
 	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
-		[pr /]
+		
 	[/if]
 [if (pr = PreprocessingTechnique::VECTORIZATION)]
 [if recSys.recommendationSystem.generator = PyLibType::SKLEARN ]
 	from sklearn.feature_extraction.text import CountVectorizer
-    preprocess = CountVectorizer(ngram_range=(1,1))    
+	preprocess = CountVectorizer(ngram_range=(1,1))    
 [/if]
 [/if]
 	return preprocess
@@ -183,13 +163,11 @@ def set_preprocessing():
 [/if]
 def algorithm_settings():
 [if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FeedForwardNN))]
-from sklearn.neural_network import MLPClassifier	
+	from sklearn.neural_network import MLPClassifier	
 	solver='[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).solver/]'
 	alpha=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).alpha/]
-	random_state=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).randomState/]		
-
-	algo = MLPClassifier(solver=solver, alpha=alpha,hidden_layer_sizes=hidden_layers, random_state=random_state)
-
+	random_state=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).randomState/]
+	algo = MLPClassifier(solver=solver, alpha=alpha,random_state=random_state)
 [/if]
 [if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FilteringRS))]
 [if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).filteringRSAlgorithm = FilteringRSAlgorithm::USER_BASED)]
@@ -223,6 +201,7 @@ def get_recommendations(context,n_items):
 	docs_new = ['['/]var[']'/]
 	X_new_counts = count_vect.transform(docs_new)
 	X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+	clf= algorithm_settings()
 	predicted = clf.predict(X_new_tfidf)
 	print('predicted as',predicted)
 [/if]
@@ -281,51 +260,50 @@ def run_cross_fold():
 [if (recSys.recommendationSystem.generator = PyLibType::SKLEARN)]
 	X,y = load_dataset()
 	from sklearn.model_selection import  KFold
-    n_splits=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
-    kf = KFold(n_splits = n_splits)	
-	prec_all = 0
-	acc_all = 0
+	n_splits=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
+	kf = KFold(n_splits = n_splits)
+	prec_all = 0	
 	rec_all = 0
-	f1_all = 0	
+	f1_all = 0
 	list_metrics=['['/][']'/]
 	for  train, test in kf.split(X):
 		X_split, X_test, y_split, y_test = X['['/]train[']'/],X['['/]test[']'/], y['['/]train[']'/], y['['/]test[']'/]	
 		sc=set_preprocessing()
 		list_train=['['/][']'/]
-        list_test =['['/][']'/]
-        for x in X_split.tolist():
-            list_train.append(str(x))
-        for t in X_test.tolist():
-            list_test.append(str(t))
-        X_train=sc.fit_transform(list_train)
-        X_test=sc.transform(list_test)     
+		list_test =['['/][']'/]
+		for x in X_split.tolist():
+			list_train.append(str(x))
+		for t in X_test.tolist():
+			list_test.append(str(t))
+		X_train=sc.fit_transform(list_train)
+		X_test=sc.transform(list_test)
 		clf= algorithm_settings()
-        clf.fit(X_train, y_split)        
-        y_pred= clf.predict(X_test)				
-	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
-	[if (metric = Metric::PRECISION) ]
+		clf.fit(X_train, y_split)
+		y_pred= clf.predict(X_test)					
+[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+[if (metric = Metric::PRECISION) ]
 		from sklearn.metrics import precision_score
 		precision = precision_score(y_pred, y_test, average=None)
-		prec_all = prec_all + sum(precision)/len(precision)	
-	[/if]	
-	[if (metric = Metric::RECALL) ]
+		prec_all = prec_all + sum(precision)/len(precision)
+[/if]	
+[if (metric = Metric::RECALL)]
 		from sklearn.metrics import recall_score
 		recall = recall_score(y_pred, y_test, average=None)
 		rec_all = rec_all + sum(recall)/len(recall)
-	[/if]
-	[if (metric = Metric::F1_MEASURE) ]
+[/if]
+[if (metric = Metric::F1_MEASURE)]
 		from sklearn.metrics import f1_score
 		f1 = f1_score(y_pred, y_test, average=None)
 		f1_all = f1_all + sum(f1)/len(f1)
-	[/if]	
-	[/for]
+[/if]	
+[/for]
 	prec_all=(prec_all /n_splits)
-    rec_all=(rec_all /n_splits)
-    f1_all=(f1_all /n_splits)  
- 
-    list_metrics.append(prec_all)
-    list_metrics.append(rec_all)
-    list_metrics.append(f1_all)
+	rec_all=(rec_all /n_splits)
+	f1_all=(f1_all /n_splits)
+
+	list_metrics.append(prec_all)
+	list_metrics.append(rec_all)
+	list_metrics.append(f1_all)
 
 	return list_metrics
     
@@ -336,6 +314,8 @@ def run_cross_fold():
 
 	from surprise.model_selection import KFold
 	from collections import defaultdict
+	data=load_dataset()
+	n_splits = [val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
 	kf = KFold(n_splits=n_splits)
 
 [if (recSys.dataset.preprocessing -> size()>0)]
@@ -344,14 +324,7 @@ def run_cross_fold():
 	dataset.drop_duplicates(inPlace=True)
 	X = dataset.iloc['[:,:-1]'/].values
 	y = dataset.iloc['[:, -1]'/].values		
-	[/if]
-	[if (pr = PreprocessingTechnique::FEATURE_SCALING) ]
-	from sklearn.preprocessing import StandardScaler
-	sc = StandardScaler()
-	X_train = sc.fit_transform(X_split)
-	X_test = sc.transform(X_test)
-
-	[/if]
+	[/if]	
 	[if (pr = PreprocessingTechnique::NLP) ]
 		[pr /]
 	[/if]
@@ -359,13 +332,6 @@ def run_cross_fold():
 		[pr /]
 	[/if]	
 	[if (pr = PreprocessingTechnique::TFIDF) ]
-	from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
-	count_vect = TfidfVectorizer(input='train', stop_words={'english'}, lowercase=True, analyzer='word')
-	train_vectors = count_vect.fit_transform(X)
-	train_vectors.shape
-	tfidf_transformer = TfidfTransformer()
-	train_tfidf = tfidf_transformer.fit_transform(train_vectors)
-	train_tfidf.shape
 	[/if]
 	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
 		[pr /]
@@ -376,61 +342,63 @@ def run_cross_fold():
     preprocess = CountVectorizer(ngram_range=(1,1))    
 [/if]
 [/if]
-		[/for]
-	[/if]
-
-
-
+[/for]
+[/if]
 	algo=algorithm_settings()
 	threshold = 3.5
-	k=10
+	k=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
 	for trainset, testset in kf.split(data):
-	    algo.fit(trainset)
-	    predictions = algo.test(testset)
-	    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
+		algo.fit(trainset)
+		predictions = algo.test(testset)
+	   
 
 [for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
 	[if (metric = Metric::PRECISION) ]
 	user_est_true = defaultdict(list)
-    for uid, _, true_r, est, _ in predictions:
-        user_est_true['['/]uid[']'/].append((est, true_r))
+	for uid, _, true_r, est, _ in predictions:
+		user_est_true['['/]uid[']'/].append((est, true_r))
+	precisions = dict()
+	recalls = dict() 
+	
+	for uid, user_ratings in user_est_true.items():
+		n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
 
-    precisions = dict()
-	recalls = dict()
-    for uid, user_ratings in user_est_true.items():
-        n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
-
-        # Number of recommended items in top k
-        n_rec_k = sum((est >= threshold) for (est, _) in user_ratings['['/]:k[']'/])
-        n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
+		n_rec_k = sum((est >= threshold) for (est, _) in user_ratings['['/]:k[']'/])
+		n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
                               for (est, true_r) in user_ratings['['/]:k[']'/])
-        precisions['['/]uid[']'/] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
+		precisions['['/]uid[']'/] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
 
 	[/if]	
 	[if (metric = Metric::RECALL) ]
-		recalls['['/]uid[']'/] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
+	recalls['['/]uid[']'/] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
 	[/if]
 
-	[/for]
+	
 	precision= sum(prec for prec in precisions.values()) / len(precisions)
 	recall =sum(rec for rec in recalls.values()) / len(recalls)
-    # Precision and recall can then be averaged over all users
-    print(precision)
-    print(recall)
-	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	print(precision)
+	print(recall)
+	
 	[if (metric = Metric::F1_MEASURE) ]
 	f1_measure=(2*precision* recall) / (recall + precision)
 	print(f1_measure)
 	[/if]	
 
-	[/for]
+[/for]
 
 
 [/if]
 [/for]
 [/if]
 [/for]
+
+
+if __name__=='main':
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]
+	run_cross_fold()
 [/if]
+[/for]
 [/if]
 [/if]
 [/file]	
@@ -494,9 +462,20 @@ Generated recommneder system from model."""
 code = """\
 
 
+
+[if (recSys.dataset.datasetManipulationLibrary -> size()> 0)]
+[for (dml : DatasetManipulationLibrary | recSys.dataset.datasetManipulationLibrary)]
+[if (dml = DatasetManipulationLibrary::PANDAS)]
+import pandas as pd		
+[/if]
+[if (dml = DatasetManipulationLibrary::NUMPY)]
+import numpy as np	
+[/if]
+[/for]
+[/if]
 def load_dataset():
 [if recSys.recommendationSystem.generator = PyLibType :: SURPRISE]
-from surprise import Dataset, Reader
+	from surprise import Dataset, Reader
 
 [if (dataset.isBuiltIn = true)]
 [if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]	
@@ -582,12 +561,12 @@ def set_preprocessing():
 [/if]
 	[/if]
 	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
-		[pr /]
+		
 	[/if]
 [if (pr = PreprocessingTechnique::VECTORIZATION)]
 [if recSys.recommendationSystem.generator = PyLibType::SKLEARN ]
 	from sklearn.feature_extraction.text import CountVectorizer
-    preprocess = CountVectorizer(ngram_range=(1,1))    
+	preprocess = CountVectorizer(ngram_range=(1,1))    
 [/if]
 [/if]
 	return preprocess
@@ -595,13 +574,11 @@ def set_preprocessing():
 [/if]
 def algorithm_settings():
 [if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FeedForwardNN))]
-from sklearn.neural_network import MLPClassifier	
+	from sklearn.neural_network import MLPClassifier	
 	solver='[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).solver/]'
 	alpha=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).alpha/]
-	random_state=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).randomState/]		
-
-	algo = MLPClassifier(solver=solver, alpha=alpha,hidden_layer_sizes=hidden_layers, random_state=random_state)
-
+	random_state=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).randomState/]
+	algo = MLPClassifier(solver=solver, alpha=alpha,random_state=random_state)
 [/if]
 [if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FilteringRS))]
 [if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).filteringRSAlgorithm = FilteringRSAlgorithm::USER_BASED)]
@@ -635,6 +612,7 @@ def get_recommendations(context,n_items):
 	docs_new = ['['/]var[']'/]
 	X_new_counts = count_vect.transform(docs_new)
 	X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+	clf= algorithm_settings()
 	predicted = clf.predict(X_new_tfidf)
 	print('predicted as',predicted)
 [/if]
@@ -693,51 +671,50 @@ def run_cross_fold():
 [if (recSys.recommendationSystem.generator = PyLibType::SKLEARN)]
 	X,y = load_dataset()
 	from sklearn.model_selection import  KFold
-    n_splits=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
-    kf = KFold(n_splits = n_splits)	
-	prec_all = 0
-	acc_all = 0
+	n_splits=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
+	kf = KFold(n_splits = n_splits)
+	prec_all = 0	
 	rec_all = 0
-	f1_all = 0	
+	f1_all = 0
 	list_metrics=['['/][']'/]
 	for  train, test in kf.split(X):
 		X_split, X_test, y_split, y_test = X['['/]train[']'/],X['['/]test[']'/], y['['/]train[']'/], y['['/]test[']'/]	
 		sc=set_preprocessing()
 		list_train=['['/][']'/]
-        list_test =['['/][']'/]
-        for x in X_split.tolist():
-            list_train.append(str(x))
-        for t in X_test.tolist():
-            list_test.append(str(t))
-        X_train=sc.fit_transform(list_train)
-        X_test=sc.transform(list_test)     
+		list_test =['['/][']'/]
+		for x in X_split.tolist():
+			list_train.append(str(x))
+		for t in X_test.tolist():
+			list_test.append(str(t))
+		X_train=sc.fit_transform(list_train)
+		X_test=sc.transform(list_test)
 		clf= algorithm_settings()
-        clf.fit(X_train, y_split)        
-        y_pred= clf.predict(X_test)				
-	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
-	[if (metric = Metric::PRECISION) ]
+		clf.fit(X_train, y_split)
+		y_pred= clf.predict(X_test)					
+[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+[if (metric = Metric::PRECISION) ]
 		from sklearn.metrics import precision_score
 		precision = precision_score(y_pred, y_test, average=None)
-		prec_all = prec_all + sum(precision)/len(precision)	
-	[/if]	
-	[if (metric = Metric::RECALL) ]
+		prec_all = prec_all + sum(precision)/len(precision)
+[/if]	
+[if (metric = Metric::RECALL)]
 		from sklearn.metrics import recall_score
 		recall = recall_score(y_pred, y_test, average=None)
 		rec_all = rec_all + sum(recall)/len(recall)
-	[/if]
-	[if (metric = Metric::F1_MEASURE) ]
+[/if]
+[if (metric = Metric::F1_MEASURE)]
 		from sklearn.metrics import f1_score
 		f1 = f1_score(y_pred, y_test, average=None)
 		f1_all = f1_all + sum(f1)/len(f1)
-	[/if]	
-	[/for]
+[/if]	
+[/for]
 	prec_all=(prec_all /n_splits)
-    rec_all=(rec_all /n_splits)
-    f1_all=(f1_all /n_splits)  
- 
-    list_metrics.append(prec_all)
-    list_metrics.append(rec_all)
-    list_metrics.append(f1_all)
+	rec_all=(rec_all /n_splits)
+	f1_all=(f1_all /n_splits)
+
+	list_metrics.append(prec_all)
+	list_metrics.append(rec_all)
+	list_metrics.append(f1_all)
 
 	return list_metrics
     
@@ -748,6 +725,8 @@ def run_cross_fold():
 
 	from surprise.model_selection import KFold
 	from collections import defaultdict
+	data=load_dataset()
+	n_splits = [val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
 	kf = KFold(n_splits=n_splits)
 
 [if (recSys.dataset.preprocessing -> size()>0)]
@@ -756,14 +735,7 @@ def run_cross_fold():
 	dataset.drop_duplicates(inPlace=True)
 	X = dataset.iloc['[:,:-1]'/].values
 	y = dataset.iloc['[:, -1]'/].values		
-	[/if]
-	[if (pr = PreprocessingTechnique::FEATURE_SCALING) ]
-	from sklearn.preprocessing import StandardScaler
-	sc = StandardScaler()
-	X_train = sc.fit_transform(X_split)
-	X_test = sc.transform(X_test)
-
-	[/if]
+	[/if]	
 	[if (pr = PreprocessingTechnique::NLP) ]
 		[pr /]
 	[/if]
@@ -771,13 +743,6 @@ def run_cross_fold():
 		[pr /]
 	[/if]	
 	[if (pr = PreprocessingTechnique::TFIDF) ]
-	from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
-	count_vect = TfidfVectorizer(input='train', stop_words={'english'}, lowercase=True, analyzer='word')
-	train_vectors = count_vect.fit_transform(X)
-	train_vectors.shape
-	tfidf_transformer = TfidfTransformer()
-	train_tfidf = tfidf_transformer.fit_transform(train_vectors)
-	train_tfidf.shape
 	[/if]
 	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
 		[pr /]
@@ -788,58 +753,61 @@ def run_cross_fold():
     preprocess = CountVectorizer(ngram_range=(1,1))    
 [/if]
 [/if]
-		[/for]
-	[/if]
-
-
-
+[/for]
+[/if]
 	algo=algorithm_settings()
 	threshold = 3.5
-	k=10
+	k=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
 	for trainset, testset in kf.split(data):
-	    algo.fit(trainset)
-	    predictions = algo.test(testset)
-	    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
+		algo.fit(trainset)
+		predictions = algo.test(testset)
+	   
 
 [for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
 	[if (metric = Metric::PRECISION) ]
 	user_est_true = defaultdict(list)
-    for uid, _, true_r, est, _ in predictions:
-        user_est_true['['/]uid[']'/].append((est, true_r))
-
-    precisions = dict()
+	for uid, _, true_r, est, _ in predictions:
+		user_est_true['['/]uid[']'/].append((est, true_r))
+	precisions = dict()
 	recalls = dict()
-    for uid, user_ratings in user_est_true.items():
-        n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
+	
+	for uid, user_ratings in user_est_true.items():
+		n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
 
-        # Number of recommended items in top k
-        n_rec_k = sum((est >= threshold) for (est, _) in user_ratings['['/]:k[']'/])
-        n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
+		n_rec_k = sum((est >= threshold) for (est, _) in user_ratings['['/]:k[']'/])
+		n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
                               for (est, true_r) in user_ratings['['/]:k[']'/])
-        precisions['['/]uid[']'/] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
+		precisions['['/]uid[']'/] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
 
 	[/if]	
 	[if (metric = Metric::RECALL) ]
-		recalls['['/]uid[']'/] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
+	recalls['['/]uid[']'/] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
 	[/if]
 
-	[/for]
+	
 	precision= sum(prec for prec in precisions.values()) / len(precisions)
 	recall =sum(rec for rec in recalls.values()) / len(recalls)
-    # Precision and recall can then be averaged over all users
-    print(precision)
-    print(recall)
-	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	print(precision)
+	print(recall)
+	
 	[if (metric = Metric::F1_MEASURE) ]
 	f1_measure=(2*precision* recall) / (recall + precision)
 	print(f1_measure)
 	[/if]	
 
-	[/for]
+[/for]
 
 
 [/if]
 [/for]
+[/if]
+[/for]
+
+
+if __name__=='main':
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]
+	run_cross_fold()
 [/if]
 [/for]
 
@@ -892,10 +860,19 @@ flasgger==0.9.5
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::RawOutcomes)]
 
 [file('RecSys.py',false, 'UTF-8')]
-
+[if (recSys.dataset.datasetManipulationLibrary -> size()> 0)]
+[for (dml : DatasetManipulationLibrary | recSys.dataset.datasetManipulationLibrary)]
+[if (dml = DatasetManipulationLibrary::PANDAS)]
+import pandas as pd		
+[/if]
+[if (dml = DatasetManipulationLibrary::NUMPY)]
+import numpy as np	
+[/if]
+[/for]
+[/if]
 def load_dataset():
 [if recSys.recommendationSystem.generator = PyLibType :: SURPRISE]
-from surprise import Dataset, Reader
+	from surprise import Dataset, Reader
 
 [if (dataset.isBuiltIn = true)]
 [if (dataset.oclIsTypeOf(lowcoders::SupervisedDataset))]	
@@ -981,12 +958,12 @@ def set_preprocessing():
 [/if]
 	[/if]
 	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
-		[pr /]
+		
 	[/if]
 [if (pr = PreprocessingTechnique::VECTORIZATION)]
 [if recSys.recommendationSystem.generator = PyLibType::SKLEARN ]
 	from sklearn.feature_extraction.text import CountVectorizer
-    preprocess = CountVectorizer(ngram_range=(1,1))    
+	preprocess = CountVectorizer(ngram_range=(1,1))    
 [/if]
 [/if]
 	return preprocess
@@ -994,13 +971,11 @@ def set_preprocessing():
 [/if]
 def algorithm_settings():
 [if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FeedForwardNN))]
-from sklearn.neural_network import MLPClassifier	
+	from sklearn.neural_network import MLPClassifier	
 	solver='[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).solver/]'
 	alpha=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).alpha/]
-	random_state=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).randomState/]		
-
-	algo = MLPClassifier(solver=solver, alpha=alpha,hidden_layer_sizes=hidden_layers, random_state=random_state)
-
+	random_state=[recSys.recommendationSystem.oclAsType(lowcoders::FeedForwardNN).randomState/]
+	algo = MLPClassifier(solver=solver, alpha=alpha,random_state=random_state)
 [/if]
 [if (recSys.recommendationSystem.oclIsTypeOf(lowcoders::FilteringRS))]
 [if (recSys.recommendationSystem.oclAsType(lowcoders::FilteringRS).filteringRSAlgorithm = FilteringRSAlgorithm::USER_BASED)]
@@ -1034,6 +1009,7 @@ def get_recommendations(context,n_items):
 	docs_new = ['['/]var[']'/]
 	X_new_counts = count_vect.transform(docs_new)
 	X_new_tfidf = tfidf_transformer.transform(X_new_counts)
+	clf= algorithm_settings()
 	predicted = clf.predict(X_new_tfidf)
 	print('predicted as',predicted)
 [/if]
@@ -1092,51 +1068,50 @@ def run_cross_fold():
 [if (recSys.recommendationSystem.generator = PyLibType::SKLEARN)]
 	X,y = load_dataset()
 	from sklearn.model_selection import  KFold
-    n_splits=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
-    kf = KFold(n_splits = n_splits)	
-	prec_all = 0
-	acc_all = 0
+	n_splits=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
+	kf = KFold(n_splits = n_splits)
+	prec_all = 0	
 	rec_all = 0
-	f1_all = 0	
+	f1_all = 0
 	list_metrics=['['/][']'/]
 	for  train, test in kf.split(X):
 		X_split, X_test, y_split, y_test = X['['/]train[']'/],X['['/]test[']'/], y['['/]train[']'/], y['['/]test[']'/]	
 		sc=set_preprocessing()
 		list_train=['['/][']'/]
-        list_test =['['/][']'/]
-        for x in X_split.tolist():
-            list_train.append(str(x))
-        for t in X_test.tolist():
-            list_test.append(str(t))
-        X_train=sc.fit_transform(list_train)
-        X_test=sc.transform(list_test)     
+		list_test =['['/][']'/]
+		for x in X_split.tolist():
+			list_train.append(str(x))
+		for t in X_test.tolist():
+			list_test.append(str(t))
+		X_train=sc.fit_transform(list_train)
+		X_test=sc.transform(list_test)
 		clf= algorithm_settings()
-        clf.fit(X_train, y_split)        
-        y_pred= clf.predict(X_test)				
-	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
-	[if (metric = Metric::PRECISION) ]
+		clf.fit(X_train, y_split)
+		y_pred= clf.predict(X_test)					
+[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+[if (metric = Metric::PRECISION) ]
 		from sklearn.metrics import precision_score
 		precision = precision_score(y_pred, y_test, average=None)
-		prec_all = prec_all + sum(precision)/len(precision)	
-	[/if]	
-	[if (metric = Metric::RECALL) ]
+		prec_all = prec_all + sum(precision)/len(precision)
+[/if]	
+[if (metric = Metric::RECALL)]
 		from sklearn.metrics import recall_score
 		recall = recall_score(y_pred, y_test, average=None)
 		rec_all = rec_all + sum(recall)/len(recall)
-	[/if]
-	[if (metric = Metric::F1_MEASURE) ]
+[/if]
+[if (metric = Metric::F1_MEASURE)]
 		from sklearn.metrics import f1_score
 		f1 = f1_score(y_pred, y_test, average=None)
 		f1_all = f1_all + sum(f1)/len(f1)
-	[/if]	
-	[/for]
+[/if]	
+[/for]
 	prec_all=(prec_all /n_splits)
-    rec_all=(rec_all /n_splits)
-    f1_all=(f1_all /n_splits)  
- 
-    list_metrics.append(prec_all)
-    list_metrics.append(rec_all)
-    list_metrics.append(f1_all)
+	rec_all=(rec_all /n_splits)
+	f1_all=(f1_all /n_splits)
+
+	list_metrics.append(prec_all)
+	list_metrics.append(rec_all)
+	list_metrics.append(f1_all)
 
 	return list_metrics
     
@@ -1147,6 +1122,8 @@ def run_cross_fold():
 
 	from surprise.model_selection import KFold
 	from collections import defaultdict
+	data=load_dataset()
+	n_splits = [val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
 	kf = KFold(n_splits=n_splits)
 
 [if (recSys.dataset.preprocessing -> size()>0)]
@@ -1155,14 +1132,7 @@ def run_cross_fold():
 	dataset.drop_duplicates(inPlace=True)
 	X = dataset.iloc['[:,:-1]'/].values
 	y = dataset.iloc['[:, -1]'/].values		
-	[/if]
-	[if (pr = PreprocessingTechnique::FEATURE_SCALING) ]
-	from sklearn.preprocessing import StandardScaler
-	sc = StandardScaler()
-	X_train = sc.fit_transform(X_split)
-	X_test = sc.transform(X_test)
-
-	[/if]
+	[/if]	
 	[if (pr = PreprocessingTechnique::NLP) ]
 		[pr /]
 	[/if]
@@ -1170,13 +1140,6 @@ def run_cross_fold():
 		[pr /]
 	[/if]	
 	[if (pr = PreprocessingTechnique::TFIDF) ]
-	from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
-	count_vect = TfidfVectorizer(input='train', stop_words={'english'}, lowercase=True, analyzer='word')
-	train_vectors = count_vect.fit_transform(X)
-	train_vectors.shape
-	tfidf_transformer = TfidfTransformer()
-	train_tfidf = tfidf_transformer.fit_transform(train_vectors)
-	train_tfidf.shape
 	[/if]
 	[if (pr = PreprocessingTechnique::NORMALIZATION) ]
 		[pr /]
@@ -1187,85 +1150,63 @@ def run_cross_fold():
     preprocess = CountVectorizer(ngram_range=(1,1))    
 [/if]
 [/if]
-		[/for]
-	[/if]
-
-
-
+[/for]
+[/if]
 	algo=algorithm_settings()
 	threshold = 3.5
-	k=10
+	k=[val.oclAsType(lowcoders::CrossValidation).numberOfFold/]
 	for trainset, testset in kf.split(data):
-	    algo.fit(trainset)
-	    predictions = algo.test(testset)
-	    #precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)
+		algo.fit(trainset)
+		predictions = algo.test(testset)
+	   
 
 [for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
 	[if (metric = Metric::PRECISION) ]
 	user_est_true = defaultdict(list)
-    for uid, _, true_r, est, _ in predictions:
-        user_est_true['['/]uid[']'/].append((est, true_r))
-
-    precisions = dict()
+	for uid, _, true_r, est, _ in predictions:
+		user_est_true['['/]uid[']'/].append((est, true_r))
+	precisions = dict()
 	recalls = dict()
-    for uid, user_ratings in user_est_true.items():
-        n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
+	
+	for uid, user_ratings in user_est_true.items():
+		n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
 
-        # Number of recommended items in top k
-        n_rec_k = sum((est >= threshold) for (est, _) in user_ratings['['/]:k[']'/])
-        n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
+		n_rec_k = sum((est >= threshold) for (est, _) in user_ratings['['/]:k[']'/])
+		n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
                               for (est, true_r) in user_ratings['['/]:k[']'/])
-        precisions['['/]uid[']'/] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
+		precisions['['/]uid[']'/] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
 
 	[/if]	
 	[if (metric = Metric::RECALL) ]
-		recalls['['/]uid[']'/] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
+	recalls['['/]uid[']'/] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
 	[/if]
 
-	[/for]
+	
 	precision= sum(prec for prec in precisions.values()) / len(precisions)
 	recall =sum(rec for rec in recalls.values()) / len(recalls)
-    # Precision and recall can then be averaged over all users
-    print(precision)
-    print(recall)
-	[for (metric : Metric | val.eContainer().oclAsType(lowcoders::Evaluation).metrics) ]
+	print(precision)
+	print(recall)
+	
 	[if (metric = Metric::F1_MEASURE) ]
 	f1_measure=(2*precision* recall) / (recall + precision)
 	print(f1_measure)
 	[/if]	
 
-	[/for]
+[/for]
 
 
 [/if]
 [/for]
 [/if]
 [/for]
-[/file]
-
-[file ('Dockerfile', false, 'UTF-8')]
-#Deriving the latest base image
-FROM python:3.8
 
 
-#Labels as key value pair
-LABEL Maintainer="roushan.me17"
-
-
-# Any working directory can be chosen as per choice like '/' or '/home' etc
-# i have chosen /usr/app/src
-WORKDIR /usr/app/src
-
-
-#to COPY the remote file at working directory in container
-COPY . .
-# Now the structure looks like this '/usr/app/src/test.py'
-RUN pip3 install --no-cache-dir -r requirements.txt
-
-#CMD instruction should be used to run the software
-#contained by your image, along with any arguments.
-
-CMD ['['/] "python", "./RecSys.py"[']'/]
+if __name__=='main':
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]
+	run_cross_fold()
+[/if]
+[/for]
 [/file]
 
 
