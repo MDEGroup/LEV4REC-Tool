@@ -5,7 +5,12 @@
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
 [file ('RecSys_interface.py', false, 'UTF-8')]
 [if recSys.presentationLayer.oclIsTypeOf(lowcoders::WebApplication)]
-from RecSys_business import load_dataset, get_recommendations, algorithm_settings, run_cross_fold, 
+[for (val : ValidationTechnique | recSys.evaluation.validationTechnique)]
+[if (val.oclIsTypeOf(lowcoders::CrossValidation))]	
+from RecSys_business import run_cross_fold
+[/if]
+[/for]	
+
 [if recSys.presentationLayer.oclAsType(lowcoders::WebApplication).library = WebInterfaceLibrary::FLASK]
 from flask import Flask
 from flask import request
@@ -31,7 +36,7 @@ def recommend():
 		message = {
 			'status': 200,
 			'message': 'OK',
-			'results': res
+			
 		}
 		return jsonify(message)
 	except Exception:
@@ -39,7 +44,8 @@ def recommend():
             'status': 500,
             'message': 'KO'
         }
-        return message
+	return message
+
 
 
 if __name__ == '__main__':
@@ -817,7 +823,7 @@ if __name__=='main':
 nb ['['/]"cells"[']'/] = ['['/]nbf.v4.new_markdown_cell(text),
                nbf.v4.new_code_cell(code) [']'/]
 
-nbf.write(nb, 'CrossRec_2.ipynb')
+nbf.write(nb, 'RecSys.ipynb')
 
 
 
