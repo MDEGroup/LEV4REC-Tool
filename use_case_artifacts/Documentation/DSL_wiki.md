@@ -36,8 +36,18 @@ The user can specify attributes and relationships by using the textual grammar e
 
 
 
-where the -> is the superClass relation. The complete set of entities, including the conceived grammar rules, are defined in the [RsDsl.xtext](https://github.com/MDEGroup/LEV4REC-Tool/blob/main/lev4rec/bundles/org.xtext.lev4rec.parent/org.xtext.lev4rec/src/org/xtext/lev4recgrammar/first/RsDsl.xtext) file. It is worth noting that all the source code can be automatically generated from this file by doing: 
-Right click > Generate Xtext artifacts
+where the -> is the superClass relation. The complete set of entities, including the conceived grammar rules, are defined in the [RsDsl.xtext](https://github.com/MDEGroup/LEV4REC-Tool/blob/main/lev4rec/bundles/org.xtext.lev4rec.parent/org.xtext.lev4rec/src/org/xtext/lev4recgrammar/first/RsDsl.xtext) file. It is worth noting that all the source code can be automatically generated from this file by doing:
+
+` Right click > Generate Xtext artifacts `
+
+
+## RS metamodel
+
+All the concepts that can be expressed by the RsDsl derives from the [RS metamodel](https://github.com/MDEGroup/LEV4REC-Tool/blob/main/use_case_artifacts/LEV4REC_meta_model.png). For the sake of presentation, we list below each sub-component of the system and the corresponding meta-classes: 
+
+
+
+
 
 
 ## Generate the Web Editor
@@ -52,11 +62,16 @@ The web editor has been automatically generated from the Xtext project. To this 
 ## RsDsl Usage
 The following section describes the usage of the RsDsl using the Docker installation of LEV4REC. 
 
-### Design a custom recommender system
-
-
 
 ### Replicating the use cases
+
+#### Filtering Algorithm
+
+
+
+
+
+### Design a custom recommender system
 
 
 
