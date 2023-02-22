@@ -442,7 +442,7 @@ EXPOSE 5000
 pandas==1.4.2
 scikit-surprise==1.1.1
 numpy
-scikit-learn=0.24.1
+scikit-learn==0.24.1
 flask==2.1.2
 flasgger==0.9.5
 [/file]
@@ -849,7 +849,7 @@ ENV JUPYTER_ENABLE_LAB=yes
 pandas==1.4.2
 scikit-surprise==1.1.1
 numpy
-scikit-learn=0.24.1
+scikit-learn==0.24.1
 flask==2.1.2
 flasgger==0.9.5
 [/file]
@@ -1220,7 +1220,7 @@ if __name__=='main':
 pandas==1.4.2
 scikit-surprise==1.1.1
 numpy
-scikit-learn=0.24.1
+scikit-learn==0.24.1
 flask==2.1.2
 flasgger==0.9.5
 [/file]
