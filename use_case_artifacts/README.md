@@ -6,10 +6,14 @@ Concerning the designed models, the **LEV4REC_feature_model.png** represents the
 The empirical evaluation follows this structure:
 ```
  	|--- Aurora
-		|--- Aurora.ipynb	The generated Jupyter Notebook for Aurora
+		|--- Aurora.ipynb			The generated Jupyter Notebook for Aurora
 		|--- Social_Network_Ads.csv	The dataset used in the Aurora experiment         
 	|--- CrossRec
-		|--- CrossRec.ipynb		The generate Jupyter Notebook for CrossRec
-		|--- CrossRecDataset.csv The dataset used in the CrossRec experiment	
+		|--- CrossRec.ipynb			The generate Jupyter Notebook for CrossRec
+		|--- CrossRecDataset.csv 	The dataset used in the CrossRec experiment
+
+	|--- Documentation				It contains the documentation for the custom DSL
+	 				
+
       
 ```
